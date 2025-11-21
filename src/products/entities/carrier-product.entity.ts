@@ -1,4 +1,10 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+// src/products/entities/carrier-product.entity.ts
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { Carrier } from './carrier.entity';
 import { Product } from './product.entity';
 
@@ -14,14 +20,8 @@ export class CarrierProduct {
   product: Product;
 
   @Column()
-  externalCode: string; // carrier's product code
+  externalCode: string; // carrier's own product code
 
   @Column({ default: true })
   isActive: boolean;
-
-  @Column({ type: 'decimal', nullable: true })
-  minPremium?: number;
-
-  @Column({ type: 'decimal', nullable: true })
-  maxPremium?: number;
 }

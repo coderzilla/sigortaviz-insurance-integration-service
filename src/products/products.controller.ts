@@ -2,7 +2,7 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { GetConfigQuery } from './dtos/get-config-query';
-import { FieldConfig } from '../common/types/field-types';
+import { FieldConfig, ProductFormConfig } from '../common/types/field-types';
 
 @Controller()
 export class ProductsController {
@@ -15,8 +15,9 @@ export class ProductsController {
     product: string;
     carrier: string;
     fields: FieldConfig[];
+    pageChangeRequest?: ProductFormConfig['pageChangeRequest'];
   }> {
-    const fields = await this.productsService.getFieldConfig(
+    const formConfig = await this.productsService.getFieldConfig(
       query.product,
       query.carrier,
     );
@@ -24,7 +25,8 @@ export class ProductsController {
     return {
       product: query.product,
       carrier: query.carrier,
-      fields,
+      fields: formConfig.fields,
+      pageChangeRequest: formConfig.pageChangeRequest,
     };
   }
 }

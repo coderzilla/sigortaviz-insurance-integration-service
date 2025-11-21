@@ -33,4 +33,7 @@ export class CarrierProductFieldSet {
     eager: true,
   })
   fields: CarrierProductField[];
+
+  @Column({ type: 'json', nullable: true })
+  pageChangeRequestJson?: any; // optional request to trigger between page changes
 }

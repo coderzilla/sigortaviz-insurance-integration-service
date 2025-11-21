@@ -1,98 +1,83 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+## SigortaVizz – Insurance Integration Service
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Backend service (NestJS + TypeORM) that serves dynamic product configuration, normalizes quote inputs, and maps data to carrier APIs.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+---
 
-## Description
+## 1) Run locally
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- Prereqs: Node 18+, npm, MySQL 8+ (or compatible) reachable from your machine.
+- Copy `.env.example` to `.env` (create one if missing) and set:
+  - `DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASS`, `DB_NAME`
+  - `DB_SYNCHRONIZE=true` is OK for local/dev to auto-sync schema (avoid in prod).
+- Install deps: `npm install`
+- Start:
+  - Dev (watch): `npm run start:dev`
+  - Prod build + run: `npm run build && npm run start:prod`
+- Health check: API uses the default Nest boot; reach `http://localhost:3000` (adjust if you changed the port).
 
-## Project setup
+Tests:
+- Unit: `npm test`
+- E2E: `npm run test:e2e`
 
-```bash
-$ npm install
-```
+---
 
-## Compile and run the project
+## 2) Data model (core tables/entities)
 
-```bash
-# development
-$ npm run start
+- `products`: list of product types (`code`, `name`, `description`), e.g., `HEALTH`.
+- `carriers`: insurance carriers (`code`, `name`, `isActive`), e.g., `AXA`.
+- `carrier_products`: joins a `carrier` to a `product` with a carrier-specific `externalCode` and `isActive`.
+- `carrier_product_field_sets`: versioned field sets per carrier-product. Columns:
+  - `version`, `isActive`, `validFrom`, `validTo`
+  - `pageChangeRequestJson` (optional request definition to call when changing pages)
+  - `fields` (relation to `carrier_product_fields`)
+- `carrier_product_fields`: individual form fields. Key columns:
+  - `internalCode`, `label`, `description`, `inputType`, `required`
+  - `orderIndex` (ordering within a page)
+  - `page` (int, default 1) – which page of the form to render
+  - `placeholder`, `validationRegex`, `minLength`, `maxLength`, `minValue`, `maxValue`
+  - `optionsJson` (for selects/radios), `extraConfigJson` (misc per-field config)
+  - `onBlurRequestJson` (optional request definition to trigger when the field blurs with a valid value)
+- `carrier_field_mappings`: maps `internalCode` -> carrier API parameter name, plus `transformType` and `isRequiredForApi`.
 
-# watch mode
-$ npm run start:dev
+Types exposed to clients (`src/common/types/field-types.ts`):
+- `FieldConfig`: mirrors `carrier_product_fields` plus validation info and `onBlurRequest`.
+- `ProductFormConfig`: `{ fields: FieldConfig[]; pageChangeRequest?: RequestTriggerConfig }`.
 
-# production mode
-$ npm run start:prod
-```
+---
 
-## Run tests
+## 3) Config system flow
 
-```bash
-# unit tests
-$ npm run test
+Endpoint:
+- `GET /config?product=HEALTH&carrier=AXA`
 
-# e2e tests
-$ npm run test:e2e
+Process (`ProductsService.getFieldConfig`):
+1. Resolve active `carrier` and `product`; fetch active `carrier_product`.
+2. Load active `carrier_product_field_sets` for that carrier-product.
+3. Pick the effective set: latest `version` that is active and within `validFrom/validTo` window relative to the current date.
+4. Build `ProductFormConfig`:
+   - `fields`: sorted by `page`, then `orderIndex`. Each field includes validation rules, placeholders/options/extraConfig, and optional `onBlurRequest`.
+   - `pageChangeRequest`: optional request descriptor from the field set, used by the UI between page transitions.
 
-# test coverage
-$ npm run test:cov
-```
+Request trigger shape (`RequestTriggerConfig`):
+- `{ url: string; method?: 'GET' | 'POST'; params?: Record<string, any>; headers?: Record<string, string>; }`
+- UI can template values (e.g., `{{value}}`, `{{form.*}}`, `{{currentPage}}`) before sending.
 
-## Deployment
+Usage:
+- Call `/config` to render the multi-page form.
+- On page change, if `pageChangeRequest` is present, fire it with the specified params/headers.
+- On field blur with a valid value, if `onBlurRequest` exists for that field, fire it similarly.
+- Collected form data maps to carrier API payload via `carrier_field_mappings`.
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+---
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+## 4) Sample seed (AXA Health)
 
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
+Use the SQL snippet in the repo history/context (see prior assistant message) to insert:
+- Product `HEALTH`
+- Carrier `AXA`
+- Carrier product `AXA_HEALTH_STD`
+- Field set with two pages, blur trigger on TCKN, and a page-change trigger
+- Carrier field mappings for API transforms
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
-
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+Adjust URLs and templated params to your real endpoints. Use `DB_SYNCHRONIZE=true` locally to let TypeORM create new columns (`page`, `onBlurRequestJson`, `pageChangeRequestJson`) if your DB is empty; otherwise run a migration that adds them.

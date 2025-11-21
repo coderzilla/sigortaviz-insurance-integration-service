@@ -11,3 +11,5 @@ export type CarrierCode =
   | 'TURKEY_INSURANCE'
   | 'ANADOLU_SIGORTA'
   | string;
+
+  

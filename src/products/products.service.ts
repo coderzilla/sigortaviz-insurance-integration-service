@@ -6,7 +6,11 @@ import { Carrier } from './entities/carrier.entity';
 import { Product } from './entities/product.entity';
 import { CarrierProduct } from './entities/carrier-product.entity';
 import { CarrierProductFieldSet } from './entities/carrier-product-field-set.entity';
-import { FieldConfig, FieldValidationRules } from '../common/types/field-types';
+import {
+  FieldConfig,
+  FieldValidationRules,
+  ProductFormConfig,
+} from '../common/types/field-types';
 import { ProductCode } from '../common/types/domain-types';
 
 @Injectable()
@@ -30,7 +34,7 @@ export class ProductsService {
     product: ProductCode,
     carrierCode: string,
     atDate: Date = new Date(),
-  ): Promise<FieldConfig[]> {
+  ): Promise<ProductFormConfig> {
     const carrier = await this.carrierRepo.findOne({
       where: { code: carrierCode, isActive: true },
     });
@@ -69,7 +73,7 @@ export class ProductsService {
     });
 
     if (!fieldSets.length) {
-      return [];
+      return { fields: [] };
     }
 
     // Simple: choose latest version valid at date
@@ -84,11 +88,14 @@ export class ProductsService {
       .sort((a, b) => b.version - a.version)[0];
 
     if (!effectiveFieldSet) {
-      return [];
+      return { fields: [] };
     }
 
     const fieldConfigs: FieldConfig[] = (effectiveFieldSet.fields || [])
-      .sort((a, b) => a.orderIndex - b.orderIndex)
+      .sort((a, b) => {
+        const pageDiff = (a.page ?? 1) - (b.page ?? 1);
+        return pageDiff !== 0 ? pageDiff : a.orderIndex - b.orderIndex;
+      })
       .map((f): FieldConfig => {
         const validation: FieldValidationRules = {
           regex: f.validationRegex || undefined,
@@ -104,14 +111,19 @@ export class ProductsService {
           description: f.description || undefined,
           inputType: f.inputType as any,
           required: f.required,
+          page: f.page ?? 1,
           orderIndex: f.orderIndex,
           placeholder: f.placeholder || undefined,
           options: f.optionsJson || undefined,
           validation,
           extraConfig: f.extraConfigJson || undefined,
+          onBlurRequest: f.onBlurRequestJson || undefined,
         };
       });
 
-    return fieldConfigs;
+    return {
+      fields: fieldConfigs,
+      pageChangeRequest: effectiveFieldSet.pageChangeRequestJson || undefined,
+    };
   }
 }
