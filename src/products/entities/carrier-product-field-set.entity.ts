@@ -1,5 +1,11 @@
 // src/products/entities/carrier-product-field-set.entity.ts
-import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { CarrierProduct } from './carrier-product.entity';
 import { CarrierProductField } from './carrier-product-field.entity';
 
@@ -23,6 +29,8 @@ export class CarrierProductFieldSet {
   @Column({ type: 'timestamp', nullable: true })
   validTo?: Date;
 
-  @OneToMany(() => CarrierProductField, (field) => field.fieldSet)
+  @OneToMany(() => CarrierProductField, (field) => field.fieldSet, {
+    eager: true,
+  })
   fields: CarrierProductField[];
 }
