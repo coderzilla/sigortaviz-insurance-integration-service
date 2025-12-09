@@ -1,0 +1,2858 @@
+{
+	"info": {
+		"_postman_id": "6e5e3a21-0362-47ca-acc0-29666ce86674",
+		"name": "Quick Sigorta - Acenteler API",
+		"description": "Acentere teklif ve poliçeleştirme işlemlerinde kullanabilecekleri api istek örnekleri",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "50515202",
+		"_collection_link": "https://tech-3f45b42b-8728016.postman.co/workspace/2f655d4e-106f-4547-8634-1da758a68ec0/collection/50515202-6e5e3a21-0362-47ca-acc0-29666ce86674?action=share&source=collection_link&creator=50515202"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Get Access Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let res = pm.response.json();",
+									"pm.environment.set('token', res.access_token);"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client_id",
+									"value": "{{api-gw-client-id}}",
+									"description": "client_id",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "{{api-gw-client-secret}}",
+									"description": "client_secret",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"description": "M2M için client_credentials grant_type kullanılmalıdır",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "read",
+									"description": "Opsiyonel olarak scope gönderilerek aldığınız token kısıtlanabilir",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api-gw-uri}}/auth/token",
+							"host": [
+								"{{api-gw-uri}}"
+							],
+							"path": [
+								"auth",
+								"token"
+							]
+						},
+						"description": "API isteklerinde kullanılacak Bearer token döner. Token almanız için gerekli bilgiler size özel olarak sağlanacaktır."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Poliçe",
+			"item": [
+				{
+					"name": "Teklif",
+					"item": [
+						{
+							"name": "Trafik",
+							"item": [
+								{
+									"name": "Teklif - YK Normal",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"productId\": \"101\",\n    \"insurer\": {\n        \"idNumber\": \"41824504930\",\n        \"email\": \"mert.guzeler@valde.co\",\n        \"phoneNumber\": \"5324542712\",\n        \"birthDate\": \"1993-09-23\"\n    },\n    \"insureds\": [\n        {\n            \"idNumber\": \"41824504930\",\n            \"email\": \"mert.guzeler@valde.co\",\n            \"phoneNumber\": \"5324542712\",\n            \"birthDate\": \"1993-09-23\",\n            \"isMain\": true\n        }\n    ],\n    \"questions\": {\n        \"packageType\": \"1\",\n        \"plateType\": \"unregistered\",\n        \"plateCityCode\": \"34\",\n        \"usageStyle\": \"1\",\n        \"modelYear\": \"2024\",\n        \"makeId\": \"0091529\",\n        \"engineNumber\": \"MN13579246801356\",\n        \"chassisNumber\": \"SN135792468013579\"\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-gw-uri}}/api/policy/proposal",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"policy",
+												"proposal"
+											]
+										},
+										"description": "### **Trafik YK - Normal**\n\n- **PLAKA TİPİ (plateType)**: unregistered - string\n    \n- **PAKET TİPİ (packageType)**: 1 - string\n    \n- **PLAKA İL KODU (plateCityCode)**: `Get Cities` ile alınabilir. - string\n    \n- **KULLANIM ŞEKLİ (usageStyle)**: `Get Usage Style` ile alınabilir. - string\n    \n- **MODEL YILI (modelYear)**: `Get Year` ile alınabilir. - int\n    \n- **ARAÇ BİRLİK KODU (makeId)**: `Get Make` ile alınabilir. - string\n    \n- **MOTOR NO (engineNumber)**: Teklif sürecinde sağlanır. - string\n    \n- **PLAKA NO (plateNumber)**: Teklif sürecinde sağlanır. (YK Sabit) - string\n    \n- **ŞASİ NO (chassisNumber)**: Teklif sürecinde sağlanır. - string"
+									},
+									"response": []
+								},
+								{
+									"name": "Teklif - YK Süper",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"productId\": \"101\",\n    \"insurer\": {\n        \"idNumber\": \"xxx123566xx\",            \n        \"birthDate\": \"199x-07-18T00:00:00\",\n        \"email\": \"test@valde.co\",\n        \"phoneNumber\": \"553xxx01xx\"\n    },\n    \"insureds\": [\n        {\n            \"idNumber\": \"xxx123566xx\",\n            \"birthDate\": \"199x-07-18T00:00:00\",\n            \"email\": \"test@valde.co\",\n            \"phoneNumber\": \"553xxx01xx\",\n            \"isMain\": true\n        }\n    ],\n    \"questions\": {\n        \"packageType\": \"1\",\n        \"plateType\": \"unregistered\",\n        \"plateCityCode\": \"34\",\n        \"usageStyle\": \"1\",\n        \"modelYear\": \"2023\",\n        \"makeId\": \"0091529\",\n        \"engineNumber\": \"11111111111111\",\n        \"chassisNumber\": \"11111111111111111\"\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-gw-uri}}/api/policy/proposal",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"policy",
+												"proposal"
+											]
+										},
+										"description": "### **Trafik YK - Süper Trafik**\n\n- **PLAKA TİPİ (plateType)**: unregistered - string\n    \n- **PAKET TİPİ (packageType)**: 2 - string\n    \n- **PLAKA İL KODU (plateCityCode)**: `Get Cities` ile alınabilir. - string\n    \n- **KULLANIM ŞEKLİ (usageStyle)**: `Get Usage Style` ile alınabilir. - string\n    \n- **MODEL YILI (modelYear)**: `Get Year` ile alınabilir. - int\n    \n- **ARAÇ BİRLİK KODU (makeId)**: `Get Make` ile alınabilir. - string\n    \n- **MOTOR NO (engineNumber)**: Teklif sürecinde sağlanır. - string\n    \n- **ŞASİ NO (chassisNumber)**: Teklif sürecinde sağlanır. - string\n    \n- **PLAKA NO (plateNumber)**: Teklif sürecinde sağlanır. (YK Sabit) - string"
+									},
+									"response": []
+								},
+								{
+									"name": "Teklif - Yenileme Normal",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"productId\": \"101\",\n    \"insurer\": {\n        \"idNumber\": \"xxx123566xx\",            \n        \"birthDate\": \"199x-07-18T00:00:00\",\n        \"email\": \"test@valde.co\",\n        \"phoneNumber\": \"553xxx01xx\"\n    },\n    \"insureds\": [\n        {\n            \"idNumber\": \"xxx123566xx\",\n            \"birthDate\": \"199x-07-18T00:00:00\",\n            \"email\": \"test@valde.co\",\n            \"phoneNumber\": \"553xxx01xx\",\n            \"isMain\": true\n        }\n    ],\n    \"questions\": {\n        \"packageType\": \"1\",\n        \"plateType\": \"registered\",\n        \"plateCityCode\": \"34\",\n        \"plateNumber\": \"RF0909\",\n        \"registrationSerialCode\": \"GD\",\n        \"registrationSerialNumber\": \"984352\"\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-gw-uri}}/api/policy/proposal",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"policy",
+												"proposal"
+											]
+										},
+										"description": "### **Trafik Yenileme - Normal**\n\n- **PLAKA TİPİ (plateType)**: registered - string\n    \n- **PAKET TİPİ (packageType)**: 1 - string\n    \n- **PLAKA İL KODU (plateCityCode)**: `Get Cities` ile alınabilir. - string\n    \n- **PLAKA NO (plateNumber)**: Teklif sürecinde sağlanır. - string\n    \n- **TESCİL SERİ KODU (registrationSerialCode)**: Teklif sürecinde sağlanır. - string\n    \n- **TESCİL SERİ NUMARASI (registrationSerialNumber)**: Teklif sürecinde sağlanır. - string"
+									},
+									"response": []
+								},
+								{
+									"name": "Teklif - Yenileme Normal Copy",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"productId\": \"101\",\n    \"insurer\": {\n        \"idNumber\": \"32794884948\",\n        \"birthDate\": \"1980-01-04T00:00:00\",\n        \"email\": \"vdf_SigortaDestek@vdf.com.tr\",\n        \"phoneNumber\": \"5413578049\"\n    },\n    \"insureds\": [\n        {\n            \"idNumber\": \"32794884948\",\n            \"birthDate\": \"1980-01-04T00:00:00\",\n            \"email\": \"vdf_SigortaDestek@vdf.com.tr\",\n            \"phoneNumber\": \"5413578049\",\n            \"isMain\": true\n        }\n    ],\n    \"questions\": {\n        \"packageType\": \"1\",\n        \"plateType\": \"unregistered\",\n        \"plateCityCode\": \"34\",\n        \"makeId\": \"1531564\",\n        \"modelYear\": \"2024\",\n        \"engineNumber\": \"MN654654321\",\n        \"chassisNumber\": \"SN5432175645\",\n        \"usageStyle\": \"1\"\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-gw-uri}}/api/policy/proposal",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"policy",
+												"proposal"
+											]
+										},
+										"description": "### **Trafik Yenileme - Normal**\n\n- **PLAKA TİPİ (plateType)**: registered - string\n    \n- **PAKET TİPİ (packageType)**: 1 - string\n    \n- **PLAKA İL KODU (plateCityCode)**: `Get Cities` ile alınabilir. - string\n    \n- **PLAKA NO (plateNumber)**: Teklif sürecinde sağlanır. - string\n    \n- **TESCİL SERİ KODU (registrationSerialCode)**: Teklif sürecinde sağlanır. - string\n    \n- **TESCİL SERİ NUMARASI (registrationSerialNumber)**: Teklif sürecinde sağlanır. - string"
+									},
+									"response": []
+								},
+								{
+									"name": "Teklif - Yenileme Süper",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"productId\": \"101\",\n    \"insurer\": {\n        \"idNumber\": \"xxx123566xx\",            \n        \"birthDate\": \"199x-07-18T00:00:00\",\n        \"email\": \"test@valde.co\",\n        \"phoneNumber\": \"553xxx01xx\"\n    },\n    \"insureds\": [\n        {\n            \"idNumber\": \"xxx123566xx\",\n            \"birthDate\": \"199x-07-18T00:00:00\",\n            \"email\": \"test@valde.co\",\n            \"phoneNumber\": \"553xxx01xx\",\n            \"isMain\": true\n        }\n    ],\n    \"questions\": {\n        \"packageType\": \"1\",\n        \"plateType\": \"registered\",\n        \"plateCityCode\": \"34\",\n        \"plateNumber\": \"RF0909\",\n        \"registrationSerialCode\": \"GD\",\n        \"registrationSerialNumber\": \"984352\"\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-gw-uri}}/api/policy/proposal",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"policy",
+												"proposal"
+											]
+										},
+										"description": "### **Trafik Yenileme - Süper Trafik**\n\n- **PLAKA TİPİ (plateType)**: registered - string\n    \n- **PAKET TİPİ (packageType)**: 2 - string\n    \n- **PLAKA İL KODU (plateCityCode)**: `Get Cities` ile alınabilir. - string\n    \n- **PLAKA NO (plateNumber)**: Teklif sürecinde sağlanır. - string\n    \n- **TESCİL SERİ KODU (registrationSerialCode)**: Teklif sürecinde sağlanır. - string\n    \n- **TESCİL SERİ NUMARASI (registrationSerialNumber)**: Teklif sürecinde sağlanır. - string"
+									},
+									"response": []
+								},
+								{
+									"name": "Teklif - İkinci El Yeni Tescil Normal",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"productId\": \"101\",\n    \"insurer\": {\n        \"idNumber\": \"xxx123566xx\",            \n        \"birthDate\": \"199x-07-18T00:00:00\",\n        \"email\": \"test@valde.co\",\n        \"phoneNumber\": \"553xxx01xx\"\n    },\n    \"insureds\": [\n        {\n            \"idNumber\": \"xxx123566xx\",\n            \"birthDate\": \"199x-07-18T00:00:00\",\n            \"email\": \"test@valde.co\",\n            \"phoneNumber\": \"553xxx01xx\",\n            \"isMain\": true\n        }\n    ],\n    \"questions\": {\n        \"packageType\": \"1\",\n        \"plateType\": \"registered\",\n        \"plateCityCode\": \"34\",\n        \"plateNumber\": \"RF0909\",\n        \"registrationSerialCode\": \"GD\",\n        \"registrationSerialNumber\": \"984352\",\n        \"usageStyle\": \"1\",\n        \"makeId\": \"1221047\"\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-gw-uri}}/api/policy/proposal",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"policy",
+												"proposal"
+											]
+										},
+										"description": "### **Trafik İkinci El Yeni Tescil - Normal**\n\n- **PLAKA TİPİ (plateType)**: registered - string\n    \n- **PAKET TİPİ (packageType)**: 1 - string\n    \n- **PLAKA İL KODU (plateCityCode)**: `Get Cities` ile alınabilir. - string\n    \n- **PLAKA NO (plateNumber)**: Teklif sürecinde sağlanır. - string\n    \n- **KULLANIM ŞEKLİ (usageStyle)**: `Get Usage Style` ile alınabilir. - string\n    \n- **ARAÇ BİRLİK KODU (makeId)**: `Get Make` ile alınabilir. - string\n    \n- **TESCİL SERİ KODU (registrationSerialCode)**: Teklif sürecinde sağlanır. - string\n    \n- **TESCİL SERİ NUMARASI (registrationSerialNumber)**: Teklif sürecinde sağlanır. - string"
+									},
+									"response": []
+								},
+								{
+									"name": "Teklif - İkinci El Yeni Tescil Süper",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"productId\": \"101\",\n    \"insurer\": {\n        \"idNumber\": \"xxx123566xx\",            \n        \"birthDate\": \"199x-07-18T00:00:00\",\n        \"email\": \"test@valde.co\",\n        \"phoneNumber\": \"553xxx01xx\"\n    },\n    \"insureds\": [\n        {\n            \"idNumber\": \"xxx123566xx\",\n            \"birthDate\": \"199x-07-18T00:00:00\",\n            \"email\": \"test@valde.co\",\n            \"phoneNumber\": \"553xxx01xx\",\n            \"isMain\": true\n        }\n    ],\n    \"questions\": {\n        \"packageType\": \"1\",\n        \"plateType\": \"registered\",\n        \"plateCityCode\": \"34\",\n        \"plateNumber\": \"RF0909\",\n        \"registrationSerialCode\": \"GD\",\n        \"registrationSerialNumber\": \"984352\",\n        \"usageStyle\": \"1\",\n        \"makeId\": \"1221047\"\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-gw-uri}}/api/policy/proposal",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"policy",
+												"proposal"
+											]
+										},
+										"description": "### **Trafik İkinci El Yeni Tescil - Normal**\n\n- **PLAKA TİPİ (plateType)**: registered - string\n    \n- **PAKET TİPİ (packageType)**: 2 - string\n    \n- **PLAKA İL KODU (plateCityCode)**: `Get Cities` ile alınabilir. - string\n    \n- **PLAKA NO (plateNumber)**: Teklif sürecinde sağlanır. - string\n    \n- **KULLANIM ŞEKLİ (usageStyle)**: `Get Usage Style` ile alınabilir. - string\n    \n- **ARAÇ BİRLİK KODU (makeId)**: `Get Make` ile alınabilir. - string\n    \n- **TESCİL SERİ KODU (registrationSerialCode)**: Teklif sürecinde sağlanır. - string\n    \n- **TESCİL SERİ NUMARASI (registrationSerialNumber)**: Teklif sürecinde sağlanır. - string"
+									},
+									"response": []
+								},
+								{
+									"name": "Teklif - Yabancı Plaka",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"productId\": \"101\",\n    \"insurer\": {\n        \"idNumber\": \"U999231123\",\n        \"fullAddress\": \"İstanbul Ataşehir Örnek Mahallesi\",\n        \"birthDate\": \"1992-08-18T00:00:00.000Z\",\n        \"gender\": \"E\",\n        \"birthPlace\": \"Üsküdar\",\n        \"idType\": 3,\n        \"nationality\": \"1\",\n        \"name\": \"Furkan\",\n        \"surname\": \"Bostancı\",\n        \"email\": \"test@valde.co\"\n    },\n    \"insureds\": [\n        {\n            \"idNumber\": \"U999231123\",\n            \"fullAddress\": \"İstanbul Ataşehir Örnek Mahallesi\",\n            \"birthDate\": \"1992-08-18T00:00:00.000Z\",\n            \"gender\": \"E\",\n            \"birthPlace\": \"Üsküdar\",\n            \"idType\": 3,\n            \"nationality\": \"1\",\n            \"name\": \"Furkan\",\n            \"surname\": \"Bostancı\",\n            \"email\": \"test@valde.co\",\n            \"isMain\": true\n        }\n    ],\n    \"questions\": {\n        \"packageType\": \"1\",\n        \"plateType\": \"foreign\",\n        \"plateNumber\": \"AZK87DE\",\n        \"usageStyle\": \"1\",\n        \"modelYear\": \"2012\",\n        \"makeId\": \"1221047\",\n        \"engineNumber\": \"11111111111111\",\n        \"chassisNumber\": \"11111111111111111\",\n        \"policyDuration\": \"1\"\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-gw-uri}}/api/policy/proposal",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"policy",
+												"proposal"
+											]
+										},
+										"description": "### **Trafik Yabancı Plaka - Normal**\n\n- **PLAKA TİPİ (plateType)**: foreign - string\n    \n- **PAKET TİPİ (packageType)**: 1 - string\n    \n- **PLAKA İL KODU (plateCityCode)**: `Get Cities` ile alınabilir. - string\n    \n- **PLAKA NO (plateNumber)**: Teklif sürecinde sağlanır. - string\n    \n- **KULLANIM ŞEKLİ (usageStyle)**: `Get Usage Style` ile alınabilir. - string\n    \n- **MODEL YILI (modelYear)**: `Get Year` ile alınabilir. - int\n    \n- **ARAÇ BİRLİK KODU (makeId)**: `Get Make` ile alınabilir. - string\n    \n- **MOTOR NO (engineNumber)**: Teklif sürecinde sağlanır. - string\n    \n- **ŞASİ NO (chassisNumber)**: Teklif sürecinde sağlanır. - string\n    \n- **POLİÇE GEÇERLİLİK SÜRESİ (policyDuration)**: Teklif sürecinde sağlanır. \"0.5\", \"1\", \"3\", \"6\", \"12\" Ay cinsinden - string"
+									},
+									"response": []
+								},
+								{
+									"name": "Teklif - Yabancı Plaka Süper",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"productId\": \"101\",\n    \"insurer\": {\n        \"idNumber\": \"U999231123\",\n        \"fullAddress\": \"İstanbul Ataşehir Örnek Mahallesi\",\n        \"birthDate\": \"1992-08-18T00:00:00.000Z\",\n        \"gender\": \"E\",\n        \"birthPlace\": \"Üsküdar\",\n        \"idType\": 3,\n        \"nationality\": \"1\",\n        \"name\": \"Furkan\",\n        \"surname\": \"Bostancı\",\n        \"email\": \"test@valde.co\"\n    },\n    \"insureds\": [\n        {\n            \"idNumber\": \"U999231123\",\n            \"fullAddress\": \"İstanbul Ataşehir Örnek Mahallesi\",\n            \"birthDate\": \"1992-08-18T00:00:00.000Z\",\n            \"gender\": \"E\",\n            \"birthPlace\": \"Üsküdar\",\n            \"idType\": 3,\n            \"nationality\": \"1\",\n            \"name\": \"Furkan\",\n            \"surname\": \"Bostancı\",\n            \"email\": \"test@valde.co\",\n            \"isMain\": true\n        }\n    ],\n    \"questions\": {\n        \"packageType\": \"2\",\n        \"plateType\": \"foreign\",\n        \"plateNumber\": \"AZK87DE\",\n        \"usageStyle\": \"1\",\n        \"modelYear\": \"2012\",\n        \"makeId\": \"1221047\",\n        \"engineNumber\": \"11111111111111\",\n        \"chassisNumber\": \"11111111111111111\",\n        \"policyDuration\": \"1\"\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-gw-uri}}/api/policy/proposal",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"policy",
+												"proposal"
+											]
+										},
+										"description": "### **Trafik Yabancı Plaka - Normal**\n\n- **PLAKA TİPİ (plateType)**: foreign - string\n    \n- **PAKET TİPİ (packageType)**: 2 - string\n    \n- **PLAKA İL KODU (plateCityCode)**: `Get Cities` ile alınabilir. - string\n    \n- **PLAKA NO (plateNumber)**: Teklif sürecinde sağlanır. - string\n    \n- **KULLANIM ŞEKLİ (usageStyle)**: `Get Usage Style` ile alınabilir. - string\n    \n- **MODEL YILI (modelYear)**: `Get Year` ile alınabilir. - int\n    \n- **ARAÇ BİRLİK KODU (makeId)**: `Get Make` ile alınabilir. - string\n    \n- **MOTOR NO (engineNumber)**: Teklif sürecinde sağlanır. - string\n    \n- **ŞASİ NO (chassisNumber)**: Teklif sürecinde sağlanır. - string\n    \n- **POLİÇE GEÇERLİLİK SÜRESİ (policyDuration)**: Teklif sürecinde sağlanır. \"0.5\", \"1\", \"3\", \"6\", \"12\" Ay cinsinden - string"
+									},
+									"response": []
+								},
+								{
+									"name": "Teklif - YK - Kısa Süreli Trafik (Galerici)",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"productId\": \"101\",\n    \"insurer\": {\n        \"idNumber\": \"U999231123\",\n        \"fullAddress\": \"İstanbul Bahçelievler\",\n        \"birthDate\": \"1997-08-22T00:00:00.000Z\",\n        \"gender\": \"E\",\n        \"birthPlace\": \"Bahçelievler\",\n        \"idType\": 3,\n        \"nationality\": \"1\",\n        \"name\": \"Ferhat\",\n        \"surname\": \"Sezer\",\n        \"email\": \"test@valde.co\"\n    },\n    \"insureds\": [\n        {\n            \"idNumber\": \"U999231123\",\n            \"fullAddress\": \"İstanbul Bahçelievler\",\n            \"birthDate\": \"1997-08-22T00:00:00.000Z\",\n            \"gender\": \"E\",\n            \"birthPlace\": \"Bahçelievler\",\n            \"idType\": 3,\n            \"nationality\": \"1\",\n            \"name\": \"Ferhat\",\n            \"surname\": \"Sezer\",\n            \"email\": \"test@valde.co\",\n            \"isMain\": true\n        }\n    ],\n    \"questions\": {\n        \"plateType\": \"registered\",\n        \"policyDuration\": \"120\",\n        \"usageStyle\": \"1\",\n        \"makeId\": \"1221079\",\n        \"registrationSerialCode\": \"HI\",\n        \"registrationSerialNumber\": \"868491\",\n        \"modelYear\": \"2017\",\n        \"plateCityCode\": \"34\",\n        \"plateNumber\": \"VU2652\",\n        \"isDealer\": true\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-gw-uri}}/api/policy/proposal",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"policy",
+												"proposal"
+											]
+										},
+										"description": "### **Trafik YK Kısa Süreli - Galerici**\n\n- **PLAKA TİPİ (plateType)**: unregistered - string\n    \n- **PAKET TİPİ (packageType)**: 1 - string\n    \n- **PLAKA İL KODU (plateCityCode)**: `Get Cities` ile alınabilir. - string\n    \n- **KULLANIM ŞEKLİ (usageStyle)**: `Get Usage Style` ile alınabilir. - string\n    \n- **MODEL YILI (modelYear)**: `Get Year` ile alınabilir. - int\n    \n- **ARAÇ BİRLİK KODU (makeId)**: `Get Make` ile alınabilir. - string\n    \n- **MOTOR NO (engineNumber)**: Teklif sürecinde sağlanır. - string\n    \n- **ŞASİ NO (chassisNumber)**: Teklif sürecinde sağlanır. - string\n    \n- **PLAKA NO (plateNumber)**: Teklif sürecinde sağlanır. (YK Sabit) - string\n    \n- **POLİÇE GEÇERLİLİK SÜRESİ (policyDuration)**: Teklif sürecinde sağlanır. \"0.5\", \"1\", \"3\", \"6\", \"12\" Ay cinsinden - string"
+									},
+									"response": []
+								},
+								{
+									"name": "Teklif - Yenileme - Kısa Süreli Trafik (Galerici)",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"productId\": \"101\",\n    \"insurer\": {\n        \"idNumber\": \"U999231123\",\n        \"fullAddress\": \"İstanbul Bahçelievler\",\n        \"birthDate\": \"1997-08-22T00:00:00.000Z\",\n        \"gender\": \"E\",\n        \"birthPlace\": \"Bahçelievler\",\n        \"idType\": 3,\n        \"nationality\": \"1\",\n        \"name\": \"Ferhat\",\n        \"surname\": \"Sezer\",\n        \"email\": \"test@valde.co\"\n    },\n    \"insureds\": [\n        {\n            \"idNumber\": \"U999231123\",\n            \"fullAddress\": \"İstanbul Bahçelievler\",\n            \"birthDate\": \"1997-08-22T00:00:00.000Z\",\n            \"gender\": \"E\",\n            \"birthPlace\": \"Bahçelievler\",\n            \"idType\": 3,\n            \"nationality\": \"1\",\n            \"name\": \"Ferhat\",\n            \"surname\": \"Sezer\",\n            \"email\": \"test@valde.co\",\n            \"isMain\": true\n        }\n    ],\n    \"questions\": {\n        \"plateType\": \"unregistered\",\n        \"plateCityCode\": \"34\",\n        \"usageStyle\": \"1\",\n        \"modelYear\": \"2024\",\n        \"makeId\": \"0091529\",\n        \"isDealer\": true,\n        \"policyDuration\": \"120\",\n        \"engineNumber\": \"MN13579246801356\",\n        \"chassisNumber\": \"SN135792468013579\"\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-gw-uri}}/api/policy/proposal",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"policy",
+												"proposal"
+											]
+										},
+										"description": "### **Trafik Yenileme Kısa Süreli - Galerici**\n\n- **PAKET TİPİ (packageType)**: 1 - string\n    \n- **PLAKA İL KODU (plateCityCode)**: `Get Cities` ile alınabilir. - string\n    \n- **PLAKA NO (plateNumber)**: Teklif sürecinde sağlanır. - string\n    \n- **TESCİL SERİ KODU (registrationSerialCode)**: Teklif sürecinde sağlanır. - string\n    \n- **TESCİL SERİ NUMARASI (registrationSerialNumber)**: Teklif sürecinde sağlanır. - string\n    \n- **POLİÇE GEÇERLİLİK SÜRESİ (policyDuration)**: Teklif sürecinde sağlanır. \"0.5\", \"1\", \"3\", \"6\", \"12\" Ay cinsinden - string"
+									},
+									"response": []
+								},
+								{
+									"name": "İl Listesi",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/location/city",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"location",
+												"city"
+											]
+										},
+										"description": "Bu uç nokta, teklif oluşturma sürecinde kayıtsız araçların kaydedileceği şehirlerin listesini getirir."
+									},
+									"response": []
+								},
+								{
+									"name": "Kullanım Tarzı Listesi",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/auto/usage-style",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"auto",
+												"usage-style"
+											]
+										},
+										"description": "Araçların kullanım şekillerini listeler"
+									},
+									"response": []
+								},
+								{
+									"name": "Marka Listesi",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/auto/make?usageStyleId=6&yearId=2024",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"auto",
+												"make"
+											],
+											"query": [
+												{
+													"key": "usageStyleId",
+													"value": "6",
+													"description": "Kullanım Tarzı"
+												},
+												{
+													"key": "yearId",
+													"value": "2024",
+													"description": "Yıl"
+												}
+											]
+										},
+										"description": "Araç markası listesini getirir"
+									},
+									"response": []
+								},
+								{
+									"name": "Model Listesi",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/auto/model?usageStyleId=2&yearId=2024&brandId=122",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"auto",
+												"model"
+											],
+											"query": [
+												{
+													"key": "usageStyleId",
+													"value": "2",
+													"description": "Kullanım Tarzı"
+												},
+												{
+													"key": "yearId",
+													"value": "2024",
+													"description": "Araç Model Yılı"
+												},
+												{
+													"key": "brandId",
+													"value": "122",
+													"description": "Araç Marka"
+												}
+											]
+										},
+										"description": "Seçilen araç markasına bağlı olarak mevcut modelleri döner."
+									},
+									"response": []
+								},
+								{
+									"name": "YK Yıl Listesi",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/common/option/traffic/new-registration/year",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"common",
+												"option",
+												"traffic",
+												"new-registration",
+												"year"
+											]
+										},
+										"description": "Teklif alınabilecek kayıtsız araç modelinin üretim yıllarını listeler"
+									},
+									"response": []
+								}
+							],
+							"description": "`Trafik Sigortası entegrasyonu, kayıtlı ve kayıtsız araç sahiplerinin sigorta tekliflerini hızlı ve doğru bir şekilde almalarını sağlar. Sayfa ve API uç noktalarının detaylı açıklamaları şu şekildedir:`\n\n### `Teklif Sayfası Alanları ve API Entegrasyonları`\n\n1. **`GET Auto Information`**`:`\n    \n    - **`API Uç Noktası`**`: GET Auto Information`\n        \n    - **`Açıklama`**`: Belirli bir kayıtlı araca ait detaylı bilgileri getirir. Bu uç nokta, araç hakkında kapsamlı bilgiye erişim sağlamak için kullanılır. Ayrıca aracın yeni tescil veya yenileme durumu hakkında bilgi verir.`\n        \n2. **`TCKN / VKN / YKN`**`:`\n    \n    - **`Açıklama`**`: Türkiye Cumhuriyeti Kimlik Numarası (TCKN), Vergi Kimlik Numarası (VKN) veya Yabancı Kimlik Numarası (YKN) girilir.`\n        \n3. **`Kullanım Tarzı`**`:`\n    \n    - **`API Uç Noktası`**`: GET Usage Style`\n        \n    - **`Açıklama`**`: Aracın kullanım amacını belirtmek için kullanılır (örneğin, ticari veya bireysel). GET Usage Style uç noktası, bu seçenekleri sunarak doğru bilgi girişi sağlar.`\n        \n4. **`Marka ve Model`**`:`\n    \n    - **`API Uç Noktası`**`: GET Make ve GET Model`\n        \n    - **`Açıklama`**`: Kullanıcı, aracının markasını ve modelini seçer. GET Make uç noktası, mevcut marka seçeneklerini sunarken, GET Model uç noktası ise seçilen markaya bağlı olarak model seçeneklerini listeler.`\n        \n5. **`Model Yılı`**`:`\n    \n    - **`API Uç Noktası`**`: GET Year`\n        \n    - **`Açıklama`**`: Seçilen aracın model yılı belirlenir.`\n        \n6. **`Motor No ve Şasi No`**`:`\n    \n    - **`Açıklama`**`: Aracın motor ve şasi numaraları girilir. Bu bilgiler, aracın tanımlanmasında ve sigorta teklifinin hazırlanmasında kullanılır.`\n        \n7. **`Tescil Seri Kodu ve Tescil Seri Numarası`** `Teklif sürecinde sağlanır.`\n    \n    - **`Açıklama`**`: Aracın tescil seri kod ve tescil seri numarası girilir. Bu bilgiler, aracın tanımlanmasında ve sigorta teklifinin hazırlanmasında kullanılır.`"
+						},
+						{
+							"name": "KASKONOMİQ Kasko",
+							"item": [
+								{
+									"name": "Teklif - YK Normal",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"productId\": \"112\",\n    \"insurer\": {\n        \"idNumber\": \"29507488654\",\n        \"email\": \"gulskisa@gmail.com\",\n        \"phoneNumber\": \"5324542712\",\n        \"birthDate\": \"1993-09-23\"\n    },\n    \"insureds\": [\n        {\n            \"idNumber\": \"29507488654\",\n            \"email\": \"gulskisa@gmail.com\",\n            \"phoneNumber\": \"5324542712\",\n            \"birthDate\": \"1993-09-23\",\n            \"isMain\": true\n        }\n    ],\n    \"questions\": {\n        \"packageType\": \"1\",\n        \"plateType\": \"unregistered\",\n        \"plateCityCode\": \"34\",\n        \"usageStyle\": \"1\",\n        \"modelYear\": \"2024\",\n        \"makeId\": \"0091529\",\n        \"engineNumber\": \"MN13579246801356\",\n        \"chassisNumber\": \"SN135792468013579\"\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-gw-uri}}/api/policy/proposal",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"policy",
+												"proposal"
+											]
+										},
+										"description": "### KASKONOMİQ Kasko **YK - Normal**\n\n- **PLAKA TİPİ (plateType)**: unregistered - string\n    \n- **PAKET TİPİ (packageType)**: 1 - string\n    \n- **PLAKA İL KODU (plateCityCode)**: `Get Cities` ile alınabilir. - string\n    \n- **KULLANIM ŞEKLİ (usageStyle)**: `Get Usage Style` ile alınabilir. - string\n    \n- **MODEL YILI (modelYear)**: `Get Year` ile alınabilir. - int\n    \n- **ARAÇ BİRLİK KODU (makeId)**: `Get Make` ile alınabilir. - string\n    \n- **MOTOR NO (engineNumber)**: Teklif sürecinde sağlanır. - string\n    \n- **ŞASİ NO (chassisNumber)**: Teklif sürecinde sağlanır. - string"
+									},
+									"response": []
+								},
+								{
+									"name": "Teklif - YK Normal - Muafiyet Yüzdeli",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"productId\": \"112\",\n    \"insurer\": {\n        \"idNumber\": \"29507488654\",\n        \"email\": \"gulskisa@gmail.com\",\n        \"phoneNumber\": \"5324542712\",\n        \"birthDate\": \"1993-09-23\"\n    },\n    \"insureds\": [\n        {\n            \"idNumber\": \"29507488654\",\n            \"email\": \"gulskisa@gmail.com\",\n            \"phoneNumber\": \"5324542712\",\n            \"birthDate\": \"1993-09-23\",\n            \"isMain\": true\n        }\n    ],\n    \"questions\": {\n        \"packageType\": \"1\",\n        \"plateType\": \"unregistered\",\n        \"plateCityCode\": \"34\",\n        \"usageStyle\": \"1\",\n        \"modelYear\": \"2024\",\n        \"makeId\": \"0091529\",\n        \"engineNumber\": \"MN13579246801356\",\n        \"chassisNumber\": \"SN135792468013579\",\n        \"deductibleRate\" : \"\"\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-gw-uri}}/api/policy/proposal",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"policy",
+												"proposal"
+											]
+										},
+										"description": "### KASKONOMİQ Kasko **YK - Normal**\n\n- **PLAKA TİPİ (plateType)**: unregistered - string\n    \n- **PAKET TİPİ (packageType)**: 1 - string\n    \n- **PLAKA İL KODU (plateCityCode)**: `Get Cities` ile alınabilir. - string\n    \n- **KULLANIM ŞEKLİ (usageStyle)**: `Get Usage Style` ile alınabilir. - string\n    \n- **MODEL YILI (modelYear)**: `Get Year` ile alınabilir. - int\n    \n- **ARAÇ BİRLİK KODU (makeId)**: `Get Make` ile alınabilir. - string\n    \n- **MOTOR NO (engineNumber)**: Teklif sürecinde sağlanır. - string\n    \n- **ŞASİ NO (chassisNumber)**: Teklif sürecinde sağlanır. - string"
+									},
+									"response": []
+								},
+								{
+									"name": "Teklif - YK Normal - İMMli",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"productId\": \"112\",\n    \"insurer\": {\n        \"idNumber\": \"29507488654\",\n        \"email\": \"gulskisa@gmail.com\",\n        \"phoneNumber\": \"5324542712\",\n        \"birthDate\": \"1993-09-23\"\n    },\n    \"insureds\": [\n        {\n            \"idNumber\": \"29507488654\",\n            \"email\": \"gulskisa@gmail.com\",\n            \"phoneNumber\": \"5324542712\",\n            \"birthDate\": \"1993-09-23\",\n            \"isMain\": true\n        }\n    ],\n    \"questions\": {\n        \"packageType\": \"1\",\n        \"plateType\": \"unregistered\",\n        \"plateCityCode\": \"34\",\n        \"usageStyle\": \"1\",\n        \"modelYear\": \"2024\",\n        \"makeId\": \"0091529\",\n        \"engineNumber\": \"MN13579246801356\",\n        \"chassisNumber\": \"SN135792468013579\",\n        \"immCoverageLimit\": \"0\"\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-gw-uri}}/api/policy/proposal",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"policy",
+												"proposal"
+											]
+										},
+										"description": "### KASKONOMİQ Kasko **YK - Normal**\n\n- **PLAKA TİPİ (plateType)**: unregistered - string\n    \n- **PAKET TİPİ (packageType)**: 1 - string\n    \n- **PLAKA İL KODU (plateCityCode)**: `Get Cities` ile alınabilir. - string\n    \n- **KULLANIM ŞEKLİ (usageStyle)**: `Get Usage Style` ile alınabilir. - string\n    \n- **MODEL YILI (modelYear)**: `Get Year` ile alınabilir. - int\n    \n- **ARAÇ BİRLİK KODU (makeId)**: `Get Make` ile alınabilir. - string\n    \n- **MOTOR NO (engineNumber)**: Teklif sürecinde sağlanır. - string\n    \n- **ŞASİ NO (chassisNumber)**: Teklif sürecinde sağlanır. - string"
+									},
+									"response": []
+								},
+								{
+									"name": "Teklif - Yenileme Normal",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"productId\": \"112\",\n    \"insurer\": {\n        \"idNumber\": \"xxx123566xx\",            \n        \"birthDate\": \"199x-07-18T00:00:00\",\n        \"email\": \"test@valde.co\",\n        \"phoneNumber\": \"553xxx01xx\"\n    },\n    \"insureds\": [\n        {\n            \"idNumber\": \"xxx123566xx\",\n            \"birthDate\": \"199x-07-18T00:00:00\",\n            \"email\": \"test@valde.co\",\n            \"phoneNumber\": \"553xxx01xx\",\n            \"isMain\": true\n        }\n    ],\n    \"questions\": {\n        \"packageType\": \"1\",\n        \"plateType\": \"registered\",\n        \"plateCityCode\": \"34\",\n        \"plateNumber\": \"RF0909\",\n        \"registrationSerialCode\": \"GD\",\n        \"registrationSerialNumber\": \"984352\"\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-gw-uri}}/api/policy/proposal",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"policy",
+												"proposal"
+											]
+										},
+										"description": "### KASKONOMİQ Kasko **Yenileme - Normal**\n\n- **PLAKA TİPİ (plateType)**: registered - string\n    \n- **PAKET TİPİ (packageType)**: 1 - string\n    \n- **PLAKA İL KODU (plateCityCode)**: `Get Cities` ile alınabilir. - string\n    \n- **PLAKA NO (plateNumber)**: Teklif sürecinde sağlanır. - string\n    \n- **TESCİL SERİ KODU (registrationSerialCode)**: Teklif sürecinde sağlanır. - string\n    \n- **TESCİL SERİ NUMARASI (registrationSerialNumber)**: Teklif sürecinde sağlanır. - string"
+									},
+									"response": []
+								},
+								{
+									"name": "Teklif - İkinci El Yeni Tescil Normal",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"productId\": \"112\",\n    \"insurer\": {\n        \"idNumber\": \"xxx123566xx\",            \n        \"birthDate\": \"199x-07-18T00:00:00\",\n        \"email\": \"test@valde.co\",\n        \"phoneNumber\": \"553xxx01xx\"\n    },\n    \"insureds\": [\n        {\n            \"idNumber\": \"xxx123566xx\",\n            \"birthDate\": \"199x-07-18T00:00:00\",\n            \"email\": \"test@valde.co\",\n            \"phoneNumber\": \"553xxx01xx\",\n            \"isMain\": true\n        }\n    ],\n    \"questions\": {\n        \"packageType\": \"1\",\n        \"plateType\": \"registered\",\n        \"plateCityCode\": \"34\",\n        \"plateNumber\": \"RF0909\",\n        \"registrationSerialCode\": \"GD\",\n        \"registrationSerialNumber\": \"984352\",\n        \"usageStyle\": \"1\",\n        \"makeId\": \"1221047\"\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-gw-uri}}/api/policy/proposal",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"policy",
+												"proposal"
+											]
+										},
+										"description": "### KASKONOMİQ Kasko **İkinci El Yeni Tescil - Normal**\n\n- **PLAKA TİPİ (plateType)**: registered - string\n    \n- **PAKET TİPİ (packageType)**: 1 - string\n    \n- **PLAKA İL KODU (plateCityCode)**: `Get Cities` ile alınabilir. - string\n    \n- **PLAKA NO (plateNumber)**: Teklif sürecinde sağlanır. - string\n    \n- **KULLANIM ŞEKLİ (usageStyle)**: `Get Usage Style` ile alınabilir. - string\n    \n- **ARAÇ BİRLİK KODU (makeId)**: `Get Make` ile alınabilir. - string\n    \n- **TESCİL SERİ KODU (registrationSerialCode)**: Teklif sürecinde sağlanır. - string\n    \n- **TESCİL SERİ NUMARASI (registrationSerialNumber)**: Teklif sürecinde sağlanır. - string"
+									},
+									"response": []
+								},
+								{
+									"name": "İl Listesi",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/location/city",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"location",
+												"city"
+											]
+										},
+										"description": "Bu uç nokta, teklif oluşturma sürecinde kayıtsız araçların kaydedileceği şehirlerin listesini getirir."
+									},
+									"response": []
+								},
+								{
+									"name": "Kullanım Tarzı Listesi",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/auto/usage-style",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"auto",
+												"usage-style"
+											]
+										},
+										"description": "Araçların kullanım şekillerini listeler"
+									},
+									"response": []
+								},
+								{
+									"name": "Marka Listesi",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/auto/make?usageStyleId=6&yearId=2024",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"auto",
+												"make"
+											],
+											"query": [
+												{
+													"key": "usageStyleId",
+													"value": "6",
+													"description": "Kullanım Tarzı"
+												},
+												{
+													"key": "yearId",
+													"value": "2024",
+													"description": "Yıl"
+												}
+											]
+										},
+										"description": "Araç markası listesini getirir"
+									},
+									"response": []
+								},
+								{
+									"name": "Model Listesi",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/auto/model?usageStyleId=2&yearId=2024&brandId=122",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"auto",
+												"model"
+											],
+											"query": [
+												{
+													"key": "usageStyleId",
+													"value": "2",
+													"description": "Kullanım Tarzı"
+												},
+												{
+													"key": "yearId",
+													"value": "2024",
+													"description": "Araç Model Yılı"
+												},
+												{
+													"key": "brandId",
+													"value": "122",
+													"description": "Araç Marka"
+												}
+											]
+										},
+										"description": "Seçilen araç markasına bağlı olarak mevcut modelleri döner."
+									},
+									"response": []
+								},
+								{
+									"name": "YK Yıl Listesi",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/common/option/traffic/new-registration/year",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"common",
+												"option",
+												"traffic",
+												"new-registration",
+												"year"
+											]
+										},
+										"description": "Teklif alınabilecek kayıtsız araç modelinin üretim yıllarını listeler"
+									},
+									"response": []
+								},
+								{
+									"name": "IMM Teminat Listesi",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/common/option/imm-coverage-limit?usageType=1&productId=112",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"common",
+												"option",
+												"imm-coverage-limit"
+											],
+											"query": [
+												{
+													"key": "usageType",
+													"value": "1"
+												},
+												{
+													"key": "productId",
+													"value": "112"
+												}
+											]
+										},
+										"description": "IMM (İhtiyari Mali Mesuliyet) teminatlarının maksimum limitlerini sağlar. Bu limitler, poliçenin kapsamını ve ödenecek maksimum tazminat tutarını belirlemede kullanılır."
+									},
+									"response": []
+								},
+								{
+									"name": "Muafiyet Yüzdesi",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/common/option/imm-coverage-limit?usageType=1&productId=112",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"common",
+												"option",
+												"imm-coverage-limit"
+											],
+											"query": [
+												{
+													"key": "usageType",
+													"value": "1"
+												},
+												{
+													"key": "productId",
+													"value": "112"
+												}
+											]
+										},
+										"description": "IMM (İhtiyari Mali Mesuliyet) teminatlarının maksimum limitlerini sağlar. Bu limitler, poliçenin kapsamını ve ödenecek maksimum tazminat tutarını belirlemede kullanılır."
+									},
+									"response": []
+								}
+							],
+							"description": "KASKONOMİQ Kasko Sigortası entegrasyonu, kayıtlı ve kayıtsız araç sahiplerinin sigorta tekliflerini hızlı ve doğru bir şekilde almalarını sağlar. Sayfa ve API uç noktalarının detaylı açıklamaları şu şekildedir:\n\n### Teklif Sayfası Alanları ve API Entegrasyonları\n\n1. **GET Auto Information**:\n    \n    - **API Uç Noktası**: `GET Auto Information`\n        \n    - **Açıklama**: Belirli bir kayıtlı araca ait detaylı bilgileri getirir. Bu uç nokta, araç hakkında kapsamlı bilgiye erişim sağlamak için kullanılır. Ayrıca aracın yeni tescil veya yenileme durumu hakkında bilgi verir.\n        \n2. **TCKN / VKN / YKN**:\n    \n    - **Açıklama**: Türkiye Cumhuriyeti Kimlik Numarası (TCKN), Vergi Kimlik Numarası (VKN) veya Yabancı Kimlik Numarası (YKN) girilir.\n        \n3. **Kullanım Tarzı**:\n    \n    - **API Uç Noktası**: `GET Usage Style`\n        \n    - **Açıklama**: Aracın kullanım amacını belirtmek için kullanılır (örneğin, ticari veya bireysel). `GET Usage Style` uç noktası, bu seçenekleri sunarak doğru bilgi girişi sağlar.\n        \n4. **Marka ve Model**:\n    \n    - **API Uç Noktası**: `GET Make` ve `GET Model`\n        \n    - **Açıklama**: Kullanıcı, aracının markasını ve modelini seçer. `GET Make` uç noktası, mevcut marka seçeneklerini sunarken, `GET Model` uç noktası ise seçilen markaya bağlı olarak model seçeneklerini listeler.\n        \n5. **Model Yılı**:\n    \n    - **API Uç Noktası**: `GET Year`\n        \n    - **Açıklama**: Seçilen aracın model yılı belirlenir.\n        \n6. **Motor No ve Şasi No**:\n    \n    - **Açıklama**: Aracın motor ve şasi numaraları girilir. Bu bilgiler, aracın tanımlanmasında ve sigorta teklifinin hazırlanmasında kullanılır.\n        \n7. **Tescil Seri Kodu ve Tescil Seri Numarası** Teklif sürecinde sağlanır.\n    \n    - **Açıklama**: Aracın tescil seri kod ve tescil seri numarası girilir. Bu bilgiler, aracın tanımlanmasında ve sigorta teklifinin hazırlanmasında kullanılır."
+						},
+						{
+							"name": "Kasko",
+							"item": [
+								{
+									"name": "Teklif - YK Genişletilmiş",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"productId\": \"111\",\n    \"insurer\": {\n        \"idNumber\": \"41593428826\",\n        \"email\": \"sinem@valde.co\",\n        \"phoneNumber\": \"5071682444\",\n        \"birthDate\": \"1989-10-05\"\n    },\n    \"insureds\": [\n        {\n            \"idNumber\": \"41593428826\",\n            \"email\": \"sinem@valde.co\",\n            \"phoneNumber\": \"5071682444\",\n            \"birthDate\": \"1989-10-05\",\n            \"isMain\": true\n        }\n    ],\n    \"questions\": {\n        \"plateType\": \"unregistered\",\n        \"chassisNumber\": \"WERTHG678945E4356\",\n        \"engineNumber\": \"WER8765CV7\",\n        \"usageStyle\": \"1\",\n        \"makeId\": \"0341262\",\n        \"modelYear\": \"2024\",\n        \"plateCityCode\": \"34\",\n        \"occupationCode\": \"6\",\n        \"immCoverageLimit\": \"6\",\n        \"glassCoverageDeductibleOption\": \"2\",\n        \"replacementVehicle\": \"1\"\n    },\n    \"payment\": {\n        \"installment\": false\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-gw-uri}}/api/policy/proposal",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"policy",
+												"proposal"
+											]
+										},
+										"description": "### **Kasko**\n\n- **PAKET TİPİ (packageType)**: 1 - string\n    \n- **PLAKA TİPİ (plateType)**: unregistered - string\n    \n- **PLAKA İL KODU (plateCityCode)**: `Get Cities` ile alınabilir. - string\n    \n- **PLAKA NO (plateNumber)**: Teklif sürecinde sağlanır. - string\n    \n- **KULLANIM ŞEKLİ (usageStyle)**: `Get Usage Style` ile alınabilir. - string\n    \n- **ARAÇ BİRLİK KODU (makeId)**: `Get Make` ile alınabilir. - string\n    \n- **MODEL YILI (modelYear)**: `Get Year` ile alınabilir. - string\n    \n- **MOTOR NO (engineNumber)**: Teklif sürecinde sağlanır. - string\n    \n- **ŞASİ NO (chassisNumber)**: Teklif sürecinde sağlanır. - string\n    \n- **MESLEK KODU (occupationCode)**: `Get Occupation` ile alınabilir. - string\n    \n- **İMM TEMİNAT LİMİTİ (immCoverageLimit)**: `Get IMM Coverages Limit` ile alınabilir. - string\n    \n- **CAM TEMİNATI MUAFİYET SEÇİMİ (glassCoverageDeductibleOption)**: `Get Glass Coverage Deductible` ile alınabilir. - string\n    \n- **İKAME ARAÇ (replacementVehicle)**: `Get Replacement Vehicle` ile alınabilir. - string\n    \n- **EQO KASKO (eqoInsurance)**: false - bool\n    \n- **REHİNLİ ALACAK(mortagerCustomerCode)**: `Get Bank List` ve `Get Bank Branches Loss Payee` ile alınabilir. - string\n    \n- **Taksit (installment):** true / false"
+									},
+									"response": []
+								},
+								{
+									"name": "Teklif - YK EQO",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"productId\": \"111\",\n    \"insurer\": {\n        \"idNumber\": \"xxx123566xx\",            \n        \"birthDate\": \"199x-07-18T00:00:00\",\n        \"email\": \"test@valde.co\",\n        \"phoneNumber\": \"553xxx01xx\"\n    },\n    \"insureds\": [\n        {\n            \"idNumber\": \"xxx123566xx\",\n            \"birthDate\": \"199x-07-18T00:00:00\",\n            \"email\": \"test@valde.co\",\n            \"phoneNumber\": \"553xxx01xx\",\n            \"isMain\": true\n        }\n    ],\n    \"questions\": {\n        \"plateType\": \"unregistered\",\n        \"plateCityCode\": \"34\",\n        \"usageStyle\": \"1\",\n        \"packageType\": \"1\",\n        \"modelYear\": \"2024\",\n        \"makeId\": \"1221264\",\n        \"engineNumber\": \"DCX032035\",\n        \"chassisNumber\": \"WVWZZZ3CZFE505727\",\n        \"occupationCode\": \"3\",\n        \"immCoverageLimit\": \"5\",\n        \"glassCoverageDeductibleOption\": \"1\",\n        \"replacementVehicle\": \"0\",\n        \"eqoInsurance\": true\n    },\n    \"payment\": {\n        \"installment\": false\n    }\n}\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-gw-uri}}/api/policy/proposal",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"policy",
+												"proposal"
+											]
+										},
+										"description": "### **Kasko**\n\n- **PAKET TİPİ (packageType)**: 1 - string\n    \n- **PLAKA TİPİ (plateType)**: unregistered - string\n    \n- **PLAKA İL KODU (plateCityCode)**: `Get Cities` ile alınabilir. - string\n    \n- **PLAKA NO (plateNumber)**: Teklif sürecinde sağlanır. - string\n    \n- **KULLANIM ŞEKLİ (usageStyle)**: `Get Usage Style` ile alınabilir. - string\n    \n- **ARAÇ BİRLİK KODU (makeId)**: `Get Make` ile alınabilir. - string\n    \n- **MODEL YILI (modelYear)**: `Get Year` ile alınabilir. - string\n    \n- **MOTOR NO (engineNumber)**: Teklif sürecinde sağlanır. - string\n    \n- **ŞASİ NO (chassisNumber)**: Teklif sürecinde sağlanır. - string\n    \n- **MESLEK KODU (occupationCode)**: `Get Occupation` ile alınabilir. - string\n    \n- **İMM TEMİNAT LİMİTİ (immCoverageLimit)**: `Get IMM Coverages Limit` ile alınabilir. - string\n    \n- **CAM TEMİNATI MUAFİYET SEÇİMİ (glassCoverageDeductibleOption)**: `Get Glass Coverage Deductible` ile alınabilir. - string\n    \n- **İKAME ARAÇ (replacementVehicle)**: `Get Replacement Vehicle` ile alınabilir. - string\n    \n- **EQO KASKO (eqoInsurance)**: true - bool\n    \n- **REHİNLİ ALACAK(mortagerCustomerCode)**: `Get Bank List` ve `Get Bank Branches Loss Payee` ile alınabilir. - string\n    \n- **Taksit (installment):** true / false"
+									},
+									"response": []
+								},
+								{
+									"name": "Teklif - İkinci El Yeni Tescil Genişletilmiş",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"productId\": \"111\",\n    \"insurer\": {\n        \"idNumber\": \"xxx123566xx\",            \n        \"birthDate\": \"199x-07-18T00:00:00\",\n        \"email\": \"test@valde.co\",\n        \"phoneNumber\": \"553xxx01xx\"\n    },\n    \"insureds\": [\n        {\n            \"idNumber\": \"xxx123566xx\",\n            \"birthDate\": \"199x-07-18T00:00:00\",\n            \"email\": \"test@valde.co\",\n            \"phoneNumber\": \"553xxx01xx\",\n            \"isMain\": true\n        }\n    ],\n    \"questions\": {\n        \"plateType\": \"registered\",\n        \"plateCityCode\": \"34\",\n        \"packageType\": \"1\",\n        \"plateNumber\": \"VU2652\",\n        \"registrationSerialCode\": \"AA\",\n        \"registrationSerialNumber\": \"012345\",\n        \"usageStyle\": \"1\",\n        \"occupationCode\": \"3\",\n        \"immCoverageLimit\": \"5\",\n        \"glassCoverageDeductibleOption\": \"1\",\n        \"replacementVehicle\": \"0\",\n        \"makeId\": \"0341262\",\n        \"eqoInsurance\": false,\n        \"mortgagerCustomerCode\": \"1020300203\"\n    },\n    \"payment\": {\n        \"installment\": false \n    }\n}\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-gw-uri}}/api/policy/proposal",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"policy",
+												"proposal"
+											]
+										},
+										"description": "### **Kasko İkinci El Yeni Tescil - Normal**\n\n- **PAKET TİPİ (packageType)**: 1 - string\n    \n- **PLAKA TİPİ (plateType)**: registered - string\n    \n- **PLAKA İL KODU (plateCityCode)**: `Get Cities` ile alınabilir. - string\n    \n- **PLAKA NO (plateNumber)**: Teklif sürecinde sağlanır. - string\n    \n- **KULLANIM ŞEKLİ (usageStyle)**: `Get Usage Style` ile alınabilir. - string\n    \n- **ARAÇ BİRLİK KODU (makeId)**: `Get Make` ile alınabilir. - string\n    \n- **MODEL YILI (modelYear)**: `Get Year` ile alınabilir. - string\n    \n- **TESCİL SERİ KODU (registrationSerialCode)**: Teklif sürecinde sağlanır. - string\n    \n- **TESCİL SERİ NUMARASI (registrationSerialNumber)**: Teklif sürecinde sağlanır. - string\n    \n- **MESLEK KODU (occupationCode)**: `Get Occupation` ile alınabilir. - string\n    \n- **İMM TEMİNAT LİMİTİ (immCoverageLimit)**: `Get IMM Coverages Limit` ile alınabilir. - string\n    \n- **CAM TEMİNATI MUAFİYET SEÇİMİ (glassCoverageDeductibleOption)**: `Get Glass Coverage Deductible` ile alınabilir. - string\n    \n- **İKAME ARAÇ (replacementVehicle)**: `Get Replacement Vehicle` ile alınabilir. - string\n    \n- **EQO KASKO (eqoInsurance)**: false - bool\n    \n- **REHİNLİ ALACAK(mortagerCustomerCode)**: `Get Bank List` ve `Get Bank Branches Loss Payee` ile alınabilir. - string\n    \n- **Taksit (installment):** true / false"
+									},
+									"response": []
+								},
+								{
+									"name": "Teklif - İkinci El Yeni Tescil EQO",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"productId\": \"111\",\n    \"insurer\": {\n        \"idNumber\": \"xxx123566xx\",            \n        \"birthDate\": \"199x-07-18T00:00:00\",\n        \"email\": \"test@valde.co\",\n        \"phoneNumber\": \"553xxx01xx\"\n    },\n    \"insureds\": [\n        {\n            \"idNumber\": \"xxx123566xx\",\n            \"birthDate\": \"199x-07-18T00:00:00\",\n            \"email\": \"test@valde.co\",\n            \"phoneNumber\": \"553xxx01xx\",\n            \"isMain\": true\n        }\n    ],\n    \"questions\": {\n        \"plateType\": \"registered\",\n        \"plateCityCode\": \"34\",\n        \"packageType\": \"1\",\n        \"plateNumber\": \"VU2652\",\n        \"registrationSerialCode\": \"AA\",\n        \"registrationSerialNumber\": \"012345\",\n        \"usageStyle\": \"1\",\n        \"occupationCode\": \"3\",\n        \"immCoverageLimit\": \"5\",\n        \"glassCoverageDeductibleOption\": \"1\",\n        \"replacementVehicle\": \"0\",\n        \"makeId\": \"0341262\",\n        \"eqoInsurance\": true\n    },\n    \"payment\": {\n        \"installment\": false\n    }\n}\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-gw-uri}}/api/policy/proposal",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"policy",
+												"proposal"
+											]
+										},
+										"description": "### **Kasko İkinci El Yeni Tescil - EQO**\n\n- **PAKET TİPİ (packageType)**: 1 - string\n    \n- **PLAKA TİPİ (plateType)**: registered - string\n    \n- **PLAKA İL KODU (plateCityCode)**: `Get Cities` ile alınabilir. - string\n    \n- **PLAKA NO (plateNumber)**: Teklif sürecinde sağlanır. - string\n    \n- **KULLANIM ŞEKLİ (usageStyle)**: `Get Usage Style` ile alınabilir. - string\n    \n- **ARAÇ BİRLİK KODU (makeId)**: `Get Make` ile alınabilir. - string\n    \n- **MODEL YILI (modelYear)**: `Get Year` ile alınabilir. - string\n    \n- **TESCİL SERİ KODU (registrationSerialCode)**: Teklif sürecinde sağlanır. - string\n    \n- **TESCİL SERİ NUMARASI (registrationSerialNumber)**: Teklif sürecinde sağlanır. - string\n    \n- **MESLEK KODU (occupationCode)**: `Get Occupation` ile alınabilir. - string\n    \n- **İMM TEMİNAT LİMİTİ (immCoverageLimit)**: `Get IMM Coverages Limit` ile alınabilir. - string\n    \n- **CAM TEMİNATI MUAFİYET SEÇİMİ (glassCoverageDeductibleOption)**: `Get Glass Coverage Deductible` ile alınabilir. - string\n    \n- **İKAME ARAÇ (replacementVehicle)**: `Get Replacement Vehicle` ile alınabilir. - string\n    \n- **EQO KASKO (eqoInsurance)**: true - bool\n    \n- **REHİNLİ ALACAK(mortagerCustomerCode)**: `Get Bank List` ve `Get Bank Branches Loss Payee` ile alınabilir. - string\n    \n- **Taksit (installment):** true / false"
+									},
+									"response": []
+								},
+								{
+									"name": "Teklif - Yenileme Genişletilmiş",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"productId\": \"111\",\n    \"insurer\": {\n        \"idNumber\": \"21041217356\",            \n        \"birthDate\": \"1970-05-15T00:00:00\",\n        \"email\": \"sinem@valde.co\",\n        \"phoneNumber\": \"5071682441\"\n    },\n    \"insureds\": [\n        {\n            \"idNumber\": \"21041217356\",\n            \"birthDate\": \"1970-05-15T00:00:00\",\n            \"email\": \"sinem@valde.co\",\n            \"phoneNumber\": \"5071682441\",\n            \"isMain\": true\n        }\n    ],\n    \"questions\": {\n        \"packageType\": \"1\",\n        \"plateType\": \"registered\",\n        \"plateCityCode\": \"34\",\n        \"plateNumber\": \"J8575\",\n        \"usageStyle\": \"1\",\n        \"registrationSerialCode\": \"EG\",\n        \"registrationSerialNumber\": \"744743\",\n        \"occupationCode\": \"3\",\n        \"immCoverageLimit\": \"6\",\n        \"glassCoverageDeductibleOption\": \"1\",\n        \"replacementVehicle\": \"1\",\n        \"eqoInsurance\": false\n     },\n    \"payment\": {\n        \"installment\": false\n    }\n}\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-gw-uri}}/api/policy/proposal",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"policy",
+												"proposal"
+											]
+										},
+										"description": "### **Kasko Yenileme - Normal**\n\n- **PAKET TİPİ (packageType)**: 1 - string\n    \n- **PLAKA TİPİ (plateType)**: registered - string\n    \n- **PLAKA İL KODU (plateCityCode)**: `Get Cities` ile alınabilir. - string\n    \n- **PLAKA NO (plateNumber)**: Teklif sürecinde sağlanır. - string\n    \n- **KULLANIM ŞEKLİ (usageStyle)**: `Get Usage Style` ile alınabilir. - string\n    \n- **ARAÇ BİRLİK KODU (makeId)**: `Get Make` ile alınabilir. - string\n    \n- **MODEL YILI (modelYear)**: `Get Year` ile alınabilir. - string\n    \n- **TESCİL SERİ KODU (registrationSerialCode)**: Teklif sürecinde sağlanır. - string\n    \n- **TESCİL SERİ NUMARASI (registrationSerialNumber)**: Teklif sürecinde sağlanır. - string\n    \n- **MESLEK KODU (occupationCode)**: `Get Occupation` ile alınabilir. - string\n    \n- **İMM TEMİNAT LİMİTİ (immCoverageLimit)**: `Get IMM Coverages Limit` ile alınabilir. - string\n    \n- **CAM TEMİNATI MUAFİYET SEÇİMİ (glassCoverageDeductibleOption)**: `Get Glass Coverage Deductible` ile alınabilir. - string\n    \n- **İKAME ARAÇ (replacementVehicle)**: `Get Replacement Vehicle` ile alınabilir. - string\n    \n- **EQO KASKO (eqoInsurance)**: false - bool\n    \n- **REHİNLİ ALACAK(mortagerCustomerCode)**: `Get Bank List` ve `Get Bank Branches Loss Payee` ile alınabilir. - string\n    \n- **Taksit (installment):** true / false"
+									},
+									"response": []
+								},
+								{
+									"name": "Teklif - Yenileme EQO",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"productId\": \"111\",\n    \"insurer\": {\n        \"idNumber\": \"xxx123566xx\",            \n        \"birthDate\": \"199x-07-18T00:00:00\",\n        \"email\": \"test@valde.co\",\n        \"phoneNumber\": \"553xxx01xx\"\n    },\n    \"insureds\": [\n        {\n            \"idNumber\": \"xxx123566xx\",\n            \"birthDate\": \"199x-07-18T00:00:00\",\n            \"email\": \"test@valde.co\",\n            \"phoneNumber\": \"553xxx01xx\",\n            \"isMain\": true\n        }\n    ],\n    \"questions\": {\n        \"packageType\": \"1\",\n        \"plateCityCode\": \"3\",\n        \"plateNumber\": \"ACF007\",\n        \"usageStyle\": \"1\",\n        \"registrationSerialCode\": \"FC\",\n        \"registrationSerialNumber\": \"562874\",\n        \"occupationCode\": \"3\",\n        \"immCoverageLimit\": \"5\",\n        \"glassCoverageDeductibleOption\": \"1\",\n        \"replacementVehicle\": \"0\",\n        \"eqoInsurance\": true\n    },\n    \"payment\": {\n        \"installment\": false\n    }\n}\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-gw-uri}}/api/policy/proposal",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"policy",
+												"proposal"
+											]
+										},
+										"description": "### **Kasko Yenileme - EQO**\n\n- **PAKET TİPİ (packageType)**: 1 - string\n    \n- **PLAKA TİPİ (plateType)**: registered - string\n    \n- **PLAKA İL KODU (plateCityCode)**: `Get Cities` ile alınabilir. - string\n    \n- **PLAKA NO (plateNumber)**: Teklif sürecinde sağlanır. - string\n    \n- **KULLANIM ŞEKLİ (usageStyle)**: `Get Usage Style` ile alınabilir. - string\n    \n- **ARAÇ BİRLİK KODU (makeId)**: `Get Make` ile alınabilir. - string\n    \n- **MOTOR NO (engineNumber)**: Teklif sürecinde sağlanır. - string\n    \n- **ŞASİ NO (chassisNumber)**: Teklif sürecinde sağlanır. - string\n    \n- **MESLEK KODU (occupationCode)**: `Get Occupation` ile alınabilir. - string\n    \n- **İMM TEMİNAT LİMİTİ (immCoverageLimit)**: `Get IMM Coverages Limit` ile alınabilir. - string\n    \n- **CAM TEMİNATI MUAFİYET SEÇİMİ (glassCoverageDeductibleOption)**: `Get Glass Coverage Deductible` ile alınabilir. - string\n    \n- **İKAME ARAÇ (replacementVehicle)**: `Get Replacement Vehicle` ile alınabilir. - string\n    \n- **EQO KASKO (eqoInsurance)**: true - bool\n    \n- **REHİNLİ ALACAK(mortagerCustomerCode)**: `Get Bank List` ve `Get Bank Branches Loss Payee` ile alınabilir. - string\n    \n- **Taksit (installment):** true / false"
+									},
+									"response": []
+								},
+								{
+									"name": "İl Listesi",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/location/city",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"location",
+												"city"
+											]
+										},
+										"description": "Teklif oluşturma sürecinde, kayıtsız araçların kaydedileceği şehirlerin listesini döner."
+									},
+									"response": []
+								},
+								{
+									"name": "Kullanım Tarzı Listesi",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/auto/usage-style",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"auto",
+												"usage-style"
+											]
+										},
+										"description": "Araç kullanım tarzı listesini getirir"
+									},
+									"response": []
+								},
+								{
+									"name": "Marka Listesi",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/auto/make?usageStyleId=6&yearId=2024",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"auto",
+												"make"
+											],
+											"query": [
+												{
+													"key": "usageStyleId",
+													"value": "6",
+													"description": "Kullanım Tarzı"
+												},
+												{
+													"key": "yearId",
+													"value": "2024",
+													"description": "Yıl"
+												}
+											]
+										},
+										"description": "Araç kullanım tarzına ait marka listesini getirir"
+									},
+									"response": []
+								},
+								{
+									"name": "YK Yıl Listesi",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/common/option/kasko/new-registration/year",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"common",
+												"option",
+												"kasko",
+												"new-registration",
+												"year"
+											]
+										},
+										"description": "Araç model yılı seçeneklerini getirir."
+									},
+									"response": []
+								},
+								{
+									"name": "Model Listesi",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/auto/model?usageStyleId=2&yearId=2024&brandId=122",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"auto",
+												"model"
+											],
+											"query": [
+												{
+													"key": "usageStyleId",
+													"value": "2",
+													"description": "Kullanım Tarzı"
+												},
+												{
+													"key": "yearId",
+													"value": "2024",
+													"description": "Araç Model Yılı"
+												},
+												{
+													"key": "brandId",
+													"value": "122",
+													"description": "Araç Marka"
+												}
+											]
+										},
+										"description": "Araç markasına ait model listesini getirir"
+									},
+									"response": []
+								},
+								{
+									"name": "Banka ve Finansman Şirketleri Listesi",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{q-digital-token}}",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/common/banks",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"common",
+												"banks"
+											]
+										},
+										"description": "Sigorta ödemelerinin yapılabileceği bankaların listesini sağlar"
+									},
+									"response": []
+								},
+								{
+									"name": "Şube Listesi",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{q-digital-token}}",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/common/bank-dm?bankNo=100",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"common",
+												"bank-dm"
+											],
+											"query": [
+												{
+													"key": "bankNo",
+													"value": "100",
+													"description": "Banka/Finans Şirketi No"
+												}
+											]
+										},
+										"description": "Kayıpların karşılanabileceği banka şubelerinin listesini döner. Bu bilgi, hasar ödemelerinin hangi şube aracılığıyla yapılacağını belirlemek için kullanılır."
+									},
+									"response": []
+								},
+								{
+									"name": "IMM Teminat Listesi",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/common/option/imm-coverage-limit?usageType=1",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"common",
+												"option",
+												"imm-coverage-limit"
+											],
+											"query": [
+												{
+													"key": "usageType",
+													"value": "1",
+													"description": "Kullanım Tarzı"
+												}
+											]
+										},
+										"description": "IMM (İhtiyari Mali Mesuliyet) teminatlarının maksimum limitlerini sağlar. Bu limitler, poliçenin kapsamını ve ödenecek maksimum tazminat tutarını belirlemede kullanılır."
+									},
+									"response": []
+								},
+								{
+									"name": "Cam Teminat Listesi",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/common/option/glass-coverage-deductible?usageType=1",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"common",
+												"option",
+												"glass-coverage-deductible"
+											],
+											"query": [
+												{
+													"key": "usageType",
+													"value": "1",
+													"description": "Kullanım Tarzı"
+												},
+												{
+													"key": "noClaimDiscount",
+													"value": "1",
+													"description": "Hasarsızlık İndirimi",
+													"disabled": true
+												}
+											]
+										},
+										"description": "Cam hasarları için geçerli olan kesinti oranlarını getirir."
+									},
+									"response": []
+								},
+								{
+									"name": "İkame Araç Listesi",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/common/option/replacement-vehicle?usageType=1",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"common",
+												"option",
+												"replacement-vehicle"
+											],
+											"query": [
+												{
+													"key": "usageType",
+													"value": "1",
+													"description": "Kullanım Tarzı"
+												}
+											]
+										},
+										"description": "Hasar durumunda sağlanabilecek yedek araç seçeneklerini döner"
+									},
+									"response": []
+								},
+								{
+									"name": "Meslek Listesi",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/common/option?questionKey=occupationCode&productId=111",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"common",
+												"option"
+											],
+											"query": [
+												{
+													"key": "questionKey",
+													"value": "occupationCode",
+													"description": "Soru - occupationCode"
+												},
+												{
+													"key": "productId",
+													"value": "111",
+													"description": "Ürün Kodu - 111"
+												}
+											]
+										},
+										"description": "Meslek listesini getirir"
+									},
+									"response": []
+								}
+							],
+							"description": "Kasko Sigortası entegrasyonu, kayıtlı ve kayıtsız araçlar için sigorta tekliflerinin doğru bir şekilde alınmasını sağlar. Sayfa ve API uç noktalarının detaylı açıklamaları şu şekildedir:\n\n### Teklif Sayfası Alanları ve API Entegrasyonları\n\n1. **TCKN / VKN / YKN**:\n    \n    - **Açıklama**: Türkiye Cumhuriyeti Kimlik Numarası (TCKN), Vergi Kimlik Numarası (VKN) veya Yabancı Kimlik Numarası (YKN) girilir.\n        \n2. **Kullanım Tarzı**:\n    \n    - **API Uç Noktası**: `GET Usage Style`\n        \n    - **Açıklama**: Aracın kullanım amacını belirtmek için kullanılır.\n        \n3. **Marka ve Model**:\n    \n    - **API Uç Noktası**: `GET Make` ve `GET Model`\n        \n    - **Açıklama**: Kullanıcı, aracının markasını ve modelini seçer. `GET Make` uç noktası, mevcut marka seçeneklerini sunarken, `GET Model` uç noktası ise seçilen markaya bağlı olarak model seçeneklerini listeler.\n        \n4. **Model Yılı**:\n    \n    - **API Uç Noktası**: `GET Year`\n        \n    - **Açıklama**: Seçilen aracın model yılı belirlenir.\n        \n5. **Motor No ve Şasi No**:\n    \n    - **Açıklama**: Aracın motor ve şasi numaraları girilir.\n        \n6. **IMM**:\n    \n    - **API Uç Noktası**: `GET IMM Coverages Limit`\n        \n    - **Açıklama**: İhtiyari Mali Mesuliyet (IMM) limitlerini belirtmek için kullanılır. Mevcut IMM limitleri, sigorta teklifinin hazırlanmasında değerlendirilir.\n        \n7. **Cam**:\n    \n    - **API Uç Noktası**: `GET Glass Coverage Deduction`\n        \n    - **Açıklama**: Cam hasarları için geçerli olan kesinti oranlarını belirtmek için kullanılır.\n        \n8. **İkame Araç**:\n    \n    - **API Uç Noktası**: `GET Replacement Vehicle`\n        \n    - **Açıklama**: Hasar durumunda sağlanabilecek yedek araç seçeneklerini belirtir.\n        \n9. **Meslek**:\n    \n    - **API Uç Noktası**: `GET Occupation`\n        \n    - **Açıklama**: Kullanıcının mesleği belirtilir. Meslek bilgisi\n        \n10. **Rehinli Alacak Var mı?**:\n    \n    - **API Uç Noktası**: `GET Bank List` ve `GET Bank Branches Loss Payee`\n        \n    - **Açıklama**: Rehinli alacak varlığı durumunda, kullanıcının banka ve şube seçimini yapmasına olanak tanır."
+						},
+						{
+							"name": "Seyahat Sağlık",
+							"item": [
+								{
+									"name": "Bölge Listesi",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/common/option/travel-region",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"common",
+												"option",
+												"travel-region"
+											]
+										},
+										"description": "Bu uç nokta, yurt dışı seyahat sigortası teklifleri için geçerli olan seyahat bölgelerinin listesini döner."
+									},
+									"response": []
+								},
+								{
+									"name": "Ülke Listesi",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/common/option/travel-country?travelRegion=3",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"common",
+												"option",
+												"travel-country"
+											],
+											"query": [
+												{
+													"key": "travelRegion",
+													"value": "3",
+													"description": "Seyahat Edilecek Bölge"
+												}
+											]
+										},
+										"description": "Mevcut ülkelerin listesini sağlayan bu uç nokta, kullanıcıların yurt dışı seyahatleri sırasında sigorta kapsamına alınacak ülkelerin listesini getirir"
+									},
+									"response": []
+								},
+								{
+									"name": "İl Listesi",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/location/city",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"location",
+												"city"
+											]
+										},
+										"description": "Bu uç nokta, Türkiye içinde seyahat edilebilecek şehirlerin listesini sağlar. Yurt içi seyahat sigortası teklifleri oluşturulurken, sigorta kapsamına alınacak şehirlerin seçimi bu uç nokta aracılığıyla yapılır."
+									},
+									"response": []
+								},
+								{
+									"name": "Uyruk Listesi",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/common/option/nationality",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"common",
+												"option",
+												"nationality"
+											]
+										},
+										"description": "Mevcut milletlerin listesini döner. Bu uç nokta, Türkiye'ye gelen yabancı ziyaretçilerin milliyetini belirlemek ve buna göre uygun seyahat sigortası teklifleri hazırlamak için kullanılır."
+									},
+									"response": []
+								},
+								{
+									"name": "Teklif - Yurt Dışı Vize",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"productId\": \"600\",\n    \"insurer\": {\n        \"idNumber\": \"10046262584\",            \n        \"birthDate\": \"1990-12-27T00:00:00\",\n        \"email\": \"azak@valde.co\",\n        \"phoneNumber\": \"5324542712\"\n    },\n    \"insureds\": [\n        {\n            \"idNumber\": \"10046262584\",\n            \"birthDate\": \"1990-12-27T00:00:00\",\n            \"email\": \"azak@valde.co\",\n            \"phoneNumber\": \"5324542712\",\n            \"isMain\": true\n        }\n    ],\n    \"questions\": {\n        \"type\": \"foreignVisa\",\n        \"startDate\": \"2025-01-20T00:00:00.000Z\",\n        \"endDate\": \"2025-01-30T00:00:00.000Z\",\n        \"packageType\": \"1\",\n        \"geographicalArea\": \"3\",\n        \"countryOfTravel\": \"276\",\n        \"covid19\": true,\n        \"travelAgencyBankruptcy\": false\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-gw-uri}}/api/policy/proposal",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"policy",
+												"proposal"
+											]
+										},
+										"description": "### **Seyahat Sağlık Yurt Dışı Vize - Quick Vize Seyahat**\n\n- **TİP (type)**: foreignVisa - string\n    \n- **BAŞLANGIÇ TARİHİ (startDate)**: Kullanıcıdan sağlanır. - date time with zone(örnek 2024-06-21T00:00:00.000Z)\n    \n- **BİTİŞ TARİHİ (endDate)**: Kullanıcıdan sağlanır. - date time with zone(örnek 2024-06-21T00:00:00.000Z)\n    \n- **GEOGRAPHICAL AREA (geographicalArea)**: `Get Travel Region` ile alınabilir. - string\n    \n- **SEYAHAT EDİLECEK ÜLKE (countryOfTravel)**: `Get Travel Country` ile alınabilir. - string\n    \n- **COVID 19 (covid19)**: Kullanıcıdan sağlanır. - bool\n    \n- **SEYAHAT ACENTE İFLASI (travelAgencyBankruptcy)**: true, false - bool\n    \n- **PAKET TİPİ (packageType)**: 1 - string\n    \n- **ACENTE KOMİSYON ORANI (agencyCommissionRate)**: string"
+									},
+									"response": []
+								},
+								{
+									"name": "Teklif - Yurt Dışı Geniş Paket",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"productId\": \"600\",\n    \"insurer\": {\n        \"idNumber\": \"41593428826\",            \n        \"birthDate\": \"1989-10-05T00:00:00\",\n        \"email\": \"sinem@valde.co\",\n        \"phoneNumber\": \"5071682444\"\n    },\n    \"insureds\": [\n        {\n            \"idNumber\": \"41593428826\",\n            \"birthDate\": \"1989-10-05T00:00:00\",\n            \"email\": \"sinem@valde.co\",\n            \"phoneNumber\": \"5071682444\",\n            \"isMain\": true\n        }\n    ],\n    \"questions\": {\n        \"type\": \"foreignVisa\",\n        \"startDate\": \"2025-06-21T00:00:00.000Z\",\n        \"endDate\": \"2025-06-29T00:00:00.000Z\",\n        \"packageType\": \"2\",\n        \"geographicalArea\": \"3\",\n        \"countryOfTravel\": \"276\",\n        \"covid19\": true,\n        \"travelAgencyBankruptcy\": false,\n        \"agencyCommissionRate\": \"0.40\"\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-gw-uri}}/api/policy/proposal",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"policy",
+												"proposal"
+											]
+										},
+										"description": "### **Seyahat Sağlık Yurt Dışı Vize - Quick Yurt Dışı Seyahat**\n\n- **TİP (type)**: foreignVisa - string\n    \n- **BAŞLANGIÇ TARİHİ (startDate)**: Kullanıcıdan sağlanır. - date time with zone(örnek 2024-06-21T00:00:00.000Z)\n    \n- **BİTİŞ TARİHİ (endDate)**: Kullanıcıdan sağlanır. - date time with zone(örnek 2024-06-21T00:00:00.000Z)\n    \n- **GEOGRAPHICAL AREA (geographicalArea)**: `Get Travel Region` ile alınabilir. - string\n    \n- **SEYAHAT EDİLECEK ÜLKE (countryOfTravel)**: `Get Travel Country` ile alınabilir. - string\n    \n- **COVID 19 (covid19)**: Kullanıcıdan sağlanır. - bool\n    \n- **SEYAHAT ACENTE İFLASI (travelAgencyBankruptcy)**: true, false - bool\n    \n- **PAKET TİPİ (packageType)**: 2 - string\n    \n- **ACENTE KOMİSYON ORANI (agencyCommissionRate)**: string"
+									},
+									"response": []
+								},
+								{
+									"name": "Teklif - Yurt İçi",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"productId\": \"600\",\n    \"insurer\": {\n        \"idNumber\": \"xxx123566xx\",            \n        \"birthDate\": \"199x-07-18T00:00:00\",\n        \"email\": \"test@valde.co\",\n        \"phoneNumber\": \"553xxx01xx\"\n    },\n    \"insureds\": [\n        {\n            \"idNumber\": \"xxx123566xx\",\n            \"birthDate\": \"199x-07-18T00:00:00\",\n            \"email\": \"test@valde.co\",\n            \"phoneNumber\": \"553xxx01xx\",\n            \"isMain\": true\n        }\n    ],\n    \"questions\": {\n        \"type\": \"domestic\",\n        \"startDate\": \"2024-11-21T00:00:00.000Z\",\n        \"endDate\": \"2024-11-29T00:00:00.000Z\",\n        \"cityOfTravel\": \"34\"\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-gw-uri}}/api/policy/proposal",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"policy",
+												"proposal"
+											]
+										},
+										"description": "### **Seyahat Sağlık Yurt İçi**\n\n- **TİP (type)**: domestic - string\n    \n- **BAŞLANGIÇ TARİHİ (startDate)**: Kullanıcıdan sağlanır. - date time with zone(örnek 2024-06-21T00:00:00.000Z)\n    \n- **BİTİŞ TARİHİ (endDate)**: Kullanıcıdan sağlanır. - date time with zone(örnek 2024-06-21T00:00:00.000Z)\n    \n- **SEYAHAT EDİLECEK ŞEHİR (cityOfTravel)**: `Get Travel Region` ile alınabilir. - string\n    \n- **COVID 19 (covid19)**: Kullanıcıdan sağlanır. - bool\n    \n- **SEYAHAT ACENTE İFLASI (travelAgencyBankruptcy)**: true, false - bool\n    \n- **ACENTE KOMİSYON ORANI (agencyCommissionRate)**: string"
+									},
+									"response": []
+								},
+								{
+									"name": "Teklif - Öğrenci",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"productId\": \"600\",\n    \"insurer\": {\n        \"idNumber\": \"xxx123566xx\",            \n        \"birthDate\": \"199x-07-18T00:00:00\",\n        \"email\": \"test@valde.co\",\n        \"phoneNumber\": \"553xxx01xx\"\n    },\n    \"insureds\": [\n        {\n            \"idNumber\": \"xxx123566xx\",\n            \"birthDate\": \"199x-07-18T00:00:00\",\n            \"email\": \"test@valde.co\",\n            \"phoneNumber\": \"553xxx01xx\",\n            \"isMain\": true\n        }\n    ],\n    \"questions\": {\n        \"type\": \"student\",\n        \"startDate\": \"2024-06-21T00:00:00.000Z\",\n        \"endDate\": \"2024-06-29T00:00:00.000Z\",\n        \"geographicalArea\": \"3\",\n        \"countryOfTravel\": \"276\",\n        \"covid19\": true\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-gw-uri}}/api/policy/proposal",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"policy",
+												"proposal"
+											]
+										},
+										"description": "### **Seyahat Sağlık Öğrenci**\n\n- **TİP (type)**: student - string\n    \n- **BAŞLANGIÇ TARİHİ (startDate)**: Kullanıcıdan sağlanır. - date time with zone(örnek 2024-06-21T00:00:00.000Z)\n    \n- **BİTİŞ TARİHİ (endDate)**: Kullanıcıdan sağlanır. - date time with zone(örnek 2024-06-21T00:00:00.000Z)\n    \n- **GEOGRAPHICAL AREA (geographicalArea)**: `Get Travel Region ile alınabilir - string`\n    \n- **SEYAHAT EDİLECEK ÜLKE (countryOfTravel)**: `Get Travel Country` ile alınabilir. - string\n    \n- **COVID 19 (covid19)**: Kullanıcıdan sağlanır. - bool\n    \n- **SEYAHAT ACENTE İFLASI (travelAgencyBankruptcy)**: true, false - bool\n    \n- **ACENTE KOMİSYON ORANI (agencyCommissionRate)**: string"
+									},
+									"response": []
+								},
+								{
+									"name": "Teklif - Pasaportlu Giriş",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"productId\": \"600\",\n     \"insurer\": {\n        \"idNumber\": \"U999231123\",\n        \"fullAddress\": \"İstanbul Ataşehir Örnek Mahallesi\",\n        \"birthDate\": \"1992-08-18T00:00:00.000Z\",\n        \"gender\": \"E\",\n        \"birthPlace\": \"Üsküdar\",\n        \"idType\": 3,\n        \"nationality\": \"1\",\n        \"name\": \"Furkan\",\n        \"surname\": \"Bostancı\",\n        \"email\": \"test@valde.co\"\n    },\n    \"insureds\": [\n        {\n            \"idNumber\": \"U999231123\",\n            \"fullAddress\": \"İstanbul Ataşehir Örnek Mahallesi\",\n            \"birthDate\": \"1992-08-18T00:00:00.000Z\",\n            \"gender\": \"E\",\n            \"birthPlace\": \"Üsküdar\",\n            \"idType\": 3,\n            \"nationality\": \"1\",\n            \"name\": \"Furkan\",\n            \"surname\": \"Bostancı\",\n            \"email\": \"test@valde.co\",\n            \"isMain\": true\n        }\n    ],\n    \"questions\": {\n        \"type\": \"incoming\",\n        \"startDate\": \"2024-11-21T00:00:00.000Z\",\n        \"endDate\": \"2024-11-29T00:00:00.000Z\"\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-gw-uri}}/api/policy/proposal",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"policy",
+												"proposal"
+											]
+										},
+										"description": "### **Seyahat Saglık Incoming**\n\n- **TİP (type)**: incoming - string\n    \n- **BAŞLANGIÇ TARİHİ (startDate)**: Kullanıcıdan sağlanır. - date time with zone(örnek 2024-06-21T00:00:00.000Z)\n    \n- **BİTİŞ TARİHİ (endDate)**: Kullanıcıdan sağlanır. - date time with zone(örnek 2024-06-21T00:00:00.000Z)\n    \n- **COVID 19 (covid19)**: Kullanıcıdan sağlanır. - bool\n    \n- **SEYAHAT ACENTE İFLASI (travelAgencyBankruptcy)**: true, false - bool\n    \n- **ACENTE KOMİSYON ORANI (agencyCommissionRate)**: string"
+									},
+									"response": []
+								}
+							],
+							"description": "Quick Seyahat Sağlık Sigortası entegrasyonu, seyahat eden kullanıcıların sigorta tekliflerini hızlıca almasını sağlar. Sayfa ve API uç noktaları ile ilgili detaylar şu şekildedir:\n\n### Teklif Sayfası Alanları ve API Entegrasyonları\n\n1. **TCKN / VKN / YKN**:\n    \n    - **Açıklama**: Türkiye Cumhuriyeti Kimlik Numarası (TCKN), Vergi Kimlik Numarası (VKN) veya Yabancı Kimlik Numarası (YKN) bilgileri girilir.\n        \n2. **Seyahat Edeceğiniz Bölge Seçimi**:\n    \n    - **API Uç Noktası**: `GET Travel Region`\n        \n    - **Açıklama**: Kullanıcı, seyahat edeceği coğrafi bölgeyi seçer (örneğin, Avrupa Schengen, Tüm Dünya). `GET Travel Region` uç noktası, mevcut bölgeleri sunar\n        \n3. **Hangi Ülkeye Seyahat Edeceksiniz?**:\n    \n    - **API Uç Noktası**: `GET Travel Country`\n        \n    - **Açıklama**: Kullanıcının seyahat edeceği ülkeyi seçmesini sağlar. `GET Travel Country` uç noktası, kullanıcının seyahat edeceği ülkelerin listesini sunar.\n        \n4. **Hangi Şehire Seyahat Edeceksiniz?**:\n    \n    - **API Uç Noktası**: `GET Cities`\n        \n    - **Açıklama**: Kullanıcının seyahat edeceği şehiri seçmesini sağlar. `GET Cities` uç noktası, kullanıcının seyahat edeceği şehirin listesini sunar.\n        \n5. **Gidiş ve Dönüş Tarihleri**:\n    \n    - **Açıklama**: Kullanıcı, seyahatin başlangıç ve bitiş tarihlerini belirtir. Bu bilgiler, sigorta poliçesinin geçerli olduğu süreyi tanımlar ve fiyatlandırmada dikkate alınır.\n        \n6. **Sertifika Basımı İsteniyor mu?**:\n    \n    - **Açıklama**: Kullanıcı, sigorta sertifikasının basılı bir kopyasını isteyip istemediğini seçer. Bu, kullanıcıların fiziksel bir belgeye ihtiyaç duydukları durumlarda önemlidir."
+						},
+						{
+							"name": "Dask",
+							"item": [
+								{
+									"name": "Sigorta Ettiren Sıfatı Listesi",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/common/option?questionKey=insurerTitle&productId=202",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"common",
+												"option"
+											],
+											"query": [
+												{
+													"key": "questionKey",
+													"value": "insurerTitle",
+													"description": "Soru - insurerTitle"
+												},
+												{
+													"key": "productId",
+													"value": "202",
+													"description": "Ürün Kodu - 202"
+												}
+											]
+										},
+										"description": "Sigorta ettiren sıfatının listesini getitir."
+									},
+									"response": []
+								},
+								{
+									"name": "Bina İnşa Tarzı Listesi",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/common/option?questionKey=buildingConstructionType&productId=202",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"common",
+												"option"
+											],
+											"query": [
+												{
+													"key": "questionKey",
+													"value": "buildingConstructionType",
+													"description": "Soru - buildingConstructionType"
+												},
+												{
+													"key": "productId",
+													"value": "202",
+													"description": "Ürün Kodu - 202"
+												}
+											]
+										},
+										"description": "Bina inşa tarzı seçenekleri getirir"
+									},
+									"response": []
+								},
+								{
+									"name": "Bina İnşa Yılı Listesi",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/common/option?questionKey=buildingConstructionYear&productId=202",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"common",
+												"option"
+											],
+											"query": [
+												{
+													"key": "questionKey",
+													"value": "buildingConstructionYear",
+													"description": "Soru - buildingConstructionYear"
+												},
+												{
+													"key": "productId",
+													"value": "202",
+													"description": "Ürün Kodu - 202"
+												}
+											]
+										},
+										"description": "Bina inşa yılı seçenekleri getirir"
+									},
+									"response": []
+								},
+								{
+									"name": "Toplam Kat Sayısı Listesi",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/common/option?questionKey=buildingTotalFloorCount&productId=202",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"common",
+												"option"
+											],
+											"query": [
+												{
+													"key": "questionKey",
+													"value": "buildingTotalFloorCount",
+													"description": "Soru - buildingTotalFloorCount"
+												},
+												{
+													"key": "productId",
+													"value": "202",
+													"description": "Ürün Kodu - 202"
+												}
+											]
+										},
+										"description": "Toplam kat sayısı seçenekleri getirir"
+									},
+									"response": []
+								},
+								{
+									"name": "Daire Kullanım Şekli Listesi",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/common/option?questionKey=apartmentUsageType&productId=202",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"common",
+												"option"
+											],
+											"query": [
+												{
+													"key": "questionKey",
+													"value": "apartmentUsageType",
+													"description": "Soru - apartmentUsageType"
+												},
+												{
+													"key": "productId",
+													"value": "202",
+													"description": "Ürün Kodu - 202"
+												}
+											]
+										},
+										"description": "Daire kullanım şekli seçeneklerini getirir"
+									},
+									"response": []
+								},
+								{
+									"name": "Bina Hasar Durumu Listesi",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/common/option?questionKey=buildingPreviouslyDamaged&productId=202",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"common",
+												"option"
+											],
+											"query": [
+												{
+													"key": "questionKey",
+													"value": "buildingPreviouslyDamaged",
+													"description": "Soru - buildingPreviouslyDamaged"
+												},
+												{
+													"key": "productId",
+													"value": "202",
+													"description": "Ürün Kodu - 202"
+												}
+											]
+										},
+										"description": "Bina hasar durumu seçeneklerini getirir"
+									},
+									"response": []
+								},
+								{
+									"name": "Bulunduğu Kat Listesi",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/common/option?questionKey=floorCode&productId=202",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"common",
+												"option"
+											],
+											"query": [
+												{
+													"key": "questionKey",
+													"value": "floorCode",
+													"description": "Soru - floorCode"
+												},
+												{
+													"key": "productId",
+													"value": "202",
+													"description": "Ürün Kodu - 202"
+												}
+											]
+										},
+										"description": "Bulunduğu kat seçeneklerini getirir"
+									},
+									"response": []
+								},
+								{
+									"name": "Banka ve Finansman Şirketleri Listesi",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{q-digital-token}}",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/common/banks",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"common",
+												"banks"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Şube Listesi",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer {{q-digital-token}}",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/common/bank-dm?bankNo=1224 SAYILI SAKÇAGÖZÜ",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"common",
+												"bank-dm"
+											],
+											"query": [
+												{
+													"key": "bankNo",
+													"value": "1224 SAYILI SAKÇAGÖZÜ",
+													"description": "Banka/Finans Şirketi No"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Teklif - Yeni Daini Mürtehinsiz",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"productId\": \"202\",\n    \"insurer\": {\n        \"idNumber\": \"10046262584\",            \n        \"birthDate\": \"1990-12-27T00:00:00\",\n        \"email\": \"test@valde.co\",\n        \"phoneNumber\": \"5324542712\"\n    },\n    \"insureds\": [\n        {\n            \"idNumber\": \"10046262584\",\n            \"birthDate\": \"1990-12-27T00:00:00\",\n            \"email\": \"test@valde.co\",\n            \"phoneNumber\": \"5324542712\",\n            \"isMain\": true\n        }\n    ],\n    \"questions\": {\n        \"type\": \"newPolicy\",\n        \"daskAddressCode\": \"3502318243\",\n        \"insurerTitle\": \"02\",\n        \"apartmentAreaSquareMeters\": \"120\",\n        \"buildingConstructionType\": \"4\",\n        \"buildingConstructionYear\": \"10\",\n        \"buildingTotalFloorCount\": \"7\",\n        \"apartmentUsageType\": \"5\",\n        \"buildingPreviouslyDamaged\": \"0\",\n        \"floorCode\": \"10\"\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-gw-uri}}/api/policy/proposal",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"policy",
+												"proposal"
+											]
+										},
+										"description": "### **Dask Yeni Poliçe - Daini Mürtein Yok**\n\n- **TİP (type)**: newPolicy - string\n    \n- **DASK ADRES KODU (daskAddressCode)**: Kullanıcıdan sağlanır. - string\n    \n- **SİGORTA ETTİRENİN SIFATI (insurerTitle)**: `Get InsurerTitle` ile alınabilir. - string\n    \n- **DAİRE YÜZ ÖLÇÜMÜ (M2) (apartmentAreaSquareMeters)**: Kullanıcıdan sağlanır. - string\n    \n- **BİNA İNŞA TARZI (buildingConstructionType)**: `Get Building Construction Type` ile alınabilir. - string\n    \n- **BİNA İNŞA YILI (buildingConstructionYear)**: `Get Building Construction Year` ile alınabilir. - string\n    \n- **BİNANIN TOPLAM KAT SAYISI (buildingTotalFloorCount)**: `Get Building Total Floor Count` ile alınabilir. - string\n    \n- **DAİRE KULLANIM ŞEKLİ (apartmentUsageType)**: `Get Apartment Usage Type` ile alınabilir. - string\n    \n- **BİNA ÖNCEDEN HASAR GÖRDÜ MÜ (buildingPreviouslyDamaged)**: `Get Building Previously Damaged` ile alınabilir. - string\n    \n- **BULUNDUĞU KAT (**floorCode**)**: `Get Floor Code` ile alınabilir. - string"
+									},
+									"response": []
+								},
+								{
+									"name": "Teklif - Yeni Daini Mürtehinli",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"productId\": \"202\",\n    \"insurer\": {\n        \"idNumber\": \"xxx123566xx\",            \n        \"birthDate\": \"199x-07-18T00:00:00\",\n        \"email\": \"test@valde.co\",\n        \"phoneNumber\": \"553xxx01xx\"\n    },\n    \"insureds\": [\n        {\n            \"idNumber\": \"xxx123566xx\",\n            \"birthDate\": \"199x-07-18T00:00:00\",\n            \"email\": \"test@valde.co\",\n            \"phoneNumber\": \"553xxx01xx\",\n            \"isMain\": true\n        }\n    ],\n    \"questions\": {\n        \"type\": \"newPolicy\",\n        \"daskAddressCode\": \"3502318243\",\n        \"insurerTitle\": \"02\",\n        \"apartmentAreaSquareMeters\": \"120\",\n        \"buildingConstructionType\": \"4\",\n        \"buildingConstructionYear\": \"10\",\n        \"buildingTotalFloorCount\": \"7\",\n        \"apartmentUsageType\": \"5\",\n        \"buildingPreviouslyDamaged\": \"0\",\n        \"isThereAMortgage\": true,\n        \"mortgageBankCode\": \"1\",\n        \"mortgageBranchCode\": \"2\",\n        \"mortgageCreditNumber\": \"1000\"\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-gw-uri}}/api/policy/proposal",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"policy",
+												"proposal"
+											]
+										},
+										"description": "### **Dask Yeni Poliçe - Daini Müertein Var**\n\n- **TİP (type)**: newPolicy - string\n    \n- **DASK ADRES KODU (daskAddressCode)**: Kullanıcıdan sağlanır. - string\n    \n- **SİGORTA ETTİRENİN SIFATI (insurerTitle)**: `Get InsurerTitle` ile alınabilir. - string\n    \n- **DAİRE YÜZ ÖLÇÜMÜ (M2) (apartmentAreaSquareMeters)**: Kullanıcıdan sağlanır. - string\n    \n- **BİNA İNŞA TARZI (buildingConstructionType)**: `Get Building Construction Type` ile alınabilir. - string\n    \n- **BİNA İNŞA YILI (buildingConstructionYear)**: `Get Building Construction Year` ile alınabilir. - string\n    \n- **BİNANIN TOPLAM KAT SAYISI (buildingTotalFloorCount)**: `Get Building Total Floor Count` ile alınabilir. - string\n    \n- **DAİRE KULLANIM ŞEKLİ (apartmentUsageType)**: `Get Apartment Usage Type` ile alınabilir. - string\n    \n- **BİNA ÖNCEDEN HASAR GÖRDÜ MÜ (buildingPreviouslyDamaged)**: `Get Building Previously Damaged` ile alınabilir. - string\n    \n- **DAİN MÜRTEHİN VAR MI (isThereAMortgage)**: true, false - bool\n    \n- **DAİN MÜRTEHİN BANKA KODU (mortgageBankCode)**: `Get Bank List` ile alınabilir. - string\n    \n- **DAİN MÜRTEHİN ŞUBE KODU (mortgageBranchCode)**: `Get Bank Branches` ile alınabilir. - string\n    \n- **BULUNDUĞU KAT (**floorCode**)**: `Get Floor Code` ile alınabilir. - string"
+									},
+									"response": []
+								},
+								{
+									"name": "Teklif - Yenileme",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"productId\": \"202\",\n    \"insurer\": {\n        \"idNumber\": \"xxx123566xx\",            \n        \"birthDate\": \"199x-07-18T00:00:00\",\n        \"email\": \"test@valde.co\",\n        \"phoneNumber\": \"553xxx01xx\"\n    },\n    \"insureds\": [\n        {\n            \"idNumber\": \"xxx123566xx\",\n            \"birthDate\": \"199x-07-18T00:00:00\",\n            \"email\": \"test@valde.co\",\n            \"phoneNumber\": \"553xxx01xx\",\n            \"isMain\": true\n        }\n    ],\n    \"externalPolicyNo\": \"12345678\", \n    \"questions\": {\n        \"type\": \"renewal\" \n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-gw-uri}}/api/policy/proposal",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"policy",
+												"proposal"
+											]
+										},
+										"description": "### **Dask Yenileme**\n\n- **TİP (type)**: renewal - string\n    \n- **DASK POLİÇE NUMARASI (externalPolicyNo):** Kullanıcıdan sağlanır - string"
+									},
+									"response": []
+								}
+							],
+							"description": "DASK (Zorunlu Deprem Sigortası) entegrasyonu, kullanıcıların hızlı ve doğru bir şekilde sigorta teklifleri oluşturmasını sağlamak amacıyla çeşitli veri alanlarını yönetir. API uç noktaları ve teklif sayfasındaki alanların detaylı eşleşmeleri şu şekildedir:\n\n### Teklif Sayfası Alanları ve API Entegrasyonları\n\n1. **Sigorta Ettiren Sıfatı**:\n    \n    - **API Uç Noktası**: `GET InsurerTitle`\n        \n    - **Açıklama**: Sigorta ettiren sıfatını seçmek için kullanılır. Bu bilgi, poliçenin kimin adına düzenleneceğini belirler.\n        \n2. **Bina İnşa Tarzı**:\n    \n    - **API Uç Noktası**: `GET Building Construction Type`\n        \n    - **Açıklama**: Binanın yapım türünü (betonarme, çelik vb.) belirtmek için kullanılır. Yapım türü, bina dayanıklılığını ve risk seviyesini belirler.\n        \n3. **Bina İnşa Yılı**:\n    \n    - **API Uç Noktası**: `GET Building Construction Year`\n        \n    - **Açıklama**: Binanın inşa edildiği yılı belirtir. Yaşı daha fazla olan binalar, sigorta risk değerlendirmesinde daha yüksek primlere yol açabilir.\n        \n4. **Toplam Kat Sayısı**:\n    \n    - **API Uç Noktası**: `GET Building Total Floor Count`\n        \n    - **Açıklama**: Binanın toplam kat sayısını belirtir. Bu bilgi, bina yüksekliğine göre risk değerlendirmesi yapılmasına olanak tanır.\n        \n5. **Daire Kullanım Şekli**:\n    \n    - **API Uç Noktası**: `GET Apartment Usage Type`\n        \n    - **Açıklama**: Dairenin konut veya ticari amaçla kullanılıp kullanılmadığını belirtir. Kullanım amacı, sigorta kapsamı ve prim hesaplamalarını etkiler.\n        \n6. **Bina Hasar Durumu**:\n    \n    - **API Uç Noktası**: `GET Building Previously Damaged`\n        \n    - **Açıklama**: Binanın daha önce hasar alıp almadığını belirtmek için kullanılır. Hasar geçmişi, risk değerlendirmesinde önemli bir kriterdir.\n        \n7. **Rehinli Alacak Var mı?**:\n    \n    - **API Uç Noktası**: `GET Bank List` ve `GET Bank Branches`\n        \n    - **Açıklama**: Rehinli alacak varlığı durumunda, banka ve şube seçimi yapılır. Bu bilgiler, poliçe ödemelerinde rehinli alacakların yönlendirilmesi için kullanılır.\n        \n8. **Bulunduğu Kat**:\n    \n    - **API Uç Noktası**: `GET Floor Code List`\n        \n    - **Açıklama**: Bulunduğu kat seçenek listesi"
+						},
+						{
+							"name": "Ferdi Kaza",
+							"item": [
+								{
+									"name": "Teklif + Onay",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"productId\": \"500\",\n    \"insurer\": {\n        \"idNumber\": \"xxx123566xx\",\n        \"birthDate\": \"199x-07-18T00:00:00\"\n    },\n    \"insureds\": [\n        {\n            \"idNumber\": \"xxx123566xx\",\n            \"birthDate\": \"199x-07-18T00:00:00\",\n            \"isMain\": true\n        }\n    ],\n    \"questions\": {\n        \"type\": \"digitalCampaign\"\n    },\n    \"payment\": {\n        \"type\": \"cash\"\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-gw-uri}}/api/policy/proposal",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"policy",
+												"proposal"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Teklif + Onay | Adres",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"productId\": \"500\",\n    \"insurer\": {\n        \"idNumber\": \"xxx123566xx\",\n        \"birthDate\": \"199x-07-18T00:00:00\",\n        \"address\": {\n            \"cityCode\": \"34\",\n            \"countyCode\": \"2048\",\n            \"townCode\": \"1621\",\n            \"villageCode\": \"37750\",\n            \"neighbourhoodCode\": \"40478\",\n            \"streetCode\": \"755218\",\n            \"buildingCode\": \"17904796\",\n            \"buildingNo\": \"4\",\n            \"spaceCode\": \"62860932\",\n            \"uavtCode\": \"3202030692\",\n            \"innerDoorNo\": \"1\"\n        }\n    },\n    \"insureds\": [\n        {\n            \"idNumber\": \"xxx123566xx\",\n            \"birthDate\": \"199x-07-18T00:00:00\",\n            \"isMain\": true,\n            \"address\": {\n                \"cityCode\": \"34\",\n                \"countyCode\": \"2048\",\n                \"townCode\": \"1621\",\n                \"villageCode\": \"37750\",\n                \"neighbourhoodCode\": \"40478\",\n                \"streetCode\": \"755218\",\n                \"buildingCode\": \"17904796\",\n                \"buildingNo\": \"4\",\n                \"spaceCode\": \"62860932\",\n                \"uavtCode\": \"3202030692\",\n                \"innerDoorNo\": \"1\"\n            }\n        }\n    ],\n    \"questions\": {\n        \"type\": \"digitalCampaign\"\n    },\n    \"payment\": {\n        \"type\": \"cash\"\n    }\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{api-gw-uri}}/api/policy/proposal",
+													"host": [
+														"{{api-gw-uri}}"
+													],
+													"path": [
+														"api",
+														"policy",
+														"proposal"
+													]
+												}
+											},
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"description": "",
+													"type": "text"
+												}
+											],
+											"cookie": [],
+											"body": "{\n     \"success\": true,\n    \"timestamp\": 1752249685,\n    \"operationId\": \"0HNE0E5N119UN:00000001\",\n    \"message\": \"İşlem başarılı\",\n    \"result\": {\n        \"proposal\": {\n            \"uuid\": \"8498c226-0d3c-4d1f-8091-c0afc9ed451d\",\n            \"policyNo\": \"100000334601017\",\n            \"productId\": \"500\",\n            \"endorsNo\": 0,\n            \"renewalNo\": 0,\n            \"agencyCustomerCode\": \"113001\",\n            \"insurerNo\": \"91558543\",\n            \"startDate\": \"2025-07-11T00:00:00+03:00\",\n            \"endDate\": \"2026-07-11T00:00:00+03:00\",\n            \"polStartDate\": \"2025-07-11T00:00:00+03:00\",\n            \"polEndDate\": \"2026-07-11T00:00:00+03:00\",\n            \"propValidEndDate\": \"2025-08-10T00:00:00+03:00\",\n            \"policyStatus\": \"T\",\n            \"displayPolicyStatus\": \"Teklif\",\n            \"netPremium\": 0.02,\n            \"grossPremium\": 0.02,\n            \"curType\": \"TL \",\n            \"displayGrossPremium\": \"0,02 ₺\",\n            \"displayNetPremium\": \"0,02 ₺\",\n            \"lcNetPremium\": 0.02,\n            \"lcGrossPremium\": 0.02,\n            \"displayLcNetPremium\": \"0,02 ₺\",\n            \"displayLcGrossPremium\": \"0,02 ₺\",\n            \"hasAuthorization\": true,\n            \"coverages\": [\n                {\n                    \"title\": \"ÖLÜM\",\n                    \"displayText\": \"1.000,00 ₺\",\n                    \"value\": \"1000.0000\",\n                    \"code\": \"50001\"\n                },\n                {\n                    \"title\": \"MEDLINE ASİSTANS\",\n                    \"displayText\": \"DAHİL\",\n                    \"value\": \"0.0000\",\n                    \"code\": \"50008\"\n                }\n            ],\n            \"commission\": {\n                \"curType\": \"TL\",\n                \"exchangeRate\": 1.00000000,\n                \"amount\": 0,\n                \"lcAmount\": 0,\n                \"displayAmount\": \"0,00 ₺\",\n                \"displayLcAmount\": \"0,00 ₺\"\n            },\n            \"printable\": true,\n            \"error\": false,\n            \"errorMessage\": null\n        },\n        \"additionalProposals\": [],\n        \"payment\": {\n            \"lcTotalGrossPremium\": 0.02,\n            \"lcTotalNetPremium\": 0.02,\n            \"displayLcTotalGrossPremium\": \"0,02 ₺\",\n            \"displayLcTotalNetPremium\": \"0,02 ₺\"\n        }\n    }\n}"
+										}
+									]
+								},
+								{
+									"name": "İl Listesi",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/location/city",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"location",
+												"city"
+											]
+										},
+										"description": "Teklif oluşturma sürecinde, kayıtsız araçların kaydedileceği şehirlerin listesini döner."
+									},
+									"response": []
+								},
+								{
+									"name": "İlçe Listesi",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/location/county?cityId=34",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"location",
+												"county"
+											],
+											"query": [
+												{
+													"key": "cityId",
+													"value": "34"
+												},
+												{
+													"key": "countyId",
+													"value": "1103",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Bucak Listesi",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/location/town?countyId=1183",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"location",
+												"town"
+											],
+											"query": [
+												{
+													"key": "countyId",
+													"value": "1183"
+												},
+												{
+													"key": "townId",
+													"value": "728",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Köy Listesi",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/location/village?townId=23",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"location",
+												"village"
+											],
+											"query": [
+												{
+													"key": "villageId",
+													"value": "16622",
+													"disabled": true
+												},
+												{
+													"key": "townId",
+													"value": "23"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Mahalle Listesi",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/location/neighbourhood?villageId=16619",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"location",
+												"neighbourhood"
+											],
+											"query": [
+												{
+													"key": "villageId",
+													"value": "16619"
+												},
+												{
+													"key": "neighbourhoodId",
+													"value": "40185",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Sokak / Cadde Listesi",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/location/street?neighbourhoodId=40526",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"location",
+												"street"
+											],
+											"query": [
+												{
+													"key": "neighbourhoodId",
+													"value": "40526"
+												},
+												{
+													"key": "streetId",
+													"value": "191693",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Bina Listesi",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/location/building?streetId=207824",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"location",
+												"building"
+											],
+											"query": [
+												{
+													"key": "streetId",
+													"value": "207824"
+												},
+												{
+													"key": "buildingId",
+													"value": "18507843",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "İç Kapı No / Bağımsız Bölüm",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-gw-uri}}/api/location/space?buildingId=29744438",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"location",
+												"space"
+											],
+											"query": [
+												{
+													"key": "buildingId",
+													"value": "29744438"
+												},
+												{
+													"key": "spaceId",
+													"value": "52525282",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"description": "Ferdi Kaza Sigortası için hem teklif alma hem de onaylama işlemini gerçekleştiren tek aşamalı bir API'dir. Bu uç nokta sayesinde kullanıcıdan alınan bilgilerle eşzamanlı olarak teklif oluşturulur ve anında poliçeleştirme işlemi gerçekleştirilir.\n\nAşağıda **Ferdi Kaza - Teklif + Onay** API'si için input alanlarının **tip bilgileri**, **zorunluluk durumu** ve kısa açıklamaları yer almaktadır. Bu tabloyu dökümantasyona dahil edebilirsin.\n\n---\n\n## 📥 Teklif + Onay - Request Input Detayları\n\n| Alan | Tip | Zorunlu | Açıklama |\n| --- | --- | --- | --- |\n| `productId` | string | ✅ | Ürün kodu (örneğin `\"500\"` Ferdi Kaza için kullanılır) |\n| `insurer.idNumber` | string | ✅ | Sigorta ettirenin T.C. kimlik numarası |\n| `insurer.birthDate` | datetime (ISO) | ✅ | Sigorta ettirenin doğum tarihi |\n| `insurer.address` | object | ⛔️\\* | Sigorta ettirenin adres bilgisi _(bkz: adresNotFound)_ |\n| `insureds[]` | array | ✅ | Sigortalı kişi(ler) listesi |\n| `insureds[].idNumber` | string | ✅ | Sigortalının T.C. kimlik numarası |\n| `insureds[].birthDate` | datetime (ISO) | ✅ | Sigortalının doğum tarihi |\n| `insureds[].isMain` | boolean | ✅ | Ana sigortalı mı? (`true` / `false`) |\n| `insureds[].address` | object | ⛔️\\* | Sigortalının adres bilgisi _(bkz: adresNotFound)_ |\n| `questions.type` | string | ✅ | Kampanya türü: `\"digitalCampaign\"` vb. |\n| `payment.type` | string | ✅ | Ödeme yöntemi: `\"cash\"` / `\"creditCard\"` vb. |\n\n---\n\n### 📌 Adres Alanı (`address`)\n\n| Alt Alan | Tip | Açıklama |\n| --- | --- | --- |\n| `cityCode` | string | İl kodu |\n| `countyCode` | string | İlçe kodu |\n| `townCode` | string | Bucak / Semt kodu |\n| `villageCode` | string | Köy kodu |\n| `neighbourhoodCode` | string | Mahalle kodu |\n| `streetCode` | string | Sokak / Cadde kodu |\n| `buildingCode` | string | Bina kodu |\n| `buildingNo` | string | Dış kapı numarası |\n| `spaceCode` | string | Bağımsız bölüm (daire) kodu |\n| `uavtCode` | string | UAVT (Ulusal Adres Veritabanı) kodu |\n| `innerDoorNo` | string | İç kapı numarası |\n\n🛑 **Not:** `address` alanı ilk istek için opsiyoneldir. Eğer `addressNotFound` hatası alınırsa, bu alan eksiksiz şekilde doldurulmalı ve istek yeniden gönderilmelidir.\n\n### **Hata Response - Adres Gerekli (HTTP 404)**\n\n``` json\n{\n  \"success\": false,\n  \"timestamp\": 1752395174,\n  \"operationId\": \"0HNE0E5LC4IA3:00000001\",\n  \"error\": {\n    \"code\": \"addressNotFound\",\n    \"message\": \"[F-93|ADDRESS2|Adres 2]: kpsTCKisiAcikAdresSorgu fonsiyonunda hata : \\nkpsTCKisiAcikAdresSorgu - EXT-SBM-00016:KPS sistem hatası. Hata kodu=KPS sistem hatası. Hata kodu=3\",\n    \"details\": {\n      \"isAddressRequired\": true\n    },\n    \"context\": null\n  }\n}\n\n ```\n\n---\n\n### ⚠️ **Dikkat Edilmesi Gerekenler**\n\n- `insurer.address` ve `insureds[x].address` alanları ilk istek sırasında **zorunlu değildir**.\n    \n- Ancak, **adres bilgisi KPS (Kimlik Paylaşım Sistemi)** üzerinden doğrulanamazsa veya sistemsel bir hata alırsa, yukarıdaki `addressNotFound` hatası dönebilir.\n    \n- Bu durumda, istek tekrarlanmalı ve **sigortalı ile sigorta ettirenin** **`address`** **alanları eksiksiz şekilde doldurulmalıdır.**\n    \n\n## 🧭 Adres Bilgisi API'leri\n\nBu servisler sırasıyla çalıştırılmalıdır. Her biri bir önceki servisten alınan ID ile çağrılır.\n\n### 1\\. İl Listesi (City)\n\n```\nGET /api/location/city\n\n ```\n\n---\n\n### 2\\. İlçe Listesi (County)\n\n```\nGET /api/location/county?cityId={cityId}\n\n ```\n\n---\n\n### 3\\. Bucak / Semt Listesi (Town)\n\n```\nGET /api/location/town?countyId={countyId}\n\n ```\n\n---\n\n### 4\\. Köy Listesi\n\n```\nGET /api/location/village?townId={townId}\n\n ```\n\n---\n\n### 5\\. Mahalle Listesi\n\n```\nGET /api/location/neighbourhood?villageId={villageId}\n\n ```\n\n---\n\n### 6\\. Sokak / Cadde Listesi\n\n```\nGET /api/location/street?neighbourhoodId={neighbourhoodId}\n\n ```\n\n---\n\n### 7\\. Bina Listesi\n\n```\nGET /api/location/building?streetId={streetId}\n\n ```\n\n---\n\n### 8\\. İç Kapı / Bağımsız Bölüm Listesi\n\n```\nGET /api/location/space?buildingId={buildingId}\n\n ```\n\n---\n\n## 🧱 JSON Adres Yapısı\n\nAdres bilgisi şu yapıda beklenmektedir:\n\n``` json\n\"address\": {\n  \"cityCode\": \"34\",\n  \"countyCode\": \"2048\",\n  \"townCode\": \"1621\",\n  \"villageCode\": \"37750\",\n  \"neighbourhoodCode\": \"40478\",\n  \"streetCode\": \"755218\",\n  \"buildingCode\": \"17904796\",\n  \"buildingNo\": \"4\",\n  \"spaceCode\": \"62860932\",\n  \"uavtCode\": \"3202030692\",\n  \"innerDoorNo\": \"1\"\n}\n\n ```\n\n🔐 **Not:** Bu servislerde erişim için geçerli bir `Bearer Token` gereklidir. Token alma işlemi için `POST /auth/token` endpoint'ini kullanabilirsiniz.\n\n---\n\n## 📎 Özet Akış:\n\n1. `POST Teklif + Onay` çağrılır.\n    \n2. `isAddressRequired = true` hatası dönerse:\n    \n    - Yukarıdaki adres endpoint'leri sırayla kullanılır.\n        \n    - `insurer.address` ve `insureds[n].address` doldurulur.\n        \n3. İstek tekrar gönderilir."
+						}
+					],
+					"description": "Bu API koleksiyonu, farklı sigorta ürünlerinin yönetimini sağlamak amacıyla tasarlanmıştır. İçerdiği ürünler ve açıklamaları şu şekildedir:\n\n- **Trafik - Plakam Yok**: Kayıtsız araçlara yönelik trafik sigortası için\n    \n- **Trafik - Plakam Var**: Kayıtlı araçlara yönelik trafik sigortası için\n    \n- **Kasko - Plakam Yok**: Kayıtsız araçlara yönelik kasko sigortası için\n    \n- **Kasko - Plakam Var**: Kayıtlı araçlara yönelik kasko sigortası için\n    \n- **Seyahat Sağlık - Yurt Dışı**: Yurt dışı seyahat sigortası için\n    \n- **Seyahat Sağlık - Yurt İçi**: Yurt içi seyahat sigortası için\n    \n- **Seyahat Sağlık - Incoming**: Türkiye'ye gelen yabancı ziyaretçilere özel seyahat sigortası için\n    \n- **Seyahat Sağlık - Öğrenci**: Öğrencilere özel olarak tasarlanmış seyahat sigortası için\n    \n- **Dask - Yeni Poliçe**: Zorunlu deprem sigortası (DASK) için yeni poliçe teklifleri için\n    \n- **Dask - Yenileme**: Zorunlu deprem sigortası (DASK) için yenileme teklifleri için\n    \n\nBu koleksiyon, farklı sigorta ürünleri için hızlı ve etkili bir şekilde teklif oluşturma, yenileme ve yönetim işlemlerini kolaylaştırır.\n\n- **GET Get Policy Coverages**: Belirli bir poliçe için teminat bilgilerini döner. Bu uç nokta, poliçenin hangi teminatları kapsadığını öğrenmek için kullanılır.\n    \n- **GET Get Policy Authorizations**: Belirli bir poliçeye ait otorizasyonlar bilgilerini getirir."
+				},
+				{
+					"name": "Teklif Onay",
+					"item": [
+						{
+							"name": "Ödeme Yöntemleri Listesi",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api-gw-uri}}/api/policy/approve/methods?productId=111&policyNo=&renewalNo=0&endorsNo=0",
+									"host": [
+										"{{api-gw-uri}}"
+									],
+									"path": [
+										"api",
+										"policy",
+										"approve",
+										"methods"
+									],
+									"query": [
+										{
+											"key": "productId",
+											"value": "111",
+											"description": "Ürün Kodu - 101/111/202/600"
+										},
+										{
+											"key": "policyNo",
+											"value": ""
+										},
+										{
+											"key": "renewalNo",
+											"value": "0"
+										},
+										{
+											"key": "endorsNo",
+											"value": "0"
+										}
+									]
+								},
+								"description": "Kullanılabilir ödeme yöntemlerini listeler. Bu uç nokta, teklifin ödenmesinde kullanılabilecek yöntemleri öğrenmek için kullanılır."
+							},
+							"response": []
+						},
+						{
+							"name": "Taksit Listesi",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api-gw-uri}}/api/policy/approve/installment?productId=TR1&policyNo=90063778&renewalNo=0&endorsNo=0&cardPrefix=453144&is3D=false",
+									"host": [
+										"{{api-gw-uri}}"
+									],
+									"path": [
+										"api",
+										"policy",
+										"approve",
+										"installment"
+									],
+									"query": [
+										{
+											"key": "productId",
+											"value": "TR1",
+											"description": "Ürün Kodu - 101/111/202/600"
+										},
+										{
+											"key": "policyNo",
+											"value": "90063778",
+											"description": "Teklif No"
+										},
+										{
+											"key": "renewalNo",
+											"value": "0",
+											"description": "Yenileme No"
+										},
+										{
+											"key": "endorsNo",
+											"value": "0",
+											"description": "Zeyil No"
+										},
+										{
+											"key": "cardPrefix",
+											"value": "453144",
+											"description": "Kartın ilk 6 hanesi"
+										},
+										{
+											"key": "is3D",
+											"value": "false",
+											"description": "3D Güvenli Ödeme"
+										}
+									]
+								},
+								"description": "Teklif için uygun taksit seçeneklerini getirir"
+							},
+							"response": []
+						},
+						{
+							"name": "Teklif Onay - Kredi Kartı",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"productId\": \"505\",\n    \"policyNo\": \"100000334531945\",\n    \"endorsNo\": 0,\n    \"renewalNo\": 0,\n    \"paymentType\": \"card\",\n    \"installmentId\": \"1\",\n    \"card\": {\n        \"no\": \"5404355404355405\",\n        \"name\": \"MERT\",\n        \"surname\": \"DEMİR\",\n        \"expirationYear\": \"2025\",\n        \"expirationMonth\": \"10\",\n        \"cvv\": \"001\"\n    },\n    \"additionalProposals\": [\n        {\n            \"productId\": \"QHIL\"\n        },\n        {\n            \"productId\": \"603\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-gw-uri}}/api/policy/approve",
+									"host": [
+										"{{api-gw-uri}}"
+									],
+									"path": [
+										"api",
+										"policy",
+										"approve"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Teklif Onay - Kredi Kartı",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"productId\": \"101\",\n    \"policyNo\": \"100000334528200\",\n    \"endorsNo\": 0,\n    \"renewalNo\": 0,\n    \"paymentType\": \"card\",\n    \"installmentId\": \"1\",\n    \"card\": {\n        \"no\" : \"5404355404355405\",\n        \"name\" : \"MERT\",\n        \"surname\" : \"DEMİR\",\n        \"expirationYear\" : \"2025\",\n        \"expirationMonth\" : \"10\",\n        \"cvv\": \"001\"\n    },\n    \"additionalProposals\": [\n        {\n            \"productId\": \"QHIL\"\n        }\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-gw-uri}}/api/policy/approve",
+											"host": [
+												"{{api-gw-uri}}"
+											],
+											"path": [
+												"api",
+												"policy",
+												"approve"
+											]
+										}
+									},
+									"_postman_previewlanguage": "Text",
+									"header": null,
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "Teklif Onay - Kredi Kartı 3DS",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"productId\": \"101\",\n    \"policyNo\": \"100000334528200\",\n    \"renewalNo\": 0,\n    \"endorsNo\": 0,\n    \"paymentType\": \"card\",\n    \"installmentId\": \"1\",\n    \"secure3d\": true,\n    \"returnUrl\": \"https://valde.co\",\n    \"card\": {\n        \"no\" : \"4355084355084358\",\n        \"name\" : \"MERT\",\n        \"surname\" : \"DEMİR\",\n        \"expirationYear\" : \"2026\",\n        \"expirationMonth\" : \"12\",\n        \"cvv\": \"000\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-gw-uri}}/api/policy/approve",
+									"host": [
+										"{{api-gw-uri}}"
+									],
+									"path": [
+										"api",
+										"policy",
+										"approve"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Teklif Onay - Kredi Kartı Şifrelenmiş",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Gateway-Forward",
+										"value": "true",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"productId\": \"101\",\n    \"policyNo\": \"100000000278683\",\n    \"endorsNo\": 0,\n    \"renewalNo\": 0,\n    \"paymentType\": \"card\",\n    \"installmentId\": \"1\",\n    \"card\": {\n        \"no\": \"Q5dhNiI4VXxjFxs4VTtiqqkiC+TqkSBfpNAGLyFrgNkRJa5XZ9rKEh3pA5MdQPRV2tM1ZFv7oFS0L8UeJOndd5h9ZepESrVBn39/nBYU0BhmtpH9aaSGV8nqjIhmPP050kO7YM/EutWrlLmQfpqzb5vfU4+IMkbV2C2Gr7sLIkHZe+01aIQrXbUfRG/ZB/HlRly4sZ+y7UjbFlgEnSvj36Jm4Nm6GbTP7MlnEVmUFNGhe6EPFM4aRRj1+q3ryJJEHLMfmCFnJGoKJ9P/UUmc4zTLys9ORNEdbKRJb9tRuewCRxkFEajGXPI0aRaG0ik1DnCSww2zoAyLiZGPG2iLpPc2TTFBs/NT81dKMKjG/xIXgx/4R6+jtwptYEoTQSCj8UxHWONf98K4qSi7pbs9OMRw23Kc6Zm4vIpBTof8RRzdiBx+euTYs0L395OVwDGAgkzwhYCsLHGpvaRYcy3Ynt9cdDD1PjPvoxO+yAqhQFCgP0QCFbd/YjNYy4OaebokAuggJ5GpD0o1vTUBn0u1I8v97KvevjACm/1YQTnpHNuv1zJDog+dBo+TO3zMBUT9cPIWzIZYG9L9oUlCT3MPxDm7l8SSOsfJ2OfqcsHNjDHOH4pGBq6BLoP49Q8ikRNQ5WJLIcUmnScb1lFpuEaffJa+CshRfgGcUZvFpzs1G68=\",\n        \"name\": \"O2W3R4LdPcgwwpiDFVQKwY8XdBBD3CwCHvm2olbuhpH+iFUslLdIUN+3Yk0XfuAZI23UuhoBbsmTKG8C047AB8Evc09LX1a7XQyaKa3x3qLjzXcEvejy0jvraHgHZRDQRRpXowZfkTrhF6mDzB3aAOptwh8/fOJ+Xfjh7Fb+gpe7ItPsuu/Tp1EyJ0PWtUmnSgf6MeUz6mz8HiMnIw6+nrd4VwO6KgdAJZvCFmklpNkyR6U24aq35qZZTwjzVM8xcgjOvfQ2SKEi8Z5PTrsbqc09MbAOEG7yvP7y7+w5hqRbbPincTi6f7adEGd1WjUR2YAsOl14emsT+7GCR1+7J3fjzktXfMzLCe8lK1/KnrpztP44HeEbgVddoHsgAF+bVP2MolO0MJMx/18Aww2VbLoUaf9caG+pJ4C65s0Ug/gBhAKsgyddNZ+v9y4iLHtHpOP0ZIJCtInKRZnOQauvBH6mn95b/3uX/lE9mHSuGjYxsQeyZ1pENWYZiARzAELNTnpeRsMjSnfp7u8ZJVi5E9WvF2EQr1on+mQOevhMmejBSNAuoQRsa5+xLovh3ksjm1IljDc9w2yk3Cn7XQ7ck64yNKyDLJoXwzEkFNUWo/wKdnEvXj8o9HCDIIh8TUh+LhW8nFKi4hgc4aX+2kYhYIBczPbbm/v5fHWaEvHfjq0=\",\n        \"surname\": \"Q9bEzrrAN0jajWE+lDXmmDbxbbKDv/mzk9eUDMzRIbMQJnOg9z2FTUwXDn9vj/NPyg5X1zgIyooLgnXZgcU/XeiyIhDhaIzOMFqtjjaDolu9MlhTjGPnhIZtamzbSsV+EWgNarpSEWht4uCL8gZ5yVqEHbhAXxucK3ooYdpO8sGwj7uGHxtITjqL3bHThY/Ch1wccTEko/He5gk7xb+sD6pKwNPIs1yBjjAegMJ2esBoov66Ptwf/42uEaQUBuu+1SKzFr8QK7XB7JRNujubf14TAxtN5bkJ18infwNixFTpVvUmj11a1Vg4uB33jW0oiZge6FJ0Yvuqj5yjIH09IZCqjfT5tJNPGbiRnz6Yndu1+kscbjxLSMjbUGJjF0Md4MfQPQodcjHZ8/OhnAegAnu6ym0uxHxl2Oja8m5Xf8re9SODR7kz/9vffai8WldA/uLE43JS9HwYlOspp/RI+rwpv67x86oACM7jDmy1OdSgOwc0b/AmEvGJPXtjvu2ObhCJK5WDRZD1AxIHfLpxHkqbPtgghoWcSdazsZ4PQG5p1fzVedXl+C1slthZgaSEmqwVqImZZZYdJrjuzVDl70Nm4qedYBOqVLF/wvp9+4fZtaPa/FYVvo3dDiS2E1VTTBUxwjAF3dG1hoYn954ZOQuapxu2wJHya4veVvyfo+A=\",\n        \"expirationYear\": \"RmzmTfDxigLcfwflZa3mJs+/trvrmMr9qAuQIn3dqKkw9VtW//MTb6y7TRtQRT2XsuxaMYNx5XLAPOGd0LnnC+rQ+mDbR+Gh72NTRq3uj63c+UcjpJPGJys3pXhfnD3Nb1N1d1AKeMA7ML9IadaOgQQk/N6X2wBJHuDoQzpd62ivUWfpE5N4O4Mdw9oiNZvwSDevRV1JSMoAtDwejSSLvTYBsiBgaWxgxgyIO9+YKQ6M36xSMqpVVRBesInoPmELlOftYW9WeSKThE8S2/ZfhvzOlxYQxCk3MyuckNKSlTZLvAZ79GiFDj/VbRKMUp8U0Ltg/H+nEJ6NWaoG7/WD9kG95XvTZscE/SnyDsqGyyP1mNXjN2gFF0SC6YzmNS0rdTKfRcA6z+yw9bP6NfRsp7NO+sSmahbr4K+UNzqFyG/x01V3LJfYcbsO+9QochiPjtBzaLXxpZbxZ+qgH/ZytBiraGPti4hQ5HK0eRYjMP3hx+Ytoy7jtHpkEc5CaKy1xW+o5RggHhwHhyl4VMv/vkkyJcEcpaq/3/BVg4Z1e+twNXW4c6JQS4R5j/Pv8/jJzi6GvG7plLVltZGsf4lRPoMGWTnmjyFiQymisZr6fqyDWzLVJEvsgauXvo7vS1TfqzZWtS+dDgkoQiuoXgRO4qeUW/PLNaCd4kRmF8aTp8M=\",\n        \"expirationMonth\": \"SlTNVzHl79vvhCq281CgG4rJgUekQcCiio9Woz9n/mKH/jXBYtMg8WfvbWvnYUUIZknZm7vnXiblf3tTNj/NuSF0aI4v/I0pmIaBSnvZhF9Mhmo/0vgh6qyw2iE2a7jbntN8dxUCrDngTUexeTz4En2yGaB7XYe2i/WyEPwkWnaLKH9Ul1OKMaVDQ/mLwqvgTCVRL/4pqvgxxHf0TTMBVazM/m+q6Aa7ZxWAlxJ8MSa4AQiyISm+7m1hL994Ol1hnxBccfyNyVHzN8ty7bpCuGI1AgJ/26nQ/ErmaEE0h9+pMhppOy2i7Oiy2kmtFNz4uLqcRHO/wR/yc3xYfvsJrW22HqUGzp2uVkpqL1/CB+97EbnTPu7xcdfZqs0t+DZb+Trx/ynuRkavWhshSnX9AptPOfoSkJYYK9WrfqlLYbBcllOOhB0IYScbQg2bBVPrE8C9a22mblprl4aVZPrwmL8tai5OPvBL6Ay9PHVRw9ngToamVG15wIrcP92pjSZthIlEk7FABdT5wT62yPv/1wE8SO1z/+V/6XjaaxY6Kuzuk3W+qUAqgPrx4h4EyTi7kJRwzzjqUf5ytlDeIHzFc7FehqsTXp2G17rwVw10QMKab51wDWOUVYY+6uxwWP7fMvQ28fYVN9G6R6D3ch7h26uCQwLfk29nVC36eJL0QxE=\",\n        \"cvv\": \"iI3hLMPQ8eDCNHfVojBB+niV/r/zbc1X9wn1XTkb7SZeTu6s4NuYcmbLztjX5UYJDGr6fF3K3dCQvUhCLsjIe6cKqrVBBH8L63+ogBnl+0cK7FYyfC5PkUz5Rv+ph7ASmLq5wyru0xTvEGDBo4y5rsau/IAXBLeRoSft8WjiVyp7w69HXfkERPxgoDlUSCFC7zXAERhC2HVUtmSSbJBGK1uelLJXWbm8uaGhs+9AAj6BbOh7mi8TWxqIqFREw9G3y8GmCHePpw9YZdZeuPccGv3zqS2R7X88Y1Cy+h/SZqRkacgh9MehWi8RvB4obKICQaD+PU5CpENHFZ8c+LH/ht2iTAurYhsfhxtWg0VHfpOMjFVuKG62BAzdf5W+X/rLT+Thn5QGLKITWqH9zgkHUvad5xFIe7Fawhb0GiG3oHfDI70Uy1gZ9mDcSmfUG3PQubQffMeFUkvTu0PugI0JXqt2TzXx+l45/+lwH9Jomb/LRenF6oRmkljjJ0v2v2/G5N7ESLZ0DfIo0XKMCawJbRDplJ+SfXS1EIvOMfY3ghZPp/uCvYiyZEAXno8AaS7L9NLwvXyaUklFvGSwwPnUrn088Hlrg20COkvff5V2oXIyWXGTUrxQKrd3OZmqOHahh1f46dNGXOvr2qQp1MJBxpFembqMZAfPIEs3krN3akU=\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-gw-uri}}/api/policy/approve",
+									"host": [
+										"{{api-gw-uri}}"
+									],
+									"path": [
+										"api",
+										"policy",
+										"approve"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Kart Şifreleme Keyi",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-gw-uri}}/api/common/encryption/key",
+									"host": [
+										"{{api-gw-uri}}"
+									],
+									"path": [
+										"api",
+										"common",
+										"encryption",
+										"key"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Teklif Onay - Ödeme Linki",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\n    \"gsm\": \"0553xxx01xx\",\n    \"paymentLinkProposals\": [\n        {\n            \"productId\": \"101\",\n            \"policyNo\": \"100000334528200\",\n            \"renewalNo\": 0,\n            \"endorsNo\": 0,\n            \"isMain\": true\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-gw-uri}}/api/policy/payment-link",
+									"host": [
+										"{{api-gw-uri}}"
+									],
+									"path": [
+										"api",
+										"policy",
+										"payment-link"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Teklif Onay - Nakit",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"productId\": \"300\",\n    \"policyNo\": \"100000334528200\",\n    \"renewalNo\": \"0\",\n    \"endorsNo\": \"0\",\n    \"paymentType\": \"cash\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-gw-uri}}/api/policy/approve",
+									"host": [
+										"{{api-gw-uri}}"
+									],
+									"path": [
+										"api",
+										"policy",
+										"approve"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3D Checkback",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{api-gw-uri}}/api/policy/payment/{{paymentUuid}}/checkback",
+									"host": [
+										"{{api-gw-uri}}"
+									],
+									"path": [
+										"api",
+										"policy",
+										"payment",
+										"{{paymentUuid}}",
+										"checkback"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Bu API koleksiyonu, teklif onaylama işlemlerini yönetmek için geliştirilmiştir. İçerdiği uç noktalar ve işlevleri aşağıdaki gibidir:\n\n- **POST Approve Proposal**: Belirtilen teklifin onaylanmasını sağlar. Teklif onaylama işlemi, çeşitli ödeme yöntemleri ile gerçekleştirilebilir:\n    \n    - **Kredi Kartı**: Standart kredi kartı ile ödeme.\n        \n    - **Kredi Kartı - 3D**: 3D güvenlik doğrulaması ile kredi kartı kullanılarak yapılan ödeme.\n        \n    - **Nakit**: Nakit ödeme ile teklifin onaylanması.\n        \n    - **Kredi**: Kredi kullanarak teklifin onaylanması.\n        \n    - **Kimlik ile Ödeme**: Kimlik doğrulaması ile yapılan ödeme.\n        \n- **GET Get Installment**: Teklif için geçerli olan taksit seçeneklerini getirir. Bu uç nokta, ödeme planları hakkında bilgi almak için kullanılır.\n    \n- **GET Get Payment Methods**: Kullanılabilir ödeme yöntemlerini listeler. Bu uç nokta, teklifin ödenmesinde kullanılabilecek yöntemleri öğrenmek için kullanılır."
+				},
+				{
+					"name": "Poliçe Sorgulama",
+					"item": [
+						{
+							"name": "Poliçe Mevcudiyet Kontrolü",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"idNumber\": \"xxx123566xx\",\n    \"birthDate\": \"199x-07-18T00:00:00\",\n    \"productId\": \"500\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-gw-uri}}/api/policy/has-policy",
+									"host": [
+										"{{api-gw-uri}}"
+									],
+									"path": [
+										"api",
+										"policy",
+										"has-policy"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "#### **Poliçe Mevcudiyet Kontrolü**\n\nBu servis, sigortalının belirli bir ürüne ait aktif bir poliçesinin olup olmadığını kontrol etmek amacıyla kullanılır.\n\n🎯 Amaç\n\nGirilen kimlik bilgileri ve ürün koduna göre sigortalının mevcut poliçelerinin olup olmadığı bilgisini döner.\n\n### 📥 Request\n\n#### Parametre Açıklamaları:\n\n| Alan | Tip | Zorunlu | Açıklama |\n| --- | --- | --- | --- |\n| idNumber | string | Evet | T.C. Kimlik Numarası |\n| birthDate | datetime | Evet | Sigortalının doğum tarihi |\n| productId | string | Evet | Kontrol edilecek ürünün ID’si |\n\n---\n\n#### 📤 Response\n\n✅ Poliçe Varsa – HTTP 200 OK\n\n❌ Poliçe Yoksa – HTTP 404 Not Found"
+				}
+			]
+		},
+		{
+			"name": "Basım",
+			"item": [
+				{
+					"name": "Teklif ve Poliçe Basım Tipleri Listesi",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api-gw-uri}}/api/print/policy/print-type?productId=101&policyNo=100000313406662&renewalNo=0&endorsNo=0",
+							"host": [
+								"{{api-gw-uri}}"
+							],
+							"path": [
+								"api",
+								"print",
+								"policy",
+								"print-type"
+							],
+							"query": [
+								{
+									"key": "productId",
+									"value": "101",
+									"description": "Ürün Kodu - 101/111/202/600"
+								},
+								{
+									"key": "policyNo",
+									"value": "100000313406662",
+									"description": "Teklif/Poliçe No"
+								},
+								{
+									"key": "renewalNo",
+									"value": "0",
+									"description": "Yenileme No"
+								},
+								{
+									"key": "endorsNo",
+									"value": "0",
+									"description": "Zeyil No"
+								}
+							]
+						},
+						"description": "Teklif/Poliçe için alınabilecek basım tiplerini getirir"
+					},
+					"response": []
+				},
+				{
+					"name": "Teklif ve Poliçe Basımı",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api-gw-uri}}/api/print/policy?productId=600&policyNo=100000373707540&renewalNo=0&endorsNo=0&printType=1",
+							"host": [
+								"{{api-gw-uri}}"
+							],
+							"path": [
+								"api",
+								"print",
+								"policy"
+							],
+							"query": [
+								{
+									"key": "productId",
+									"value": "600",
+									"description": "Ürün Kodu - 101/111/202/600"
+								},
+								{
+									"key": "policyNo",
+									"value": "100000373707540",
+									"description": "Teklif/Poliçe No"
+								},
+								{
+									"key": "renewalNo",
+									"value": "0",
+									"description": "Yenileme No"
+								},
+								{
+									"key": "endorsNo",
+									"value": "0",
+									"description": "Zeyil No"
+								},
+								{
+									"key": "printType",
+									"value": "1",
+									"description": "Basım Tipi"
+								}
+							]
+						},
+						"description": "Gönderilen tipteki Teklif/Poliçe basımını getirir"
+					},
+					"response": []
+				},
+				{
+					"name": "Teklif ve Poliçe Basımını SMS ve EMail ile Gönder",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productId\" : \"111\",\n    \"policyNo\" : \"100000000264754\",\n    \"renewalNo\" : 0,\n    \"endorsNo\": 0,\n    \"type\": \"email\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-gw-uri}}/api/print/policy/send",
+							"host": [
+								"{{api-gw-uri}}"
+							],
+							"path": [
+								"api",
+								"print",
+								"policy",
+								"send"
+							]
+						},
+						"description": "Teklif/Poliçe basımını telefon/email adresine gönderir"
+					},
+					"response": []
+				}
+			],
+			"description": "Bu API koleksiyonu, poliçe ve teklif basım işlemlerini yönetmek için kullanılır. Koleksiyon şu uç noktaları içerir:\n\n- **GET Policy Print Type List**: Mevcut poliçe yazdırma türlerinin listesini getirir. Bu uç nokta, sistemde tanımlı olan farklı yazdırma türlerine erişim sağlamak için kullanılır.\n    \n- **GET Policy Print**: Belirtilen bir poliçenin yazdırma işlemi için gerekli bilgileri döner. Kullanıcılar, bu uç nokta ile bir poliçenin yazdırılabilir formatını alabilirler.\n    \n- **POST Send Policy**: Belirtilen basımını poliçeyi ilgili alıcıya gönderir. Bu uç nokta, poliçe bilgilerini e-posta veya diğer iletişim kanalları üzerinden iletmek için kullanılır.\n    \n\nBu API'ler, poliçe yönetimi ve yazdırma işlemlerini kolaylaştırarak kullanıcıların süreçlerini daha verimli hale getirir."
+		},
+		{
+			"name": "Encryption",
+			"item": [
+				{
+					"name": "Encryption Key",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api-gw-uri}}/api/common/encryption/key",
+							"host": [
+								"{{api-gw-uri}}"
+							],
+							"path": [
+								"api",
+								"common",
+								"encryption",
+								"key"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"//pm.request.headers.add({",
+					"//    key: \"Gateway-Forward\",",
+					"//    value: \"true\"",
+					"//});",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

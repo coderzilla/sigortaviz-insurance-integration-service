@@ -105,3 +105,62 @@ VALUES
 ON DUPLICATE KEY UPDATE carrierParamName = VALUES(carrierParamName),
   transformType = VALUES(transformType),
   isRequiredForApi = VALUES(isRequiredForApi);
+
+-- Quick Sigorta carrier and products from Postman collection
+INSERT INTO carriers (code, name, isActive)
+VALUES ('QUICK_SIGORTA', 'Quick Sigorta', 1)
+ON DUPLICATE KEY UPDATE name = VALUES(name), isActive = VALUES(isActive);
+
+-- Ensure core products exist (Traffic, Casco, Home/Dask, Health/Travel, Life/PA)
+INSERT INTO products (code, name, description) VALUES
+('TRAFFIC', 'Traffic', 'Trafik sigortasi'),
+('CASCO', 'Casco', 'Kasko sigortasi'),
+('HOME', 'Home', 'Konut/Dask'),
+('HEALTH', 'Health', 'Saglik/Travel Saglik'),
+('LIFE', 'Life', 'Ferdi Kaza')
+ON DUPLICATE KEY UPDATE name = VALUES(name), description = VALUES(description);
+
+-- Carrier products mapping Quick productIds to internal codes
+INSERT INTO carrier_products (carrierId, productId, externalCode, isActive) VALUES
+((SELECT id FROM carriers WHERE code = 'QUICK_SIGORTA'),
+ (SELECT id FROM products WHERE code = 'TRAFFIC'),
+ '101', 1),
+((SELECT id FROM carriers WHERE code = 'QUICK_SIGORTA'),
+ (SELECT id FROM products WHERE code = 'CASCO'),
+ '111', 1),
+((SELECT id FROM carriers WHERE code = 'QUICK_SIGORTA'),
+ (SELECT id FROM products WHERE code = 'CASCO'),
+ '112', 1),
+((SELECT id FROM carriers WHERE code = 'QUICK_SIGORTA'),
+ (SELECT id FROM products WHERE code = 'HOME'),
+ '202', 1),
+((SELECT id FROM carriers WHERE code = 'QUICK_SIGORTA'),
+ (SELECT id FROM products WHERE code = 'HEALTH'),
+ '600', 1),
+((SELECT id FROM carriers WHERE code = 'QUICK_SIGORTA'),
+ (SELECT id FROM products WHERE code = 'LIFE'),
+ '500', 1)
+ON DUPLICATE KEY UPDATE externalCode = VALUES(externalCode), isActive = VALUES(isActive);
+
+-- Orient Sigorta carrier and generic product mappings (WSDL-based, no explicit external codes)
+INSERT INTO carriers (code, name, isActive)
+VALUES ('ORIENT_SIGORTA', 'Orient Sigorta', 1)
+ON DUPLICATE KEY UPDATE name = VALUES(name), isActive = VALUES(isActive);
+
+INSERT INTO carrier_products (carrierId, productId, externalCode, isActive) VALUES
+((SELECT id FROM carriers WHERE code = 'ORIENT_SIGORTA'),
+ (SELECT id FROM products WHERE code = 'TRAFFIC'),
+ 'TRAFFIC', 1),
+((SELECT id FROM carriers WHERE code = 'ORIENT_SIGORTA'),
+ (SELECT id FROM products WHERE code = 'CASCO'),
+ 'CASCO', 1),
+((SELECT id FROM carriers WHERE code = 'ORIENT_SIGORTA'),
+ (SELECT id FROM products WHERE code = 'HOME'),
+ 'HOME', 1),
+((SELECT id FROM carriers WHERE code = 'ORIENT_SIGORTA'),
+ (SELECT id FROM products WHERE code = 'HEALTH'),
+ 'HEALTH', 1),
+((SELECT id FROM carriers WHERE code = 'ORIENT_SIGORTA'),
+ (SELECT id FROM products WHERE code = 'LIFE'),
+ 'LIFE', 1)
+ON DUPLICATE KEY UPDATE externalCode = VALUES(externalCode), isActive = VALUES(isActive);

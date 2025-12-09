@@ -3,6 +3,8 @@ export enum ProductCode {
   HEALTH = 'HEALTH',
   CASCO = 'CASCO',
   HOME = 'HOME',
+  LIFE = 'LIFE',
+  PET = 'PET',
 }
 
 export type CarrierCode =
@@ -10,6 +12,7 @@ export type CarrierCode =
   | 'SOMPO'
   | 'TURKEY_INSURANCE'
   | 'ANADOLU_SIGORTA'
+  | 'AXA'
   | string;
 
   

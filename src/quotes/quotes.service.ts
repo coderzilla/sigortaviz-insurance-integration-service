@@ -3,7 +3,13 @@ import { Injectable } from '@nestjs/common';
 import { CreateQuoteDto } from './dtos/create-quote.dto';
 import { QuoteResponseDto } from './dtos/quote-response.dto';
 import { CarriersService } from '../carriers/carriers.service';
-import { QuoteRequest } from '../carriers/carrier-types';
+import {
+  PolicyPurchaseRequest,
+  PolicyPurchaseResult,
+  QuoteRequest,
+} from '../carriers/carrier-types';
+import { PurchasePolicyDto } from './dtos/purchase-policy.dto';
+import { ProductCode } from '../common/types/domain-types';
 
 @Injectable()
 export class QuotesService {
@@ -24,5 +30,21 @@ export class QuotesService {
       offers: result.offers,
       errors: result.errors,
     };
+  }
+
+  async purchasePolicy(dto: PurchasePolicyDto): Promise<PolicyPurchaseResult> {
+    const request: PolicyPurchaseRequest = {
+      quoteRequestId: dto.quoteRequestId,
+      selectedOffer: dto.selectedOffer,
+      insuredPerson: dto.insuredPerson,
+      payment: dto.payment,
+      customFields: dto.customFields,
+    };
+
+    return this.carriersService.buyPolicy(request);
+  }
+
+  getCarriersForProduct(product: ProductCode): string[] {
+    return this.carriersService.getCarriersForProduct(product);
   }
 }

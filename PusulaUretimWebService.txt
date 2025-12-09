@@ -1,0 +1,3099 @@
+PUSULA URETIM WEB SERVICE
+
+2022
+TÜRKİYE SİGORTA A.Ş.Bilgi İşlem Grup Müdürlüğü
+09.03.2022
+
+
+
+
+PUSULA URETIM WEB SERVICE
+
+2022
+TÜRKİYE SİGORTA A.Ş.Bilgi İşlem Grup Müdürlüğü
+09.03.2022
+
+
+İçindekiler
+
+1.	PUSULA Üretim Web Service Methodları Kullanımı	3
+1.1.	Bu Dökumanın Amacı	3
+1.2.	Yapılan Değişiklikler	4
+1.3.	PUSULA Uretim Web Service Methodları	5
+2.	PUSULA Uretim Web Service	6
+2.1.	# policeSorguTarih () Methodu	7
+2.2.	# policeSorgu () Methodu	8
+2.3.	# teklifOlustur () Methodu	15
+2.4.	# TeklifSorgu () Methodu	24
+2.5.	# policeOlustur () Methodu	25
+2.6.	# policeTeklifOlustur () Methodu	27
+2.7.	# ZeyilOlusturIptal () Methodu	29
+2.8.	# TeklifSorguTarih () Methodu	30
+2.9 .     #PoliceBilgisiGuncelle() Methodu	32
+2.10.   #DokumanIndir() Methodu	33
+3.	Oluşabilecek Hata ve Uyarılar	34
+4.	Güvenlik	35
+5.	Parametre Tabloları	36
+5.1.	Kart Türü Tablosu	36
+5.2.	Teklif Durum Tablosu	36
+5.3.	Poliçe Durum Tablosu	36
+5.4.	Ödeme Aracı Tablosu	37
+5.5.	Banka İş Tipi Tablosu	37
+5.6.	Poliçe Türü Tablosu	37
+5.7.	Döviz Cinsi Tablosu	38
+5.8.	Ürün Kodu Tablosu	38
+5.9.	Uyruk Kodu Tablosu	40
+5.10.	Ürün Risk Bilgileri Tablosu	40
+5.11.	Ürün Ödeme Planı Tablosu	41
+5.12.	Sağlık Grup Tipi Tablosu	42
+5.13.	Sağlık Tahsilat  Tipi Tablosu	42
+5.14.	Sağlık OBYG Tipi Tablosu	42
+5.15.	Tarih Tipi Kodu	42
+5.16.	İşlem Tipi Kodu	42
+5.17.	Teklif Durum Tablosu	42
+5.18.	Kredi Turu Kodu Tablosu	43
+5.19.	Dokuman Tipi Kodu Tablosu	43
+5.20.	Alternatif parametre gönderim yöntemleri	45
+5.20.1.	Tramer kodları ile gönderim;	45
+5.20.2.	UAVT  kodları ile gönderim;	46
+6.	EKLER	48
+
+
+
+
+
+	•	PUSULA Üretim Web Service Methodları Kullanımı
+	•	Bu Dökumanın Amacı
+Bu doküman PUSULA Üretim Web Service methodlarının tanıtımı ve nasıl kullanıldıklarının açıklanması amacıyla hazırlanmıştır. 
+
+	•	Yapılan Değişiklikler
+
+	•	27.10.2022 itibariyle yapılan değişiklikler;
+	•	DokumanIndir methodu eklendi  
+
+	•	16.04.2022 itibariyle yapılan değişiklikler;
+	•	TeklifOlustur methoduna yeni parametreler eklendi ve bazı alanların sırası
+	•	PoliceBilgisiGuncelle methodu eklendi
+	•	09.03.2022 itibariyle yapılan değişiklikler;
+	•	TeklifSorguTarih methodu eklendi
+	•	Methodlar güncellendi(PoliceSorgu,TeklifSorgu,TeklifOlustur
+
+	•	18.10.2021 itibariyle yapılan değişiklikler;
+	•	ZeyilOlusturIptal  methodu eklendi
+	•	TeklifSorgu methodu eklendi
+
+	•	19.12.2020 itibariyle yapılan değişiklikler;
+	•	TeklifOlustur  methodu güncellendi
+	•	11.11.2020 itibariyle yapılan değişiklikler;
+	•	 Web service methodlarının request response örnekleri ilgili  method altına eklenmiştir , Ayrıca EKLER başlığı altında da paylaşılmıştır.
+	•	Adres linkleri yeni adresler ile güncellenmiştir.
+	•	Method parametre ve sonuç tabloları güncellenmiştir.
+	•	05.03.2014 itibariyle yapılan değişiklikler;
+	•	ARAC_MARKASI , ARAC_TIPI ve ARAC_MODELI risk sorusu degerlerine T: prefix’i kullanılarak Tramer Kodu ile gönderim yapılabilmesi sağlandı. Detaylı bilgi için Alternatif Parametre Gönderim Yöntemleri bölümünü inceleyebilirsiniz.
+	•	RIZIKO ve Sigortalı/Sigorta ettiren adres verilerinde İl, İlçe ve Belde kodlarına U: prefix’i kullanılarak UAVT Kodu ile gönderim yapılabilmesi sağlandı. Detaylı bilgi için Alternatif Parametre Gönderim Yöntemleri bölümünü inceleyebilirsiniz.
+	•	31.12.2013 itibariyle yapılan değişiklikler;
+	•	TeklifMusteriBilgisi’nde gerçek kişiler için adres bilgisi gönderilmediği takdirde (ilce, belde ve ulke kodlarının boş olması) Mernis üzerindeki adres ile devam edilebilmesi sağlandı ve bu zorunluluk ortadan kaldırıldı.
+	•	TeklifMusteriBilgisi’ne uyrukKodu eklendi. Bu sayede yabancı ve kktc kimlik no ile işlem yapılabilmesi sağlandı.
+	•	Web Service’e policeTeklifOlustur methodu eklendi. Bu sayede teklif ve poliçenin birlikte oluşturulabilmesine olanak sağlandı.
+	•	26.06.2013 itibariyle yapılan değişiklikler;
+	•	Web Service oluşturuldu.
+
+
+
+	•	PUSULA Uretim Web Service Methodları
+
+	•	policeSorguTarih methodu, acentelerin, PUSULA uygulaması üzerinden oluşturmuş oldukları iki tarih aralığındaki poliçe bilgilerine ulaşmalarını sağlamak amacıyla hazırlanmış web service methodudur.
+
+	•	policeSorgu  methodu, acentelerin, PUSULA uygulaması üzerinden oluşturmuş oldukları poliçe bilgilerine Poliçe No, Yenileme No, Zeyil No sorgusunu kullanarak ulaşmalarını sağlamak amacıyla hazırlanmış web service methodudur.
+
+	•	teklifOlustur  methodu, acentelerin, PUSULA uygulaması üzerinden girilen bilgilere göre prim hesaplaması yapabilmesine ve isteniyorsa teklifin sistemde oluşturulmasını sağlamak amacıyla hazırlanmış bir web service methodudur.
+
+	•	teklifSorgu  methodu, acentelerin, PUSULA uygulaması üzerinden oluşturmuş oldukları teklif bilgilerine Teklif No, Revizyon No, Yenileme No sorgusunu kullanarak ulaşmalarını sağlamak amacıyla hazırlanmış web service methodudur.
+
+	•	policeOlustur  methodu, acentelerin, PUSULA uygulaması üzerinden daha önce oluşturdukları teklifi poliçeleştirmeleri için hazırlanmış bir web service methodudur.
+
+	•	policeTeklifOlustur methodu, acenteler PUSULA uygulaması üzerinden police ve teklif oluşturmak için hazırlanmış bir web service methodudur.
+
+	•	ZeyilOlusturIptal methodu, acenteler PUSULA uygulaması üzerinden poliçenin iptal zeyilini oluşturmak için hazırlanmış bir web service methodudur.
+
+	•	TeklifSorguTarih methodu, acentelerin, PUSULA uygulaması üzerinden oluşturmuş oldukları iki tarih aralığındaki teklif bilgilerine ulaşmalarını sağlamak amacıyla hazırlanmış web service methodudur..
+
+	•	PoliceBilgisiGuncelle methodu; acentelerin, PUSULA uygulaması üzerinden oluşturulmuş yenileme bilgisini güncellemesini sağlamak amacıyla hazırlanmış web service methodudur.
+
+	•	DokumanIndir methodu, acentelere, PUSULA uygulaması üzerinden oluşturulmuş dokümanların teminini sağlamak amacıyla hazırlanmış web service methodudur.
+
+
+	•	PUSULA Uretim Web Service
+
+ 
+Servis Adresleri 
+Test ortamı WSDL
+
+https://apigw-test.turkiyesigorta.com.tr/inbound/test/soap/pusula/uretim?wsdl (YENİ)
+Test ortamı Web
+https://apigw-test.turkiyesigorta.com.tr/inbound/test/soap/pusula/uretim (YENİ)
+Üretim ortamı WSDL
+
+https://apigw.turkiyesigorta.com.tr/inbound/prod/soap/pusula/uretim?wsdl (YENİ)
+Üretim ortamı Web
+
+https://apigw.turkiyesigorta.com.tr/inbound/prod/soap/pusula/uretim (YENİ)
+
+“PusulaUretimWebService” servisinin istemci tarafından kullanabileceği methodlar hakkındaki detaylı bilgiler method başlıklarıyla ele alınmıştır.
+	•	# policeSorguTarih () Methodu
+Acenteler PUSULA uygulaması üzerinden oluşturmuş oldukları iki tarih aralığındaki poliçe özet bilgilerine erişebilmek için bu methodu kullanabilirler.
+Sorgulama kriterleri için gerekli parametreler aşağıda belirtilmiştir.
+	•	Parametreler
+PoliceSorguTarihInputType
+Saha
+Zorunlu?
+Tip
+Tanım
+grupNo
+Hayır
+long
+Grup Numarası
+grupYenilemeNo
+Hayır
+long
+Grup Yenileme Numarası
+ilkTarih
+Evet
+dateTime
+Sorgulama kriterleri verilirken kullanılacak olan Başlangıç Tarihi
+sonTarih
+Evet
+dateTime
+Sorgulama kriterleri verilirken kullanılacak olan Bitiş Tarihi
+Örnek Request;
+
+
+
+	•	Sonuç
+PoliceSorguTarihResponse
+Saha
+Tip
+Tanım
+acenteKodu
+string
+Acente Kodu (Tali acente kodları gelebilir)
+brutPrim
+decimal
+İlgili Poliçenin Vergiler Dahil Prim Tutarı
+dovizCinsi
+string
+İlgili Poliçenin Döviz Cinsi
+iptalIstihsal
+string
+İlgili Poliçe veya Zeyil'in İptal veya İhtihsal Olma Durumu
+komisyonTutari
+decimal
+İlgili Poliçeden Aktarılacak Komisyon Tutarı
+policeDurumu
+string
+PoliceDurum
+policeNo
+long
+İlgili Poliçenin Numarası
+tanzimTarihi
+dateTime
+İlgili Poliçenin Tanzim Edildiği Tarih
+yenilemeNo
+long
+İlgili Poliçenin Zeyil Numarası
+zeyilNo
+long
+İlgili Poliçenin Yenileme Numarası
+
+
+
+
+
+
+
+
+
+Örnek Response;
+
+
+	•	# policeSorgu () Methodu
+Acenteler PUSULA uygulaması üzerinden oluşturmuş oldukları poliçe bilgilerine Poliçe No, Yenileme No, Zeyil No ile sorgulayabilirler.Sorgulama kriterleri için gerekli parametreler aşağıda belirtilmiştir.
+	•	Parametreler
+PoliceSorguInputType
+Saha
+Zorunlu?
+Tip
+Tanım
+policeNo
+Evet
+long
+Sorgulama kriterleri verilirken kullanılacak olan Poliçe No
+yenilemeNo
+Evet
+long
+Sorgulama kriterleri verilirken kullanılacak olan Yenileme No
+zeyilNo
+Evet
+long
+Sorgulama kriterleri verilirken kullanılacak olan Zeyil No
+Örnek Request;
+
+
+
+	•	Sonuç
+PoliceSorguResponse
+Saha
+Tip
+Tanım
+
+
+policeXMLBase
+devredilecekAcenteKodu
+string
+Devredilecek Acente Kodu
+devredilecekSubeKodu
+string
+Devredilecek Şube Kodu
+odemeAraciKodu
+string
+Ödeme Aracı Kodu
+odemePlaniKodu
+string
+Ödeme Planı Kodu
+
+
+
+
+policeXMLBase
+Saha
+Tip
+Tanım
+
+
+uretimXMLBase
+as400PoliceNo
+string
+as400 Police Numarası
+gorunenZeyilNo
+long
+Pusula da görünen Zeyil Numarası
+IptalIstihsal
+string
+İlgili Poliçe veya Zeyil'in İptal veya İhtihsal Olma Durumu
+muhasebelestirmeTarihi
+dateTime
+İlgili Poliçenin Muhasebeleştirme Tarihi
+oncekiPoliceNo
+string
+İlgili Üründe Müşterinin Daha Önce Poliçesi Varsa O Poliçenin Numarası
+policeAciklamasi
+string
+Poliçe Açıklaması
+PoliceBilgilendirmeCiktisiUrl
+string
+İlgili Poliçe Bilgilendirme Çıktısının Alınabileceği URL
+PoliceDurumu
+PoliceDurum
+Poliçe Durumu
+PoliceNo
+long
+Acentenin Ürettiği Poliçe Numarası
+PolicePDFUrl
+string
+İlgili Poliçe PDF Çıktısının Alınabileceği URL
+teklifRevizyonNo
+long
+İlgili Poliçenin Revizyon Numarası
+YenilemeNo
+long
+İlgili Poliçenin Yenileme Numarası
+ZeyilAciklamasi
+string
+Varsa Zeyil İlgili İlgili Açıklama
+ZeyilKodu
+string
+İlgili Poliçenin Zeyil Kodu
+ZeyilNo
+long
+İlgili Poliçenin Zeyil Numarası
+ZeyilTanim
+string
+İlgili Poliçenin Zeyil Tanımı
+
+
+uretimXMLBase
+Saha
+Tip
+Tanım
+acenteAdi
+string
+İlgili Poliçenin Acente Adı
+acenteKodu
+string
+İlgili Poliçenin Acente Kodu
+acenteKomisyonTutari
+decimal
+İlgili Poliçeden Acenteye Aktarılacak Komisyon Tutarı
+altGrup
+string
+Alt Grup
+altGrupVergiNo
+string
+Alt Grup Vergi No
+bankaKodu
+string
+Banka Kodu
+bankaPersonelKodu
+string
+Banka Personel Kodu
+BaslangicTarihi
+dateTime
+İlgili Poliçenin Başlangıç Tarihi
+birlikMarkaKodu
+string
+Birlik Marka Kodu
+birlikTipKodu
+string
+Birlik Tip Kodu
+BitisTarihi
+dateTime
+İlgili Poliçenin Bitiş Tarihi
+bransAdi
+string
+İlgili Poliçenin Pusula Branş Adı
+bransKodu
+string
+İlgili Poliçenin Pusula Branş Kodu
+brutPrim
+string
+İlgili Poliçenin Vergiler Dahil Prim Tutarı
+dainiMurteinler
+
+DainiMurteinBilgileri
+daskPoliceNo
+string
+Dask Police Numarası
+DirekSatisElemaniAcenteKomisyonTutari
+decimal
+İlgili Poliçenin Muhasebeleştirme Tarihi
+direkSatisElemaniSicilNo
+string
+Direk Satış Elemanı Sicil Numarası
+DovizCinsi
+string
+İlgili Poliçenin Döviz Cinsi
+DovizKuru
+string
+İlgili Poliçenin Döviz Kuru
+eskiPoliceNo
+string
+Eski Poliçe Numarası
+indirimArtirimlar
+
+İndirimArttırım
+NetPrim
+decimal
+İlgili Poliçenin Net Primi
+OdemeAraci
+string
+İlgili Poliçe Tahsilatında Hangi Ödeme Aracının Seçildiği
+OdemePlani
+string
+İlgili Poliçe Tahsilatında Hangi Ödeme Planının Seçildiği
+ozelNot
+string
+Özel Not
+OzelTaksitliMi
+string
+İlgili Poliçenin Özel Taksitli Olup Olmadığı (Evet/Hayır)
+policeGrubuAdi
+string
+Poliçe Grubu Adı
+policeGrubuKodu
+long
+Poliçe Grubu Kodu
+PoliceTuru
+string
+İlgili Poliçenin Türü
+SanalPosTahsilatiVar
+string
+Ödeme Planı Blokeliyse Ve Ödeme Aracı Kredi Kartıysa Evet Diğer Durumlarda İse Hayır Gönderilir
+sigortaEttirenPrimi
+decimal
+Sigorta Ettiren Primi
+sigortaEttirenler
+
+SigortaEttirenBilgileri
+sigortalilar
+
+SigortaliBilgileri
+subeKodu
+string
+Sube Kodu
+taksitler
+
+taksitler
+TanzimTarihi
+dateTime
+İlgili Poliçenin Tanzim Edildiği Tarih
+tarifeSorulari
+
+TarifeSorusuBilgileri
+tarsimPoliceNo
+string
+Tarsim Poliçe Numarası
+teklifOlusturanKullanici
+string
+İlgili Poliçeyi Oluşturan Kullanıcı 
+teminatlar
+
+TeminatBilgisi
+TLAcenteKomisyonTutari
+decimal
+İlgili Poliçeden Acenteye Aktarılacak TL Komisyon Tutarı
+TLBrutPrim
+decimal
+İlgili Poliçenin Vergiler Dahil TL Prim Tutarı
+TLDirekSatisElemaniAcenteKomisyonTutari
+decimal
+İlgili Poliçenin Direk Satış Elemanı TL Komisyon Tutarı
+TLNetPrim
+decimal
+İlgili Poliçenin TL Net Primi
+tlSigortaEttirenPrimi
+decimal
+Tl Sigorta Ettiren Primi
+TLToplamVergiTutari
+decimal
+İlgili Poliçedeki Toplam TL Vergi Tutarı
+ToplamVergiTutari
+decimal
+İlgili Poliçedeki Toplam Vergi Tutarı
+UrunAdi
+string
+İlgili Poliçenin Pusula Ürün Adı
+UrunKodu
+string
+İlgili Poliçenin Pusula Ürün Kodu
+ustAcenteKodu
+string
+Üst Acente Kodu
+vergiler
+
+VergiBilgileri
+
+
+Poliçe Daini Mürtein Bilgileri ve Açıklamaları (AcentePoliceXMLDainiMurteinler)
+Saha
+Tip
+Tanım
+adSoyadUnvan
+string
+İlgili Poliçedeki Daini Mürteinin Gerçek kişi ise Ad ve Soyadı, Tüzel Kişi ise Unvanı
+bankaKodu
+string
+İlgili Poliçedeki Daini Mürteinin  Banka Kodu
+bankaSubeKodu
+string
+İlgili Poliçedeki Daini Mürteinin  Banka Şube Kodu
+dainiMurteinKodu
+string
+İlgili Poliçedeki Daini Mürteinin  Kodu
+kimlikNo
+string
+Kimlik Numarası
+mukellefTuru
+string
+İlgili Poliçedeki Daini Mürteinin Mükellef Türü (Gerçek, Tüzel)
+pasaportNo
+string
+Pasaport Numarası
+vergiNo
+string
+İlgili Poliçedeki Daini Mürteinin TC, Vergi Numarası veya KKTC Vergi Kimlik Numarası 
+
+
+Poliçe Toplam İndirim Artırım Bilgileri ve Açıklamaları (AcentePoliceXMLIndirimArtirim)
+Saha
+Tip
+Tanım
+IndirimArtirimAdi
+string
+İlgili Poliçedeki Toplam İndirim Artırım Adı
+IndirimArtirimOrani
+decimal
+İlgili Poliçedeki Toplam İndirim Artırım Oranı
+IndirimArtirimTipi
+string
+İlgili Poliçedeki Toplam İndirim Artırım Tipi (İndirim, Artırım)
+IndirimArtirimTutari
+decimal
+İlgili Poliçedeki Toplam İndirim Artırım Tutarı
+
+
+Poliçe Sigorta Ettiren Bilgileri ve Açıklamaları (AcentePoliceXMLSigortaEttiren)
+Saha
+Tip
+Tanım
+adSoyadUnvan
+string
+Ad Soyad Unvan
+adresler
+
+MüşteriAdresBilgileri
+eklemeCikarmaDurumu
+string
+Ekleme Çıkarma Durumu
+ilbisKodu
+string
+İlbis Kodu
+ilbisTipi
+string
+İlbis Tipi
+kimlikNo
+string
+Kimlik Numarası
+mukellefTuru
+string
+Mükellef Turu
+musteriKodu
+string
+Müşteri Kodu
+pasaportNo
+string
+Pasaport Numarası
+ulke
+string
+Ülke 
+uyruk
+string
+Uyruk 
+vergiNo
+string
+Vergi Numarası
+
+
+Poliçe Sigortalı Bilgileri ve Açıklamaları (AcentePoliceXMLSigortali)
+Saha
+Tip
+Tanım
+adSoyadUnvan
+string
+Ad Soyad Unvan
+adresler
+
+MüşteriAdresBilgileri
+eklemeCikarmaDurumu
+string
+Ekleme Çıkarma Durumu
+ilbisKodu
+string
+İlbis Kodu
+ilbisTipi
+string
+İlbis Tipi
+kimlikNo
+string
+Kimlik Numarası
+mukellefTuru
+string
+Mükellef Turu
+musteriKodu
+string
+Müşteri Kodu
+pasaportNo
+string
+Pasaport Numarası
+ulke
+string
+Ülke 
+uyruk
+string
+Uyruk 
+vergiNo
+string
+Vergi Numarası
+
+
+Poliçe Müşteri Adres Bilgileri ve Açıklamaları (AcentePoliceXMLMusteriAdres)
+Saha
+Tip
+Tanım
+ada
+string
+Ada 
+adresinKisaAdi
+
+Adresin Kısa Adı
+belde
+string
+Belde 
+binaBlok
+string
+Bina Blok
+cadde
+string
+Cadde 
+daireNo
+string
+Daire Numarası
+detayliAdres
+string
+Detaylı Adres
+durum
+string
+Durum 
+eklemeCikarmaDurumu
+string
+Ekleme Çıkarma Durumu
+ilce
+string
+İlce 
+kapiNo
+string
+Kapı Numarası
+katNo
+string
+Kat Numarası
+mahalleKoy
+string
+Mahalle/ Koy
+pafta
+string
+Pafta 
+parsel
+string
+Parsel 
+postaKodu
+string
+Posta Kodu
+sehir
+string
+Şehir 
+semt
+string
+semt
+site
+string
+Site 
+sokak
+string
+Sokak 
+ulke
+string
+Ülke 
+yazismaAdresiMi
+string
+Yazışma Adresi Mi
+
+taksitler
+Saha
+Tip
+Tanım
+taksit
+
+TaksitBilgileri
+
+Poliçe Taksit Bilgileri ve Açıklamaları (AcentePoliceXMLTaksit)
+Saha
+Tip
+Tanım
+kartNumarasi
+string
+Kart Numarası
+kartSahibi
+string
+Kart Sahibi
+komisyonTutari
+decimal
+İlgili Poliçeden Aktarılacak Komisyon Tutarı
+taksitDurumu
+string
+Taksit Durumu
+taksitId
+long
+İlgili Pliçenin Taksit Idsi
+TaksitNo
+int
+İlgili Poliçedeki Ödemelerin Taksit Numarası
+TaksitTipi
+string
+İlgili Poliçedeki Ödemelerin Taksit Tipi
+TaksitTutari
+decimal
+İlgili Poliçedeki Ödemelerin Taksit Tutarı
+tlKomisyonTutari
+decimal
+TL cinsi Komisyon Tutarı
+tlTutar
+decimal
+TL Cinsi Tutar
+VadeTarihi
+dateTime
+İlgili Poliçedeki Ödemelerin Vade Tarihi
+
+Poliçe Tarife Sorusu Bilgileri ve Açıklamaları (AcentePoliceXMLTarifeSorusu)
+Saha
+Tip
+Tanım
+TarifeSorusuAdi
+string
+İlgili Poliçedeki Tarife Sorularının Adı (Alt Sektör, Meslek gibi)
+TarifeSorusuCevap
+string
+İlgili Poliçedeki Tarife Sorularının Cevabı
+tarifeSorusuCevapKodu
+string
+Tarife Sorusu Cevap Kodu
+TarifeSorusuKodu
+string
+İlgili Poliçedeki Tarife Sorularının Kodu (Alt Sektör
+
+Poliçe Teminat Bilgileri ve Açıklamaları (AcentePoliceXMLTeminat)
+Saha
+Tip
+Tanım
+indirimArtirim
+
+acentePoliceXMLIndirimArtirim
+limitler
+
+AcentePoliceXMLTeminatLimiti
+sigortaEttirenPrimi
+decimal
+Sigorta Ettiren Primi
+teminatAcenteKomisyonOrani
+decimal
+Teminat Acente Komisyon Oranı
+TeminatAcenteKomisyonTutari
+decimal
+İlgili Poliçedeki Teminatların Acente Komisyon Tutarı
+TeminatAdi
+string
+İlgili Poliçedeki Teminatların Adı
+TeminatBedeli
+decimal
+İlgili Poliçedeki Teminatların Bedeli
+TeminatDirekSatisElemaniAcenteKomisyonTutari
+decimal
+İlgili Poliçedeki Teminatların Direk Satış Elemanı Acente Komisyon Tutarı
+TeminatFiyati
+decimal
+İlgili Poliçedeki Teminatların Fiyatı
+TeminatIptalIstihsal
+string
+İlgili Poliçedeki Teminatların İptal İstihsal Durumu
+TeminatKodu
+string
+İlgili Poliçedeki Teminatların Kodu
+TeminatPrimi
+decimal
+İlgili Poliçedeki Teminatların Primi
+tlSigortaEttirenPrimi
+decimal
+TL Cinsi Sigorta Ettiren Primi
+tlTeminatAcenteKomisyonTutari
+decimal
+TL Cinsi Teminat Acente Komisyon Tutarı
+tlTeminatDirekSatisElemaniAcenteKomisyonTutari
+decimal
+TL Cinsi Teminat Direk Satış Elemanı Acente Komisyon Tutarı
+tlTeminatPrimi
+decimal
+TL Cinsi Teminat Primi
+
+Poliçe Teminat Limit Bilgileri ve Açıklamaları (AcentePoliceXMLTeminatLimiti)
+Saha
+Tip
+Tanım
+LimitAdi
+string
+İlgili Poliçedeki Teminatların Limit Adı
+Limit
+decimal
+İlgili Poliçedeki Teminatların Limiti
+
+Poliçe Vergi Bilgileri ve Açıklamaları (AcentePoliceXMLVergi)
+Saha
+Tip
+Tanım
+tlVergiTutari
+decimal
+TL Vergi Tutarı
+VergiTipi
+string
+İlgili Poliçedeki Verginin Tipi (Vergi, Güvence Fonu gibi)
+VergiMuhasebeTipi
+string
+İlgili Poliçedeki Verginin Muhasebe Tipi (YSV, Gider gibi)
+VergiAdi
+string
+İlgili Poliçedeki Verginin Adı
+VergiTutari
+decimal
+İlgili Poliçedeki Verginin Tutarı
+
+
+Örnek Response;
+
+
+	•	# teklifOlustur () Methodu
+Acenteler PUSULA uygulaması üzerinden teklif oluşturmak için kullanılır. Genel Bilgiler, Sigortalı Bilgileri ve Risk Bilgileri alınır oluşan teklife ait bilgiler dönülür.
+
+Sorgulama kriterleri için gerekli parametreler aşağıda belirtilmiştir.
+
+
+	•	Parametreler
+TeklifOlusturInput
+Saha
+Zorunlu?
+Tip
+Tanım
+ekBilgiler
+hayır
+
+TeklifEkBilgisi
+genelBilgi
+Evet
+
+TeklifGenelBilgisi
+riskBilgisi
+Evet
+
+riskBilgisi
+sigortaliBilgisi
+Evet
+
+TeklifMusteriBilgisi
+sigortaEttirenBilgisi
+Hayır
+
+TeklifMusteriBilgisi
+
+TeklifGenelBilgisi
+
+Saha
+Zorunlu?
+Tip
+Tanım
+acenteIsTipiKodu
+Hayır
+string
+Acente İş Tipi Kodu
+bankaIsTipiKodu
+Hayır
+string
+BankaIsTipi (Satış Kaynağı Banka ise doldurulabilir)
+bankaKrediNumarasi
+Hayır
+string
+Banka Kredi Numarası
+bankaKrediTarihi
+Hayır
+dateTime
+Kredi tarihi
+bankaKrediTuruKodu
+Hayır
+String
+Banka kredi türü
+bankaKrediTutari
+Hayır
+Decimal
+Kredi tutarı
+baslangicTarihi
+Hayır
+dateTime
+Başlangıç Tarihi
+bitisTarihi
+Hayır
+dateTime
+Bitiş Tarihi 
+dainiMurteinKodu
+Hayır
+string
+Dain-i Murtein Kodu
+dokumanNo
+Hayır
+string
+İlgili Doküman No
+dovizCinsi
+Hayır
+ string
+Döviz Cinsi (Default = TL)
+dovizeEndeksliKurBilgisi
+Hayır
+decimal
+Endeksli Döviz Kuru (Default = 1)
+endeksliDovizCinsi
+Hayır
+string
+Endeksli Döviz Cinsi (Default = TL)
+enflasyonOrani
+Hayır
+decimal
+Enflasyon Oranı
+fiyatAlternatifleri
+Evet
+
+Fiyat Alternatifleri  (True/False)
+ipAdresi
+Hayır
+string
+İşlemi yapan kullanıcının IP Adresi
+kurBilgisi
+Hayır
+decimal
+Döviz Kuru (Default = 1)
+odemeAraciKodu
+Hayır
+string
+OdemeAraci
+odemePlaniKodu
+Hayır
+string
+Ödeme Planı
+oncekiRevizyonNo
+Hayır
+long
+Önceki Referans Numarası
+oncekiTeklifNo
+Hayır
+long
+ÖncekiTeklif Numarası
+oncekiYenilemeNo
+Hayır
+long
+Önceki Yenileme Numarası
+personelNo
+Hayır
+string
+Personel No
+policeTuruKodu
+Hayır
+string
+PoliceTuru (Default = NORMAL)
+referansNo
+Hayır
+string
+Referans Numarası
+saglikBilgisi
+Hayır
+
+saglikBilgisi
+satisKaynagiKodu
+Hayır
+string
+Acente Partaj Kodu
+taksitAlternatifleri
+Hayır
+string
+Taksit Alternatifleri (true/false)
+taksitSayisi
+Hayır
+long
+Taksit Sayısı
+urunKodu
+Hayır
+string
+Ürün Kodu
+yenilenecekPoliceNo
+Hayır
+long
+Yenileme ise Yenilenecek Poliçe No
+yenilenecekPoliceYenilemeNo
+Hayır
+long
+Yenileme ise Yenilenecek Poliçe Yenileme No
+
+
+TeklifEkBilgisi
+Saha
+Zorunlu?
+Tip
+Tanım
+Kod
+Evet
+string
+kod
+Değer
+Evet
+string
+deger
+
+
+saglikBilgisi
+Saha
+Zorunlu?
+Tip
+Tanım
+altGrupAdi
+Hayır
+string
+Alt Grup Adı
+altGrupVergiNo
+Hayır
+string
+Alt Grup Vergi No (Kimlik No / Vergi No’dan biri girilmelidir)
+grupNo
+Hayır
+long
+Grup Numarası
+grupTipiKodu
+Hayır
+string
+GrupTipi
+grupYenilemeNo
+Hayır
+long
+Grup Yenileme Numarası
+tahsilatTipiKodu
+Hayır
+string
+TahsilatTipi
+
+riskBilgisi
+Saha
+Zorunlu?
+Tip
+Tanım
+deger
+Hayır
+string
+Değer
+Kod
+Hayır
+string
+Kod
+
+TeklifMusteriBilgisi
+Saha
+Zorunlu?
+Tip
+Tanım
+Ad
+Hayır
+string
+Ad 
+Ada
+Hayır
+string
+Ada
+adresTipiKodu
+Hayır
+String
+Adresi tipi kodu
+anneAdi
+Hayır
+string
+Anne Adı
+babaAdi
+Hayır
+string
+Baba Adı
+bankaHesapNo
+Hayır
+String
+Banka hesap no
+beldeKodu
+Hayır
+string
+BELDE
+blokNo
+Hayır
+string
+Blok No
+Cadde
+Hayır
+string
+Cadde
+cinsiyetKodu
+Hayır
+string
+Cinsiyet Kodu
+daireNo
+Hayır
+string
+Daire No
+dogumTarihi
+Hayır
+dateTime
+Doğum Tarihi
+dogumYeri
+Hayır
+string
+Doğum Yeri
+egitimDurumKodu
+Hayır
+String
+Eğitim durum kodu
+ekBilgiler
+
+
+ekBilgi
+formBilgileri
+
+
+musteriFormBilgisi
+ibanMusteriKimlikNo
+Hayır
+string
+IBAN Müşteri Kimlik Numarası
+ibanNumarasi
+Hayır
+string
+IBAN Numarası 
+ikametUlkeKodu
+Hayır
+String
+İkamet ülke kodu
+ilceKodu
+Hayır
+string
+ILCE
+kapiNo
+Hayır
+string
+Kapı No
+katNo
+Hayır
+string
+Kat No
+kimlikNo
+Hayır
+string
+Kimlik No (Kimlik No / Vergi No’dan biri girilmelidir)
+koyMahalle
+Hayır
+string
+Köy / Mahalle
+mailAdresi
+Hayır
+string
+E-Posta Adresi
+medeniDurumKodu
+Hayır
+string
+Medeni Durum Kodu
+meslekAdi
+Hayır
+string
+Meslek adı bilgisi yer alır, Meslek kodu SERBEST_MESLEK ise doldurulur.
+meslekKodu
+Hayır
+string
+Meslek Kodu bilgisi girilir.
+musteriKodu
+Hayır
+string
+Müşteri Kodu
+Pafta
+Hayır
+string
+Pafta
+Parsel
+Hayır
+string
+Parsel
+pasaportNo
+Hayır
+string
+İlgili Poliçedeki Sigorta Ettirenin Pasaport Numarası 
+postaKodu
+Hayır
+string
+Posta Kodu
+sektorKodu
+Hayır
+String
+Sektör kodu
+Semt
+Hayır
+string
+Semt
+Site
+Hayır
+string
+Site
+Sokak
+Hayır
+string
+Sokak
+Soyad
+Hayır
+string
+Soy ad 
+telAlanKodu
+Hayır
+string
+Telefon Alan Kodu
+telDahili
+Hayır
+string
+Telefon Dahili No
+telNo
+Hayır
+string
+Telefon No
+telUlkeKodu
+Hayır
+string
+Telefon Ülke Kodu
+ulkeKodu
+Hayır
+string
+Ülke Kodu
+uyrukKodu
+Hayır
+string
+Uyruk 
+uyrukUlkeKodu
+Hayır
+string
+Uyruk Ülke Kodu
+vergiNo
+Hayır
+string
+Vergi No 
+
+musteriFormBilgisi
+Saha
+Zorunlu?
+Tip
+Tanım
+Aciklama
+Hayır
+string
+Açıklama
+beyanTarihi
+Hayır
+dateTime
+Beyan Tarihi
+dosyaBase64
+Hayır
+string
+Dosya
+formDurumuKodu
+Hayır
+string
+Form Durumu Kodu
+formTipiKodu
+Hayır
+string
+Form Tipi Kodu
+ipAdresi
+Hayır
+string
+IP Adresi
+policeTeklifNo
+Hayır
+long
+Poliçe Teklif Numarası
+yenilemeNo
+Hayır
+long
+Yenileme Numarası
+
+
+SigortaKonusuBilgisi
+Saha
+Zorunlu?
+Tip
+Tanım
+Ad
+E
+string
+Sigorta Konusunun Adı
+Bedel
+E
+decimal
+Sigorta Konusunun Bedeli
+endeksliBedel
+E
+decimal
+Sigorta Konusunun Endeksli Bedeli
+Kod
+E
+string
+Sigorta Konusunun Kdu
+
+
+	•	Özel Durumlar
+Bazı ürünler için ek kontroller yapılmaktadır, bu kontrollerle ilgili notları bu bölümde bulabilirsiniz.
+
+	•	21100	Zorunlu Deprem Sigortası (DASK)
+	•	Sigortalı için bir telefon bilgisi gönderilmesi zorunludur.
+	•	Sigortalı için GSM telefon bilgisi yada E-Posta adresi gönderilmesi zorunludur.
+
+
+
+
+
+Örnek Request;
+
+
+
+
+	•	Sonuç
+TeklifOlusturResponse
+Saha
+Tip
+Tanım
+baslangicTarihi
+dateTime
+Başlangıç Tarihi
+basvuruFormuUrl
+String
+Başvuru çıktısının alınabileceği Url
+bilgilendirmeCiktisiUrl
+String
+Bilgilendirme çıktısının alınabileceği Url
+bitisTarihi
+dateTime
+İlgili Poliçenin Bitiş Tarihi
+brutPrim
+decimal
+İlgili Poliçenin Vergiler Dahil Prim Tutarı
+ekBilgiler
+
+ekBilgi
+fiyatAlternatifleri
+
+messages
+gecerlilikTarihi
+dateTime
+İlgili Poliçenin Geçerlilik Tarihi
+indirimArtirimBilgisi
+
+İndirimArttırımBilgisi
+Komisyon
+decimal
+Komisyon tutarı
+komisyonOrani
+decimal
+Komisyon Oranı
+krediBilgiFormuUrl
+string
+Kredi Bilgi Çıktısının Alınabileceği Url
+kvkkCiktisiUrl
+string
+Kvkk Çıktısının Alınabileceği Url
+messages
+
+messages
+muvafakatnameCiktisiUrl
+string
+Muvafakatname Çıktısının Alınabileceği Url
+netPrim
+decima
+İlgili Poliçenin Net Primi
+revizyonNo
+long
+Revizyon Numarası
+riskBilgileri
+
+teklifRiskBilgisi
+saglikBilgisi
+
+teklifSaglikBilgisi
+sigortaKonulari
+
+sigortaKonulari
+tahsilEdilecekKomisyonTutari
+decimal
+İlgili Poliçeden Tahsil Edilecek Komisyon Tutarı
+tahsilEdilecekTutar
+decimal
+İlgili Poliçeden Tahsil Edilecek Tutar
+taksitAlternatifleri
+
+taksitAlternatifleri
+Taksitler
+
+taksitler
+teklifCiktisiUrl
+string
+Teklif çıktısının alınabileceği Url
+teklifDurumu
+string
+TeklifDurum
+teklifNo
+long
+Teklif Numarası
+teminatlar
+
+teminatlar
+Vergi
+decimal
+Vergi Tutarı
+yenilemeNo
+long
+Teklif Yenileme Numarası
+
+
+
+ekBilgi
+Saha
+Tip
+Tanım
+Değer
+string
+Değer 
+Kod
+string
+Kod 
+
+
+
+messages
+Saha
+Tip
+Tanım
+Message
+
+pusulaExceptionMessage
+
+
+pusulaExceptionMessage
+Saha
+Tip
+Tanım
+Kod
+string
+kod
+Message
+string
+Mesaj İçeriği
+Type
+string
+Mesaj Tipi
+
+FiyatRiskBilgisi
+Saha
+Tip
+Tanım
+Ad
+string
+Ad 
+Değer
+string
+Değer 
+degerAdi
+string
+Değer Adı
+Kod
+string
+Kod 
+
+
+riskBilgileri
+Saha
+Tip
+Tanım
+riskBilgisi
+
+teklifRiskBilgisi
+
+
+
+teklifRiskBilgisi
+Saha
+Tip
+Tanım
+Değer
+string
+Değer 
+Kod
+string
+Kod 
+
+
+sigortaKonulari
+Saha
+Tip
+Tanım
+sigortaKonusu
+
+SigortaKonusuBilgisi
+
+
+taksitAlternatifleri
+Saha
+Tip
+Tanım
+taksitAlternatifi
+
+taksitAlternatifBilgisi
+
+taksitAlternatifBilgisi
+Saha
+Tip
+Tanım
+odemeAraclari
+string
+OdemeAraci
+odemePlaniAdi
+string
+Ödeme Planı Adı
+odemePlaniKodu
+string
+Ödeme Planı Kodu
+taksitler
+
+teklifTaksitBilgisi
+
+
+taksitler
+Saha
+Tip
+Tanım
+taksit
+
+teklifTaksitBilgisi
+
+
+teklifTaksitBilgisi
+Saha
+Tip
+Tanım
+komisyonTutari
+decimal
+İlgili Poliçeden Aktarılacak Komisyon Tutarı
+krediKartiMakbuzuUrl
+string
+Kredi Kartı Makbuzu Url çıktısı
+taksitId
+long
+İlgili Pliçenin Taksit Idsi
+taksitNo
+int
+İlgili Poliçedeki Ödemelerin Taksit Numarası
+taksitTipi
+string
+İlgili Poliçedeki Ödemelerin Taksit Tipi
+tutar
+decimal
+İlgili Poliçedeki Ödemelerin Taksit Tutarı
+vadeTarihi
+dateTime
+İlgili Poliçedeki Ödemelerin Vade Tarihi
+
+teminatlar
+Saha
+Saha
+Saha
+teminat
+teminat
+teklifTeminatBilgisi
+
+
+teklifSaglikBilgisi
+Saha
+Tip
+Tanım
+grupNo
+long
+Grup Numarası
+grupTipiKodu
+string
+Grup Tipi Kodu
+grupYenilemeNo
+long
+Grup Yenileme Numarası
+
+
+TeklifİndirimArttırımBilgisi
+Saha
+Tip
+Tanım
+ad
+string
+Ad 
+oran
+decimal
+Oran 
+tip
+string
+Tip 
+tutar
+decimal
+Tutar 
+tutarTL
+decimal
+Tutar TL
+
+
+
+TeklifTeminatBilgisi
+Saha
+Tip
+Tanım
+kod
+string
+Teminat Kodu
+ad
+string
+Teminat Adı
+limitBilgisi
+
+TeklifLimitBilgisi
+
+
+TeklifLimitBilgisi
+Saha
+Tip
+Tanım
+ad
+string
+Ad 
+kisiBasiMi
+
+Kişi Başı Mı?
+limit
+decimal
+Limit Değeri 
+olayBasiMi
+
+Olay Başı Mı?
+policeSuresinceAzamiMi
+
+Poliçe Suresince Azami Mi?
+
+
+
+Örnek Response;
+
+ 
+	•	# TeklifSorgu () Methodu
+Acenteler PUSULA uygulaması üzerinden oluşturmuş oldukları teklif  bilgilerine Teklif No, Yenileme No, Revizyon No ile sorgulayabilirler.Sorgulama kriterleri için gerekli parametreler aşağıda belirtilmiştir.
+	•	Parametreler
+TeklifSorguInputType
+Saha
+Zorunlu?
+Tip
+Tanım
+revizyonNo
+Evet
+long
+Sorgulama kriterleri verilirken kullanılacak olan Revizyon No
+teklifNo
+Evet
+long
+Sorgulama kriterleri verilirken kullanılacak olan Teklif No
+yenilemeNo
+Evet
+long
+Sorgulama kriterleri verilirken kullanılacak olan Yenileme No
+Örnek Request;
+
+
+
+
+
+
+	•	Sonuç
+TeklifSorguResponse
+Saha
+Tip
+Tanım
+
+
+uretimXMLBase
+basvuruFormuURL
+string
+Basvuru Formu URL
+gecerlilikSuresi
+int
+Teklif geçerlilik süresi
+gecerlilikTarihi
+dateTime
+Geçerlilik tarihi
+krediBilgiFormuUrl
+string
+Kredi Bilgi Formu URL
+odemeAraciKodu
+string
+Ödeme Aracı Kodu
+odemePlaniKodu
+string
+Ödeme Aracı Kodu
+revizyonNo
+long
+Teklif Revizyon No
+sigortaKonusu
+
+SigortaKonusuBilgisi
+teklifBilgilendirmeCiktisiUrl
+string
+Teklif Bilgilendirme Çıktısı URL
+teklifCiktisiUrl
+string
+Teklif Çıktısı URL
+teklifDurumu
+string
+Teklif Durumu
+teklifNo
+long
+Teklif No
+yenilemeNo
+long
+Yenileme No
+
+Örnek Response;
+
+
+	•	# policeOlustur () Methodu
+Acenteler PUSULA uygulaması üzerinden daha önce teklifOlustur method’u ile oluşturulmuş olan teklifin poliçeleştirilmesi için kullanabilirler.
+Sorgulama kriterleri için gerekli parametreler aşağıda belirtilmiştir.
+
+
+	•	Parametreler
+PoliceOlusturInput
+Saha
+Zorunlu?
+Tip
+Tanım
+dokumanNo
+
+string
+Dokuman Numarası
+ekBilgiler
+
+
+ekBilgi
+krediKartiBilgisi
+
+
+PoliceKrediKartiModel
+odemeAraciKodu
+Hayır
+string
+OdemeAraci
+odemePlaniKodu
+Hayır
+string
+OdemePlani
+personelNo
+Hayır
+string
+Personel No
+referansNo
+Hayır
+string
+Referans Numarası
+revizyonNo
+Evet
+long
+Revizyon Numarası
+taksitSayisi
+Hayır
+long
+Taksit Sayısı
+teklifNo
+Evet
+long
+Poliçeleştirilecek Teklifin Numarası
+yenilemeNo
+Evet
+long
+Poliçeleştirilecek Teklifin Yenileme Numarası (Default = 0)
+
+
+
+PoliceKartBilgisi
+Saha
+Zorunlu?
+Tip
+Tanım
+guvenlikNo
+Hayır
+string
+Güvenlik Numarası
+kartNo
+Evet
+string
+Kart No ( ilk 6 hanesi ve son 4 hanesi gönderilmesi yeterlidir )
+kartSahibiAdSoyadUnvan
+Hayır
+string
+Kart Sahibi
+kartToken
+Hayır
+string
+Kart Token
+kartTuru
+Hayır
+KartTuru
+Kart Türü
+kimlikNo
+Evet
+string
+Kredi Kartı sahibinin TC Kimlik Numarası ( Varsayılan değer olarak Sigorta Ettirenin TC Kimlik numarası kullanılmaktadır )
+sonKullanimAy
+Hayır
+string
+Son Kullanım Ay (Örnek : 12)
+sonKullanimYil
+Hayır
+string
+Son Kullanım Yıl (Örnek : 2012)
+Örnek Request;
+
+
+
+	•	Sonuç
+PoliceOlusturResponse
+Saha
+Tip
+Tanım
+baslangicTarihi
+dateTime
+Başlangıç Tarihi
+bilgilendirmeCiktisiUrl
+string
+Bilgilendirme çıktısının alınabileceği Url
+bitisTarihi
+dateTime
+Poliçe Bitiş Tarihi
+ekBilgiler
+
+ekBilgi
+krediKartiFormuUrl
+string
+Kredi Kartı form çıktısının alınabileceği Url
+krediKartiMakbuzuUrl
+string
+Kredi Kartı Makbuz  çıktısının alınabileceği Url
+messages
+
+messages
+policeCiktisiUrl
+string
+Poliçe çıktısının alınabileceği Url
+policeDurumu
+string
+Poliçe Durumu
+policeNo
+long
+Poliçe Numarası            
+taksit
+
+TaksitBilgileri
+yenilemeNo
+long
+Poliçe Yenileme Numarası
+
+Örnek Response;
+
+
+
+	•	# policeTeklifOlustur () Methodu
+Acenteler PUSULA uygulaması üzerinden police ve teklif oluşturmak için kullanılır. Genel Bilgiler, Sigortalı Bilgileri ve Risk Bilgileri alınır oluşan teklife ait bilgiler dönülür.
+Gerekli parametreler aşağıda belirtilmiştir. Bu method teklif ve poliçeyi birlikte oluşturduğu için TeklifBilgisindeki sadeceHesapla True olarak gönderildiğinde ya da PoliceBilgisindeki teklifNo veya yenilemeNo alanları dolu gönderildiğinde hata dönecektir.
+	•	Parametreler
+PoliceTeklifOlusturInput
+Saha
+Zorunlu?
+Tip
+Tanım
+teklifBilgisi
+Evet
+TeklifOlusturInput
+Teklif Bilgisi
+policeBilgisi
+Evet
+PoliceOlusturInput
+Police Bilgisi
+              2.3.7   Sonuç
+PoliceTeklifOlusturResponse
+Saha
+Zorunlu?
+Tip
+Tanım
+policeResponse
+Evet
+TeklifOlusturInput
+Teklif Bilgisi
+teklifResponse
+Evet
+PoliceOlusturInput
+Police Bilgisi
+	•	# ZeyilOlusturIptal () Methodu
+
+Acenteler PUSULA uygulaması üzerinden oluşturmuş oldukları poliçe üzerinde iptal zeyili oluşturabilirler. Kriterler için gerekli parametreler aşağıda belirtilmiştir.
+	•	Parametreler
+ZeyilOlusturIptalInputType
+Saha
+Zorunlu?
+Tip
+Tanım
+aciklama
+Evet
+string
+Aciklama
+hesapNo
+Evet
+string
+Hesap No
+iadeProvizyonNo
+Evet
+string
+İade provizyon no
+iptalSebebiTipiKodu
+Evet
+string
+İptal Sebebi tipi kodu
+personelNo
+Evet
+string
+Personel No
+policeNo
+Evet
+long
+Police No
+referansNo
+Evet
+string
+Referans No
+sadeceHesapla
+Evet
+boolean
+Zeyil tutarını sadece hesaplarken kullanılacak alan
+tahsilatProvizyonNo
+Evet
+string
+Tahsilat provizyon No
+tarih
+Evet
+dateTime
+Zeyil Tarihi
+yenilemeNo
+Evet
+long
+Police Yenileme No
+Örnek Request;
+
+
+
+	•	Sonuç
+ZeyilOlusturIptalResponse
+Saha
+Tip
+Tanım
+aciklama
+string
+Açıklama
+baslangicTarihi
+dateTime
+Zeyil Başlangıç Tarihi
+bilgilendirmeCiktisiUrl
+string
+Bilgilendirme Çıktısı URL
+bitisTarihi
+dateTime
+Zeyil Bitiş Tarihi
+brutPrim
+decimal
+Brüt Prim tutarı
+dovizCinsi
+string
+Döviz Cinsi
+gecerlilikTarihi
+dateTime
+Zeyil Geçerlilik Tarihi
+iptalIstihsal
+string
+İptal İstihsal bilgisi
+komisyon
+decimal
+Komisyon tutarı
+krediBilgiFormuUrl
+string
+Kredi Bilgi Formu URL
+messages
+
+
+netPrim
+decimal
+Net prim tutarı
+policeCiktisiUrl
+string
+Police Cıktısı URL
+policeDurumu
+string
+Police Durumu
+policeNo
+long
+Police No
+tahsilEdilecekKomisyonTutari
+decimal
+Tahsil Edilecek Komisyon Tutarı
+tahsilEdilecekTutar
+decimal
+Tahsil Edilecek Tutar
+taksitBilgisiListesi
+TaksitBilgileri
+
+Vergi
+decimal
+vergi
+yenilemeNo
+long
+Police Yenileme Numarası
+zeyilCiktisiUrl
+string
+Zeyil Çıktısı URL
+zeyilNo
+Long
+Zeyil Numarası
+
+Örnek Response;
+
+
+
+	•	# TeklifSorguTarih () Methodu
+
+Acenteler PUSULA uygulaması üzerinden oluşturmuş oldukları teklifleri tarih aralığı ile sorgulayabilirler. Kriterler için gerekli parametreler aşağıda belirtilmiştir.
+	•	
+	•	
+	•	
+	•	
+	•	
+	•	
+	•	Parametreler
+TeklifSorguTarihnputType
+Saha
+Zorunlu?
+Tip
+Tanım
+ilkTarih
+Evet
+dateTime
+İlk Tarih
+sonTarih
+Evet
+dateTime
+Son Tarih
+tarihTipiKodu
+Hayır
+string
+tarihTipiKodu
+teklifDurumlari
+Hayır
+string
+TeklifDurum
+yenilemeMi
+Hayır
+string
+Yenileme Mi?
+
+Örnek Request;
+
+      
+
+	•	Sonuç
+TeklifSorguTarihResponse
+Saha
+Tip
+Tanım
+acenteKodu
+string
+Acente Kodu
+revizyonNo
+long
+Revizyon Numarası
+teklifNo
+long
+Teklif Numarası
+yenilemeNo
+long
+Yenileme Numarası
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	•	#PoliceBilgisiGuncelle() Methodu
+Acentelerin, PUSULA uygulaması üzerinden oluşturulmuş poliçenin yenileme bilgisini güncellemesi için kullanabilirler
+
+Sorgulama kriterleri için gerekli parametreler aşağıda belirtilmiştir.
+
+2.9.1.Parametreler
+
+PoliceBilgisiGuncelleInput
+Saha
+Zorunlu?
+Tip
+Tanım
+bankaIsTipiKodu
+Hayır
+string
+Banka Iş Tipi Kodu
+bankaKrediNumarasi
+Hayır
+string
+Banka Kredi Numarası
+bankaKrediTuruKodu
+Hayır
+string
+KrediTipiKodu
+bankaKrediTarihi
+Hayır
+dateTime
+Banka Kredi Tarihi
+bankaKrediTutari
+Hayır
+decimal
+Banka Kredi Tutarı
+ekBilgiler
+
+
+ekBilgi
+otomatikYenilemeIsteniyormu
+Hayır
+string
+Otomatik Yenilenme İsteniyor mu(EVET/HAYIR)
+personelNo
+Hayır
+string
+Personel Numarası
+policeNo
+Hayır
+long
+İlgili Poliçenin Numarası
+yenilemeNo
+Hayır
+long
+Yenileme Numarası
+zeyilNo
+Hayır
+long
+İlgili Poliçenin Zeyil Numarası
+
+
+
+
+PoliceBilgisiGuncelleResponse
+Saha
+Tip
+Tanım
+
+
+
+
+Örnek Response;
+
+
+
+
+
+
+
+2.10.	#DokumanIndir() Methodu
+
+Acentelere, PUSULA uygulaması üzerinden oluşturulmuş dokümanların teminini sağlamak amacıyla hazırlanmış erişebilmek için bu methodu kullanabilirler.
+Sorgulama kriterleri için gerekli parametreler aşağıda belirtilmiştir.
+
+2.10.1.Parametreler
+DokumanIndirInputType
+Saha
+Zorunlu?
+Tip
+Tanım
+dilKodu
+Hayır
+string
+Dil Kodu
+dokumanKey
+Hayır
+string
+Dokuman Key
+dokumanTipiKodu
+Hayır
+string
+Dokuman Tipi Kodu Tablosu
+ekBilgiler
+Hayır
+
+ekBilgi
+grupNo
+Hayır
+long
+Grup Numarası
+policeTeklifNo
+Hayır
+long
+Poliçe Teklif Numarası
+yenilemeNo
+Hayır
+long
+Yenileme Numarası
+zeyilRevizyonNo
+Hayır
+long
+Zeyil Revizyon Numarası
+ekBilgi
+Saha
+Tip
+Tanım
+deger
+string
+Değer 
+kod
+string
+Kod 
+
+
+Örnek Request;
+
+
+Örnek Response;
+
+
+
+
+
+
+
+
+
+2.10.2.Sonuç
+
+DokumanIndirResponse
+Saha
+Tip
+Tanım
+contentBase64
+string
+contentBase64
+contentLength
+int
+Boyut 
+contentType
+string
+Tip
+fileName
+string
+Ad 
+
+
+	•	Oluşabilecek Hata ve Uyarılar
+
+Methodların çalışması sırasında kurallara uygun olmayan parametre sahalarının değerleri, iş mantığına aykırı durumlar ve sistemde oluşabilecek diğer hatalar, istemcilere “Exception Handling” mekanizması içerisinde bildirilir. Bu methodda oluşabilecek hata kodu tanım tablosu aşağıdadır.
+
+Kod
+Tanım
+INF-001
+Kayıt bulunamadı
+VLD-001
+Parametrelerde zorunlu olan ancak doldurulmamis alanlar var
+VLD-002
+Ilk tarih son tarihten buyuk olamaz
+VLD-003
+Sorgu tarih araligi 31 gunden buyuk olamaz
+VLD-ZA
+Zorunlu alan kontrolü (detay mesajda mevcuttur)
+VLD-000
+Sorunlu Bilgi girişi (detay mesajda mevcuttur)
+ERR-URT-000
+Hata oluştu (detay mesajda mevcuttur)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	•	Güvenlik
+Servisin güvenliği, UsernameToken ve IP adresine dayalıdır. UsernameToken ile ilgili detaylı bilgi http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0.pdf adresinden edinilebilir. Bu servis çağrılmadan önce header bölümüne güvenlik ile ilgili aşağıdaki parametrelerin eklenmesi gerekmektedir. 
+
+Username: Kullanıcı
+Password: Şifre 
+
+Aşağıda örnek SOAP request xml bulunmaktadır.      
+
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+   <s:Header>
+      <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+         <wsse:UsernameToken xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+            <wsse:Username>?</wsse:Username>
+            <wsse:Password>?</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </s:Header>   <soapenv:Body>
+      ....
+   </soapenv:Body>
+</soapenv:Envelope>
+
+
+	•	Parametre Tabloları
+	•	Kart Türü Tablosu
+Kod
+Tanım
+VISA
+VISA
+MASTER
+MASTER
+EURO
+EURO
+DIGER
+DIGER
+AMEX
+AMEX
+	•	Teklif Durum Tablosu
+Kod
+Tanım
+POLİÇELEŞTİ
+Poliçeleşti
+ONAYLANDI
+Onaylandı (Başarılı işlem sonucudur) 
+RED
+Ret
+ONAY_BEKLIYOR
+Onay Bekliyor
+TASLAK
+Taslak
+MUSTERI_ISTEGIYLE_RED
+Müşteri İsteğiyle Ret
+GORUS_BEKLENIYOR
+Görüş Bekleniyor
+OZEL_TAKSIT_ONAYINDA
+Özel Taksit Onayında
+OZEL_TAKSIT_ONAYLANDI
+Özel Taksit Onaylandı
+OZEL_TAKSIT_REDDEDILDI
+Özel Taksit Reddedildi
+REASURANS_ONAYINDA
+Reasurans Onayında
+REASURANS_ONAYLANDI
+Reasurans Onaylandı
+REASURANS_REDDEDILDI
+Reasurans Reddedildi
+INDIKATIF_ONAYLANDI
+İndikatif Onaylandı
+EVRAK_BEKLENIYOR
+Evrak Beklenıyor
+MASAK_EVRAK_BEKLENIYOR
+Masak Evrak Beklenıyor
+	•	Poliçe Durum Tablosu
+Kod
+Tanım
+AKTIF
+Aktif (Başarılı işlem sonucudur)
+PASIF
+Pasif
+MEBDEINDEN_IPTAL
+Mebdeinden İptal
+KASKO_DURDURMA
+Kasko Durdurma
+KISMI_IPTAL
+Kısmi İptal
+FESIH
+Fesih
+MASAK_EVRAK_BEKLENIYOR
+Masak Evrak Beklenıyor
+RISK_DEGERLENDIRME_ONAYINDA
+Risk Değerlendirme Onayında
+DASK_ONAY_BEKLIYOR
+Dask Onay Bekliyor
+DASK_REDDEDILDI
+Dask Reddedildi
+PERTTEN_IPTAL
+Pertten İptal
+ONAY_BEKLIYOR
+Onay Bekliyor
+REDDEDILDI
+Reddedildi
+REASURANS_ONAY_BEKLIYOR
+Reasürans Onay Bekliyor
+ZEYIL_DEGISIKLIK_ONAYINDA
+Zeyil Değişiklik Onayında
+TAHSILAT_TEKNIK_SERVIS_ONAYINDA
+Tahsilat Teknik Servis Onayında
+DEVIRDEN_DOLAYI_FESIH
+Devirden Dolayı Fesih
+ISLETEN_SIFATININ_KAYBEDILMESI
+İşleten Sıfatının Kaybedilmesi
+	•	Ödeme Aracı Tablosu
+Kod
+Tanım
+KREDI_KARTI
+Kredi Kartı
+CEK
+Çek
+SENET
+Senet
+NAKIT
+Nakit
+POSTA_CEKI
+Posta Çeki
+HAVALE
+Havale
+HEPSI
+Hepsi
+	•	Banka İş Tipi Tablosu
+Kod
+Tanım
+BANKA_ISI
+Banka İşi
+KREDILI_IS
+Kredili İş
+KREDISIZ_IS
+Kredisiz İş
+PERSONEL_ISI
+Personel İşi
+	•	Poliçe Türü Tablosu
+Kod
+Tanım
+DOVIZLI
+Dövizli
+NORMAL
+Normal
+DOVIZE ENDEKSLI
+Dövize Endeksli
+	•	Döviz Cinsi Tablosu
+Kod
+Tanım
+TL
+TÜRK LİRASI
+USD
+AMERİKAN DOLARI
+EUR
+EURO
+GBP
+STERLİN
+CAD
+KANADA DOLARI
+DKK
+DANİMARKA KRONU
+SEK
+İSVEÇ KRONU
+CHF
+İSVİÇRE FRANGI
+NOK
+NORVEÇ KRONU
+JPY
+JAPON YENİ
+SAR
+SUUDI ARAB. RIYALI
+KWD
+KUVEYT DİNARI
+AUD
+AVUSTRALYA DOLARI
+RON
+YENİ RUMEN LEYİ
+IRR
+İRAN RİYALİ
+SYP
+SURİYE LİRASI
+JOD
+URDUN DİNARI
+BGL
+BULGAR LEVASI
+ILS
+ISRAIL SEKELI
+
+	•	Ürün Kodu Tablosu
+
+Kod
+Tanım
+9100
+Tehlikeli Maddeler ve Tehlikeli Atık Zorunlu Mali Sorumluluk Sigortası
+12102
+Konut Paket
+13100
+Ferdi Kaza
+15101
+Karayolları Motorlu Araçlar Zorunlu Mali Sorumluluk (Trafik Sigortası)
+21100
+Zorunlu Deprem Sigortası-DASK
+41150
+Konut Ekstra Paket
+44150
+Kapsamlı İşyeri
+57200
+Yangın Sivil
+62200
+İşyeri Ekstra
+62201
+Vakıflar İşyeri
+67203
+Tüpgaz Zorunlu Sorumluluk Sigortası
+67206
+Yangın Abonman
+67207
+Akaryakıt Paket
+67208
+Eczane Paket
+67210
+Otel Paket
+85000
+Birleşik Paket(YENİ)
+85200
+Kuzey Kıbrıs Türk Cumhuriyeti Kara Taşıtları Kasko
+85204
+Pratik Ev
+85205
+Kobi Dost
+85222
+Oto Plaza Paket
+85230
+Sarı Panjur
+85236
+EĞİTİM GÜVENCE SİGORTASI
+85237
+Vakıfbank Personeline Özel Konut
+85244
+Hediye İşyeri Türk telekom
+85248
+CPP Kredi Kartı Güvence
+85252
+Motorlu Araç Zorunlu 3.Şahıs Yükümlülük Poliçesi
+85254
+Site Ortak Alan
+85256
+Hediye Yangın
+85258
+Hukuksal Koruma
+85259
+BİREYSEL SAĞLIK SİGORTASI
+85266
+SEYAHAT SAĞLIK
+85267
+TEHLİKELİ HASTALIKLAR
+85268
+CANKURTARAN SİGORTASI
+85270
+TAMAMLAYICI SAĞLIK
+85271
+GRUP SAĞLIK SİGORTASI
+85272
+HEDİYE İŞYERİ
+85273
+HEDİYE KONUT
+85274
+HEDİYE İŞSİZLİK
+85275
+HEDİYE EV ALETLERİ
+85276
+HEDİYE FERDİ KAZA
+85278
+YBU YABANCI SAĞLIK
+85279
+Vakıfbank Ferdi Kaza
+85281
+TAMAMLAYICI SAĞLIK GRUP
+85286
+VAKIFLAR KONUT
+85289
+Hukuksal Koruma TPA
+85291
+Dar Kasko (Lastik Sigortası)
+85292
+Vakıf Emeklilik Ferdi Kaza
+85294
+Uzatılmış Garanti
+85297
+VAKIFBANK EŞYAM GÜVENDE
+85299
+VAKIFBANK KREDİ İŞSİZLİK
+85300
+FASIL 333 MOTORLU ARAÇLAR (ÜÇÜNCÜ ŞAHIS SİGORTASI) YASASI 1954
+85302
+VAKIFBANK TİCARİ PAKET
+86000
+Birleşik Paket (1.0)
+86001
+VAKIFBANK KARTIM GÜVENDE
+86002
+VAKIFBANK ŞİFRE KORUMA
+86005
+GÜNEŞ GENİŞLETİLMİŞ KASKO KATILIM SİGORTASI
+86006
+VAKIFBANK İŞVEREN KORUMA
+86007
+Konut Katılım Sigortası
+86008
+TAMAMLAYICI SAĞLIK KATILIM SİGORTASI
+86009
+TAMAMLAYICI GRUP SAĞLIK KATILIM SİGORTASI
+86010
+Karayolları Motorlu Araçlar Zorunlu Mali Sorumluluk (Trafik Sigortası)
+86015
+VAKIF KATILIM VGM KONUT
+86016
+VAKIF KATILIM VGM İŞYERİ
+86018
+İVME PAKET
+86023
+FİLO KASKO
+86027
+Sarı Panjur Katılım
+86028
+Kapsamlı İşyeri Katılım
+86029
+İşyeri Ekstra Katılım
+86030
+Otel Paket Katılım
+86035
+Akaryakıt Paket Katılım
+86036
+Oto Plaza Katılım Paket
+86037
+Site Ortak Alan Katılım
+86038
+İŞVEREN KORUMA KATILIM
+86039
+Eczane Paket Katılım
+86041
+Ferdi Kaza Katılım
+86045
+COVID 19-TURİST KORUMA VE DESTEK SAĞLIK
+86047
+COVID 19 KONAKLAMA DESTEK SİGORTASI
+86048
+RİSKLİ HASTALIKLAR TEDAVİ VE DESTEK SİGORTASI
+86049
+GRUP SAĞLIK KATILIM SİGORTASI
+86050
+ACİL SAĞLIK KATILIM SİGORTASI
+86051
+SEYAHAT SAĞLIK KATILIM SİGORTASI
+86052
+YABANCI UYRUKU SAĞLIK KATILIM SİGORTASI
+86053
+BİREYSEL SAĞLIK KATILIM SİGORTASI
+86054
+RİSKLİ HASTALIKLAR KATILIM SİGORTASI
+86055
+COVID 19 KONAKLAMA DESTEK SİGORTASI(OTEL)
+
+
+	•	Uyruk Kodu Tablosu
+Kod
+Tanım
+TC
+Türkiye Cumhuriyeti
+KKTC
+Kuzey Kıbrıs Türk Cumhuriyeti
+DIGER
+Yabancı Uyruk
+
+
+
+	•	Ürün Risk Bilgileri Tablosu
+Excel tablosuna ilgili bağlantıdan ulaşabilirsiniz.
+ 
+	•	Ürün Ödeme Planı Tablosu
+
+Ödeme Planı Kodu
+Ödeme Planı Adı
+Ürün Kodu
+Ürün Adı
+45149
+Blokeli  2 Taksitli
+12102
+Güneşli Ev
+45131
+Blokeli  3 Taksitli
+12102
+Güneşli Ev
+45150
+Blokeli  4 Taksitli
+12102
+Güneşli Ev
+45151
+Blokeli  5 Taksitli
+12102
+Güneşli Ev
+45152
+Blokeli  6 Taksitli
+12102
+Güneşli Ev
+45153
+Blokeli  7 Taksitli
+12102
+Güneşli Ev
+20059
+Blokeli  8 Taksitli
+12102
+Güneşli Ev
+45154
+Blokeli  9 Taksitli
+12102
+Güneşli Ev
+20056
+İndirimli Peşin (yangın)
+12102
+Güneşli Ev
+33100
+İndirimsiz Peşin
+12102
+Güneşli Ev
+20055
+K.Kartı 7 Taksitli
+12102
+Güneşli Ev
+29100
+Otomatik (1 Peşin 5 Eşit Taksit)
+12102
+Güneşli Ev
+20052
+Tercihli (Taksitli)
+12102
+Güneşli Ev
+45161
+1+%75 ortalama vade
+12102
+Güneşli Ev
+45131
+Blokeli  3 Taksitli
+15101
+Karayolları Motorlu Araçlar Zorunlu Mali Sorumluluk (Trafik Sigortası)
+37100
+İndirimsiz Peşin (zorunlu ürünler)
+15101
+Karayolları Motorlu Araçlar Zorunlu Mali Sorumluluk (Trafik Sigortası)
+33100
+İndirimsiz Peşin
+21100
+Zorunlu Deprem Sigortası-DASK
+45149
+Blokeli  2 Taksitli
+85000
+Birleşik Paket(YENİ)
+45131
+Blokeli  3 Taksitli
+85000
+Birleşik Paket(YENİ)
+45150
+Blokeli  4 Taksitli
+85000
+Birleşik Paket(YENİ)
+45151
+Blokeli  5 Taksitli
+85000
+Birleşik Paket(YENİ)
+45152
+Blokeli  6 Taksitli
+85000
+Birleşik Paket(YENİ)
+45153
+Blokeli  7 Taksitli
+85000
+Birleşik Paket(YENİ)
+20059
+Blokeli  8 Taksitli
+85000
+Birleşik Paket(YENİ)
+45154
+Blokeli  9 Taksitli
+85000
+Birleşik Paket(YENİ)
+33100
+İndirimsiz Peşin
+85000
+Birleşik Paket(YENİ)
+20055
+K.Kartı 7 Taksitli
+85000
+Birleşik Paket(YENİ)
+29100
+Otomatik (1 Peşin 5 Eşit Taksit)
+85000
+Birleşik Paket(YENİ)
+45161
+1+%75 ortalama vade
+85000
+Birleşik Paket(YENİ)
+20059
+Blokeli  8 Taksitli
+85204
+Pratik Ev
+33100
+İndirimsiz Peşin
+85204
+Pratik Ev
+29100
+Otomatik (1 Peşin 5 Eşit Taksit)
+85204
+Pratik Ev
+20059
+Blokeli  8 Taksitli
+85236
+EĞİTİM GÜVENCE SİGORTASI
+33100
+İndirimsiz Peşin
+85236
+EĞİTİM GÜVENCE SİGORTASI
+29100
+Otomatik (1 Peşin 5 Eşit Taksit)
+85236
+EĞİTİM GÜVENCE SİGORTASI
+20052
+Tercihli (Taksitli)
+85236
+EĞİTİM GÜVENCE SİGORTASI
+45161
+1+%75 ortalama vade
+85236
+EĞİTİM GÜVENCE SİGORTASI
+33100
+İndirimsiz Peşin
+85244
+Hediye İşyeri
+
+	•	Sağlık Grup Tipi Tablosu
+Kod
+Tanım
+BIREYSEL
+Bireysel
+KURUMSAL
+Kurumsal
+AILE
+Aile
+	•	Sağlık Tahsilat  Tipi Tablosu
+Kod
+Tanım
+GRUP
+Grup
+ALT_GRUP
+Alt Grup
+SIGORTALI
+Sigortalı
+	•	Sağlık OBYG Tipi Tablosu
+Kod
+Tanım
+GUNES_BEBEK
+Güneş Bebek
+OBYG
+OBYG
+YG
+YG
+	•	Tarih Tipi Kodu
+Kod
+Tanım
+TANZIM_TARIHI
+Tanzim Tarihi
+BASLANGIC_TARIHI
+Baslangıç Tarihi
+BITIS_TARIHI
+Bitiş Tarıhı
+MUHASEBELESTIRME_TARIHI
+Muhasebelestirme Tarihi
+
+
+	•	İşlem Tipi Kodu
+Kod
+Tanım
+TASLAK
+Taslak
+TEKLIF
+Teklıf
+TEKLIF_POLICE
+Teklıf_polıce
+ZEYIL
+Zeyıl
+	•	Teklif Durum Tablosu
+Kod
+Tanım
+POLİÇELEŞTİ
+Poliçeleşti
+ONAYLANDI
+Onaylandı (Başarılı işlem sonucudur) 
+RED
+Ret
+ONAY_BEKLIYOR
+Onay Bekliyor
+TASLAK
+Taslak
+MUSTERI_ISTEGIYLE_RED
+Müşteri İsteğiyle Ret
+GORUS_BEKLENIYOR
+Görüş Bekleniyor
+OZEL_TAKSIT_ONAYINDA
+Özel Taksit Onayında
+OZEL_TAKSIT_ONAYLANDI
+Özel Taksit Onaylandı
+OZEL_TAKSIT_REDDEDILDI
+Özel Taksit Reddedildi
+REASURANS_ONAYINDA
+Reasurans Onayında
+REASURANS_ONAYLANDI
+Reasurans Onaylandı
+REASURANS_REDDEDILDI
+Reasurans Reddedildi
+INDIKATIF_ONAYLANDI
+İndikatif Onaylandı
+EVRAK_BEKLENIYOR
+Evrak Beklenıyor
+MASAK_EVRAK_BEKLENIYOR
+Masak Evrak Beklenıyor
+	•	Kredi Turu Kodu Tablosu
+Kod
+Tanım
+KONUT_KREDISI
+Konut Kredisi
+TIK
+TIK
+OTOMOBIL_KREDISI
+Otomobil Kredisi
+TUKETICI_KREDISI  
+Tüketici Kredisi 
+
+
+	•	Dokuman Tipi Kodu Tablosu
+
+Kod
+Tanım
+DOKUMAN_URL
+Dokuman url
+DOKUMAN_KEY
+Dokuman key
+TEKLIF
+Teklıf çıktısı almak için kullanılır.
+TEKLIF_BILGILENDIRME
+Teklıf bılgılendırme çıktısı almak için kullanılır.
+TEKLIF_BASVURU
+Teklıf başvuru çıktısı almak için kullanılır.
+POLICE
+Polıce çıktısı almak için kullanılır.
+POLICE_KREDI_BILGI_FORMU
+Polıce kredı bılgı formu çıktısı almak için kullanılır.
+POLICE_BILGILENDIRME
+Polıce bılgılendırme çıktısı almak için kullanılır.
+ZEYIL
+Zeyıl çıktısı almak için kullanılır.
+TEKLIF_KREDI_BILGI_FORMU
+Kredi Bilgilendirme formu (teklif) çıktısı almak için kullanılır.
+GRUP_POLICE
+Grup polıce çıktısı almak için kullanılır.
+
+	•	Alternatif parametre gönderim yöntemleri
+	•	Tramer kodları ile gönderim;
+ARAC_MARKASI, ARAC_TIPI, ARAC_MODELI gibi risk bilgileri sadece arac yeni ise gönderilmek zorundadır. Plaka no sağlandığı takdirde PUSULA sistemi bu bilgilere Tramer’den erişerek işleme devam edebilmektedir.
+
+Bu alanlara bizim sağladığımız kodların yanısıra T: prefix’i kullanılarak Tramer kodları üzerinden gönderim yapılabilir.
+KOD
+AD
+ARAC_MARKASI
+ALFA ROMEO
+ARAC_TIPI
+GIULETTA 1.4 TB 120 PROGRESSION PLUS
+ARAC_MODELI
+2014
+olan araç için aşağıdaki şekilde bizim sağladığımız kod değerleri gönderilebileceği gibi;
+KOD
+DEĞER
+ARAC_MARKASI
+3
+ARAC_TIPI
+3217
+ARAC_MODELI
+8250079026
+T: prefix’i kullanılarak Tramer kodları ile de gönderim yapılabilir;
+KOD
+DEĞER
+ARAC_MARKASI
+T:003
+ARAC_TIPI
+T:217
+ARAC_MODELI
+T:2014
+
+	•	UAVT  kodları ile gönderim;
+Risk bilgilerinde bulunan RIZIKO_ILCESI, RIZIKO_ILI, RIZIKO_BELDESI alanlarının yanısıra Sigortalı ve Sigorta Ettiren bilgilerinde bulunan ilceKodu ve beldeKodu alanlarına gönderim yaparken bizim sağladığımız kodların yanısıra istenirse U: prefix’i kullanılarak UAVT kodları üzerinden gönderim yapılabilir. 
+KOD
+AD
+BELDE
+AKÖREN
+ILCE
+ALADAĞ
+IL
+ALADAĞ
+Örneğin yukarıdaki bilgileri gönderebilmek için aşağıdaki şekilde bizim sağladığımız kodlar kullanılabilirken;
+KOD
+AD
+BELDE
+270051
+ILCE
+97050
+IL
+1
+UAVT kodları ile aşağıdaki şekilde gönderim yapmakta mümkündür;
+KOD
+AD
+BELDE
+U:5
+ILCE
+U:1757
+IL
+U:1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	•	EKLER
+
+
+
+
+
+ 
+
+
+

@@ -1,0 +1,578 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" name="PolicyService" targetNamespace="http://tempuri.org/">
+<wsdl:types>
+<xsd:schema targetNamespace="http://tempuri.org/Imports">
+<xsd:import schemaLocation="http://orienttest.vizyoneks.com.tr/Public/PolicyService.svc?xsd=xsd5" namespace="http://tempuri.org/"/>
+<xsd:import schemaLocation="http://orienttest.vizyoneks.com.tr/Public/PolicyService.svc?xsd=xsd0" namespace="http://schemas.microsoft.com/2003/10/Serialization/"/>
+<xsd:import schemaLocation="http://orienttest.vizyoneks.com.tr/Public/PolicyService.svc?xsd=xsd1" namespace="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.Policy"/>
+<xsd:import schemaLocation="http://orienttest.vizyoneks.com.tr/Public/PolicyService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ApplicationBlocks.Common"/>
+<xsd:import schemaLocation="http://orienttest.vizyoneks.com.tr/Public/PolicyService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.TypeMapping"/>
+<xsd:import schemaLocation="http://orienttest.vizyoneks.com.tr/Public/PolicyService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/BLL.NonLife.Policy"/>
+<xsd:import schemaLocation="http://orienttest.vizyoneks.com.tr/Public/PolicyService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/EntitySpaces.External.Policy.ReturningType"/>
+<xsd:import schemaLocation="http://orienttest.vizyoneks.com.tr/Public/PolicyService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/BLL.NonLife"/>
+<xsd:import schemaLocation="http://orienttest.vizyoneks.com.tr/Public/PolicyService.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife"/>
+<xsd:import schemaLocation="http://orienttest.vizyoneks.com.tr/Public/PolicyService.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.Policy.ReturningType"/>
+<xsd:import schemaLocation="http://orienttest.vizyoneks.com.tr/Public/PolicyService.svc?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/System"/>
+</xsd:schema>
+</wsdl:types>
+<wsdl:message name="IPolicyService_GetPolicy_InputMessage">
+<wsdl:part name="parameters" element="tns:GetPolicy"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_GetPolicy_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetPolicyResponse"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_GetPolicyWithOldPolicyNumber_InputMessage">
+<wsdl:part name="parameters" element="tns:GetPolicyWithOldPolicyNumber"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_GetPolicyWithOldPolicyNumber_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetPolicyWithOldPolicyNumberResponse"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_GetPolicyListWithDate_InputMessage">
+<wsdl:part name="parameters" element="tns:GetPolicyListWithDate"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_GetPolicyListWithDate_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetPolicyListWithDateResponse"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_GetPolicyReport_InputMessage">
+<wsdl:part name="parameters" element="tns:GetPolicyReport"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_GetPolicyReport_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetPolicyReportResponse"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_GetCreditCardForm_InputMessage">
+<wsdl:part name="parameters" element="tns:GetCreditCardForm"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_GetCreditCardForm_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetCreditCardFormResponse"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_CheckActiveProductByInsured_InputMessage">
+<wsdl:part name="parameters" element="tns:CheckActiveProductByInsured"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_CheckActiveProductByInsured_OutputMessage">
+<wsdl:part name="parameters" element="tns:CheckActiveProductByInsuredResponse"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_GetCustomerNo_InputMessage">
+<wsdl:part name="parameters" element="tns:GetCustomerNo"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_GetCustomerNo_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetCustomerNoResponse"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_GetCustomer_InputMessage">
+<wsdl:part name="parameters" element="tns:GetCustomer"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_GetCustomer_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetCustomerResponse"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_CreatePolicy_InputMessage">
+<wsdl:part name="parameters" element="tns:CreatePolicy"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_CreatePolicy_OutputMessage">
+<wsdl:part name="parameters" element="tns:CreatePolicyResponse"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_CreateSupplement_InputMessage">
+<wsdl:part name="parameters" element="tns:CreateSupplement"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_CreateSupplement_OutputMessage">
+<wsdl:part name="parameters" element="tns:CreateSupplementResponse"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_RemoveHostageSupplement_InputMessage">
+<wsdl:part name="parameters" element="tns:RemoveHostageSupplement"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_RemoveHostageSupplement_OutputMessage">
+<wsdl:part name="parameters" element="tns:RemoveHostageSupplementResponse"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_GetCollectingTypes_InputMessage">
+<wsdl:part name="parameters" element="tns:GetCollectingTypes"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_GetCollectingTypes_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetCollectingTypesResponse"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_MakePolicyPayment_InputMessage">
+<wsdl:part name="parameters" element="tns:MakePolicyPayment"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_MakePolicyPayment_OutputMessage">
+<wsdl:part name="parameters" element="tns:MakePolicyPaymentResponse"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_MakePolicyPaymentWithPaymentCode_InputMessage">
+<wsdl:part name="parameters" element="tns:MakePolicyPaymentWithPaymentCode"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_MakePolicyPaymentWithPaymentCode_OutputMessage">
+<wsdl:part name="parameters" element="tns:MakePolicyPaymentWithPaymentCodeResponse"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_MakePolicyPaymentV3_InputMessage">
+<wsdl:part name="parameters" element="tns:MakePolicyPaymentV3"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_MakePolicyPaymentV3_OutputMessage">
+<wsdl:part name="parameters" element="tns:MakePolicyPaymentV3Response"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_ConvertOrderToPolicy_InputMessage">
+<wsdl:part name="parameters" element="tns:ConvertOrderToPolicy"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_ConvertOrderToPolicy_OutputMessage">
+<wsdl:part name="parameters" element="tns:ConvertOrderToPolicyResponse"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_GetRenewPolicy_InputMessage">
+<wsdl:part name="parameters" element="tns:GetRenewPolicy"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_GetRenewPolicy_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetRenewPolicyResponse"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_GetVehicleInfoByPlate_InputMessage">
+<wsdl:part name="parameters" element="tns:GetVehicleInfoByPlate"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_GetVehicleInfoByPlate_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetVehicleInfoByPlateResponse"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_CheckPertVehicle_InputMessage">
+<wsdl:part name="parameters" element="tns:CheckPertVehicle"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_CheckPertVehicle_OutputMessage">
+<wsdl:part name="parameters" element="tns:CheckPertVehicleResponse"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_GetBirlikMarkaKod_InputMessage">
+<wsdl:part name="parameters" element="tns:GetBirlikMarkaKod"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_GetBirlikMarkaKod_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetBirlikMarkaKodResponse"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_GetPoliciesFromSegmentation_017_InputMessage">
+<wsdl:part name="parameters" element="tns:GetPoliciesFromSegmentation_017"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_GetPoliciesFromSegmentation_017_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetPoliciesFromSegmentation_017Response"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_GetPoliciesFromSegmentationOptimized_017_InputMessage">
+<wsdl:part name="parameters" element="tns:GetPoliciesFromSegmentationOptimized_017"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_GetPoliciesFromSegmentationOptimized_017_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetPoliciesFromSegmentationOptimized_017Response"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_MakePolicyPaymentRSA_InputMessage">
+<wsdl:part name="parameters" element="tns:MakePolicyPaymentRSA"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_MakePolicyPaymentRSA_OutputMessage">
+<wsdl:part name="parameters" element="tns:MakePolicyPaymentRSAResponse"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_GetPolicyReportAuthenticationKey_InputMessage">
+<wsdl:part name="parameters" element="tns:GetPolicyReportAuthenticationKey"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_GetPolicyReportAuthenticationKey_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetPolicyReportAuthenticationKeyResponse"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_GetCoverages_InputMessage">
+<wsdl:part name="parameters" element="tns:GetCoverages"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_GetCoverages_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetCoveragesResponse"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_GetPolicyAuthenticationKey_InputMessage">
+<wsdl:part name="parameters" element="tns:GetPolicyAuthenticationKey"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_GetPolicyAuthenticationKey_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetPolicyAuthenticationKeyResponse"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_GetPolicyListWithDateAuthenticationKey_InputMessage">
+<wsdl:part name="parameters" element="tns:GetPolicyListWithDateAuthenticationKey"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_GetPolicyListWithDateAuthenticationKey_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetPolicyListWithDateAuthenticationKeyResponse"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_GetMarkaModel_InputMessage">
+<wsdl:part name="parameters" element="tns:GetMarkaModel"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_GetMarkaModel_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetMarkaModelResponse"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_GetPolicyQrDetails_InputMessage">
+<wsdl:part name="parameters" element="tns:GetPolicyQrDetails"/>
+</wsdl:message>
+<wsdl:message name="IPolicyService_GetPolicyQrDetails_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetPolicyQrDetailsResponse"/>
+</wsdl:message>
+<wsdl:portType name="IPolicyService">
+<wsdl:operation name="GetPolicy">
+<wsdl:input wsaw:Action="http://tempuri.org/IPolicyService/GetPolicy" message="tns:IPolicyService_GetPolicy_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/IPolicyService/GetPolicyResponse" message="tns:IPolicyService_GetPolicy_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetPolicyWithOldPolicyNumber">
+<wsdl:input wsaw:Action="http://tempuri.org/IPolicyService/GetPolicyWithOldPolicyNumber" message="tns:IPolicyService_GetPolicyWithOldPolicyNumber_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/IPolicyService/GetPolicyWithOldPolicyNumberResponse" message="tns:IPolicyService_GetPolicyWithOldPolicyNumber_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetPolicyListWithDate">
+<wsdl:input wsaw:Action="http://tempuri.org/IPolicyService/GetPolicyListWithDate" message="tns:IPolicyService_GetPolicyListWithDate_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/IPolicyService/GetPolicyListWithDateResponse" message="tns:IPolicyService_GetPolicyListWithDate_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetPolicyReport">
+<wsdl:input wsaw:Action="http://tempuri.org/IPolicyService/GetPolicyReport" message="tns:IPolicyService_GetPolicyReport_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/IPolicyService/GetPolicyReportResponse" message="tns:IPolicyService_GetPolicyReport_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetCreditCardForm">
+<wsdl:input wsaw:Action="http://tempuri.org/IPolicyService/GetCreditCardForm" message="tns:IPolicyService_GetCreditCardForm_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/IPolicyService/GetCreditCardFormResponse" message="tns:IPolicyService_GetCreditCardForm_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="CheckActiveProductByInsured">
+<wsdl:input wsaw:Action="http://tempuri.org/IPolicyService/CheckActiveProductByInsured" message="tns:IPolicyService_CheckActiveProductByInsured_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/IPolicyService/CheckActiveProductByInsuredResponse" message="tns:IPolicyService_CheckActiveProductByInsured_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetCustomerNo">
+<wsdl:input wsaw:Action="http://tempuri.org/IPolicyService/GetCustomerNo" message="tns:IPolicyService_GetCustomerNo_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/IPolicyService/GetCustomerNoResponse" message="tns:IPolicyService_GetCustomerNo_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetCustomer">
+<wsdl:input wsaw:Action="http://tempuri.org/IPolicyService/GetCustomer" message="tns:IPolicyService_GetCustomer_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/IPolicyService/GetCustomerResponse" message="tns:IPolicyService_GetCustomer_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="CreatePolicy">
+<wsdl:input wsaw:Action="http://tempuri.org/IPolicyService/CreatePolicy" message="tns:IPolicyService_CreatePolicy_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/IPolicyService/CreatePolicyResponse" message="tns:IPolicyService_CreatePolicy_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="CreateSupplement">
+<wsdl:input wsaw:Action="http://tempuri.org/IPolicyService/CreateSupplement" message="tns:IPolicyService_CreateSupplement_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/IPolicyService/CreateSupplementResponse" message="tns:IPolicyService_CreateSupplement_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="RemoveHostageSupplement">
+<wsdl:input wsaw:Action="http://tempuri.org/IPolicyService/RemoveHostageSupplement" message="tns:IPolicyService_RemoveHostageSupplement_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/IPolicyService/RemoveHostageSupplementResponse" message="tns:IPolicyService_RemoveHostageSupplement_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetCollectingTypes">
+<wsdl:input wsaw:Action="http://tempuri.org/IPolicyService/GetCollectingTypes" message="tns:IPolicyService_GetCollectingTypes_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/IPolicyService/GetCollectingTypesResponse" message="tns:IPolicyService_GetCollectingTypes_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="MakePolicyPayment">
+<wsdl:input wsaw:Action="http://tempuri.org/IPolicyService/MakePolicyPayment" message="tns:IPolicyService_MakePolicyPayment_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/IPolicyService/MakePolicyPaymentResponse" message="tns:IPolicyService_MakePolicyPayment_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="MakePolicyPaymentWithPaymentCode">
+<wsdl:input wsaw:Action="http://tempuri.org/IPolicyService/MakePolicyPaymentWithPaymentCode" message="tns:IPolicyService_MakePolicyPaymentWithPaymentCode_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/IPolicyService/MakePolicyPaymentWithPaymentCodeResponse" message="tns:IPolicyService_MakePolicyPaymentWithPaymentCode_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="MakePolicyPaymentV3">
+<wsdl:input wsaw:Action="http://tempuri.org/IPolicyService/MakePolicyPaymentV3" message="tns:IPolicyService_MakePolicyPaymentV3_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/IPolicyService/MakePolicyPaymentV3Response" message="tns:IPolicyService_MakePolicyPaymentV3_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="ConvertOrderToPolicy">
+<wsdl:input wsaw:Action="http://tempuri.org/IPolicyService/ConvertOrderToPolicy" message="tns:IPolicyService_ConvertOrderToPolicy_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/IPolicyService/ConvertOrderToPolicyResponse" message="tns:IPolicyService_ConvertOrderToPolicy_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetRenewPolicy">
+<wsdl:input wsaw:Action="http://tempuri.org/IPolicyService/GetRenewPolicy" message="tns:IPolicyService_GetRenewPolicy_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/IPolicyService/GetRenewPolicyResponse" message="tns:IPolicyService_GetRenewPolicy_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetVehicleInfoByPlate">
+<wsdl:input wsaw:Action="http://tempuri.org/IPolicyService/GetVehicleInfoByPlate" message="tns:IPolicyService_GetVehicleInfoByPlate_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/IPolicyService/GetVehicleInfoByPlateResponse" message="tns:IPolicyService_GetVehicleInfoByPlate_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="CheckPertVehicle">
+<wsdl:input wsaw:Action="http://tempuri.org/IPolicyService/CheckPertVehicle" message="tns:IPolicyService_CheckPertVehicle_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/IPolicyService/CheckPertVehicleResponse" message="tns:IPolicyService_CheckPertVehicle_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetBirlikMarkaKod">
+<wsdl:input wsaw:Action="http://tempuri.org/IPolicyService/GetBirlikMarkaKod" message="tns:IPolicyService_GetBirlikMarkaKod_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/IPolicyService/GetBirlikMarkaKodResponse" message="tns:IPolicyService_GetBirlikMarkaKod_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetPoliciesFromSegmentation_017">
+<wsdl:input wsaw:Action="http://tempuri.org/IPolicyService/GetPoliciesFromSegmentation_017" message="tns:IPolicyService_GetPoliciesFromSegmentation_017_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/IPolicyService/GetPoliciesFromSegmentation_017Response" message="tns:IPolicyService_GetPoliciesFromSegmentation_017_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetPoliciesFromSegmentationOptimized_017">
+<wsdl:input wsaw:Action="http://tempuri.org/IPolicyService/GetPoliciesFromSegmentationOptimized_017" message="tns:IPolicyService_GetPoliciesFromSegmentationOptimized_017_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/IPolicyService/GetPoliciesFromSegmentationOptimized_017Response" message="tns:IPolicyService_GetPoliciesFromSegmentationOptimized_017_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="MakePolicyPaymentRSA">
+<wsdl:input wsaw:Action="http://tempuri.org/IPolicyService/MakePolicyPaymentRSA" message="tns:IPolicyService_MakePolicyPaymentRSA_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/IPolicyService/MakePolicyPaymentRSAResponse" message="tns:IPolicyService_MakePolicyPaymentRSA_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetPolicyReportAuthenticationKey">
+<wsdl:input wsaw:Action="http://tempuri.org/IPolicyService/GetPolicyReportAuthenticationKey" message="tns:IPolicyService_GetPolicyReportAuthenticationKey_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/IPolicyService/GetPolicyReportAuthenticationKeyResponse" message="tns:IPolicyService_GetPolicyReportAuthenticationKey_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetCoverages">
+<wsdl:input wsaw:Action="http://tempuri.org/IPolicyService/GetCoverages" message="tns:IPolicyService_GetCoverages_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/IPolicyService/GetCoveragesResponse" message="tns:IPolicyService_GetCoverages_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetPolicyAuthenticationKey">
+<wsdl:input wsaw:Action="http://tempuri.org/IPolicyService/GetPolicyAuthenticationKey" message="tns:IPolicyService_GetPolicyAuthenticationKey_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/IPolicyService/GetPolicyAuthenticationKeyResponse" message="tns:IPolicyService_GetPolicyAuthenticationKey_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetPolicyListWithDateAuthenticationKey">
+<wsdl:input wsaw:Action="http://tempuri.org/IPolicyService/GetPolicyListWithDateAuthenticationKey" message="tns:IPolicyService_GetPolicyListWithDateAuthenticationKey_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/IPolicyService/GetPolicyListWithDateAuthenticationKeyResponse" message="tns:IPolicyService_GetPolicyListWithDateAuthenticationKey_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetMarkaModel">
+<wsdl:input wsaw:Action="http://tempuri.org/IPolicyService/GetMarkaModel" message="tns:IPolicyService_GetMarkaModel_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/IPolicyService/GetMarkaModelResponse" message="tns:IPolicyService_GetMarkaModel_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetPolicyQrDetails">
+<wsdl:input wsaw:Action="http://tempuri.org/IPolicyService/GetPolicyQrDetails" message="tns:IPolicyService_GetPolicyQrDetails_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/IPolicyService/GetPolicyQrDetailsResponse" message="tns:IPolicyService_GetPolicyQrDetails_OutputMessage"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="BasicHttpBinding_IPolicyService" type="tns:IPolicyService">
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="GetPolicy">
+<soap:operation soapAction="http://tempuri.org/IPolicyService/GetPolicy" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetPolicyWithOldPolicyNumber">
+<soap:operation soapAction="http://tempuri.org/IPolicyService/GetPolicyWithOldPolicyNumber" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetPolicyListWithDate">
+<soap:operation soapAction="http://tempuri.org/IPolicyService/GetPolicyListWithDate" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetPolicyReport">
+<soap:operation soapAction="http://tempuri.org/IPolicyService/GetPolicyReport" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetCreditCardForm">
+<soap:operation soapAction="http://tempuri.org/IPolicyService/GetCreditCardForm" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="CheckActiveProductByInsured">
+<soap:operation soapAction="http://tempuri.org/IPolicyService/CheckActiveProductByInsured" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetCustomerNo">
+<soap:operation soapAction="http://tempuri.org/IPolicyService/GetCustomerNo" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetCustomer">
+<soap:operation soapAction="http://tempuri.org/IPolicyService/GetCustomer" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="CreatePolicy">
+<soap:operation soapAction="http://tempuri.org/IPolicyService/CreatePolicy" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="CreateSupplement">
+<soap:operation soapAction="http://tempuri.org/IPolicyService/CreateSupplement" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="RemoveHostageSupplement">
+<soap:operation soapAction="http://tempuri.org/IPolicyService/RemoveHostageSupplement" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetCollectingTypes">
+<soap:operation soapAction="http://tempuri.org/IPolicyService/GetCollectingTypes" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="MakePolicyPayment">
+<soap:operation soapAction="http://tempuri.org/IPolicyService/MakePolicyPayment" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="MakePolicyPaymentWithPaymentCode">
+<soap:operation soapAction="http://tempuri.org/IPolicyService/MakePolicyPaymentWithPaymentCode" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="MakePolicyPaymentV3">
+<soap:operation soapAction="http://tempuri.org/IPolicyService/MakePolicyPaymentV3" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="ConvertOrderToPolicy">
+<soap:operation soapAction="http://tempuri.org/IPolicyService/ConvertOrderToPolicy" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetRenewPolicy">
+<soap:operation soapAction="http://tempuri.org/IPolicyService/GetRenewPolicy" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetVehicleInfoByPlate">
+<soap:operation soapAction="http://tempuri.org/IPolicyService/GetVehicleInfoByPlate" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="CheckPertVehicle">
+<soap:operation soapAction="http://tempuri.org/IPolicyService/CheckPertVehicle" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetBirlikMarkaKod">
+<soap:operation soapAction="http://tempuri.org/IPolicyService/GetBirlikMarkaKod" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetPoliciesFromSegmentation_017">
+<soap:operation soapAction="http://tempuri.org/IPolicyService/GetPoliciesFromSegmentation_017" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetPoliciesFromSegmentationOptimized_017">
+<soap:operation soapAction="http://tempuri.org/IPolicyService/GetPoliciesFromSegmentationOptimized_017" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="MakePolicyPaymentRSA">
+<soap:operation soapAction="http://tempuri.org/IPolicyService/MakePolicyPaymentRSA" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetPolicyReportAuthenticationKey">
+<soap:operation soapAction="http://tempuri.org/IPolicyService/GetPolicyReportAuthenticationKey" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetCoverages">
+<soap:operation soapAction="http://tempuri.org/IPolicyService/GetCoverages" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetPolicyAuthenticationKey">
+<soap:operation soapAction="http://tempuri.org/IPolicyService/GetPolicyAuthenticationKey" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetPolicyListWithDateAuthenticationKey">
+<soap:operation soapAction="http://tempuri.org/IPolicyService/GetPolicyListWithDateAuthenticationKey" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetMarkaModel">
+<soap:operation soapAction="http://tempuri.org/IPolicyService/GetMarkaModel" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetPolicyQrDetails">
+<soap:operation soapAction="http://tempuri.org/IPolicyService/GetPolicyQrDetails" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="PolicyService">
+<wsdl:port name="BasicHttpBinding_IPolicyService" binding="tns:BasicHttpBinding_IPolicyService">
+<soap:address location="http://orienttest.vizyoneks.com.tr/Public/PolicyService.svc"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>
