@@ -1,6 +1,7 @@
 // src/products/dtos/get-config.query.ts
-import { IsEnum, IsString } from 'class-validator';
+import { IsEnum, IsIn, IsOptional, IsString } from 'class-validator';
 import { ProductCode } from '../../common/types/domain-types';
+import type { FormStage } from '../../common/types/field-types';
 
 export class GetConfigQuery {
   @IsEnum(ProductCode)
@@ -8,4 +9,8 @@ export class GetConfigQuery {
 
   @IsString()
   carrier: string;
+
+  @IsOptional()
+  @IsIn(['QUOTE', 'PURCHASE'])
+  stage?: FormStage;
 }

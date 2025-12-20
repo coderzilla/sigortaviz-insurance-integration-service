@@ -1,12 +1,20 @@
 // src/products/products.controller.ts
-import { Controller, Get, Query } from '@nestjs/common';
+import { Controller, Get, Param, ParseEnumPipe, Query } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { GetConfigQuery } from './dtos/get-config-query';
-import { FieldConfig, ProductFormConfig } from '../common/types/field-types';
+import {
+  FieldConfig,
+  FormStage,
+  ProductFormConfig,
+} from '../common/types/field-types';
+import { GetConfigUnionQuery } from './dtos/get-config-union-query';
+import { ProductCode } from '../common/types/domain-types';
 
 @Controller()
 export class ProductsController {
-  constructor(private readonly productsService: ProductsService) {}
+  constructor(
+    private readonly productsService: ProductsService,
+  ) {}
 
   @Get('config')
   async getConfig(
@@ -20,6 +28,7 @@ export class ProductsController {
     const formConfig = await this.productsService.getFieldConfig(
       query.product,
       query.carrier,
+      query.stage ?? 'QUOTE',
     );
 
     return {
@@ -27,6 +36,41 @@ export class ProductsController {
       carrier: query.carrier,
       fields: formConfig.fields,
       pageChangeRequest: formConfig.pageChangeRequest,
+    };
+  }
+
+  @Get('config/product/:product')
+  async getUnionConfig(
+    @Param('product', new ParseEnumPipe(ProductCode)) product: ProductCode,
+    @Query() query: GetConfigUnionQuery,
+  ): Promise<{
+    product: ProductCode;
+    stage: FormStage;
+    carriers: string[];
+    fields: Array<
+      FieldConfig & { requiredFor: string[]; optionalFor: string[] }
+    >;
+    pageChangeRequests: Record<string, ProductFormConfig['pageChangeRequest']>;
+  }> {
+    const stage = query.stage ?? 'QUOTE';
+    const carriers =
+      query.carriers ||
+      (query.carrier
+        ? [query.carrier]
+        : await this.productsService.getCarriersWithConfig(product, stage));
+
+    const config = await this.productsService.getUnionFieldConfig(
+      product,
+      carriers,
+      stage,
+    );
+
+    return {
+      product: config.product,
+      stage: config.stage,
+      carriers: config.carriers,
+      fields: config.fields,
+      pageChangeRequests: config.pageChangeRequests,
     };
   }
 }

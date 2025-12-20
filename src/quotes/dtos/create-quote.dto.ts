@@ -6,6 +6,7 @@ import {
   IsString,
   IsArray,
   ValidateNested,
+  IsBoolean,
 } from 'class-validator';
 import { Type } from 'class-transformer';
 import { ProductCode } from '../../common/types/domain-types';
@@ -30,6 +31,16 @@ class InsuredPersonDto {
   @IsOptional()
   @IsString()
   email?: string;
+}
+
+class AdditionalInsuredDto extends InsuredPersonDto {
+  @IsOptional()
+  @IsString()
+  role?: string; // SELF | SPOUSE | CHILD
+
+  @IsOptional()
+  @IsBoolean()
+  isMain?: boolean;
 }
 
 class VehicleDto {
@@ -60,6 +71,17 @@ export class CreateQuoteDto {
   @ValidateNested()
   @Type(() => InsuredPersonDto)
   insuredPerson: InsuredPersonDto;
+
+  @IsOptional()
+  @ValidateNested()
+  @Type(() => InsuredPersonDto)
+  insurer?: InsuredPersonDto;
+
+  @IsOptional()
+  @IsArray()
+  @ValidateNested({ each: true })
+  @Type(() => AdditionalInsuredDto)
+  insureds?: AdditionalInsuredDto[];
 
   @IsOptional()
   @ValidateNested()

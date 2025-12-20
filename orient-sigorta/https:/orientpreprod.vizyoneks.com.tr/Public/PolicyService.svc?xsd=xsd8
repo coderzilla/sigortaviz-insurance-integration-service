@@ -1,0 +1,129 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife">
+<xs:import schemaLocation="https://orientpreprod.vizyoneks.com.tr/Public/PolicyService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.TypeMapping"/>
+<xs:import schemaLocation="https://orientpreprod.vizyoneks.com.tr/Public/PolicyService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ApplicationBlocks.Common"/>
+<xs:complexType name="Customer">
+<xs:complexContent mixed="false">
+<xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/ApplicationBlocks.Common" base="q1:BaseEntity">
+<xs:sequence>
+<xs:element minOccurs="0" name="AcenteLevhaNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Aciklama" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Acilis" type="xs:dateTime"/>
+<xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.TypeMapping" minOccurs="0" name="Address" nillable="true" type="q2:EXT_WS_MADRESINSERT_REQ_TYP"/>
+<xs:element minOccurs="0" name="AffinityKod" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AileSiraNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AnaAdi" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Anlasmali" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AnneKizlikSoyad" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BabaAdi" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Baglanti" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BagliAcentaNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BagliKaynak" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BagliMustKod" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BagliMustKomAlir" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BagliSube" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BagliTaliAcentaNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BankaSubeKod" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BelIl" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BelIlce" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BirlikSicilNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Cadde" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="CiltNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Cinsiyet" nillable="true" type="xs:string"/>
+<xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.TypeMapping" minOccurs="0" name="Communication" nillable="true" type="q3:EXT_WS_MIRTINSERT_TYP"/>
+<xs:element minOccurs="0" name="Daire" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DaskBelde" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DaskIlce" nillable="true" type="xs:string"/>
+<xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.TypeMapping" minOccurs="0" name="Details" nillable="true" type="q4:EXT_WS_MUSTINSERT_REQ_TYP"/>
+<xs:element minOccurs="0" name="Dini" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Dogrulandi" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DogumIl" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DogumIlce" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DogumTarih" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="DogumYeri" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="EMail" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="EskiMustKod" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="EvlilikTarih" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="FaalKod" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Faks" nillable="true" type="xs:string"/>
+<xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.TypeMapping" minOccurs="0" name="FinancialInfo" nillable="true" type="q5:EXT_WS_MMALIINSERT_TYP"/>
+<xs:element minOccurs="0" name="Gsm" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="HanApt" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IlKod" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IlceKod" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="KanGrubu" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Kapanis" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="KapanisNedenKod" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="KayitNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="KaynakKod" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="KaynakKodu" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="KimlikNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="KimlikSiraNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="KimlikTip" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="KizlikSoyadi" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="KuverKes" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="MahKoy" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Mahalle" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Mbb" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="MbbGecerli" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="MedeniDurum" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="MeslekKod" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="MustAdi" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="MustKod" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="MustSoyadi" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="MusteriSurprim" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="MusteriTipi" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="No" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="NominalSermaye" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="NufusSicil" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="OdenmisSermaye" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="OlumTarih" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="OpAcilis" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="OpID" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="PasaportNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="PersonelSayisi" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="PostaKodu" nillable="true" type="xs:string"/>
+<xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.TypeMapping" minOccurs="0" name="ReqDetails" nillable="true" type="q6:EXT_WS_MUSTINSERT_REQ_TYP"/>
+<xs:element minOccurs="0" name="Resmi" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SaticiSicilNo" nillable="true" type="xs:string"/>
+<xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.TypeMapping" minOccurs="0" name="SearchLineInfo" nillable="true" type="q7:EXT_WS_MUST_RES_TYP"/>
+<xs:element minOccurs="0" name="Semt" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Sf" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SiraNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SirketKod" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SirketTescilTarihi" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Sokak" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SozlesmeTarihi" nillable="true" type="xs:string"/>
+<xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.TypeMapping" minOccurs="0" name="Statistics" nillable="true" type="q8:ArrayOfCUSTOMER_IST_REC"/>
+<xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.TypeMapping" minOccurs="0" name="StatisticsDetails" nillable="true" type="q9:CUSTOMER_IST_TYPE"/>
+<xs:element minOccurs="0" name="SubeKod" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Tarih" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TcKimlikNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TckGecerli" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Tel" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Teleks" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TgsTarih" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TicaretSicil" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="UavtId" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="UlkeKod" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Unvan1" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Unvan2" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="UnvanKod" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Uyrugu" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="UyrukKod" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="VergiDaire" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="VergiKodu" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="VergiNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="VerildigiYer" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="VerilisNedeni" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="VerilisTarih" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Vip" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="VipKod" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="YerelTarih" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="YetkiKodu" nillable="true" type="xs:string"/>
+<xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.TypeMapping" minOccurs="0" name="_Statistics" nillable="true" type="q10:ArrayOfCUSTOMER_IST_REC"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="Customer" nillable="true" type="tns:Customer"/>
+</xs:schema>

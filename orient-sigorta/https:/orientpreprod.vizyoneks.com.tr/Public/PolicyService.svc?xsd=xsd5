@@ -1,0 +1,603 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+<xs:import schemaLocation="https://orientpreprod.vizyoneks.com.tr/Public/PolicyService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/EntitySpaces.External.Policy.ReturningType"/>
+<xs:import schemaLocation="https://orientpreprod.vizyoneks.com.tr/Public/PolicyService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/BLL.NonLife"/>
+<xs:import schemaLocation="https://orientpreprod.vizyoneks.com.tr/Public/PolicyService.svc?xsd=xsd1" namespace="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.Policy"/>
+<xs:import schemaLocation="https://orientpreprod.vizyoneks.com.tr/Public/PolicyService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.TypeMapping"/>
+<xs:import schemaLocation="https://orientpreprod.vizyoneks.com.tr/Public/PolicyService.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.Policy.ReturningType"/>
+<xs:import schemaLocation="https://orientpreprod.vizyoneks.com.tr/Public/PolicyService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ApplicationBlocks.Common"/>
+<xs:import schemaLocation="https://orientpreprod.vizyoneks.com.tr/Public/PolicyService.svc?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/System"/>
+<xs:element name="GetPolicy">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="appSecurityKey" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="policyNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="supplementNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="showCoveragesLastState" type="xs:boolean"/>
+<xs:element minOccurs="0" name="proposalApproval" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetPolicyResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/EntitySpaces.External.Policy.ReturningType" minOccurs="0" name="GetPolicyResult" nillable="true" type="q1:Policy"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetPolicyWithOldPolicyNumber">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="appSecurityKey" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="oldPolicyNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="supplementNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="showCoveragesLastState" type="xs:boolean"/>
+<xs:element minOccurs="0" name="proposalApproval" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetPolicyWithOldPolicyNumberResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/EntitySpaces.External.Policy.ReturningType" minOccurs="0" name="GetPolicyWithOldPolicyNumberResult" nillable="true" type="q2:Policy"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetPolicyListWithDate">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="appSecurityKey" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="firstDate" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="lastDate" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="showCoveragesLastState" type="xs:boolean"/>
+<xs:element minOccurs="0" name="partaj" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="alertNo" type="xs:int"/>
+<xs:element minOccurs="0" name="alertText" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetPolicyListWithDateResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/EntitySpaces.External.Policy.ReturningType" minOccurs="0" name="GetPolicyListWithDateResult" nillable="true" type="q3:ArrayOfPolicy"/>
+<xs:element minOccurs="0" name="alertNo" type="xs:int"/>
+<xs:element minOccurs="0" name="alertText" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetPolicyReport">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="appSecurityKey" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="policyNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="supplementNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="generateNotification" type="xs:boolean"/>
+<xs:element minOccurs="0" name="userName" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="language" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="oldPolicyNo" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetPolicyReportResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/EntitySpaces.External.Policy.ReturningType" minOccurs="0" name="GetPolicyReportResult" nillable="true" type="q4:Report"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetCreditCardForm">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="appSecurityKey" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="policyNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="supplementNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="userName" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetCreditCardFormResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/EntitySpaces.External.Policy.ReturningType" minOccurs="0" name="GetCreditCardFormResult" nillable="true" type="q5:Report"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="CheckActiveProductByInsured">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="appSecurityKey" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="queryInput" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="queryInputType" type="xs:unsignedByte"/>
+<xs:element minOccurs="0" name="productCode" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="CheckActiveProductByInsuredResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/EntitySpaces.External.Policy.ReturningType" minOccurs="0" name="CheckActiveProductByInsuredResult" nillable="true" type="q6:CheckActiveProductByInsured"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetCustomerNo">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="authenticationKey" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="appSecurityKey" nillable="true" type="xs:string"/>
+<xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/EntitySpaces.External.Policy.ReturningType" minOccurs="0" name="entity" nillable="true" type="q7:GetCustomerNo"/>
+<xs:element minOccurs="0" name="alertNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="alertText" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetCustomerNoResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="GetCustomerNoResult" type="xs:boolean"/>
+<xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/EntitySpaces.External.Policy.ReturningType" minOccurs="0" name="entity" nillable="true" type="q8:GetCustomerNo"/>
+<xs:element minOccurs="0" name="alertNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="alertText" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetCustomer">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="authenticationKey" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="customerCode" nillable="true" type="xs:string"/>
+<xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/BLL.NonLife" minOccurs="0" name="entity" nillable="true" type="q9:CustomerBO"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetCustomerResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="GetCustomerResult" type="xs:boolean"/>
+<xs:element minOccurs="0" name="customerCode" nillable="true" type="xs:string"/>
+<xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/BLL.NonLife" minOccurs="0" name="entity" nillable="true" type="q10:CustomerBO"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="CreatePolicy">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="authenticationKey" nillable="true" type="xs:string"/>
+<xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.Policy" minOccurs="0" name="entity" nillable="true" type="q11:Policy"/>
+<xs:element minOccurs="0" name="startDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="endDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="addNewAddress" type="xs:unsignedByte"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="CreatePolicyResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="CreatePolicyResult" type="xs:boolean"/>
+<xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.Policy" minOccurs="0" name="entity" nillable="true" type="q12:Policy"/>
+<xs:element minOccurs="0" name="endDate" type="xs:dateTime"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="CreateSupplement">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="authenticationKey" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="supplementType" nillable="true" type="xs:string"/>
+<xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.Policy" minOccurs="0" name="entity" nillable="true" type="q13:Supplement"/>
+<xs:element minOccurs="0" name="cancellationReason" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="cancellationReasonText" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="supplementWorkingType" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="authCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="supplementCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="bankCustomerNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="dmBank" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="dmBranch" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="insuredByNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="insuredNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="district" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="avenue" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="street" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="apartment" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="buildingNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="flatNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="vicinity" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="postalCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="city" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="county" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="town" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="constantCommission" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="onlineSend" type="xs:boolean"/>
+<xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.TypeMapping" minOccurs="0" name="statistics" nillable="true" type="q14:EXT_WS_ISTDEG_TYP"/>
+<xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.TypeMapping" minOccurs="0" name="informations" nillable="true" type="q15:EXT_WS_POLICE_BLG_TYP"/>
+<xs:element minOccurs="0" name="statValue" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="CreateSupplementResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="CreateSupplementResult" type="xs:boolean"/>
+<xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.Policy" minOccurs="0" name="entity" nillable="true" type="q16:Supplement"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="RemoveHostageSupplement">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="authenticationKey" nillable="true" type="xs:string"/>
+<xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.Policy" minOccurs="0" name="entity" nillable="true" type="q17:Supplement"/>
+<xs:element minOccurs="0" name="insuredName" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="insuredByName" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="dmBank" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="dmBranch" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="startDateControl" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="issueDateControl" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="descriptionDisabled" type="xs:boolean"/>
+<xs:element minOccurs="0" name="onlineSend" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="RemoveHostageSupplementResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="RemoveHostageSupplementResult" type="xs:boolean"/>
+<xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.Policy" minOccurs="0" name="entity" nillable="true" type="q18:Supplement"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetCollectingTypes">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="authenticationKey" nillable="true" type="xs:string"/>
+<xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/EntitySpaces.External.Policy.ReturningType" minOccurs="0" name="entity" nillable="true" type="q19:PolicyPayment"/>
+<xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.TypeMapping" minOccurs="0" name="collectingList" nillable="true" type="q20:TAHKOD_CEVAP_TYPE"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetCollectingTypesResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="GetCollectingTypesResult" type="xs:boolean"/>
+<xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/EntitySpaces.External.Policy.ReturningType" minOccurs="0" name="entity" nillable="true" type="q21:PolicyPayment"/>
+<xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.TypeMapping" minOccurs="0" name="collectingList" nillable="true" type="q22:TAHKOD_CEVAP_TYPE"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="MakePolicyPayment">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="authenticationKey" nillable="true" type="xs:string"/>
+<xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/EntitySpaces.External.Policy.ReturningType" minOccurs="0" name="entity" nillable="true" type="q23:PolicyPayment"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="MakePolicyPaymentResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="MakePolicyPaymentResult" type="xs:boolean"/>
+<xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/EntitySpaces.External.Policy.ReturningType" minOccurs="0" name="entity" nillable="true" type="q24:PolicyPayment"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="MakePolicyPaymentWithPaymentCode">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="authenticationKey" nillable="true" type="xs:string"/>
+<xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/EntitySpaces.External.Policy.ReturningType" minOccurs="0" name="entity" nillable="true" type="q25:PolicyPayment"/>
+<xs:element minOccurs="0" name="paymentCode" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="MakePolicyPaymentWithPaymentCodeResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="MakePolicyPaymentWithPaymentCodeResult" type="xs:boolean"/>
+<xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/EntitySpaces.External.Policy.ReturningType" minOccurs="0" name="entity" nillable="true" type="q26:PolicyPayment"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="MakePolicyPaymentV3">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="p_sAuthenticationKey" nillable="true" type="xs:string"/>
+<xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/EntitySpaces.External.Policy.ReturningType" minOccurs="0" name="p_xInput" nillable="true" type="q27:MakePolicyPayment"/>
+<xs:element minOccurs="0" name="pO_sAlertNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="pO_sAlertText" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="pO_s3DPageUrl" nillable="true" type="xs:string"/>
+<xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/EntitySpaces.External.Policy.ReturningType" minOccurs="0" name="p_xPolicyPayment3D" nillable="true" type="q28:PolicyPayment3D"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="MakePolicyPaymentV3Response">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="MakePolicyPaymentV3Result" type="xs:boolean"/>
+<xs:element minOccurs="0" name="pO_sAlertNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="pO_sAlertText" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="pO_s3DPageUrl" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ConvertOrderToPolicy">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="authenticationKey" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="policyNo" type="xs:int"/>
+<xs:element minOccurs="0" name="status" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="alertNo" type="xs:int"/>
+<xs:element minOccurs="0" name="alertText" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ConvertOrderToPolicyResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="ConvertOrderToPolicyResult" type="xs:boolean"/>
+<xs:element minOccurs="0" name="status" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="alertNo" type="xs:int"/>
+<xs:element minOccurs="0" name="alertText" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetRenewPolicy">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="authenticationKey" nillable="true" type="xs:string"/>
+<xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.Policy" minOccurs="0" name="entity" nillable="true" type="q29:Policy"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetRenewPolicyResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="GetRenewPolicyResult" type="xs:boolean"/>
+<xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.Policy" minOccurs="0" name="entity" nillable="true" type="q30:Policy"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetVehicleInfoByPlate">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="authenticationKey" nillable="true" type="xs:string"/>
+<xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.Policy.ReturningType" minOccurs="0" name="entity" nillable="true" type="q31:VehicleInfo"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetVehicleInfoByPlateResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="GetVehicleInfoByPlateResult" type="xs:boolean"/>
+<xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.Policy.ReturningType" minOccurs="0" name="entity" nillable="true" type="q32:VehicleInfo"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="CheckPertVehicle">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="appSecurityKey" nillable="true" type="xs:string"/>
+<xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.Policy.ReturningType" minOccurs="0" name="entity" nillable="true" type="q33:PertVehicle"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="CheckPertVehicleResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="CheckPertVehicleResult" type="xs:boolean"/>
+<xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.Policy.ReturningType" minOccurs="0" name="entity" nillable="true" type="q34:PertVehicle"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetBirlikMarkaKod">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="authenticationKey" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="pKTarzi" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="pYil" nillable="true" type="xs:string"/>
+<xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/ApplicationBlocks.Common" minOccurs="0" name="entity" nillable="true" type="q35:BaseEntity"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetBirlikMarkaKodResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="GetBirlikMarkaKodResult" nillable="true" type="q36:ArrayOfTupleOfstringstringstringstringstringstringstring"/>
+<xs:element minOccurs="0" name="pKTarzi" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="pYil" nillable="true" type="xs:string"/>
+<xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/ApplicationBlocks.Common" minOccurs="0" name="entity" nillable="true" type="q37:BaseEntity"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetPoliciesFromSegmentation_017">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="authenticationKey" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="identityNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="customerNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="plateNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="markCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="modelCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="modelYearCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="usageTypeCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="registrySerial" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="registryNo" nillable="true" type="xs:string"/>
+<xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.Policy" minOccurs="0" name="entityList" nillable="true" type="q38:ArrayOfPolicy"/>
+<xs:element minOccurs="0" name="renewFirmCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="renewAgentCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="renewPolicyNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="renewNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="registrationDate" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="queryOnlinePolicyProductCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="alertNo" type="xs:int"/>
+<xs:element minOccurs="0" name="alertText" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetPoliciesFromSegmentation_017Response">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="GetPoliciesFromSegmentation_017Result" type="xs:boolean"/>
+<xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.Policy" minOccurs="0" name="entityList" nillable="true" type="q39:ArrayOfPolicy"/>
+<xs:element minOccurs="0" name="alertNo" type="xs:int"/>
+<xs:element minOccurs="0" name="alertText" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetPoliciesFromSegmentationOptimized_017">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="authenticationKey" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="identityNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="customerNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="plateNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="markCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="modelCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="modelYearCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="usageTypeCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="registrySerial" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="registryNo" nillable="true" type="xs:string"/>
+<xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.Policy" minOccurs="0" name="entityList" nillable="true" type="q40:ArrayOfPolicy"/>
+<xs:element minOccurs="0" name="renewFirmCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="renewAgentCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="renewPolicyNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="renewNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="registrationDate" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="queryOnlinePolicyProductCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="alertNo" type="xs:int"/>
+<xs:element minOccurs="0" name="alertText" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetPoliciesFromSegmentationOptimized_017Response">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="GetPoliciesFromSegmentationOptimized_017Result" type="xs:boolean"/>
+<xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.Policy" minOccurs="0" name="entityList" nillable="true" type="q41:ArrayOfPolicy"/>
+<xs:element minOccurs="0" name="alertNo" type="xs:int"/>
+<xs:element minOccurs="0" name="alertText" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="MakePolicyPaymentRSA">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="authenticationKey" nillable="true" type="xs:string"/>
+<xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/EntitySpaces.External.Policy.ReturningType" minOccurs="0" name="entity" nillable="true" type="q42:PolicyPayment"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="MakePolicyPaymentRSAResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="MakePolicyPaymentRSAResult" type="xs:boolean"/>
+<xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/EntitySpaces.External.Policy.ReturningType" minOccurs="0" name="entity" nillable="true" type="q43:PolicyPayment"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetPolicyReportAuthenticationKey">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="authenticationKey" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="policyNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="supplementNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="generateNotification" type="xs:boolean"/>
+<xs:element minOccurs="0" name="userName" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetPolicyReportAuthenticationKeyResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/EntitySpaces.External.Policy.ReturningType" minOccurs="0" name="GetPolicyReportAuthenticationKeyResult" nillable="true" type="q44:Report"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetCoverages">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="authenticationKey" nillable="true" type="xs:string"/>
+<xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.Policy" minOccurs="0" name="entity" nillable="true" type="q45:Policy"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetCoveragesResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="GetCoveragesResult" type="xs:boolean"/>
+<xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.Policy" minOccurs="0" name="entity" nillable="true" type="q46:Policy"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetPolicyAuthenticationKey">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="authenticationKey" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="policyNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="supplementNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="showCoveragesLastState" type="xs:boolean"/>
+<xs:element minOccurs="0" name="proposalApproval" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetPolicyAuthenticationKeyResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/EntitySpaces.External.Policy.ReturningType" minOccurs="0" name="GetPolicyAuthenticationKeyResult" nillable="true" type="q47:Policy"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetPolicyListWithDateAuthenticationKey">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="authenticationKey" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="firstDate" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="lastDate" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="showCoveragesLastState" type="xs:boolean"/>
+<xs:element minOccurs="0" name="partaj" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="alertNo" type="xs:int"/>
+<xs:element minOccurs="0" name="alertText" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetPolicyListWithDateAuthenticationKeyResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/EntitySpaces.External.Policy.ReturningType" minOccurs="0" name="GetPolicyListWithDateAuthenticationKeyResult" nillable="true" type="q48:ArrayOfPolicy"/>
+<xs:element minOccurs="0" name="alertNo" type="xs:int"/>
+<xs:element minOccurs="0" name="alertText" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetMarkaModel">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="AppSecurityKey" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="aklDegKod" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="birlikMarka" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="marka" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="model" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetMarkaModelResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.Policy.ReturningType" minOccurs="0" name="GetMarkaModelResult" nillable="true" type="q49:GetMarkaModel"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetPolicyQrDetails">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="appSecurityKey" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="authenticationKey" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="guid" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetPolicyQrDetailsResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/EntitySpaces.External.Policy.ReturningType" minOccurs="0" name="GetPolicyQrDetailsResult" nillable="true" type="q50:QrDetails"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:schema>

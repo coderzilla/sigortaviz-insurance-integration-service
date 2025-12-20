@@ -6,6 +6,8 @@ export type FieldTransformType =
   | 'TR_IDENTITY_TCKN'
   | 'UPPERCASE'
   | 'LOWERCASE';
+
+export type FormStage = 'QUOTE' | 'PURCHASE';
 // src/common/types/field-types.ts
 export type FieldInputType =
   | 'text'
@@ -24,6 +26,14 @@ export interface FieldOption {
   label: string;
 }
 
+export interface FieldOptionSource {
+  optionsEndpoint: string;
+  method?: 'GET' | 'POST';
+  valueKey?: string;
+  labelKey?: string;
+  params?: Record<string, any>;
+}
+
 export interface FieldValidationRules {
   regex?: string;
   minValue?: number;
@@ -39,6 +49,31 @@ export interface RequestTriggerConfig {
   headers?: Record<string, string>;
 }
 
+export interface FieldConditionRule {
+  field: string;
+  op: 'eq' | 'in';
+  value: any;
+}
+
+export interface CollectionConfig {
+  arrayPath: string;              // where to place the collection in payload (e.g., customFields.insureds)
+  repeatFor?: string;             // field containing roles/keys to drive repetition (e.g., customFields.insuredRoles)
+  roleKey?: string;               // property name on items to store the role (e.g., "role")
+  roleToTitle?: Record<string, string>;
+  allowAddForRole?: string[];
+  autoPopulateFrom?: 'insurer' | 'insuredPerson' | string; // source object to copy when auto-creating
+  autoPopulateRoles?: string[];
+  hideFormWhenRolesSubset?: string[];
+}
+
+export interface FieldExtraConfig {
+  multiple?: boolean;                  // for selects supporting multi-select
+  collectionTarget?: string;           // path to collection for multi-select-driven groups
+  collection?: CollectionConfig;       // repeatable group config
+  visibleWhen?: FieldConditionRule;    // client-side visibility rule
+  requiredWhen?: FieldConditionRule;   // client-side required rule
+}
+
 export interface FieldConfig {
   internalCode: string;    // e.g. "insuredBirthDate"
   label: string;
@@ -48,9 +83,9 @@ export interface FieldConfig {
   page: number;           // which page of the form this field belongs to
   orderIndex: number;
   placeholder?: string;
-  options?: FieldOption[];
+  options?: FieldOption[] | FieldOptionSource;
   validation?: FieldValidationRules;
-  extraConfig?: Record<string, any>;
+  extraConfig?: FieldExtraConfig;
   onBlurRequest?: RequestTriggerConfig; // request to send on blur with valid value
 }
 

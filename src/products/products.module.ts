@@ -9,9 +9,11 @@ import { CarrierProductField } from './entities/carrier-product-field.entity';
 import { CarrierFieldMapping } from './entities/carrier-field-mapping.entity';
 import { ProductsService } from './products.service';
 import { ProductsController } from './products.controller';
+import { CarriersModule } from '../carriers/carriers.module';
 
 @Module({
   imports: [
+    CarriersModule,
     TypeOrmModule.forFeature([
       Carrier,
       Product,

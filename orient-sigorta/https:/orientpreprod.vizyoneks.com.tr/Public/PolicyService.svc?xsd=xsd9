@@ -1,0 +1,50 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.Policy.ReturningType" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.Policy.ReturningType">
+<xs:import schemaLocation="https://orientpreprod.vizyoneks.com.tr/Public/PolicyService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ApplicationBlocks.Common"/>
+<xs:complexType name="VehicleInfo">
+<xs:complexContent mixed="false">
+<xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/ApplicationBlocks.Common" base="q1:BaseEntity">
+<xs:sequence>
+<xs:element minOccurs="0" name="ChassisNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DriverCount" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="EndDate" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="EngineNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="InsuredByName" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="InsuredByNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="InsuredName" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="InsuredNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Mark" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="MernisNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Model" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ModelYear" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="PassengerCount" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Plate" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ProductCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TaxNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="UsageType" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="VehicleInfo" nillable="true" type="tns:VehicleInfo"/>
+<xs:complexType name="PertVehicle">
+<xs:complexContent mixed="false">
+<xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/ApplicationBlocks.Common" base="q2:BaseEntity">
+<xs:sequence>
+<xs:element minOccurs="0" name="IsPert" type="xs:boolean"/>
+<xs:element minOccurs="0" name="QueryInput" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="QueryType" type="xs:unsignedByte"/>
+<xs:element minOccurs="0" name="TariffCode" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PertVehicle" nillable="true" type="tns:PertVehicle"/>
+<xs:complexType name="GetMarkaModel">
+<xs:sequence>
+<xs:element minOccurs="0" name="HasError" type="xs:boolean"/>
+<xs:element minOccurs="0" name="Marka" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Model" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="GetMarkaModel" nillable="true" type="tns:GetMarkaModel"/>
+</xs:schema>

@@ -1,17 +1,26 @@
 // src/carriers/carrier-types.ts
 import { ProductCode } from '../common/types/domain-types';
 
+export interface PersonInfo {
+  fullName: string;
+  birthDate?: string;
+  tckn?: string;
+  phoneNumber?: string;
+  email?: string;
+}
+
+export interface InsuredInfo extends PersonInfo {
+  role?: 'SELF' | 'SPOUSE' | 'CHILD' | string;
+  isMain?: boolean;
+}
+
 export interface QuoteRequest {
   product: ProductCode;
   carrierCode?: string; // optional: sometimes you call a single carrier
   // user data (normalized):
-  insuredPerson: {
-    fullName: string;
-    birthDate?: string;
-    tckn?: string;
-    phoneNumber?: string;
-    email?: string;
-  };
+  insuredPerson: PersonInfo; // kept as the primary/initiator person for backwards compatibility
+  insurer?: PersonInfo; // preferred: policy holder / insurer
+  insureds?: InsuredInfo[]; // optional: e.g. spouse/kids for health/travel
   // product-specific data:
   vehicle?: {
     plate?: string;

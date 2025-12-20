@@ -1,0 +1,50 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.datacontract.org/2004/07/EntitySpaces.UserActions" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/EntitySpaces.UserActions">
+<xs:import schemaLocation="https://orientpreprod.vizyoneks.com.tr/Public/SecurityService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ApplicationBlocks.Common"/>
+<xs:complexType name="SecurityUser">
+<xs:complexContent mixed="false">
+<xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/ApplicationBlocks.Common" base="q1:BaseEntity">
+<xs:sequence>
+<xs:element minOccurs="0" name="AcilisTarihi" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="AgentCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Aktif" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AuthorizationReferenceCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AutorisationCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BankBranchCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BranchCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="CloseDate" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="CreateDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="Email" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ExpiredPassword" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Gsm" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IdentityNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="LanguageCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Password" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="PermissionCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="RecordBranchCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Service" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SourceCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SubAgentCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TcMernisNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Theme" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TitleCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TobbRegistrationNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="UserGuid" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="UserId" type="xs:int"/>
+<xs:element minOccurs="0" name="UserIdRef" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="UserRegistrationNo" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="SecurityUser" nillable="true" type="tns:SecurityUser"/>
+<xs:complexType name="ArrayOfSecurityUser">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="SecurityUser" nillable="true" type="tns:SecurityUser"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfSecurityUser" nillable="true" type="tns:ArrayOfSecurityUser"/>
+</xs:schema>

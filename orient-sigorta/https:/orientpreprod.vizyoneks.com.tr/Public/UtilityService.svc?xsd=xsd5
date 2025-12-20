@@ -1,0 +1,19 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.datacontract.org/2004/07/EntitySpaces.External.Policy.ReturningType" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/EntitySpaces.External.Policy.ReturningType">
+<xs:import schemaLocation="https://orientpreprod.vizyoneks.com.tr/Public/UtilityService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/ApplicationBlocks.Common"/>
+<xs:complexType name="GetResponse">
+<xs:complexContent mixed="false">
+<xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/ApplicationBlocks.Common" base="q1:BaseEntity">
+<xs:sequence>
+<xs:element minOccurs="0" name="Action" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ContentType" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Method" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Request" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Url" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Version" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="GetResponse" nillable="true" type="tns:GetResponse"/>
+</xs:schema>

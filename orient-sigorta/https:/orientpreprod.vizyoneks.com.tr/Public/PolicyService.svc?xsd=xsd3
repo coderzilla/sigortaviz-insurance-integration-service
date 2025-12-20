@@ -1,0 +1,879 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.TypeMapping" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.TypeMapping">
+<xs:complexType name="ADDITIONAL_PERSON_TYPE">
+<xs:sequence>
+<xs:element minOccurs="0" name="Value" nillable="true" type="tns:ArrayOfADDITIONAL_PERSON_REC"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ADDITIONAL_PERSON_TYPE" nillable="true" type="tns:ADDITIONAL_PERSON_TYPE"/>
+<xs:complexType name="ArrayOfADDITIONAL_PERSON_REC">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="ADDITIONAL_PERSON_REC" nillable="true" type="tns:ADDITIONAL_PERSON_REC"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfADDITIONAL_PERSON_REC" nillable="true" type="tns:ArrayOfADDITIONAL_PERSON_REC"/>
+<xs:complexType name="ADDITIONAL_PERSON_REC">
+<xs:sequence>
+<xs:element minOccurs="0" name="ACENTA_NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AD1" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AD2" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BABA_ADI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BELDE" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="CADDE" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="CARI_POL_NO" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="DAIRE" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DASK_BELDEKOD" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="DASK_ILCEKOD" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="DASK_ILKOD" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="HAN_APT_FAB" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IL" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ILCE" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="KAPI_NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="KAYNAK_KODU" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="MAH_KOY" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="MBB" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="MUSTERI_TIPI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="OP_ID" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="POSTA_KODU" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SEMT" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SIFATI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SIGORTALI_ETTIREN" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SIGORTALI_ETTIREN_NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SIGORTALI_ETTIREN_TEXT" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SIRKET_KOD" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="SOKAK" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SUBE_KOD" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="TANZIM_TARIHI" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="TARIFE_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TARIH" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="TC_KIMLIK_NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="T_I" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ULKE_KODU" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="UYRUGU" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="VERGI_DAIRESI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="VERGI_NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="VK" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="ZEYL_SIRA_NO" nillable="true" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ADDITIONAL_PERSON_REC" nillable="true" type="tns:ADDITIONAL_PERSON_REC"/>
+<xs:complexType name="EXT_WS_POLICE_IST_TYP">
+<xs:sequence>
+<xs:element minOccurs="0" name="Value" nillable="true" type="tns:ArrayOfEXT_WS_POLICE_IST_REC"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="EXT_WS_POLICE_IST_TYP" nillable="true" type="tns:EXT_WS_POLICE_IST_TYP"/>
+<xs:complexType name="ArrayOfEXT_WS_POLICE_IST_REC">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="EXT_WS_POLICE_IST_REC" nillable="true" type="tns:EXT_WS_POLICE_IST_REC"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfEXT_WS_POLICE_IST_REC" nillable="true" type="tns:ArrayOfEXT_WS_POLICE_IST_REC"/>
+<xs:complexType name="EXT_WS_POLICE_IST_REC">
+<xs:sequence>
+<xs:element minOccurs="0" name="ACENTA_NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="CARI_POL_NO" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="IST_DEGERI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IST_DEGERI_AD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IST_KODU" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IST_KODU_AD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="KAYNAK_KODU" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="OP_ID" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="REF_IST" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SIRKET_KOD" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="SUBE_KOD" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="S_NO" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="TANZIM_TARIHI" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="TARIFE_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TARIH" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="VK" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="ZEYL_SIRA_NO" nillable="true" type="xs:decimal"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="EXT_WS_POLICE_IST_REC" nillable="true" type="tns:EXT_WS_POLICE_IST_REC"/>
+<xs:complexType name="EXT_WS_POLICE_OTOR_TYP">
+<xs:sequence>
+<xs:element minOccurs="0" name="Value" nillable="true" type="tns:ArrayOfEXT_WS_POLICE_OTOR_REC"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="EXT_WS_POLICE_OTOR_TYP" nillable="true" type="tns:EXT_WS_POLICE_OTOR_TYP"/>
+<xs:complexType name="ArrayOfEXT_WS_POLICE_OTOR_REC">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="EXT_WS_POLICE_OTOR_REC" nillable="true" type="tns:EXT_WS_POLICE_OTOR_REC"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfEXT_WS_POLICE_OTOR_REC" nillable="true" type="tns:ArrayOfEXT_WS_POLICE_OTOR_REC"/>
+<xs:complexType name="EXT_WS_POLICE_OTOR_REC">
+<xs:sequence>
+<xs:element minOccurs="0" name="ACENTE_NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BEDEL" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="CARI_POL_NO" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="ISLEM_TURU" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ISTGRP_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IST_DEGER" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IST_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ONAY_TARIH" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="ONAY_VEREN" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="OP_ID" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="OTOR_NO" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="OTOR_REF" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="SIRKET_KOD" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="TARIFE_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TARIH" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="TARIHLER" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="TEMGRP_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TEMINAT_KODU" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="VK" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="ZEYL_SIRA_NO" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="ZEYL_TURU" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="EXT_WS_POLICE_OTOR_REC" nillable="true" type="tns:EXT_WS_POLICE_OTOR_REC"/>
+<xs:complexType name="ArrayOfEXT_WS_POLICE_TEM_REC">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="EXT_WS_POLICE_TEM_REC" nillable="true" type="tns:EXT_WS_POLICE_TEM_REC"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfEXT_WS_POLICE_TEM_REC" nillable="true" type="tns:ArrayOfEXT_WS_POLICE_TEM_REC"/>
+<xs:complexType name="EXT_WS_POLICE_TEM_REC">
+<xs:sequence>
+<xs:element minOccurs="0" name="ACENTA_NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ACIKLAMA" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ADET" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="AEB" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ASG_FIYAT" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="BAGLI_POLICE_NO" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="BEDEL" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="BEDEL_DOVIZ" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BEDEL_KONTROL" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BEDEL_KUR" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="BRANS" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BRUT_PRIM" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="CARI_POL_NO" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="DKOM_TUTARI" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="EKINDIRIM" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="EK_PRIM" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="ENF_ORAN" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="FAIZ_MATRAH" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="FAIZ_ORAN" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="FAIZ_TUTAR" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="FIYAT" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="FIYAT_MATRAH" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="INDIRIM" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="IPTAL_ZEYL_CINS" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IPTAL_ZEYL_SIRA" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="KAYNAK_KODU" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="KOM_MATRAH" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="KOM_ORANI" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="KOM_TUTARI" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="KUMUL_KODU" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="MUAFIYET" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="NET_PRIM" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="OP_ID" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ORT_FIYAT" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="OTOR_B" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="OTOR_B3" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="OTOR_B4" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="OTOR_K" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="OTOR_L" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="OTOR_S5" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="POLICE_CINSI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="PRIM" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="REA" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="REAS_BEDEL" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="RYIL" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SIRKET_KOD" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="SUBE_KOD" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="SURPRIM" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="S_NO" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="TAB_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TAHSILAT_KODU" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TANZIM_TARIHI" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="TAN_AY" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TAN_YIL" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TARIFE" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TARIH" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="TEKLIF_ONAY" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="TEMINAT_AD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TEMINAT_KODU" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TEMINAT_VK" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="TL_BEDEL" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="TL_EK_PRIM" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="TL_INDIRIM" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="TL_MUAF" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="TL_NET_PRIM" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="TL_PRIM" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="TL_SURPRIM" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="TOPLAM_BRUT_PRIM" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="TOPLAM_VERGI" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="T_I" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="UST_TEMINAT_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="UYIL" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="VARS_BEDEL" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="VARS_TL_BEDEL" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="ZEYL_SIRA_NO" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="ZEYL_TURU" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Z_S" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="EXT_WS_POLICE_TEM_REC" nillable="true" type="tns:EXT_WS_POLICE_TEM_REC"/>
+<xs:complexType name="EXT_WS_POLICE_TEM_TYP">
+<xs:sequence>
+<xs:element minOccurs="0" name="Value" nillable="true" type="tns:ArrayOfEXT_WS_POLICE_TEM_REC"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="EXT_WS_POLICE_TEM_TYP" nillable="true" type="tns:EXT_WS_POLICE_TEM_TYP"/>
+<xs:complexType name="EXT_WS_POLICE_BLG_TYP">
+<xs:sequence>
+<xs:element minOccurs="0" name="Value" nillable="true" type="tns:ArrayOfEXT_WS_POLICE_BLG_REC"/>
+<xs:element minOccurs="0" name="m_EXT_WS_POLICE_BLG_REC" nillable="true" type="tns:ArrayOfEXT_WS_POLICE_BLG_REC"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="EXT_WS_POLICE_BLG_TYP" nillable="true" type="tns:EXT_WS_POLICE_BLG_TYP"/>
+<xs:complexType name="ArrayOfEXT_WS_POLICE_BLG_REC">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="EXT_WS_POLICE_BLG_REC" nillable="true" type="tns:EXT_WS_POLICE_BLG_REC"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfEXT_WS_POLICE_BLG_REC" nillable="true" type="tns:ArrayOfEXT_WS_POLICE_BLG_REC"/>
+<xs:complexType name="EXT_WS_POLICE_BLG_REC">
+<xs:sequence>
+<xs:element minOccurs="0" name="ACENTA_NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ACIKLAMA" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BASIM" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BDL_ADT_BAS" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BILGI_ADI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BILGI_SIRA_NO" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="BOSLUK" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="CARI_POL_NO" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="CH_DEFAULT_VALUE" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="CH_UI_DESCRIPTION" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IST_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="KAYNAK_KODU" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="OP_ID" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SIRKET_KOD" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="SUBE_KOD" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="TANZIM_TARIHI" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="TARIFE_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TARIH" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="TEM_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TURKCE" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="UPPERBLG" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="VK" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="ZEYL_SIRA_NO" nillable="true" type="xs:decimal"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="EXT_WS_POLICE_BLG_REC" nillable="true" type="tns:EXT_WS_POLICE_BLG_REC"/>
+<xs:complexType name="EXT_WS_POLICE_SIGLI_REC">
+<xs:sequence>
+<xs:element minOccurs="0" name="ACENTA_NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AD1" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AD2" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BABA_ADI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BELDE" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BINANO_ID" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="CADDE" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="CARI_POL_NO" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="DAIRE" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DASK_BELDEKOD" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="DASK_ILCEKOD" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="DASK_ILKOD" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="HAN_APT_FAB" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IL" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ILCE" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ILCEADI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ILCE_ID" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ILETAYNI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IL_ID" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="KAYNAK_KODU" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="MAHALLE_ID" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="MAH_KOY" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="MBB" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="MIY_NUMARASI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="MUSTERI_TIPI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="OP_ID" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="POI_ID" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="POSTA_KODU" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SEMT" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SEVIYE" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SIFATI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SIGORTALI_NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SIRKET_KOD" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="SOKAK" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SUBE_KOD" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="TANZIM_TARIHI" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="TARIFE_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TARIH" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="TC_KIMLIK_NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ULKE_KODU" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="UYRUGU" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="VERGI_DAIRESI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="VERGI_NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="VK" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="XKOOR" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="YKOOR" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="YOL_ID" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ZEYL_SIRA_NO" nillable="true" type="xs:decimal"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="EXT_WS_POLICE_SIGLI_REC" nillable="true" type="tns:EXT_WS_POLICE_SIGLI_REC"/>
+<xs:complexType name="EXT_WS_POLICE_ETT_REC">
+<xs:sequence>
+<xs:element minOccurs="0" name="ACENTA_NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AD1" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AD2" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BABA_ADI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BELDE" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="CADDE" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="CARI_POL_NO" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="DAIRE" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="HAN_APT_FAB" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IL" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ILCE" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="KAYNAK_KODU" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="MAH_KOY" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="MBB" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="MUSTERI_TIPI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="OP_ID" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="POSTA_KODU" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SEMT" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SIFATI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SIG_ETTIREN_NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SIRKET_KOD" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="SOKAK" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SUBE_KOD" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="TANZIM_TARIHI" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="TARIFE_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TARIH" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="TC_KIMLIK_NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ULKE_KODU" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="UYRUGU" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="VERGI_DAIRESI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="VERGI_NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="VK" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="ZEYL_SIRA_NO" nillable="true" type="xs:decimal"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="EXT_WS_POLICE_ETT_REC" nillable="true" type="tns:EXT_WS_POLICE_ETT_REC"/>
+<xs:complexType name="EXT_WS_POLICE_REC">
+<xs:sequence>
+<xs:element minOccurs="0" name="ACENTA_NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ACENTA_POL_NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ADET" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="AKREDITIF_NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ARTIS_ORAN" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="BAGLI_POL_NO" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="BAGLI_ZEYL_NO" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="BANK_CREDIT_NO" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="BASLAMA_TARIH" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="BAS_SERI_NO" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="BEDEL" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="BITIS_TARIH" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="BIT_SERI_NO" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="CALISILAN_ACENTA_NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="CALISILAN_SIRKET_KOD" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="CARI_POL_NO" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="DAINI_BANKA" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DAINI_SUBE" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DAINI_TCK" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="DAINI_VERGI" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="DOVIZ_CINS" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DOVIZ_KUR" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="ESKI_POL_NO" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="FAIZ_MATRAH" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="FAIZ_ORAN" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="FAIZ_TUTAR" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="GENEL_IND_MATRAH" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="GENEL_IND_ORAN" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="GENEL_SURP_MATRAH" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="GENEL_SURP_ORAN" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="ILK_SISTEM_TARIH" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="IPTAL_ZEYL_CINS" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IPTAL_ZEYL_SIRA" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="KAYNAK_KODU" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="KISA_GUN_HESAP" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="MUADIL_DOVIZ" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="MUADIL_DOVIZ_KUR" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="MUADIL_ORAN" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="OP_ID" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ORAN" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="PAZ_KAYNAK" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="PAZ_NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="PAZ_SUBE" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="PLAKA_CINS" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="POLICE_SERINO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="POL_CINSI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="POL_TANZIM_BOLGE_KOD" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="RED_NEDENI" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="SATICI_SICIL_NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SERI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SIRKET_KOD" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="SON_DURUM" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SUBE_KOD" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="TAHAK_MATRAH" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="TAHAK_ORAN" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="TAHSILAT_KODU" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TALI_ACENTA_NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TANZIM_TARIH" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="TANZIM_YERI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TARIFE_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TARIH" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="TECDIT_NO" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="TEKLIF_NO" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="TEKLIF_ONAY" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="TEKLIF_SAAT" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TEKLIF_TARIH" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="TKLFPOL" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="T_I" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="UWY" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="VK" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="YUKLEME_TARIH" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="ZEYL_SIRA_NO" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="ZEYL_TURU" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="EXT_WS_POLICE_REC" nillable="true" type="tns:EXT_WS_POLICE_REC"/>
+<xs:complexType name="EXT_WS_TAKSIT_RSP_TYP">
+<xs:sequence>
+<xs:element minOccurs="0" name="Value" nillable="true" type="tns:ArrayOfEXT_WS_TAKSIT_REC"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="EXT_WS_TAKSIT_RSP_TYP" nillable="true" type="tns:EXT_WS_TAKSIT_RSP_TYP"/>
+<xs:complexType name="ArrayOfEXT_WS_TAKSIT_REC">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="EXT_WS_TAKSIT_REC" nillable="true" type="tns:EXT_WS_TAKSIT_REC"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfEXT_WS_TAKSIT_REC" nillable="true" type="tns:ArrayOfEXT_WS_TAKSIT_REC"/>
+<xs:complexType name="EXT_WS_TAKSIT_REC">
+<xs:sequence>
+<xs:element minOccurs="0" name="PESINAT" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="PESINAT_TL" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="TAHSILAT_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TAHSILAT_KOD_AD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TAKSIT" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="TAKSIT_TL" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="TOPLAM" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="TOPLAM_TL" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="VADE" nillable="true" type="xs:dateTime"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="EXT_WS_TAKSIT_REC" nillable="true" type="tns:EXT_WS_TAKSIT_REC"/>
+<xs:complexType name="NPOL_PERSON_GROUP_TAB">
+<xs:sequence>
+<xs:element minOccurs="0" name="Value" nillable="true" type="tns:ArrayOfNPOL_PERSON_GROUP_TYPE"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="NPOL_PERSON_GROUP_TAB" nillable="true" type="tns:NPOL_PERSON_GROUP_TAB"/>
+<xs:complexType name="ArrayOfNPOL_PERSON_GROUP_TYPE">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="NPOL_PERSON_GROUP_TYPE" nillable="true" type="tns:NPOL_PERSON_GROUP_TYPE"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfNPOL_PERSON_GROUP_TYPE" nillable="true" type="tns:ArrayOfNPOL_PERSON_GROUP_TYPE"/>
+<xs:complexType name="NPOL_PERSON_GROUP_TYPE">
+<xs:sequence>
+<xs:element minOccurs="0" name="BIRTHDATE" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="CUSTOMER_NAME" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="CUSTOMER_NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="CUSTOMER_SURNAME" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IDENTITY_NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="OP_DESCRIPTION" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TAX_NO" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="NPOL_PERSON_GROUP_TYPE" nillable="true" type="tns:NPOL_PERSON_GROUP_TYPE"/>
+<xs:complexType name="EXT_WS_MADRESINSERT_REQ_TYP">
+<xs:sequence>
+<xs:element minOccurs="0" name="Value" nillable="true" type="tns:ArrayOfEXT_WS_MADRESINSERT_REC"/>
+<xs:element minOccurs="0" name="m_EXT_WS_MADRESINSERT_REC" nillable="true" type="tns:ArrayOfEXT_WS_MADRESINSERT_REC"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="EXT_WS_MADRESINSERT_REQ_TYP" nillable="true" type="tns:EXT_WS_MADRESINSERT_REQ_TYP"/>
+<xs:complexType name="ArrayOfEXT_WS_MADRESINSERT_REC">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="EXT_WS_MADRESINSERT_REC" nillable="true" type="tns:EXT_WS_MADRESINSERT_REC"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfEXT_WS_MADRESINSERT_REC" nillable="true" type="tns:ArrayOfEXT_WS_MADRESINSERT_REC"/>
+<xs:complexType name="EXT_WS_MADRESINSERT_REC">
+<xs:sequence>
+<xs:element minOccurs="0" name="IU" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="MUST_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_ADRES" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_ADRES_TIP" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_ADRES_TIP_AD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_BELDE1" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_BINANO_ID" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_CADDE1" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_DAIRE1" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_HAN_APT1" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_ILCE_AD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_ILCE_ID" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_ILCE_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_IL_AD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_IL_ID" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_IL_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_ISIM1" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_ISIM2" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_MAHALLE" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_MAHALLE_ID" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_NO1" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_POSTA_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_SEMT" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_SEQ" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="P_SEVIYE" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_SOKAK1" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_TANZIM" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="P_T_G" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_T_G_AD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_ULKE_AD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_ULKE_KODU" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_XKOOR" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="P_YAZISMA_ADRES" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_YKOOR" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="P_YOL_ID" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="EXT_WS_MADRESINSERT_REC" nillable="true" type="tns:EXT_WS_MADRESINSERT_REC"/>
+<xs:complexType name="POLICE_LISTE_TABLE_TYP">
+<xs:sequence>
+<xs:element minOccurs="0" name="Value" nillable="true" type="tns:ArrayOfPOLICE_LISTE_TABLE_REC"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="POLICE_LISTE_TABLE_TYP" nillable="true" type="tns:POLICE_LISTE_TABLE_TYP"/>
+<xs:complexType name="ArrayOfPOLICE_LISTE_TABLE_REC">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="POLICE_LISTE_TABLE_REC" nillable="true" type="tns:POLICE_LISTE_TABLE_REC"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfPOLICE_LISTE_TABLE_REC" nillable="true" type="tns:ArrayOfPOLICE_LISTE_TABLE_REC"/>
+<xs:complexType name="POLICE_LISTE_TABLE_REC">
+<xs:sequence>
+<xs:element minOccurs="0" name="ADET" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="BEDEL" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="CARI_POL_NO" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="DOVIZ" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DOVIZ_KUR" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="FIYAT" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="LISTE_ADI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="MUAFIYET" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="OP_ID" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="PRIM" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="SIRA_NO" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="SIRKET_KOD" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="TARIH" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="TEMINAT_KODU" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TL_BEDEL" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="TL_MUAFIYET" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="TL_PRIM" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="ZEYL_SIRA_NO" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="ZEYL_TURU" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="POLICE_LISTE_TABLE_REC" nillable="true" type="tns:POLICE_LISTE_TABLE_REC"/>
+<xs:complexType name="ArrayOfEXT_WS_ISTDEG_REC">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="EXT_WS_ISTDEG_REC" nillable="true" type="tns:EXT_WS_ISTDEG_REC"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfEXT_WS_ISTDEG_REC" nillable="true" type="tns:ArrayOfEXT_WS_ISTDEG_REC"/>
+<xs:complexType name="EXT_WS_ISTDEG_REC">
+<xs:sequence>
+<xs:element minOccurs="0" name="AMAC" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BL_IN_AIDT" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BL_READ_ONLY" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="CH_UI_DESCRIPTION" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DEG_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="GOSTER" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="IST_AD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IST_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="S_NO" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="UST_IST_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Z_S" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="EXT_WS_ISTDEG_REC" nillable="true" type="tns:EXT_WS_ISTDEG_REC"/>
+<xs:complexType name="EXT_WS_POLICE_VRG_TYP">
+<xs:sequence>
+<xs:element minOccurs="0" name="Value" nillable="true" type="tns:ArrayOfEXT_WS_POLICE_VRG_REC"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="EXT_WS_POLICE_VRG_TYP" nillable="true" type="tns:EXT_WS_POLICE_VRG_TYP"/>
+<xs:complexType name="ArrayOfEXT_WS_POLICE_VRG_REC">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="EXT_WS_POLICE_VRG_REC" nillable="true" type="tns:EXT_WS_POLICE_VRG_REC"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfEXT_WS_POLICE_VRG_REC" nillable="true" type="tns:ArrayOfEXT_WS_POLICE_VRG_REC"/>
+<xs:complexType name="EXT_WS_POLICE_VRG_REC">
+<xs:sequence>
+<xs:element minOccurs="0" name="ACENTA_NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="CARI_POL_NO" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="DOVIZ_CINSI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DVERGI" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="KAYNAK_KODU" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="OP_ID" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="POL_CINSI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SIRKET_KOD" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="SUBE_KOD" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="TANZIM_TARIHI" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="TARIFE_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TARIH" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="TEKLIF_ONAY" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="TEMINAT_KODU" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="T_I" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="UST_TEMINAT_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="VERGI" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="VERGI_KODU" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="VK" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="ZEYL_SIRA_NO" nillable="true" type="xs:decimal"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="EXT_WS_POLICE_VRG_REC" nillable="true" type="tns:EXT_WS_POLICE_VRG_REC"/>
+<xs:complexType name="NPOL_UAVT_ADDRESS_TAB">
+<xs:sequence>
+<xs:element minOccurs="0" name="Value" nillable="true" type="tns:ArrayOfNPOL_UAVT_ADDRESS_TYPE"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="NPOL_UAVT_ADDRESS_TAB" nillable="true" type="tns:NPOL_UAVT_ADDRESS_TAB"/>
+<xs:complexType name="ArrayOfNPOL_UAVT_ADDRESS_TYPE">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="NPOL_UAVT_ADDRESS_TYPE" nillable="true" type="tns:NPOL_UAVT_ADDRESS_TYPE"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfNPOL_UAVT_ADDRESS_TYPE" nillable="true" type="tns:ArrayOfNPOL_UAVT_ADDRESS_TYPE"/>
+<xs:complexType name="NPOL_UAVT_ADDRESS_TYPE">
+<xs:sequence>
+<xs:element minOccurs="0" name="ADDRESSACK" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ADRESID" nillable="true" type="xs:long"/>
+<xs:element minOccurs="0" name="BELDEADI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BELDEKODU" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="BINAADI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BINAKODU" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="DAIREADI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DAIREKODU" nillable="true" type="xs:long"/>
+<xs:element minOccurs="0" name="ILADI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ILCEADI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ILCEKODU" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="ILKODU" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="MAHALLEADI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="MAHALLEKODU" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="POSTAKODU" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SOKAKADI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SOKAKKODU" nillable="true" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="NPOL_UAVT_ADDRESS_TYPE" nillable="true" type="tns:NPOL_UAVT_ADDRESS_TYPE"/>
+<xs:complexType name="EXT_WS_MIRTINSERT_TYP">
+<xs:sequence>
+<xs:element minOccurs="0" name="Value" nillable="true" type="tns:ArrayOfEXT_WS_MIRTINSERT_REC"/>
+<xs:element minOccurs="0" name="m_EXT_WS_MIRTINSERT_REC" nillable="true" type="tns:ArrayOfEXT_WS_MIRTINSERT_REC"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="EXT_WS_MIRTINSERT_TYP" nillable="true" type="tns:EXT_WS_MIRTINSERT_TYP"/>
+<xs:complexType name="ArrayOfEXT_WS_MIRTINSERT_REC">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="EXT_WS_MIRTINSERT_REC" nillable="true" type="tns:EXT_WS_MIRTINSERT_REC"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfEXT_WS_MIRTINSERT_REC" nillable="true" type="tns:ArrayOfEXT_WS_MIRTINSERT_REC"/>
+<xs:complexType name="EXT_WS_MIRTINSERT_REC">
+<xs:sequence>
+<xs:element minOccurs="0" name="ILETISIM_AD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ILETISIM_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="MUST_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="NUMARA" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ONCELIK_NO" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="P_SEQ" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="SORUMLU_AD_SOYAD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SORUMLU_GOREV" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="EXT_WS_MIRTINSERT_REC" nillable="true" type="tns:EXT_WS_MIRTINSERT_REC"/>
+<xs:complexType name="EXT_WS_MUSTINSERT_REQ_TYP">
+<xs:sequence>
+<xs:element minOccurs="0" name="Value" nillable="true" type="tns:ArrayOfEXT_WS_MUSTINSERT_REC"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="EXT_WS_MUSTINSERT_REQ_TYP" nillable="true" type="tns:EXT_WS_MUSTINSERT_REQ_TYP"/>
+<xs:complexType name="ArrayOfEXT_WS_MUSTINSERT_REC">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="EXT_WS_MUSTINSERT_REC" nillable="true" type="tns:EXT_WS_MUSTINSERT_REC"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfEXT_WS_MUSTINSERT_REC" nillable="true" type="tns:ArrayOfEXT_WS_MUSTINSERT_REC"/>
+<xs:complexType name="EXT_WS_MUSTINSERT_REC">
+<xs:sequence>
+<xs:element minOccurs="0" name="P_ACIKLAMA" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_ACILIS_TARIH" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="P_ADDRESSNUM" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_ANA_ADI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_BABA_ADI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_BANKA_MUST_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_CINSIYET" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_DOGUM_IL" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_DOGUM_ILCE" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_DOGUM_ILCE_AD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_DOGUM_IL_AD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_DOGUM_TARIH" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="P_DOGUM_YERI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_EGITIM_DURUMU" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_EVLILIK_TARIH" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="P_E_MAIL" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_ILAN_TARIH" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="P_ILCE_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_IL_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_ISIM1" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_ISIM2" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_MEDENI_DURUM" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_MESLEK_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_MUSTERI_TIP" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_OLUM_TARIH" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="P_PASAPORT_NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_RESMI_AD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_SBM" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_SEKTOR_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_TCK" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_TCK_GECERLI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_TESCIL_TARIH" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="P_TICARET_SICIL_NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_T_G" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_ULKE_KODU" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_UNVAN_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_UYRUGU" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_VERGI_DAIRESI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_VERGI_KODU" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_VIP" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="P_YABANCI_TUZEL_NO" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="EXT_WS_MUSTINSERT_REC" nillable="true" type="tns:EXT_WS_MUSTINSERT_REC"/>
+<xs:complexType name="EXT_WS_MMALIINSERT_TYP">
+<xs:sequence>
+<xs:element minOccurs="0" name="Value" nillable="true" type="tns:ArrayOfEXT_WS_MMALIINSERT_REC"/>
+<xs:element minOccurs="0" name="m_EXT_WS_MMALIINSERT_REC" nillable="true" type="tns:ArrayOfEXT_WS_MMALIINSERT_REC"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="EXT_WS_MMALIINSERT_TYP" nillable="true" type="tns:EXT_WS_MMALIINSERT_TYP"/>
+<xs:complexType name="ArrayOfEXT_WS_MMALIINSERT_REC">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="EXT_WS_MMALIINSERT_REC" nillable="true" type="tns:EXT_WS_MMALIINSERT_REC"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfEXT_WS_MMALIINSERT_REC" nillable="true" type="tns:ArrayOfEXT_WS_MMALIINSERT_REC"/>
+<xs:complexType name="EXT_WS_MMALIINSERT_REC">
+<xs:sequence>
+<xs:element minOccurs="0" name="BANKA_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BANKA_KOD_AD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BANKA_SUBE_AD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BANKA_SUBE_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="CVC_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="HATA_DEGER" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="HATA_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="HESAP_EKNO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="HESAP_NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="HESAP_SAHIBI_ISIM" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="HESAP_TIP" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="HESAP_TIP_AD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="HESAP_TUR" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="HESAP_TUR_AD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="KAPANIS_TARIH" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="ODEME_TAHSILAT" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ONCELIK_NO" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="SON_KULLANMA_TARIH" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="TANIMLI" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="EXT_WS_MMALIINSERT_REC" nillable="true" type="tns:EXT_WS_MMALIINSERT_REC"/>
+<xs:complexType name="EXT_WS_MUST_RES_TYP">
+<xs:sequence>
+<xs:element minOccurs="0" name="Value" nillable="true" type="tns:ArrayOfEXT_WS_MUST_RES_REC"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="EXT_WS_MUST_RES_TYP" nillable="true" type="tns:EXT_WS_MUST_RES_TYP"/>
+<xs:complexType name="ArrayOfEXT_WS_MUST_RES_REC">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="EXT_WS_MUST_RES_REC" nillable="true" type="tns:EXT_WS_MUST_RES_REC"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfEXT_WS_MUST_RES_REC" nillable="true" type="tns:ArrayOfEXT_WS_MUST_RES_REC"/>
+<xs:complexType name="EXT_WS_MUST_RES_REC">
+<xs:sequence>
+<xs:element minOccurs="0" name="AD_SOYAD_UNVAN" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BABA_ADI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DOGUM_YILI" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="HESAP_NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="KAYIT_TARIH" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="MUSTERI_TIP" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="MUST_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SAHIPLIK" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SIRA_NO" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="TCK_GECERLI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TCK_VKN" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="VIP_MUSTERI" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="EXT_WS_MUST_RES_REC" nillable="true" type="tns:EXT_WS_MUST_RES_REC"/>
+<xs:complexType name="ArrayOfCUSTOMER_IST_REC">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="CUSTOMER_IST_REC" nillable="true" type="tns:CUSTOMER_IST_REC"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfCUSTOMER_IST_REC" nillable="true" type="tns:ArrayOfCUSTOMER_IST_REC"/>
+<xs:complexType name="CUSTOMER_IST_REC">
+<xs:sequence>
+<xs:element minOccurs="0" name="DEGER_AD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DEGER_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IST_ADI_KISA" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IST_ADI_UZUN" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IST_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IST_VIA_SERVICE" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="MANUEL_SABIT" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="OTOMATIK_DEGER" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ZORUNLU_SECIMLI" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="CUSTOMER_IST_REC" nillable="true" type="tns:CUSTOMER_IST_REC"/>
+<xs:complexType name="CUSTOMER_IST_TYPE">
+<xs:sequence>
+<xs:element minOccurs="0" name="Value" nillable="true" type="tns:ArrayOfCUSTOMER_IST_REC"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="CUSTOMER_IST_TYPE" nillable="true" type="tns:CUSTOMER_IST_TYPE"/>
+<xs:complexType name="EXT_WS_ISTDEG_TYP">
+<xs:sequence>
+<xs:element minOccurs="0" name="Value" nillable="true" type="tns:ArrayOfEXT_WS_ISTDEG_REC"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="EXT_WS_ISTDEG_TYP" nillable="true" type="tns:EXT_WS_ISTDEG_TYP"/>
+<xs:complexType name="TAHKOD_CEVAP_TYPE">
+<xs:sequence>
+<xs:element minOccurs="0" name="CEVAPACIKLAMA" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="CEVAPKODU" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="CEVAPTAHKOD" nillable="true" type="tns:TAHKOD_CEVAP_TAB"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="TAHKOD_CEVAP_TYPE" nillable="true" type="tns:TAHKOD_CEVAP_TYPE"/>
+<xs:complexType name="TAHKOD_CEVAP_TAB">
+<xs:sequence>
+<xs:element minOccurs="0" name="Value" nillable="true" type="tns:ArrayOfTAHKOD_CEVAP_OBJ"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="TAHKOD_CEVAP_TAB" nillable="true" type="tns:TAHKOD_CEVAP_TAB"/>
+<xs:complexType name="ArrayOfTAHKOD_CEVAP_OBJ">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="TAHKOD_CEVAP_OBJ" nillable="true" type="tns:TAHKOD_CEVAP_OBJ"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfTAHKOD_CEVAP_OBJ" nillable="true" type="tns:ArrayOfTAHKOD_CEVAP_OBJ"/>
+<xs:complexType name="TAHKOD_CEVAP_OBJ">
+<xs:sequence>
+<xs:element minOccurs="0" name="ACIKLAMA" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ADET" nillable="true" type="xs:decimal"/>
+<xs:element minOccurs="0" name="TAHKOD" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="TAHKOD_CEVAP_OBJ" nillable="true" type="tns:TAHKOD_CEVAP_OBJ"/>
+</xs:schema>

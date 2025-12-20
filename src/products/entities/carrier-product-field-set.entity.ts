@@ -17,6 +17,9 @@ export class CarrierProductFieldSet {
   @ManyToOne(() => CarrierProduct)
   carrierProduct: CarrierProduct;
 
+  @Column({ default: 'QUOTE' })
+  stage: string; // FormStage: QUOTE or PURCHASE
+
   @Column()
   version: number;
 

@@ -1,0 +1,33 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.datacontract.org/2004/07/System" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/System">
+<xs:complexType name="ArrayOfTupleOfstringstringstringstringstringstringstring">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="TupleOfstringstringstringstringstringstringstring" nillable="true" type="tns:TupleOfstringstringstringstringstringstringstring"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfTupleOfstringstringstringstringstringstringstring" nillable="true" type="tns:ArrayOfTupleOfstringstringstringstringstringstringstring"/>
+<xs:complexType name="TupleOfstringstringstringstringstringstringstring">
+<xs:annotation>
+<xs:appinfo>
+<GenericType xmlns="http://schemas.microsoft.com/2003/10/Serialization/" Name="TupleOf{0}{1}{2}{3}{4}{5}{6}{#}" Namespace="http://schemas.datacontract.org/2004/07/System">
+<GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema"/>
+<GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema"/>
+<GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema"/>
+<GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema"/>
+<GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema"/>
+<GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema"/>
+<GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema"/>
+</GenericType>
+</xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="m_Item1" nillable="true" type="xs:string"/>
+<xs:element name="m_Item2" nillable="true" type="xs:string"/>
+<xs:element name="m_Item3" nillable="true" type="xs:string"/>
+<xs:element name="m_Item4" nillable="true" type="xs:string"/>
+<xs:element name="m_Item5" nillable="true" type="xs:string"/>
+<xs:element name="m_Item6" nillable="true" type="xs:string"/>
+<xs:element name="m_Item7" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="TupleOfstringstringstringstringstringstringstring" nillable="true" type="tns:TupleOfstringstringstringstringstringstringstring"/>
+</xs:schema>

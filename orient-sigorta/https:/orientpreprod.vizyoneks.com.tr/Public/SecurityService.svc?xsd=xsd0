@@ -1,0 +1,154 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+<xs:import schemaLocation="https://orientpreprod.vizyoneks.com.tr/Public/SecurityService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ApplicationBlocks.Common"/>
+<xs:import schemaLocation="https://orientpreprod.vizyoneks.com.tr/Public/SecurityService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/EntitySpaces.UserActions"/>
+<xs:element name="GetAppMenu">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="appSecurityKey" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetAppMenuResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ApplicationBlocks.Common" minOccurs="0" name="GetAppMenuResult" nillable="true" type="q1:ArrayOfVW_SECURITY_PERMISSIONS"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ChangeAppLoginInfo">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="appSecurityKey" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="oldAppUsername" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="newAppUsername" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="oldAppPassword" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="newAppPassword" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ChangeAppLoginInfoResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="ChangeAppLoginInfoResult" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetAuthenticationKey">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="appSecurityKey" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="userName" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="password" nillable="true" type="xs:string"/>
+<xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ApplicationBlocks.Common" minOccurs="0" name="serviceResult" nillable="true" type="q2:BaseEntity"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetAuthenticationKeyResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="GetAuthenticationKeyResult" nillable="true" type="xs:string"/>
+<xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ApplicationBlocks.Common" minOccurs="0" name="serviceResult" nillable="true" type="q3:BaseEntity"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="CreateUser">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="authenticationKey" nillable="true" type="xs:string"/>
+<xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/EntitySpaces.UserActions" minOccurs="0" name="entity" nillable="true" type="q4:SecurityUser"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="CreateUserResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="CreateUserResult" type="xs:boolean"/>
+<xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/EntitySpaces.UserActions" minOccurs="0" name="entity" nillable="true" type="q5:SecurityUser"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="UpdateUser">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="authenticationKey" nillable="true" type="xs:string"/>
+<xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/EntitySpaces.UserActions" minOccurs="0" name="entity" nillable="true" type="q6:SecurityUser"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="UpdateUserResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="UpdateUserResult" type="xs:boolean"/>
+<xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/EntitySpaces.UserActions" minOccurs="0" name="entity" nillable="true" type="q7:SecurityUser"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="DeleteUser">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="authenticationKey" nillable="true" type="xs:string"/>
+<xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/EntitySpaces.UserActions" minOccurs="0" name="entity" nillable="true" type="q8:SecurityUser"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="DeleteUserResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="DeleteUserResult" type="xs:boolean"/>
+<xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/EntitySpaces.UserActions" minOccurs="0" name="entity" nillable="true" type="q9:SecurityUser"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ChangePassword">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="authenticationKey" nillable="true" type="xs:string"/>
+<xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/EntitySpaces.UserActions" minOccurs="0" name="entity" nillable="true" type="q10:SecurityUser"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ChangePasswordResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="ChangePasswordResult" type="xs:boolean"/>
+<xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/EntitySpaces.UserActions" minOccurs="0" name="entity" nillable="true" type="q11:SecurityUser"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetModifedUsers">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="appSecurityKey" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="modifiedFrom" nillable="true" type="xs:string"/>
+<xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/EntitySpaces.UserActions" minOccurs="0" name="userList" nillable="true" type="q12:ArrayOfSecurityUser"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetModifedUsersResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="GetModifedUsersResult" type="xs:boolean"/>
+<xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/EntitySpaces.UserActions" minOccurs="0" name="userList" nillable="true" type="q13:ArrayOfSecurityUser"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetUserGuid">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="appSecurityKey" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="userName" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="password" nillable="true" type="xs:string"/>
+<xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/ApplicationBlocks.Common" minOccurs="0" name="serviceResult" nillable="true" type="q14:BaseEntity"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetUserGuidResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="GetUserGuidResult" nillable="true" type="xs:string"/>
+<xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/ApplicationBlocks.Common" minOccurs="0" name="serviceResult" nillable="true" type="q15:BaseEntity"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:schema>

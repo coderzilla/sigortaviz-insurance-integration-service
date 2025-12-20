@@ -40,7 +40,8 @@ export class OrientSoapClient {
       throw new Error('global fetch is not available; provide a fetch polyfill.');
     }
 
-    const envelope = this.buildEnvelope(input.operation, input.body);
+    const body = this.stripOperationWrapper(input.body, input.operation);
+    const envelope = this.buildEnvelope(input.operation, body);
     const res = await fetchFn(this.endpoint, {
       method: 'POST',
       headers: {
@@ -79,6 +80,13 @@ export class OrientSoapClient {
       '</soapenv:Body>',
       '</soapenv:Envelope>',
     ].join('');
+  }
+
+  // If the caller passed a full <Operation>...</Operation> body, unwrap it so we don't double-wrap.
+  private stripOperationWrapper(body: string, operation: string): string {
+    const pattern = new RegExp(`<${operation}[^>]*>([\\s\\S]*?)</${operation}>`, 'i');
+    const match = body.match(pattern);
+    return match?.[1]?.trim() ?? body;
   }
 
   private extractFault(raw: string): string | undefined {

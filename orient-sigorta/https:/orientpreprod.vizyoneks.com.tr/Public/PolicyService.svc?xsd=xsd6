@@ -1,0 +1,363 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.datacontract.org/2004/07/EntitySpaces.External.Policy.ReturningType" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/EntitySpaces.External.Policy.ReturningType">
+<xs:import schemaLocation="https://orientpreprod.vizyoneks.com.tr/Public/PolicyService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ApplicationBlocks.Common"/>
+<xs:complexType name="Policy">
+<xs:sequence>
+<xs:element minOccurs="0" name="AcentaNo" type="xs:int"/>
+<xs:element minOccurs="0" name="AlertNo" type="xs:int"/>
+<xs:element minOccurs="0" name="AlertText" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BaslamaTarih" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="BitisTarih" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="Blokeli" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BransAdi" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="CariPolNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DovizCins" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DovizKur" type="xs:double"/>
+<xs:element minOccurs="0" name="EskiPolNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Insured" nillable="true" type="tns:Insured"/>
+<xs:element minOccurs="0" name="InsuredBy" nillable="true" type="tns:InsuredBy"/>
+<xs:element minOccurs="0" name="KaynakKodu" type="xs:int"/>
+<xs:element minOccurs="0" name="ListOfCoverage" nillable="true" type="tns:ArrayOfCoverage"/>
+<xs:element minOccurs="0" name="ListOfInfo" nillable="true" type="tns:ArrayOfInfo"/>
+<xs:element minOccurs="0" name="ListOfPayment" nillable="true" type="tns:ArrayOfPayment"/>
+<xs:element minOccurs="0" name="ListOfStatistic" nillable="true" type="tns:ArrayOfStatistic"/>
+<xs:element minOccurs="0" name="ListOfTax" nillable="true" type="tns:ArrayOfTax"/>
+<xs:element minOccurs="0" name="ListOfUavtRiskAddress" nillable="true" type="tns:ArrayOfUavtRiskAddress"/>
+<xs:element minOccurs="0" name="MaxZeylSiraNo" type="xs:int"/>
+<xs:element minOccurs="0" name="OpId" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="PolCinsi" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="PolicyReportUrl" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SirketKod" type="xs:int"/>
+<xs:element minOccurs="0" name="SonDurum" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SubeKod" type="xs:int"/>
+<xs:element minOccurs="0" name="TanzimTarih" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="TarifeAdi" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TarifeKisaAdi" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TarifeKod" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ZeylSiraNo" type="xs:int"/>
+<xs:element minOccurs="0" name="ZeylTuru" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="Policy" nillable="true" type="tns:Policy"/>
+<xs:complexType name="Insured">
+<xs:sequence>
+<xs:element minOccurs="0" name="AD1" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AD2" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BABA_ADI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BELDE" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="CADDE" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DAIRE" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="HAN_APT_FAB" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IL" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ILCE" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ILCE_ADI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IL_ADI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="MAH_KOY" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="POSTA_KODU" type="xs:int"/>
+<xs:element minOccurs="0" name="SIFATI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SIGORTALI_NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SOKAK" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TARIFE_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TC_KIMLIK_NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ULKE_KODU" type="xs:int"/>
+<xs:element minOccurs="0" name="UYRUGU" type="xs:int"/>
+<xs:element minOccurs="0" name="ZEYL_SIRA_NO" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="Insured" nillable="true" type="tns:Insured"/>
+<xs:complexType name="InsuredBy">
+<xs:sequence>
+<xs:element minOccurs="0" name="AD1" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AD2" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BABA_ADI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="CADDE" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DAIRE" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="HAN_APT_FAB" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IL" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ILCE" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ILCE_ADI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IL_ADI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="MAH_KOY" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="POSTA_KODU" type="xs:int"/>
+<xs:element minOccurs="0" name="SIFATI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SIG_ETTIREN_NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SOKAK" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TARIFE_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TC_KIMLIK_NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ULKE_KODU" type="xs:int"/>
+<xs:element minOccurs="0" name="UYRUGU" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="InsuredBy" nillable="true" type="tns:InsuredBy"/>
+<xs:complexType name="ArrayOfCoverage">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="Coverage" nillable="true" type="tns:Coverage"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfCoverage" nillable="true" type="tns:ArrayOfCoverage"/>
+<xs:complexType name="Coverage">
+<xs:sequence>
+<xs:element minOccurs="0" name="BAGLI_POLICE_NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BEDEL" type="xs:double"/>
+<xs:element minOccurs="0" name="BEDEL_DOVIZ" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BEDEL_KUR" type="xs:double"/>
+<xs:element minOccurs="0" name="BRANS" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BRANS_ADI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DKOM_TUTARI" type="xs:double"/>
+<xs:element minOccurs="0" name="EK_PRIM" type="xs:double"/>
+<xs:element minOccurs="0" name="FIYAT" type="xs:double"/>
+<xs:element minOccurs="0" name="FIYAT_MATRAH" type="xs:double"/>
+<xs:element minOccurs="0" name="INDIRIM" type="xs:double"/>
+<xs:element minOccurs="0" name="KOM_ORANI" type="xs:double"/>
+<xs:element minOccurs="0" name="KOM_TUTARI" type="xs:double"/>
+<xs:element minOccurs="0" name="MUAFIYET" type="xs:double"/>
+<xs:element minOccurs="0" name="NET_PRIM" type="xs:double"/>
+<xs:element minOccurs="0" name="POLICE_CINSI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="PRIM" type="xs:double"/>
+<xs:element minOccurs="0" name="SURPRIM" type="xs:double"/>
+<xs:element minOccurs="0" name="TAHSILAT_KODU" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TARIFE" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TEMINAT_AD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TEMINAT_KODU" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TL_BEDEL" type="xs:double"/>
+<xs:element minOccurs="0" name="TL_EK_PRIM" type="xs:double"/>
+<xs:element minOccurs="0" name="TL_INDIRIM" type="xs:double"/>
+<xs:element minOccurs="0" name="TL_MUAF" type="xs:double"/>
+<xs:element minOccurs="0" name="TL_NET_PRIM" type="xs:double"/>
+<xs:element minOccurs="0" name="TL_PRIM" type="xs:double"/>
+<xs:element minOccurs="0" name="TL_SURPRIM" type="xs:double"/>
+<xs:element minOccurs="0" name="T_I" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="Coverage" nillable="true" type="tns:Coverage"/>
+<xs:complexType name="ArrayOfInfo">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="Info" nillable="true" type="tns:Info"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfInfo" nillable="true" type="tns:ArrayOfInfo"/>
+<xs:complexType name="Info">
+<xs:sequence>
+<xs:element minOccurs="0" name="ACIKLAMA" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BILGI_ADI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BILGI_SIRA_NO" type="xs:int"/>
+<xs:element minOccurs="0" name="IST_KOD" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="Info" nillable="true" type="tns:Info"/>
+<xs:complexType name="ArrayOfPayment">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="Payment" nillable="true" type="tns:Payment"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfPayment" nillable="true" type="tns:ArrayOfPayment"/>
+<xs:complexType name="Payment">
+<xs:sequence>
+<xs:element minOccurs="0" name="ACIKLAMA" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DTUTAR" type="xs:double"/>
+<xs:element minOccurs="0" name="HESAP_NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="HESAP_TIP" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="KAPANIS_TARIH" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="ODEME_CINSI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SON_KULLANMA_TARIH" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="TANZIM_TARIHI" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="TARIFE_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TARIH" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="TUTAR" type="xs:double"/>
+<xs:element minOccurs="0" name="T_I" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="VADE" type="xs:dateTime"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="Payment" nillable="true" type="tns:Payment"/>
+<xs:complexType name="ArrayOfStatistic">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="Statistic" nillable="true" type="tns:Statistic"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfStatistic" nillable="true" type="tns:ArrayOfStatistic"/>
+<xs:complexType name="Statistic">
+<xs:sequence>
+<xs:element minOccurs="0" name="DEG_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IST_KOD" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="Statistic" nillable="true" type="tns:Statistic"/>
+<xs:complexType name="ArrayOfTax">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="Tax" nillable="true" type="tns:Tax"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfTax" nillable="true" type="tns:ArrayOfTax"/>
+<xs:complexType name="Tax">
+<xs:sequence>
+<xs:element minOccurs="0" name="DOVIZ_CINSI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DVERGI" type="xs:double"/>
+<xs:element minOccurs="0" name="TARIFE_KOD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TEMINAT_KODU" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="VERGI" type="xs:double"/>
+<xs:element minOccurs="0" name="VERGI_KODU" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="Tax" nillable="true" type="tns:Tax"/>
+<xs:complexType name="ArrayOfUavtRiskAddress">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="UavtRiskAddress" nillable="true" type="tns:UavtRiskAddress"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfUavtRiskAddress" nillable="true" type="tns:ArrayOfUavtRiskAddress"/>
+<xs:complexType name="UavtRiskAddress">
+<xs:sequence>
+<xs:element minOccurs="0" name="ADRESID" type="xs:long"/>
+<xs:element minOccurs="0" name="BELDEADI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BELDEKODU" type="xs:int"/>
+<xs:element minOccurs="0" name="BINAADI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BINAKODU" type="xs:int"/>
+<xs:element minOccurs="0" name="DAIREADI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DAIREKODU" type="xs:int"/>
+<xs:element minOccurs="0" name="ILADI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ILCEADI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ILCEKODU" type="xs:int"/>
+<xs:element minOccurs="0" name="ILKODU" type="xs:int"/>
+<xs:element minOccurs="0" name="MAHALLEADI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="MAHALLEKODU" type="xs:int"/>
+<xs:element minOccurs="0" name="POSTAKODU" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SOKAKADI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SOKAKKODU" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="UavtRiskAddress" nillable="true" type="tns:UavtRiskAddress"/>
+<xs:complexType name="ArrayOfPolicy">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="Policy" nillable="true" type="tns:Policy"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfPolicy" nillable="true" type="tns:ArrayOfPolicy"/>
+<xs:complexType name="Report">
+<xs:sequence>
+<xs:element minOccurs="0" name="AlertNo" type="xs:int"/>
+<xs:element minOccurs="0" name="AlertText" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BILGILENDIRME_OBJE" nillable="true" type="xs:base64Binary"/>
+<xs:element minOccurs="0" name="POLICE_OBJE" nillable="true" type="xs:base64Binary"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="Report" nillable="true" type="tns:Report"/>
+<xs:complexType name="CheckActiveProductByInsured">
+<xs:complexContent mixed="false">
+<xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/ApplicationBlocks.Common" base="q1:BaseEntity">
+<xs:sequence>
+<xs:element minOccurs="0" name="AvailabilityResult" type="xs:boolean"/>
+<xs:element minOccurs="0" name="ProductCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="QueryInput" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="QueryInputType" type="xs:unsignedByte"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="CheckActiveProductByInsured" nillable="true" type="tns:CheckActiveProductByInsured"/>
+<xs:complexType name="GetCustomerNo">
+<xs:complexContent mixed="false">
+<xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/ApplicationBlocks.Common" base="q2:BaseEntity">
+<xs:sequence>
+<xs:element minOccurs="0" name="BirthDate" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="CustomerName" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="CustomerNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Email" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="HasValidAddress" type="xs:boolean"/>
+<xs:element minOccurs="0" name="MobilePhone" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="QueryInput" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="QueryType" type="xs:unsignedByte"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="GetCustomerNo" nillable="true" type="tns:GetCustomerNo"/>
+<xs:complexType name="PolicyPayment">
+<xs:complexContent mixed="false">
+<xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/ApplicationBlocks.Common" base="q3:BaseEntity">
+<xs:sequence>
+<xs:element minOccurs="0" name="CreditCardNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="CvcCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ExpirationDate" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="OwnerName" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="PaymentType" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="PolicyNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ProcessRefNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="State3D" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SupplementNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TcNo" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PolicyPayment" nillable="true" type="tns:PolicyPayment"/>
+<xs:complexType name="MakePolicyPayment">
+<xs:sequence>
+<xs:element minOccurs="0" name="CreditCardNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="CvcCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ExpirationDate" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="OwnerName" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Payment3D" type="xs:boolean"/>
+<xs:element minOccurs="0" name="PaymentCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="PolicyNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ReturnUrl" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="RsaData" type="xs:boolean"/>
+<xs:element minOccurs="0" name="State3D" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SupplementNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TcNo" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="MakePolicyPayment" nillable="true" type="tns:MakePolicyPayment"/>
+<xs:complexType name="PolicyPayment3D">
+<xs:sequence>
+<xs:element minOccurs="0" name="I_3DCLIENTIP" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="I_BANKPACKET_3D" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="I_CAVV" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="I_ECI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="I_MASKEDPAN" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="I_MD" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="I_MDERRORMESSAGE" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="I_MDSTATUS" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="I_MERCHANTPACKET_3D" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="I_SIGN_3D" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="I_TXSTATUS" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="I_XID" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="O_AMOUNT" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="O_BANKA_TURU_3D" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="O_CARD_TYPE" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="O_CLIENTID_3D" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="O_CURRENCY" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="O_INSTALLMENT" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="O_LINK_3D" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="O_PASSWORD_3D" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="O_PROVIZYON" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="O_STORE_KEY_3D" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="O_TERMCUSTEMAIL_3D" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="O_TERMERCHID_3D" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="O_TERMPROVID_3D" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="O_TERMUSERID_3D" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="PolicyPayment3D" nillable="true" type="tns:PolicyPayment3D"/>
+<xs:complexType name="QrDetails">
+<xs:sequence>
+<xs:element minOccurs="0" name="Agency" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="AlertNo" type="xs:int"/>
+<xs:element minOccurs="0" name="AlertText" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Country" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Coverage" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="EndDate" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="IdentityNumber" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Insured" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="InsuredCount" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Insurer" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="PolicyNumber" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="PolicyStatus" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ProductName" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SupplementNumber" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="Territory" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="QrDetails" nillable="true" type="tns:QrDetails"/>
+</xs:schema>

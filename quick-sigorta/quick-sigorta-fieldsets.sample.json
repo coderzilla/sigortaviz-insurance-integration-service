@@ -1,0 +1,91 @@
+{
+  "carrier": "QUICK_SIGORTA",
+  "product": "TRAFFIC",
+  "fieldSets": [
+    {
+      "stage": "QUOTE",
+      "version": 1,
+      "isActive": true,
+      "fields": [
+        {
+          "internalCode": "insuredTckn",
+          "label": "TC Kimlik No",
+          "inputType": "identity",
+          "required": true,
+          "orderIndex": 1,
+          "page": 1,
+          "validationRegex": "^[0-9]{11}$"
+        },
+        {
+          "internalCode": "insuredBirthDate",
+          "label": "Doğum Tarihi",
+          "inputType": "date",
+          "required": true,
+          "orderIndex": 2,
+          "page": 1
+        },
+        {
+          "internalCode": "vehiclePlate",
+          "label": "Plaka",
+          "inputType": "text",
+          "required": true,
+          "orderIndex": 3,
+          "page": 1,
+          "placeholder": "34ABC123"
+        },
+        {
+          "internalCode": "contactPhone",
+          "label": "Cep Telefonu",
+          "inputType": "phone",
+          "required": false,
+          "orderIndex": 4,
+          "page": 1
+        },
+        {
+          "internalCode": "contactEmail",
+          "label": "E-posta",
+          "inputType": "email",
+          "required": false,
+          "orderIndex": 5,
+          "page": 1
+        }
+      ]
+    },
+    {
+      "stage": "PURCHASE",
+      "version": 1,
+      "isActive": true,
+      "fields": [
+        {
+          "internalCode": "policyNo",
+          "label": "Teklif No / PolicyNo",
+          "inputType": "text",
+          "required": true,
+          "orderIndex": 1,
+          "page": 1
+        },
+        {
+          "internalCode": "paymentType",
+          "label": "Ödeme Tipi",
+          "inputType": "select",
+          "required": true,
+          "orderIndex": 2,
+          "page": 1,
+          "optionsJson": [
+            { "value": "card", "label": "Kredi Kartı" },
+            { "value": "cash", "label": "Nakit" }
+          ]
+        },
+        {
+          "internalCode": "cardTokenId",
+          "label": "Kart Token",
+          "inputType": "text",
+          "required": false,
+          "orderIndex": 3,
+          "page": 1,
+          "description": "Quick Sigorta kart saklama/token yanıtından dönen token"
+        }
+      ]
+    }
+  ]
+}

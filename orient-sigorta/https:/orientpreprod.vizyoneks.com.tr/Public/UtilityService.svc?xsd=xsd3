@@ -1,0 +1,48 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.datacontract.org/2004/07/System.Collections.Generic" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic">
+<xs:import schemaLocation="https://orientpreprod.vizyoneks.com.tr/Public/UtilityService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/"/>
+<xs:complexType name="ArrayOfKeyValuePairOfstringstring">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValuePairOfstringstring" type="tns:KeyValuePairOfstringstring"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfKeyValuePairOfstringstring" nillable="true" type="tns:ArrayOfKeyValuePairOfstringstring"/>
+<xs:complexType name="KeyValuePairOfstringstring">
+<xs:annotation>
+<xs:appinfo>
+<GenericType xmlns="http://schemas.microsoft.com/2003/10/Serialization/" Name="KeyValuePairOf{0}{1}{#}" Namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic">
+<GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema"/>
+<GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema"/>
+</GenericType>
+<IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+</xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="key" nillable="true" type="xs:string"/>
+<xs:element name="value" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="KeyValuePairOfstringstring" nillable="true" type="tns:KeyValuePairOfstringstring"/>
+<xs:complexType name="ArrayOfKeyValuePairOfintstring">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValuePairOfintstring" type="tns:KeyValuePairOfintstring"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfKeyValuePairOfintstring" nillable="true" type="tns:ArrayOfKeyValuePairOfintstring"/>
+<xs:complexType name="KeyValuePairOfintstring">
+<xs:annotation>
+<xs:appinfo>
+<GenericType xmlns="http://schemas.microsoft.com/2003/10/Serialization/" Name="KeyValuePairOf{0}{1}{#}" Namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic">
+<GenericParameter Name="int" Namespace="http://www.w3.org/2001/XMLSchema"/>
+<GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema"/>
+</GenericType>
+<IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+</xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="key" type="xs:int"/>
+<xs:element name="value" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="KeyValuePairOfintstring" nillable="true" type="tns:KeyValuePairOfintstring"/>
+</xs:schema>

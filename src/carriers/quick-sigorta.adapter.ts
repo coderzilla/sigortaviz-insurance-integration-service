@@ -1,3 +1,6 @@
+import { Injectable, OnModuleInit } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CarrierAdapter } from './carrier.adapter';
 import {
   PolicyPurchaseRequest,
@@ -6,6 +9,8 @@ import {
   QuoteResult,
 } from './carrier-types';
 import { ProductCode } from '../common/types/domain-types';
+import { Carrier } from '../products/entities/carrier.entity';
+import { CarrierProduct } from '../products/entities/carrier-product.entity';
 
 /**
  * Quick Sigorta adapter (REST, mocked unless enabled).
@@ -17,26 +22,67 @@ import { ProductCode } from '../common/types/domain-types';
  *  QUICK_MODE=mock (optional)
  *  QUICK_PRODUCTS=TRAFFIC,CASCO (optional override)
  */
-export class QuickSigortaAdapter implements CarrierAdapter {
+@Injectable()
+export class QuickSigortaAdapter implements CarrierAdapter, OnModuleInit {
   readonly carrierCode = 'QUICK_SIGORTA';
 
   private readonly enabled: boolean;
   private readonly baseUrl?: string;
   private readonly mockMode: boolean;
-  private readonly supported: ProductCode[];
+  private readonly supportedOverrideFromEnv?: Set<ProductCode>;
+  private readonly defaultSupported: Set<ProductCode>;
+  private supportedFromDb?: Set<ProductCode>;
   private accessToken?: string;
 
-  constructor() {
+  constructor(
+    @InjectRepository(Carrier)
+    private readonly carrierRepo: Repository<Carrier>,
+    @InjectRepository(CarrierProduct)
+    private readonly carrierProductRepo: Repository<CarrierProduct>,
+  ) {
     this.enabled = process.env.QUICK_ENABLED === 'true';
     this.baseUrl = process.env.QUICK_API_BASE;
     this.mockMode = process.env.QUICK_MODE === 'mock';
-    this.supported =
-      process.env.QUICK_PRODUCTS?.split(',').map((p) => p.trim() as ProductCode) ??
-      [ProductCode.TRAFFIC, ProductCode.CASCO];
+
+    const envProducts = process.env.QUICK_PRODUCTS
+      ?.split(',')
+      .map((p) => p.trim())
+      .filter(Boolean) as ProductCode[] | undefined;
+    this.supportedOverrideFromEnv = envProducts?.length
+      ? new Set(envProducts)
+      : undefined;
+
+    this.defaultSupported = new Set([ProductCode.TRAFFIC, ProductCode.CASCO]);
+  }
+
+  async onModuleInit(): Promise<void> {
+    try {
+      const carrier = await this.carrierRepo.findOne({
+        where: { code: this.carrierCode, isActive: true },
+      });
+      if (!carrier) return;
+
+      const carrierProducts = await this.carrierProductRepo.find({
+        where: { carrier: { id: carrier.id }, isActive: true },
+      });
+
+      const productCodes = carrierProducts
+        .map((cp) => cp.product?.code)
+        .filter(Boolean) as ProductCode[];
+
+      if (productCodes.length) {
+        this.supportedFromDb = new Set(productCodes);
+      }
+    } catch {
+      // If DB isn't reachable at boot, fall back to env/default supported list.
+    }
   }
 
   supportsProduct(product: ProductCode): boolean {
-    return this.enabled && this.supported.includes(product);
+    if (!this.enabled) return false;
+    const supported =
+      this.supportedOverrideFromEnv ?? this.supportedFromDb ?? this.defaultSupported;
+    return supported.has(product);
   }
 
   async getQuote(request: QuoteRequest): Promise<QuoteResult> {
@@ -342,15 +388,56 @@ export class QuickSigortaAdapter implements CarrierAdapter {
   private buildMinimalProposal(request: QuoteRequest): any | undefined {
     const productId = this.mapProduct(request.product);
     if (!productId) return undefined;
+
+    const customInsureds = (request.customFields as any)?.insureds;
+    const insuredsSource =
+      request.insureds && request.insureds.length
+        ? request.insureds
+        : Array.isArray(customInsureds)
+          ? customInsureds
+          : undefined;
+
+    const insurerSource = request.insurer ?? request.insuredPerson;
+    const insurer = {
+      idNumber: insurerSource.tckn ?? insurerSource.fullName,
+      birthDate: insurerSource.birthDate,
+      email: insurerSource.email,
+      phoneNumber: insurerSource.phoneNumber,
+    };
+
+    const insureds =
+      insuredsSource?.length
+        ? insuredsSource.map((p: any, idx: number) => ({
+            idNumber: p.tckn ?? p.idNumber ?? insurer.idNumber,
+            birthDate: p.birthDate ?? insurer.birthDate,
+            email: p.email ?? insurer.email,
+            phoneNumber: p.phoneNumber ?? insurer.phoneNumber,
+            isMain:
+              Boolean(p.isMain) ||
+              p.role === 'SELF' ||
+              (idx === 0 && !insuredsSource.some((x: any) => x?.isMain)),
+          }))
+        : [
+            {
+              idNumber: insurer.idNumber,
+              birthDate: insurer.birthDate,
+              email: insurer.email,
+              phoneNumber: insurer.phoneNumber,
+              isMain: true,
+            },
+          ];
+
+    const questions =
+      (request.customFields as any)?.questions ??
+      (request.customFields as any)?.travelQuestions ??
+      undefined;
+
     return {
       productId,
-      insurer: {
-        idNumber: request.insuredPerson.tckn ?? request.insuredPerson.fullName,
-        birthDate: request.insuredPerson.birthDate,
-        email: request.insuredPerson.email,
-        phoneNumber: request.insuredPerson.phoneNumber,
-      },
+      insurer,
+      insureds,
       vehicle: request.vehicle,
+      questions,
       customFields: request.customFields,
     };
   }

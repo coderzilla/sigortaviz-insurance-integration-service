@@ -1,0 +1,17 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.datacontract.org/2004/07/BLL.NonLife.Policy" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/BLL.NonLife.Policy">
+<xs:import schemaLocation="https://orientpreprod.vizyoneks.com.tr/Public/PolicyService.svc?xsd=xsd1" namespace="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.Policy"/>
+<xs:complexType name="ArrayOfPolicyBO">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="PolicyBO" nillable="true" type="tns:PolicyBO"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfPolicyBO" nillable="true" type="tns:ArrayOfPolicyBO"/>
+<xs:complexType name="PolicyBO">
+<xs:complexContent mixed="false">
+<xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.Policy" base="q1:Policy">
+<xs:sequence/>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:element name="PolicyBO" nillable="true" type="tns:PolicyBO"/>
+</xs:schema>

@@ -1,0 +1,319 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+<xs:import schemaLocation="https://orientpreprod.vizyoneks.com.tr/Public/UtilityService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/EntitySpaces"/>
+<xs:import schemaLocation="https://orientpreprod.vizyoneks.com.tr/Public/UtilityService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic"/>
+<xs:import schemaLocation="https://orientpreprod.vizyoneks.com.tr/Public/UtilityService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.TypeMapping"/>
+<xs:import schemaLocation="https://orientpreprod.vizyoneks.com.tr/Public/UtilityService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/EntitySpaces.External.Policy.ReturningType"/>
+<xs:element name="GetListSource">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="authenticationKey" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="typeKey" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="alertNo" type="xs:int"/>
+<xs:element minOccurs="0" name="alertText" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="firstParam" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="secondParam" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="thirdParam" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="fourthParam" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="fifthParam" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="sixthParam" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetListSourceResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/EntitySpaces" minOccurs="0" name="GetListSourceResult" type="q1:ListSource"/>
+<xs:element minOccurs="0" name="alertNo" type="xs:int"/>
+<xs:element minOccurs="0" name="alertText" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="QueryOnlinePolicy">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="authenticationKey" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="productCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="plate" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="plateType" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="queryInput" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="queryInputType" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="renewFirmCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="renewAgentCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="renewPolicyNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="renewNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="registrySerial" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="registryNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="mark" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="model" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="modelYear" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="licencePlate" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="insuredByNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="insuredByName" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="insuredNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="insuredName" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="endDate" nillable="true" type="xs:dateTime"/>
+<xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="stats" nillable="true" type="q2:ArrayOfKeyValuePairOfstringstring"/>
+<xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="informations" nillable="true" type="q3:ArrayOfKeyValuePairOfstringstring"/>
+<xs:element minOccurs="0" name="alertNo" type="xs:int"/>
+<xs:element minOccurs="0" name="alertText" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="QueryOnlinePolicyResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="QueryOnlinePolicyResult" type="xs:boolean"/>
+<xs:element minOccurs="0" name="queryInput" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="queryInputType" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="renewFirmCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="renewAgentCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="renewPolicyNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="renewNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="mark" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="model" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="modelYear" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="licencePlate" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="insuredByNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="insuredByName" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="insuredNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="insuredName" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="endDate" nillable="true" type="xs:dateTime"/>
+<xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="stats" nillable="true" type="q4:ArrayOfKeyValuePairOfstringstring"/>
+<xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="informations" nillable="true" type="q5:ArrayOfKeyValuePairOfstringstring"/>
+<xs:element minOccurs="0" name="alertNo" type="xs:int"/>
+<xs:element minOccurs="0" name="alertText" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetTCIPInfoByOldPolicy">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="authenticationKey" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="productCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="insuranceCompany" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="agentNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="policyNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="alertNo" type="xs:int"/>
+<xs:element minOccurs="0" name="alertText" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="insuredByNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="insuredByMBB" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="insuredByName" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="insuredNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="insuredMBB" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="insuredName" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="vicinity" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="district" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="avenue" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="street" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="apartment" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="buildingNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="flatNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="postalCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="city" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="county" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="town" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="startDate" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="mernisNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="dainiBank" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="dainiBranch" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="id_type" nillable="true" type="xs:string"/>
+<xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="statistics" nillable="true" type="q6:ArrayOfKeyValuePairOfstringstring"/>
+<xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="informations" nillable="true" type="q7:ArrayOfKeyValuePairOfintstring"/>
+<xs:element minOccurs="0" name="companyCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="companyName" nillable="true" type="xs:string"/>
+<xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.TypeMapping" minOccurs="0" name="wdsk" nillable="true" type="q8:ArrayOfEXT_WS_GECICI_DASK_SE_REC"/>
+<xs:element minOccurs="0" name="identityToCustomerPage" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="oldPolicyNum" nillable="true" type="xs:string"/>
+<xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.TypeMapping" minOccurs="0" name="UavtRiskAddress" nillable="true" type="q9:NPOL_UAVT_ADDRESS_TYPE"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetTCIPInfoByOldPolicyResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="GetTCIPInfoByOldPolicyResult" type="xs:boolean"/>
+<xs:element minOccurs="0" name="alertNo" type="xs:int"/>
+<xs:element minOccurs="0" name="alertText" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="insuredByNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="insuredByMBB" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="insuredByName" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="insuredNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="insuredMBB" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="insuredName" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="vicinity" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="district" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="avenue" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="street" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="apartment" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="buildingNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="flatNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="postalCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="city" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="county" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="town" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="startDate" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="mernisNo" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="dainiBank" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="dainiBranch" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="id_type" nillable="true" type="xs:string"/>
+<xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="statistics" nillable="true" type="q10:ArrayOfKeyValuePairOfstringstring"/>
+<xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="informations" nillable="true" type="q11:ArrayOfKeyValuePairOfintstring"/>
+<xs:element minOccurs="0" name="companyCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="companyName" nillable="true" type="xs:string"/>
+<xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.TypeMapping" minOccurs="0" name="wdsk" nillable="true" type="q12:ArrayOfEXT_WS_GECICI_DASK_SE_REC"/>
+<xs:element minOccurs="0" name="identityToCustomerPage" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="oldPolicyNum" nillable="true" type="xs:string"/>
+<xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.TypeMapping" minOccurs="0" name="UavtRiskAddress" nillable="true" type="q13:NPOL_UAVT_ADDRESS_TYPE"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetUavtDetail">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="authenticationKey" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="addressNum" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="alertNo" type="xs:int"/>
+<xs:element minOccurs="0" name="alertText" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetUavtDetailResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.TypeMapping" minOccurs="0" name="GetUavtDetailResult" nillable="true" type="q14:NPOL_UAVT_ADDRESS_TYPE"/>
+<xs:element minOccurs="0" name="alertNo" type="xs:int"/>
+<xs:element minOccurs="0" name="alertText" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetMarkaModel">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="appsecuritykey" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="akldegkod" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="birlikmarka" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="marka" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="model" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetMarkaModelResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="GetMarkaModelResult" type="xs:boolean"/>
+<xs:element minOccurs="0" name="marka" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="model" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="appSecurityKey" nillable="true" type="xs:string"/>
+<xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/EntitySpaces.External.Policy.ReturningType" minOccurs="0" name="entity" nillable="true" type="q15:GetResponse"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetResponseResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="GetResponseResult" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetXml">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="appSecurityKey" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="query" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetXmlResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="GetXmlResult" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetStatValueList">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="appSecurityKey" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="statCode" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetStatValueListResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="GetStatValueListResult" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetDamageFileInfo">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="appSecurityKey" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="damageFileNo" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetDamageFileInfoResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="GetDamageFileInfoResult" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetAgentList">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="appSecurityKey" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="cityCode" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetAgentListResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="GetAgentListResult" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetContractedServiceList">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="appSecurityKey" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="cityCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="markCode" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetContractedServiceListResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="GetContractedServiceListResult" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetOtherServiceList">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="appSecurityKey" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="cityCode" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="sourceCode" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="GetOtherServiceListResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="GetOtherServiceListResult" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:schema>

@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { CarriersService } from './carriers.service';
 import { CARRIER_ADAPTERS } from './carrier.constants';
 import { AllianzAdapter } from './allianz.adapter';
@@ -6,8 +7,12 @@ import { AxaAdapter } from './axa.adapter';
 import { TurkiyeSigortaPusulaAdapter } from './turkiye-sigorta-pusula.adapter';
 import { OrientSigortaAdapter } from './orient-sigorta.adapter';
 import { QuickSigortaAdapter } from './quick-sigorta.adapter';
+import { Carrier } from '../products/entities/carrier.entity';
+import { Product } from '../products/entities/product.entity';
+import { CarrierProduct } from '../products/entities/carrier-product.entity';
 
 @Module({
+  imports: [TypeOrmModule.forFeature([Carrier, Product, CarrierProduct])],
   providers: [
     AllianzAdapter,
     AxaAdapter,

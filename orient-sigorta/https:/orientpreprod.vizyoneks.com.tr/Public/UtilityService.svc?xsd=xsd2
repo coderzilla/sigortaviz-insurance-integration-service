@@ -1,0 +1,17 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.datacontract.org/2004/07/EntitySpaces" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/EntitySpaces">
+<xs:import schemaLocation="https://orientpreprod.vizyoneks.com.tr/Public/UtilityService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic"/>
+<xs:import schemaLocation="https://orientpreprod.vizyoneks.com.tr/Public/UtilityService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/"/>
+<xs:complexType name="ListSource">
+<xs:annotation>
+<xs:appinfo>
+<IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+</xs:appinfo>
+</xs:annotation>
+<xs:sequence>
+<xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="0" name="Data" nillable="true" type="q1:ArrayOfKeyValuePairOfstringstring"/>
+<xs:element minOccurs="0" name="DefaultValue" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ListSource" nillable="true" type="tns:ListSource"/>
+</xs:schema>

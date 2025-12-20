@@ -16,11 +16,18 @@ export class QuotesService {
   constructor(private readonly carriersService: CarriersService) {}
 
   async createQuote(dto: CreateQuoteDto): Promise<QuoteResponseDto> {
+    const insurer = dto.insurer ?? dto.insuredPerson;
     const req: QuoteRequest = {
       product: dto.product,
       insuredPerson: dto.insuredPerson,
+      insurer,
       vehicle: dto.vehicle,
       customFields: dto.customFields,
+      insureds:
+        dto.insureds ??
+        ((dto.customFields as any)?.insureds?.length
+          ? ((dto.customFields as any).insureds as any[])
+          : undefined),
     };
 
     const result = await this.carriersService.getQuotes(req, dto.carriers);

@@ -1,0 +1,59 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.TypeMapping" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/EntitySpaces.NonLife.TypeMapping">
+<xs:complexType name="ArrayOfEXT_WS_GECICI_DASK_SE_REC">
+<xs:sequence>
+<xs:element minOccurs="0" maxOccurs="unbounded" name="EXT_WS_GECICI_DASK_SE_REC" nillable="true" type="tns:EXT_WS_GECICI_DASK_SE_REC"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="ArrayOfEXT_WS_GECICI_DASK_SE_REC" nillable="true" type="tns:ArrayOfEXT_WS_GECICI_DASK_SE_REC"/>
+<xs:complexType name="EXT_WS_GECICI_DASK_SE_REC">
+<xs:sequence>
+<xs:element minOccurs="0" name="CODE" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="EMAILTEXT" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ISVALIDATED" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="MERNISNUM" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="MOBILENUM" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="NAME" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="NATIONALITYTYPE" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="OP_ID" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="PARTYTYPE" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="PASSPORTNUM" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="POLICYNUM" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="REALCORPORATEIND" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SIGORTALI_ETTIREN" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SIGORTALI_ETTIREN_NO" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SIRKET_KOD" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="SURNAME" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TARIH" nillable="true" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="TAXNUM" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TAXOFFICE" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TELEPHONENUM" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="TITLE" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="VILLAGECODE" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="VILLAGEINSTANCEID" nillable="true" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="EXT_WS_GECICI_DASK_SE_REC" nillable="true" type="tns:EXT_WS_GECICI_DASK_SE_REC"/>
+<xs:complexType name="NPOL_UAVT_ADDRESS_TYPE">
+<xs:sequence>
+<xs:element minOccurs="0" name="ADDRESSACK" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ADRESID" nillable="true" type="xs:long"/>
+<xs:element minOccurs="0" name="BELDEADI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BELDEKODU" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="BINAADI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="BINAKODU" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="DAIREADI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="DAIREKODU" nillable="true" type="xs:long"/>
+<xs:element minOccurs="0" name="ILADI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ILCEADI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="ILCEKODU" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="ILKODU" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="MAHALLEADI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="MAHALLEKODU" nillable="true" type="xs:int"/>
+<xs:element minOccurs="0" name="POSTAKODU" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SOKAKADI" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="SOKAKKODU" nillable="true" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="NPOL_UAVT_ADDRESS_TYPE" nillable="true" type="tns:NPOL_UAVT_ADDRESS_TYPE"/>
+</xs:schema>
