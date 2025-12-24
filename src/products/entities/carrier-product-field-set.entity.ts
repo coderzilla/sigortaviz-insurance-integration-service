@@ -38,5 +38,8 @@ export class CarrierProductFieldSet {
   fields: CarrierProductField[];
 
   @Column({ type: 'json', nullable: true })
+  stepsJson?: any; // hierarchical step definitions for UI grouping
+
+  @Column({ type: 'json', nullable: true })
   pageChangeRequestJson?: any; // optional request to trigger between page changes
 }

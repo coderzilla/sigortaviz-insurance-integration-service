@@ -16,7 +16,7 @@ import { QuotesModule } from './quotes/quotes.module';
       password: process.env.DB_PASS ?? 'root',
       database: process.env.DB_NAME ?? 'sigorta',
       autoLoadEntities: true,
-      synchronize: true, // Dev only; use migrations in production
+      synchronize: false, // Dev only; use migrations in production
     }),
     ProductsModule,
     CarriersModule,

@@ -57,8 +57,11 @@ export class CarrierProductField {
   @Column({ type: 'json', nullable: true })
   extraConfigJson?: any;
 
-  @Column({ type: 'int', default: 1 })
-  page: number; // which page to render this field on
+  @Column({ type: 'json', nullable: true })
+  stepPathJson?: string[]; // hierarchical path for grouping (e.g. ["vehicle","license"])
+
+  @Column({ type: 'int', nullable: true })
+  page?: number; // legacy pagination, kept for migration fallback
 
   @Column({ type: 'json', nullable: true })
   onBlurRequestJson?: any; // optional request to trigger on blur with valid value

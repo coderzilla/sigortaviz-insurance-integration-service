@@ -8,6 +8,14 @@ export type FieldTransformType =
   | 'LOWERCASE';
 
 export type FormStage = 'QUOTE' | 'PURCHASE';
+
+export interface StepDefinition {
+  id: string; // unique path segment
+  title: string; // display label
+  order: number; // ordering among siblings
+  children?: StepDefinition[]; // nested steps
+}
+
 // src/common/types/field-types.ts
 export type FieldInputType =
   | 'text'
@@ -80,8 +88,8 @@ export interface FieldConfig {
   description?: string;
   inputType: FieldInputType;
   required: boolean;
-  page: number;           // which page of the form this field belongs to
-  orderIndex: number;
+  orderIndex: number;      // order inside its step
+  stepPath?: string[];     // hierarchical path of steps (e.g. ["vehicle","license"])
   placeholder?: string;
   options?: FieldOption[] | FieldOptionSource;
   validation?: FieldValidationRules;
@@ -92,4 +100,5 @@ export interface FieldConfig {
 export interface ProductFormConfig {
   fields: FieldConfig[];
   pageChangeRequest?: RequestTriggerConfig; // optional request to trigger between page changes
+  steps?: StepDefinition[]; // hierarchical structure for grouping fields
 }

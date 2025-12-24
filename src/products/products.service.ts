@@ -11,9 +11,10 @@ import {
   FieldValidationRules,
   FormStage,
   ProductFormConfig,
+  RequestTriggerConfig,
+  StepDefinition,
 } from '../common/types/field-types';
 import { ProductCode } from '../common/types/domain-types';
-import { RequestTriggerConfig } from '../common/types/field-types';
 
 @Injectable()
 export class ProductsService {
@@ -126,11 +127,30 @@ export class ProductsService {
       return { fields: [] };
     }
 
+    const steps: StepDefinition[] | undefined =
+      effectiveFieldSet.stepsJson && effectiveFieldSet.stepsJson.length
+        ? effectiveFieldSet.stepsJson
+        : undefined;
+
+    const stepOrderLookup = new Map<string, number>();
+    let stepOrderCounter = 0;
+    const registerSteps = (nodes?: StepDefinition[], path: string[] = []) => {
+      (nodes || []).forEach((node) => {
+        const currentPath = [...path, node.id];
+        stepOrderLookup.set(currentPath.join('/'), ++stepOrderCounter);
+        if (node.children?.length) {
+          registerSteps(node.children, currentPath);
+        }
+      });
+    };
+    registerSteps(steps);
+
+    const getStepOrder = (path?: string[]) => {
+      if (!path || !path.length) return Number.MAX_SAFE_INTEGER;
+      return stepOrderLookup.get(path.join('/')) ?? Number.MAX_SAFE_INTEGER;
+    };
+
     const fieldConfigs: FieldConfig[] = (effectiveFieldSet.fields || [])
-      .sort((a, b) => {
-        const pageDiff = (a.page ?? 1) - (b.page ?? 1);
-        return pageDiff !== 0 ? pageDiff : a.orderIndex - b.orderIndex;
-      })
       .map((f): FieldConfig => {
         const validation: FieldValidationRules = {
           regex: f.validationRegex || undefined,
@@ -140,25 +160,36 @@ export class ProductsService {
           maxValue: f.maxValue !== null ? Number(f.maxValue) : undefined,
         };
 
+        const stepPath =
+          (f.stepPathJson && f.stepPathJson.length
+            ? f.stepPathJson
+            : undefined) ??
+          (typeof f.page === 'number' ? [`legacy-page-${f.page}`] : undefined);
+
         return {
           internalCode: f.internalCode,
           label: f.label,
           description: f.description || undefined,
           inputType: f.inputType as any,
           required: f.required,
-          page: f.page ?? 1,
           orderIndex: f.orderIndex,
+          stepPath,
           placeholder: f.placeholder || undefined,
           options: f.optionsJson || undefined,
           validation,
           extraConfig: f.extraConfigJson || undefined,
           onBlurRequest: f.onBlurRequestJson || undefined,
         };
+      })
+      .sort((a, b) => {
+        const stepDiff = getStepOrder(a.stepPath) - getStepOrder(b.stepPath);
+        return stepDiff !== 0 ? stepDiff : a.orderIndex - b.orderIndex;
       });
 
     return {
       fields: fieldConfigs,
       pageChangeRequest: effectiveFieldSet.pageChangeRequestJson || undefined,
+      steps,
     };
   }
 
@@ -181,6 +212,7 @@ export class ProductsService {
       }
     >;
     pageChangeRequests: Record<string, RequestTriggerConfig | undefined>;
+    steps?: StepDefinition[];
   }> {
     const carrierConfigs = await Promise.all(
       carriers.map(async (carrierCode) => {
@@ -196,6 +228,29 @@ export class ProductsService {
       FieldConfig & { requiredFor: string[]; optionalFor: string[] }
     >();
 
+    const steps =
+      carrierConfigs
+        .map((c) => c.config.steps)
+        .find((s) => s && s.length) || undefined;
+
+    const stepOrderLookup = new Map<string, number>();
+    let stepOrderCounter = 0;
+    const registerSteps = (nodes?: StepDefinition[], path: string[] = []) => {
+      (nodes || []).forEach((node) => {
+        const currentPath = [...path, node.id];
+        stepOrderLookup.set(currentPath.join('/'), ++stepOrderCounter);
+        if (node.children?.length) {
+          registerSteps(node.children, currentPath);
+        }
+      });
+    };
+    registerSteps(steps);
+
+    const getStepOrder = (path?: string[]) => {
+      if (!path || !path.length) return Number.MAX_SAFE_INTEGER;
+      return stepOrderLookup.get(path.join('/')) ?? Number.MAX_SAFE_INTEGER;
+    };
+
     carrierConfigs.forEach(({ carrierCode, config }) => {
       pageChangeRequests[carrierCode] = config.pageChangeRequest;
       (config.fields || []).forEach((field) => {
@@ -206,7 +261,7 @@ export class ProductsService {
           } else {
             existing.optionalFor.push(carrierCode);
           }
-          // Keep the earliest order/page as baseline; carrier-specific overrides can be stored in extraConfig if needed
+          // Keep the earliest ordering as baseline; carrier-specific overrides can be stored in extraConfig if needed
         } else {
           unionMap.set(field.internalCode, {
             ...field,
@@ -222,10 +277,11 @@ export class ProductsService {
       stage,
       carriers,
       fields: Array.from(unionMap.values()).sort((a, b) => {
-        const pageDiff = (a.page ?? 1) - (b.page ?? 1);
-        return pageDiff !== 0 ? pageDiff : a.orderIndex - b.orderIndex;
+        const stepDiff = getStepOrder(a.stepPath) - getStepOrder(b.stepPath);
+        return stepDiff !== 0 ? stepDiff : a.orderIndex - b.orderIndex;
       }),
       pageChangeRequests,
+      steps,
     };
   }
 }

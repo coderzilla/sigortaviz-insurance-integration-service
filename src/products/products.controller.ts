@@ -24,6 +24,7 @@ export class ProductsController {
     carrier: string;
     fields: FieldConfig[];
     pageChangeRequest?: ProductFormConfig['pageChangeRequest'];
+    steps?: ProductFormConfig['steps'];
   }> {
     const formConfig = await this.productsService.getFieldConfig(
       query.product,
@@ -36,6 +37,7 @@ export class ProductsController {
       carrier: query.carrier,
       fields: formConfig.fields,
       pageChangeRequest: formConfig.pageChangeRequest,
+      steps: formConfig.steps,
     };
   }
 
@@ -51,6 +53,7 @@ export class ProductsController {
       FieldConfig & { requiredFor: string[]; optionalFor: string[] }
     >;
     pageChangeRequests: Record<string, ProductFormConfig['pageChangeRequest']>;
+    steps?: ProductFormConfig['steps'];
   }> {
     const stage = query.stage ?? 'QUOTE';
     const carriers =
@@ -71,6 +74,7 @@ export class ProductsController {
       carriers: config.carriers,
       fields: config.fields,
       pageChangeRequests: config.pageChangeRequests,
+      steps: config.steps,
     };
   }
 }
