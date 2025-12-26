@@ -9,6 +9,7 @@ import {
 } from '../common/types/field-types';
 import { GetConfigUnionQuery } from './dtos/get-config-union-query';
 import { ProductCode } from '../common/types/domain-types';
+import { NormalizeProductCodePipe } from './pipes/normalize-product-code.pipe';
 
 @Controller()
 export class ProductsController {
@@ -43,7 +44,12 @@ export class ProductsController {
 
   @Get('config/product/:product')
   async getUnionConfig(
-    @Param('product', new ParseEnumPipe(ProductCode)) product: ProductCode,
+    @Param(
+      'product',
+      new NormalizeProductCodePipe(),
+      new ParseEnumPipe(ProductCode),
+    )
+    product: ProductCode,
     @Query() query: GetConfigUnionQuery,
   ): Promise<{
     product: ProductCode;

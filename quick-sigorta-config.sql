@@ -4,6 +4,23 @@
 
 START TRANSACTION;
 
+-- Create base tables used by downstream carrier config
+CREATE TABLE IF NOT EXISTS carriers (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `code` VARCHAR(255) NOT NULL,
+  `name` VARCHAR(255) NOT NULL,
+  `isActive` TINYINT(1) NOT NULL DEFAULT 1,
+  UNIQUE KEY uq_carriers_code (`code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS products (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `code` VARCHAR(255) NOT NULL,
+  `name` VARCHAR(255) NOT NULL,
+  `description` TEXT NULL,
+  UNIQUE KEY uq_products_code (`code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 -- Ensure carrier and product rows exist (do NOT delete carriers/products)
 INSERT INTO carriers (code, name, isActive)
 VALUES ('QUICK_SIGORTA', 'Quick Sigorta', 1)
@@ -277,6 +294,23 @@ SET @travelFieldSetId := (
 -- Field/internalCode values mirror request payload keys from the Postman docs.
 
 START TRANSACTION;
+
+-- Create base tables used by downstream carrier config
+CREATE TABLE IF NOT EXISTS carriers (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `code` VARCHAR(255) NOT NULL,
+  `name` VARCHAR(255) NOT NULL,
+  `isActive` TINYINT(1) NOT NULL DEFAULT 1,
+  UNIQUE KEY uq_carriers_code (`code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS products (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `code` VARCHAR(255) NOT NULL,
+  `name` VARCHAR(255) NOT NULL,
+  `description` TEXT NULL,
+  UNIQUE KEY uq_products_code (`code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Ensure carrier and product rows exist (do NOT delete carriers/products)
 INSERT INTO carriers (code, name, isActive)

@@ -1,19 +1,14 @@
 import {
   IsArray,
-  IsEnum,
   IsIn,
   IsOptional,
   IsString,
   ValidateIf,
 } from 'class-validator';
 import { Transform } from 'class-transformer';
-import { ProductCode } from '../../common/types/domain-types';
 import type { FormStage } from '../../common/types/field-types';
 
 export class GetConfigUnionQuery {
-  @IsEnum(ProductCode)
-  product: ProductCode;
-
   @IsOptional()
   @Transform(({ value }) =>
     typeof value === 'string'
