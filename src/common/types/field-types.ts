@@ -78,6 +78,7 @@ export interface FieldExtraConfig {
   multiple?: boolean;                  // for selects supporting multi-select
   collectionTarget?: string;           // path to collection for multi-select-driven groups
   collection?: CollectionConfig;       // repeatable group config
+  autoPopulateFrom?: 'insurer' | 'insuredPerson' | string; // copy values from another entity when present
   visibleWhen?: FieldConditionRule;    // client-side visibility rule
   requiredWhen?: FieldConditionRule;   // client-side required rule
 }
@@ -88,6 +89,7 @@ export interface FieldConfig {
   description?: string;
   inputType: FieldInputType;
   required: boolean;
+  isShown?: boolean;       // whether the field should be rendered (default true)
   orderIndex: number;      // order inside its step
   stepPath?: string[];     // hierarchical path of steps (e.g. ["vehicle","license"])
   placeholder?: string;

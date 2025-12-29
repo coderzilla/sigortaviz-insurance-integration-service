@@ -30,6 +30,9 @@ export class CarrierProductField {
   @Column({ default: true })
   required: boolean;
 
+  @Column({ default: true })
+  isShown: boolean;
+
   @Column()
   orderIndex: number;
 

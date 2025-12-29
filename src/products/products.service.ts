@@ -18,6 +18,12 @@ import { ProductCode } from '../common/types/domain-types';
 
 @Injectable()
 export class ProductsService {
+  private readonly quickCarrierCode = 'QUICK_SIGORTA';
+  private readonly quickApiGatewayPlaceholder = '{{api-gw-uri}}';
+  private readonly quickApiGatewayBase = (process.env.QUICK_API_BASE ?? '')
+    .trim()
+    .replace(/\/$/, '');
+
   constructor(
     @InjectRepository(Carrier)
     private readonly carrierRepo: Repository<Carrier>,
@@ -166,18 +172,27 @@ export class ProductsService {
             : undefined) ??
           (typeof f.page === 'number' ? [`legacy-page-${f.page}`] : undefined);
 
+        const rawExtraConfig = f.extraConfigJson || undefined;
+        const { isShown: extraIsShown, ...restExtraConfig } = rawExtraConfig ?? {};
+        const isShown = f.isShown ?? extraIsShown;
+        const normalizedExtraConfig =
+          restExtraConfig && Object.keys(restExtraConfig).length
+            ? restExtraConfig
+            : undefined;
+
         return {
           internalCode: f.internalCode,
           label: f.label,
           description: f.description || undefined,
           inputType: f.inputType as any,
           required: f.required,
+          isShown: isShown ?? true,
           orderIndex: f.orderIndex,
           stepPath,
           placeholder: f.placeholder || undefined,
           options: f.optionsJson || undefined,
           validation,
-          extraConfig: f.extraConfigJson || undefined,
+          extraConfig: normalizedExtraConfig,
           onBlurRequest: f.onBlurRequestJson || undefined,
         };
       })
@@ -186,11 +201,13 @@ export class ProductsService {
         return stepDiff !== 0 ? stepDiff : a.orderIndex - b.orderIndex;
       });
 
-    return {
+    const config: ProductFormConfig = {
       fields: fieldConfigs,
       pageChangeRequest: effectiveFieldSet.pageChangeRequestJson || undefined,
       steps,
     };
+
+    return this.applyQuickGatewayBaseIfNeeded(config, carrier.code);
   }
 
   /**
@@ -272,7 +289,7 @@ export class ProductsService {
       });
     });
 
-    return {
+    const unionConfig = {
       product,
       stage,
       carriers,
@@ -283,5 +300,49 @@ export class ProductsService {
       pageChangeRequests,
       steps,
     };
+
+    return unionConfig;
+  }
+
+  private applyQuickGatewayBaseIfNeeded<T>(value: T, carrierCode: string): T {
+    if (!this.isQuickCarrier(carrierCode)) {
+      return value;
+    }
+
+    if (typeof value === 'string') {
+      if (
+        value.includes(this.quickApiGatewayPlaceholder) &&
+        !this.quickApiGatewayBase
+      ) {
+        throw new Error(
+          'QUICK_API_BASE env variable is required to resolve {{api-gw-uri}}',
+        );
+      }
+
+      return value
+        .split(this.quickApiGatewayPlaceholder)
+        .join(this.quickApiGatewayBase) as unknown as T;
+    }
+
+    if (Array.isArray(value)) {
+      return value.map((item) => this.applyQuickGatewayBaseIfNeeded(item, carrierCode)) as unknown as T;
+    }
+
+    if (value && typeof value === 'object') {
+      if (value instanceof Date) {
+        return value;
+      }
+
+      const entries = Object.entries(
+        value as Record<string, unknown>,
+      ).map(([k, v]) => [k, this.applyQuickGatewayBaseIfNeeded(v, carrierCode)]);
+      return Object.fromEntries(entries) as T;
+    }
+
+    return value;
+  }
+
+  private isQuickCarrier(code: string): boolean {
+    return code?.toUpperCase() === this.quickCarrierCode;
   }
 }
