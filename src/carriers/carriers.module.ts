@@ -10,9 +10,11 @@ import { QuickSigortaAdapter } from './quick-sigorta.adapter';
 import { Carrier } from '../products/entities/carrier.entity';
 import { Product } from '../products/entities/product.entity';
 import { CarrierProduct } from '../products/entities/carrier-product.entity';
+import { UtilityController } from './utility.controller';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Carrier, Product, CarrierProduct])],
+  controllers: [UtilityController],
   providers: [
     AllianzAdapter,
     AxaAdapter,

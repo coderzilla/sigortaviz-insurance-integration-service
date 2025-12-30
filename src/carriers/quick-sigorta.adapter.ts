@@ -323,6 +323,61 @@ export class QuickSigortaAdapter implements CarrierAdapter, OnModuleInit {
     return this.authedGet('/api/common/encryption/key');
   }
 
+  /**
+   * Generic authed call for Quick utility endpoints.
+   * Accepts a full URL that starts with QUICK_API_BASE and performs GET/POST with bearer token.
+   */
+  async callUtilityUrl(
+    url: string,
+    method: 'GET' | 'POST' = 'GET',
+    params?: Record<string, any>,
+  ): Promise<any> {
+    if (!this.enabled) {
+      throw new Error('Quick Sigorta integration disabled. Set QUICK_ENABLED=true.');
+    }
+    if (!this.baseUrl) throw new Error('Missing QUICK_API_BASE');
+
+    const normalizedBase = this.baseUrl.replace(/\/$/, '');
+    const targetUrl = url.trim();
+    if (!targetUrl.startsWith(normalizedBase)) {
+      throw new Error('URL not allowed for Quick Sigorta utility proxy');
+    }
+
+    const fetchFn: any = (globalThis as any).fetch;
+    if (!fetchFn) throw new Error('Fetch API not available.');
+
+    const token = await this.getAccessToken(fetchFn);
+    const headers: Record<string, string> = {
+      Authorization: `Bearer ${token}`,
+    };
+
+    if (method === 'GET') {
+      const urlObj = new URL(targetUrl);
+      if (params && typeof params === 'object') {
+        Object.entries(params).forEach(([k, v]) => {
+          if (v !== undefined && v !== null && v !== '') {
+            urlObj.searchParams.set(k, String(v));
+          }
+        });
+      }
+
+      const res = await fetchFn(urlObj.toString(), { method: 'GET', headers });
+      const data = await this.parseResponse(res);
+      if (!res.ok) throw new Error(this.responseMessage(data, res.status));
+      return data;
+    }
+
+    // POST
+    const res = await fetchFn(targetUrl, {
+      method: 'POST',
+      headers: { ...headers, 'Content-Type': 'application/json' },
+      body: params ? JSON.stringify(params) : undefined,
+    });
+    const data = await this.parseResponse(res);
+    if (!res.ok) throw new Error(this.responseMessage(data, res.status));
+    return data;
+  }
+
   private async authedGet(path: string, params?: Record<string, any>) {
     if (!this.baseUrl) throw new Error('Missing QUICK_API_BASE');
     const fetchFn: any = (globalThis as any).fetch;
@@ -359,6 +414,21 @@ export class QuickSigortaAdapter implements CarrierAdapter, OnModuleInit {
     const data = await res.json();
     if (!res.ok) throw new Error(data?.message ?? `HTTP ${res.status}`);
     return data;
+  }
+
+  private async parseResponse(res: any) {
+    try {
+      return await res.json();
+    } catch {
+      return await res.text();
+    }
+  }
+
+  private responseMessage(payload: any, status: number): string {
+    if (payload && typeof payload === 'object' && 'message' in payload) {
+      return (payload as any).message as string;
+    }
+    return `HTTP ${status}`;
   }
 
   private async getAccessToken(fetchFn: any): Promise<string> {
