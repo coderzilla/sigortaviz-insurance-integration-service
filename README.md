@@ -81,3 +81,53 @@ Use the SQL snippet in the repo history/context (see prior assistant message) to
 - Carrier field mappings for API transforms
 
 Adjust URLs and templated params to your real endpoints. Use `DB_SYNCHRONIZE=true` locally to let TypeORM create new columns (`page`, `onBlurRequestJson`, `pageChangeRequestJson`) if your DB is empty; otherwise run a migration that adds them.
+
+---
+
+## 5) Auth + lead capture (OTP-only)
+
+New tables/entities: `users`, `identities`, `quote_sessions`, `quote_session_step_events` (audit trail), `vehicle_assets`, `property_assets`, `quote_session_asset_snapshots`, `otp_challenges`. See `src/migrations/1710000000000-init-auth-quote-session.ts`.
+
+Key rules:
+- Phone-based users; OTP-only login (`/auth/otp/request` + `/auth/otp/verify`). OTP codes are HMAC-hashed with salts; codes are **not** returned in API responses.
+- Multiple identities per user (unique by `(userId, idNumberHash)`).
+- Quote sessions persist step 1 (phone + idNumber) immediately, support multiple sessions per product and idempotency keys, and keep step history in `quote_session_step_events`.
+- Assets: vehicle/property upsert for the authenticated user; snapshots can be attached to quote sessions.
+- Lead token: unauthenticated quote creation returns a short-lived `leadToken` allowing step updates with the matching phone/session.
+
+Example flows (curl):
+
+```bash
+# 1) Request OTP
+curl -X POST http://localhost:3100/auth/otp/request \
+  -H 'Content-Type: application/json' \
+  -d '{"phoneNumber":"+905551234567","purpose":"LOGIN"}'
+
+# 2) Verify OTP (replace 123456 with real code)
+curl -X POST http://localhost:3100/auth/otp/verify \
+  -H 'Content-Type: application/json' \
+  -d '{"phoneNumber":"+905551234567","code":"123456"}'
+# => { accessToken, user }
+
+# 3) Create quote session (unauthenticated; returns leadToken)
+curl -X POST http://localhost:3100/quote-sessions \
+  -H 'Content-Type: application/json' \
+  -d '{"productCode":"TRAFFIC","phoneNumber":"+905551234567","idNumber":"12345678901"}'
+
+# 4) Update quote step with lead token
+curl -X PATCH http://localhost:3100/quote-sessions/{sessionId}/step \
+  -H 'Content-Type: application/json' \
+  -H 'x-lead-token: {leadToken}' \
+  -d '{"step":2,"payload":{"birthDate":"1990-01-01","email":"user@example.com"}}'
+
+# 5) Authenticated asset + snapshot
+curl -X POST http://localhost:3100/assets/vehicles \
+  -H "Authorization: Bearer {accessToken}" \
+  -H 'Content-Type: application/json' \
+  -d '{"plate":"34ABC1","modelYear":2020,"brand":"Brand"}'
+
+curl -X POST http://localhost:3100/quote-sessions/{sessionId}/assets/snapshot \
+  -H "Authorization: Bearer {accessToken}" \
+  -H 'Content-Type: application/json' \
+  -d '{"assetType":"VEHICLE","assetId":"{vehicleId}"}'
+```

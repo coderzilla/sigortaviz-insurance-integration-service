@@ -4,6 +4,9 @@ import { CoreModule } from './core/core.module';
 import { ProductsModule } from './products/products.module';
 import { CarriersModule } from './carriers/carriers.module';
 import { QuotesModule } from './quotes/quotes.module';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
+import { QuoteSessionsModule } from './quote-sessions/quote-sessions.module';
 
 @Module({
   imports: [
@@ -21,6 +24,9 @@ import { QuotesModule } from './quotes/quotes.module';
     ProductsModule,
     CarriersModule,
     QuotesModule,
+    AuthModule,
+    UsersModule,
+    QuoteSessionsModule,
   ],
 })
 export class AppModule {}
