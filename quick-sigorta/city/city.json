@@ -1,0 +1,415 @@
+{
+    "success": true,
+    "timestamp": 1768133872,
+    "operationId": "0HNIFPUN6HFL8:00000001",
+    "message": "İşlem başarılı",
+    "result": {
+        "cities": [
+            {
+                "id": 1,
+                "name": "ADANA",
+                "plateCityCode": "01"
+            },
+            {
+                "id": 2,
+                "name": "ADIYAMAN",
+                "plateCityCode": "02"
+            },
+            {
+                "id": 3,
+                "name": "AFYONKARAHİSAR",
+                "plateCityCode": "03"
+            },
+            {
+                "id": 4,
+                "name": "AĞRI",
+                "plateCityCode": "04"
+            },
+            {
+                "id": 5,
+                "name": "AMASYA",
+                "plateCityCode": "05"
+            },
+            {
+                "id": 6,
+                "name": "ANKARA",
+                "plateCityCode": "06"
+            },
+            {
+                "id": 7,
+                "name": "ANTALYA",
+                "plateCityCode": "07"
+            },
+            {
+                "id": 8,
+                "name": "ARTVİN",
+                "plateCityCode": "08"
+            },
+            {
+                "id": 9,
+                "name": "AYDIN",
+                "plateCityCode": "09"
+            },
+            {
+                "id": 10,
+                "name": "BALIKESİR",
+                "plateCityCode": "10"
+            },
+            {
+                "id": 11,
+                "name": "BİLECİK",
+                "plateCityCode": "11"
+            },
+            {
+                "id": 12,
+                "name": "BİNGÖL",
+                "plateCityCode": "12"
+            },
+            {
+                "id": 13,
+                "name": "BİTLİS",
+                "plateCityCode": "13"
+            },
+            {
+                "id": 14,
+                "name": "BOLU",
+                "plateCityCode": "14"
+            },
+            {
+                "id": 15,
+                "name": "BURDUR",
+                "plateCityCode": "15"
+            },
+            {
+                "id": 16,
+                "name": "BURSA",
+                "plateCityCode": "16"
+            },
+            {
+                "id": 17,
+                "name": "ÇANAKKALE",
+                "plateCityCode": "17"
+            },
+            {
+                "id": 18,
+                "name": "ÇANKIRI",
+                "plateCityCode": "18"
+            },
+            {
+                "id": 19,
+                "name": "ÇORUM",
+                "plateCityCode": "19"
+            },
+            {
+                "id": 20,
+                "name": "DENİZLİ",
+                "plateCityCode": "20"
+            },
+            {
+                "id": 21,
+                "name": "DİYARBAKIR",
+                "plateCityCode": "21"
+            },
+            {
+                "id": 22,
+                "name": "EDİRNE",
+                "plateCityCode": "22"
+            },
+            {
+                "id": 23,
+                "name": "ELAZIĞ",
+                "plateCityCode": "23"
+            },
+            {
+                "id": 24,
+                "name": "ERZİNCAN",
+                "plateCityCode": "24"
+            },
+            {
+                "id": 25,
+                "name": "ERZURUM",
+                "plateCityCode": "25"
+            },
+            {
+                "id": 26,
+                "name": "ESKİŞEHİR",
+                "plateCityCode": "26"
+            },
+            {
+                "id": 27,
+                "name": "GAZİANTEP",
+                "plateCityCode": "27"
+            },
+            {
+                "id": 28,
+                "name": "GİRESUN",
+                "plateCityCode": "28"
+            },
+            {
+                "id": 29,
+                "name": "GÜMÜŞHANE",
+                "plateCityCode": "29"
+            },
+            {
+                "id": 30,
+                "name": "HAKKARİ",
+                "plateCityCode": "30"
+            },
+            {
+                "id": 31,
+                "name": "HATAY",
+                "plateCityCode": "31"
+            },
+            {
+                "id": 32,
+                "name": "ISPARTA",
+                "plateCityCode": "32"
+            },
+            {
+                "id": 33,
+                "name": "MERSİN",
+                "plateCityCode": "33"
+            },
+            {
+                "id": 34,
+                "name": "İSTANBUL",
+                "plateCityCode": "34"
+            },
+            {
+                "id": 35,
+                "name": "İZMİR",
+                "plateCityCode": "35"
+            },
+            {
+                "id": 36,
+                "name": "KARS",
+                "plateCityCode": "36"
+            },
+            {
+                "id": 37,
+                "name": "KASTAMONU",
+                "plateCityCode": "37"
+            },
+            {
+                "id": 38,
+                "name": "KAYSERİ",
+                "plateCityCode": "38"
+            },
+            {
+                "id": 39,
+                "name": "KIRKLARELİ",
+                "plateCityCode": "39"
+            },
+            {
+                "id": 40,
+                "name": "KIRŞEHİR",
+                "plateCityCode": "40"
+            },
+            {
+                "id": 41,
+                "name": "KOCAELİ",
+                "plateCityCode": "41"
+            },
+            {
+                "id": 42,
+                "name": "KONYA",
+                "plateCityCode": "42"
+            },
+            {
+                "id": 43,
+                "name": "KÜTAHYA",
+                "plateCityCode": "43"
+            },
+            {
+                "id": 44,
+                "name": "MALATYA",
+                "plateCityCode": "44"
+            },
+            {
+                "id": 45,
+                "name": "MANİSA",
+                "plateCityCode": "45"
+            },
+            {
+                "id": 46,
+                "name": "KAHRAMANMARAŞ",
+                "plateCityCode": "46"
+            },
+            {
+                "id": 47,
+                "name": "MARDİN",
+                "plateCityCode": "47"
+            },
+            {
+                "id": 48,
+                "name": "MUĞLA",
+                "plateCityCode": "48"
+            },
+            {
+                "id": 49,
+                "name": "MUŞ",
+                "plateCityCode": "49"
+            },
+            {
+                "id": 50,
+                "name": "NEVŞEHİR",
+                "plateCityCode": "50"
+            },
+            {
+                "id": 51,
+                "name": "NİĞDE",
+                "plateCityCode": "51"
+            },
+            {
+                "id": 52,
+                "name": "ORDU",
+                "plateCityCode": "52"
+            },
+            {
+                "id": 53,
+                "name": "RİZE",
+                "plateCityCode": "53"
+            },
+            {
+                "id": 54,
+                "name": "SAKARYA",
+                "plateCityCode": "54"
+            },
+            {
+                "id": 55,
+                "name": "SAMSUN",
+                "plateCityCode": "55"
+            },
+            {
+                "id": 56,
+                "name": "SİİRT",
+                "plateCityCode": "56"
+            },
+            {
+                "id": 57,
+                "name": "SİNOP",
+                "plateCityCode": "57"
+            },
+            {
+                "id": 58,
+                "name": "SİVAS",
+                "plateCityCode": "58"
+            },
+            {
+                "id": 59,
+                "name": "TEKİRDAĞ",
+                "plateCityCode": "59"
+            },
+            {
+                "id": 60,
+                "name": "TOKAT",
+                "plateCityCode": "60"
+            },
+            {
+                "id": 61,
+                "name": "TRABZON",
+                "plateCityCode": "61"
+            },
+            {
+                "id": 62,
+                "name": "TUNCELİ",
+                "plateCityCode": "62"
+            },
+            {
+                "id": 63,
+                "name": "ŞANLIURFA",
+                "plateCityCode": "63"
+            },
+            {
+                "id": 64,
+                "name": "UŞAK",
+                "plateCityCode": "64"
+            },
+            {
+                "id": 65,
+                "name": "VAN",
+                "plateCityCode": "65"
+            },
+            {
+                "id": 66,
+                "name": "YOZGAT",
+                "plateCityCode": "66"
+            },
+            {
+                "id": 67,
+                "name": "ZONGULDAK",
+                "plateCityCode": "67"
+            },
+            {
+                "id": 68,
+                "name": "AKSARAY",
+                "plateCityCode": "68"
+            },
+            {
+                "id": 69,
+                "name": "BAYBURT",
+                "plateCityCode": "69"
+            },
+            {
+                "id": 70,
+                "name": "KARAMAN",
+                "plateCityCode": "70"
+            },
+            {
+                "id": 71,
+                "name": "KIRIKKALE",
+                "plateCityCode": "71"
+            },
+            {
+                "id": 72,
+                "name": "BATMAN",
+                "plateCityCode": "72"
+            },
+            {
+                "id": 73,
+                "name": "ŞIRNAK",
+                "plateCityCode": "73"
+            },
+            {
+                "id": 74,
+                "name": "BARTIN",
+                "plateCityCode": "74"
+            },
+            {
+                "id": 75,
+                "name": "ARDAHAN",
+                "plateCityCode": "75"
+            },
+            {
+                "id": 76,
+                "name": "IĞDIR",
+                "plateCityCode": "76"
+            },
+            {
+                "id": 77,
+                "name": "YALOVA",
+                "plateCityCode": "77"
+            },
+            {
+                "id": 78,
+                "name": "KARABÜK",
+                "plateCityCode": "78"
+            },
+            {
+                "id": 79,
+                "name": "KİLİS",
+                "plateCityCode": "79"
+            },
+            {
+                "id": 80,
+                "name": "OSMANİYE",
+                "plateCityCode": "80"
+            },
+            {
+                "id": 81,
+                "name": "DÜZCE",
+                "plateCityCode": "81"
+            }
+        ]
+    }
+}

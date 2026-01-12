@@ -1,0 +1,3307 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema targetNamespace="http://www.idit.co.il/schemas/all/interfaces" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.idit.co.il/schemas/all/interfaces">
+<xs:complexType name="GenericVORef">
+<xs:annotation>
+<xs:documentation>This generic complex-type replaces all Reference types</xs:documentation>
+</xs:annotation>
+<xs:simpleContent>
+<xs:extension base="xs:string">
+<xs:attribute name="id" type="xs:long" use="required"/>
+<xs:attribute name="extCode" type="xs:string" use="optional"/>
+</xs:extension>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType final="restriction" name="BasicSoapHeaderIVO">
+<xs:all>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="messageExternalId" type="xs:string"/>
+<xs:element minOccurs="0" name="systemLocale" type="LocaleIVO"/>
+<!-- Originally element systemLocale type was interfaces:LocaleIVO-->
+<xs:element minOccurs="0" name="userCredentials" type="UserCredentialsIVO"/>
+<!-- Originally element userCredentials type was interfaces:UserCredentialsIVO-->
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType name="BasicSoapHeaderIVORef">
+<xs:simpleContent>
+<xs:extension base="xs:string">
+<xs:attribute name="id" type="xs:long" use="required"/>
+<xs:attribute name="extCode" type="xs:string" use="optional"/>
+</xs:extension>
+</xs:simpleContent>
+</xs:complexType>
+<xs:element name="basicSoapHeaderIVOList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="basicSoapHeaderIVO" type="BasicSoapHeaderIVO"/>
+<!-- Originally element basicSoapHeaderIVO type was interfaces:BasicSoapHeaderIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:complexType final="restriction" name="LocaleIVO">
+<xs:all>
+<xs:element minOccurs="0" name="country" type="xs:string"/>
+<xs:element minOccurs="0" name="iditLanguageRef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.reference.common.vo.TLanguageVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element iditLanguageRef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="language" type="xs:string"/>
+<xs:element minOccurs="0" name="variant" type="xs:string"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="UserCredentialsIVO">
+<xs:all>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="password" type="xs:string"/>
+<xs:element minOccurs="0" name="userId" type="xs:long"/>
+<xs:element minOccurs="0" name="userName" type="xs:string"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosWarningANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="businessExceptionCode" type="xs:long"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="warning" type="xs:string"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosContactEmailStructureANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="createDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="discontinueDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="emailAddress" type="xs:string"/>
+<xs:element minOccurs="0" name="emailTypeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.contact.common.vo.reference.TEmailTypeVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element emailTypeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="isVerified" type="xs:boolean"/>
+<xs:element minOccurs="0" name="verifiedDate" type="xs:dateTime"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosContactTelephoneStructureANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="countryCodeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.contact.common.vo.reference.TCountryDialCodeVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element countryCodeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="createDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="discontinueDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="fullTelephoneNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="isVerified" type="xs:boolean"/>
+<xs:element minOccurs="0" name="smsVerifyCode" type="xs:string"/>
+<xs:element minOccurs="0" name="sourceSystemVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.contact.common.vo.reference.TPhoneApprovedSourceSystemANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element sourceSystemVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="telephoneNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="telephonePrefixCodeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.contact.common.vo.setup.TTelephonePrefixVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element telephonePrefixCodeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="telephoneTypeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.contact.common.vo.reference.TTelephoneTypeVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element telephoneTypeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="verifiedDate" type="xs:dateTime"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="ContactBankAccountHistoryANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="activeForRenew" type="xs:boolean"/>
+<xs:element minOccurs="0" name="AGENT_ID" type="xs:long"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="polHeaderId" type="xs:long"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="RelatedAgencyANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="agencyCode" type="xs:string"/>
+<xs:element minOccurs="0" name="description" type="xs:string"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="updateUser" type="xs:string"/>
+<xs:element minOccurs="0" name="userCompanyTree" type="xs:string"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType abstract="true" final="restriction" name="AsosAssetANDLIVO">
+<xs:sequence>
+<!--fields moved to extending types-->
+</xs:sequence>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosAssetClaimHistoryANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="amount" type="xs:double"/>
+<xs:element minOccurs="0" name="claimFileNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="claimStatus" type="xs:string"/>
+<xs:element minOccurs="0" name="closingReason" type="xs:string"/>
+<xs:element minOccurs="0" name="date" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="peril" type="xs:string"/>
+<xs:element minOccurs="0" name="status" type="xs:string"/>
+<xs:element minOccurs="0" name="subrogationRatio" type="xs:int"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosAssetLoanInfoANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="loanAgreementNo" type="xs:string"/>
+<xs:element minOccurs="0" name="loanAmount" type="xs:double"/>
+<xs:element minOccurs="0" name="loanAmountCurrencyVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.reference.common.vo.TCurrencyVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element loanAmountCurrencyVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="loanEndDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="loanStartDate" type="xs:dateTime"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosAssetTicketFlightANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="flightDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="flightNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="flightTypeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TFlightTypeANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element flightTypeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="pnrNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="segment" type="xs:int"/>
+<xs:element minOccurs="0" name="ticketDestinationFromRef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TFlightAirlinesANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element ticketDestinationFromRef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="ticketDestinationToRef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TFlightAirlinesANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element ticketDestinationToRef type was interfaces:TInterfacesMessageTypeVORef-->
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosAssetVehicleAddEquipANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="amount" type="xs:double"/>
+<xs:element minOccurs="0" name="desc" type="xs:string"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="insuredAmount" type="xs:double"/>
+<xs:element minOccurs="0" name="isRemove" type="xs:boolean"/>
+<xs:element minOccurs="0" name="typeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.policy.common.reference.vo.TAssetItemTypeVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element typeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosAssetVehicleCargoInfoANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="desc" type="xs:string"/>
+<xs:element minOccurs="0" name="groupVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.policy.common.reference.vo.TAssetItemTypeVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element groupVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="typeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.policy.common.reference.vo.TAssetItemTypeVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element typeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="value" type="xs:double"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosAssetVehiclePassengerInfoANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="numberOfDrivers" type="xs:int"/>
+<xs:element minOccurs="0" name="numberOfHosts" type="xs:int"/>
+<xs:element minOccurs="0" name="numberOfPassengers" type="xs:int"/>
+<xs:element minOccurs="0" name="numberOfStandingPassengers" type="xs:int"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosCollectionInfoANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="memberWorkplaceInfo" type="AsosMemberWorkplaceInfoANDLIVO"/>
+<!-- Originally element memberWorkplaceInfo type was interfaces:AsosMemberWorkplaceInfoANDLIVO-->
+<xs:element minOccurs="0" name="noCardStorage" type="xs:boolean"/>
+<xs:element minOccurs="0" name="orderId" type="xs:string"/>
+<xs:element minOccurs="0" name="paymentInfo" type="AsosPaymentInfoANDLIVO">
+<xs:annotation>
+<xs:documentation xml:lang="en">paymentInfo</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element paymentInfo type was interfaces:AsosPaymentInfoANDLIVO-->
+<xs:element minOccurs="1" name="paymentTerm" type="AsosPolicyPaymentTermANDLIVO">
+<xs:annotation>
+<xs:documentation xml:lang="en">paymentTerm</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element paymentTerm type was interfaces:AsosPolicyPaymentTermANDLIVO-->
+<xs:element minOccurs="0" name="policyMoneyPointInfo" type="AsosPolicyMoneyPointANDLIVO"/>
+<!-- Originally element policyMoneyPointInfo type was interfaces:AsosPolicyMoneyPointANDLIVO-->
+<xs:element minOccurs="0" name="threeDSecure" type="xs:boolean"/>
+<xs:element minOccurs="0" name="threeDSecureInfo" type="AsosThreeDSecureInfoANDLIVO"/>
+<!-- Originally element threeDSecureInfo type was interfaces:AsosThreeDSecureInfoANDLIVO-->
+<xs:element minOccurs="0" name="transactionId" type="xs:long"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosCollectionPointInfoANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="moneyPointAmount" type="xs:double"/>
+<xs:element minOccurs="0" name="onlineCreditAmount" type="xs:double"/>
+<xs:element minOccurs="0" name="onlineCreditAmountSys" type="xs:double"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosDaskAdditionalInfoANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="buildingConstYearDiscount" type="xs:double"/>
+<xs:element minOccurs="0" name="buildingConstYearSurcharge" type="xs:double"/>
+<xs:element minOccurs="0" name="externalSystemInfo" type="AsosExternalSystemInfoANDLIVO"/>
+<!-- Originally element externalSystemInfo type was interfaces:AsosExternalSystemInfoANDLIVO-->
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="numberOfStoreysDiscount" type="xs:double"/>
+<xs:element minOccurs="0" name="numberOfStoreysSurcharge" type="xs:double"/>
+<xs:element minOccurs="0" name="renewalDiscount" type="xs:double"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosExternalSystemInfoANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="endorsementNumber" type="xs:long"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="policyNumber" type="xs:long"/>
+<xs:element minOccurs="0" name="renewalNumber" type="xs:long"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosFireAdditionalInfoANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="addressVO" type="AsosPolicyAddressInfoANDLIVO"/>
+<!-- Originally element addressVO type was interfaces:AsosPolicyAddressInfoANDLIVO-->
+<xs:element minOccurs="0" name="affinityDiscountRate" type="xs:double"/>
+<xs:element minOccurs="0" name="affinityValue" type="xs:string"/>
+<xs:element minOccurs="0" name="ecEquipmentTypesVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TEcEquipmentTypesANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element ecEquipmentTypesVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="fireWarningList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="fireWarning" type="AsosWarningANDLIVO"/>
+<!-- Originally element fireWarning type was interfaces:AsosWarningANDLIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="multiProductBonusRate" type="xs:double"/>
+<xs:element minOccurs="0" name="noClaimBonusRate" type="xs:double"/>
+<xs:element minOccurs="0" name="policyPackagesVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TPolicyPackagesANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element policyPackagesVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="subjectToDaskInfo" type="AsosSubjectToDaskInfoANDLIVO"/>
+<!-- Originally element subjectToDaskInfo type was interfaces:AsosSubjectToDaskInfoANDLIVO-->
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosGetPolicyInfoRenewalOrderANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="contactBankAccountNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="renewalOrderFlag" type="xs:boolean"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosGetPolicyInfoRequestANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="isActiveOnly" type="xs:boolean"/>
+<xs:element minOccurs="0" name="policyKey" type="AsosPolicyKeyANDLIVO"/>
+<!-- Originally element policyKey type was interfaces:AsosPolicyKeyANDLIVO-->
+<xs:element minOccurs="0" name="searchType" type="xs:string"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosGetPolicyInfoResponseANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="policyKey" type="AsosPolicyKeyANDLIVO"/>
+<!-- Originally element policyKey type was interfaces:AsosPolicyKeyANDLIVO-->
+<xs:element minOccurs="0" name="policySummary" type="AsosPolicySummaryANDLIVO"/>
+<!-- Originally element policySummary type was interfaces:AsosPolicySummaryANDLIVO-->
+<xs:element minOccurs="0" name="productAdditionalInfo" type="AsosProductAdditionalInfo"/>
+<!-- Originally element productAdditionalInfo type was interfaces:AsosProductAdditionalInfo-->
+<xs:element minOccurs="0" name="renewalOrder" type="AsosGetPolicyInfoRenewalOrderANDLIVO"/>
+<!-- Originally element renewalOrder type was interfaces:AsosGetPolicyInfoRenewalOrderANDLIVO-->
+<xs:element minOccurs="0" name="simplePolicyModel" type="AsosSimplePolicyModelANDLIVO"/>
+<!-- Originally element simplePolicyModel type was interfaces:AsosSimplePolicyModelANDLIVO-->
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType name="AsosGetPolicyInfoResponseANDLIVORef">
+<xs:simpleContent>
+<xs:extension base="xs:string">
+<xs:attribute name="id" type="xs:long" use="required"/>
+<xs:attribute name="extCode" type="xs:string" use="optional"/>
+</xs:extension>
+</xs:simpleContent>
+</xs:complexType>
+<xs:element name="asosGetPolicyInfoResponseANDLIVOList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="asosGetPolicyInfoResponseANDLIVO" type="AsosGetPolicyInfoResponseANDLIVO"/>
+<!-- Originally element asosGetPolicyInfoResponseANDLIVO type was interfaces:AsosGetPolicyInfoResponseANDLIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:complexType final="restriction" name="AsosHealthAdditionalInfoANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="affinityDiscountRate" type="xs:double"/>
+<xs:element minOccurs="0" name="affinityValue" type="xs:string"/>
+<xs:element minOccurs="0" name="assetDescriptor" type="xs:string"/>
+<xs:element minOccurs="0" name="externalContactNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosInstallmentPremiumInfoANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="collectionPointInfo" type="AsosCollectionPointInfoANDLIVO"/>
+<!-- Originally element collectionPointInfo type was interfaces:AsosCollectionPointInfoANDLIVO-->
+<xs:element minOccurs="0" name="commissionFee" type="xs:double"/>
+<xs:element minOccurs="0" name="commissionFeeTl" type="xs:double"/>
+<xs:element minOccurs="0" name="currencyVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.reference.common.vo.TCurrencyVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element currencyVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="grossPremium" type="xs:double"/>
+<xs:element minOccurs="0" name="grossPremiumTl" type="xs:double"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="netPremium" type="xs:double"/>
+<xs:element minOccurs="0" name="netPremiumTl" type="xs:double"/>
+<xs:element minOccurs="0" name="taxesList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="taxes" type="AsosPolicyTaxesANDLIVO"/>
+<!-- Originally element taxes type was interfaces:AsosPolicyTaxesANDLIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosItemSumInsuredANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="assetItemTypeDesc" type="xs:string"/>
+<xs:element minOccurs="0" name="currencyVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.reference.common.vo.TCurrencyVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element currencyVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="insuredValue" type="xs:double"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosLicencePlateInfoANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="plateCityCode" type="xs:string"/>
+<xs:element minOccurs="0" name="plateNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="registrationNumber" type="xs:string"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosMemberWorkplaceInfoANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="memberWorkplaceNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="terminalId" type="xs:string"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosMilitaryAdditionalInfoANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="tariffTypePersonalAccidentSoldierVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TTariffForPASoldierANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element tariffTypePersonalAccidentSoldierVORef type was interfaces:TInterfacesMessageTypeVORef-->
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosMotorAdditionalInfoANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="affinityDiscountRate" type="xs:double"/>
+<xs:element minOccurs="0" name="affinityValue" type="xs:string"/>
+<xs:element minOccurs="0" name="greenCardNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="isVehicleLuxury" type="xs:boolean"/>
+<xs:element minOccurs="0" name="vehicleSaleDate" type="xs:dateTime"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosPaymentInfoANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="bankAccountId" type="xs:long"/>
+<xs:element minOccurs="1" name="cardNumber" type="xs:string">
+<xs:annotation>
+<xs:documentation xml:lang="en">cardNumber</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="cardToken" type="xs:string"/>
+<xs:element minOccurs="1" name="cardType" type="xs:string">
+<xs:annotation>
+<xs:documentation xml:lang="en">cardType</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="contactIdentifier" type="xs:string"/>
+<xs:element minOccurs="1" name="creditCardHolderName" type="xs:string">
+<xs:annotation>
+<xs:documentation xml:lang="en">creditCardHolderName</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="1" name="cvcCode" type="xs:string">
+<xs:annotation>
+<xs:documentation xml:lang="en">cvcCode</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="encryptedCardData" type="xs:string"/>
+<xs:element minOccurs="0" name="encryptedDataPoint" type="xs:string"/>
+<xs:element minOccurs="0" name="encryptedDataPointSale" type="xs:string"/>
+<xs:element minOccurs="0" name="encryptedDataSale" type="xs:string"/>
+<xs:element minOccurs="0" name="encryptedPan" type="xs:string"/>
+<xs:element minOccurs="0" name="encryptedPanForDelete" type="xs:string"/>
+<xs:element minOccurs="1" name="expMonth" type="xs:long">
+<xs:annotation>
+<xs:documentation xml:lang="en">expMonth</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="1" name="expYear" type="xs:long">
+<xs:annotation>
+<xs:documentation xml:lang="en">expYear</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="isActiveAtAdk" type="xs:boolean"/>
+<xs:element minOccurs="0" name="isMailorderCard" type="xs:boolean"/>
+<xs:element minOccurs="0" name="isSaved" type="xs:boolean"/>
+<xs:element minOccurs="0" name="panFirst8" type="xs:string"/>
+<xs:element minOccurs="0" name="panLast4" type="xs:string"/>
+<xs:element minOccurs="0" name="panTypeFirst8Last4" type="xs:boolean"/>
+<xs:element minOccurs="0" name="sessionToken" type="xs:string"/>
+<xs:element minOccurs="0" name="smsCode" type="xs:string"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosPetAdditionalInfoANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="giftPolicyFlag" type="xs:boolean"/>
+<xs:element minOccurs="0" name="hasPatiCardDiscountFlag" type="xs:boolean"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosPolicyAddressInfoANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="block" type="xs:string"/>
+<xs:element minOccurs="0" name="buildingCode" type="xs:string"/>
+<xs:element minOccurs="0" name="cityCode" type="xs:long"/>
+<xs:element minOccurs="0" name="cityName" type="xs:string"/>
+<xs:element minOccurs="0" name="coordinateX" type="xs:double"/>
+<xs:element minOccurs="0" name="coordinateY" type="xs:double"/>
+<xs:element minOccurs="0" name="countryCode" type="xs:string"/>
+<xs:element minOccurs="0" name="countryName" type="xs:string"/>
+<xs:element minOccurs="0" name="countyCode" type="xs:string"/>
+<xs:element minOccurs="0" name="countyName" type="xs:string"/>
+<xs:element minOccurs="0" name="districtCode" type="xs:string"/>
+<xs:element minOccurs="0" name="districtName" type="xs:string"/>
+<xs:element minOccurs="0" name="flatNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="floorNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="freeTextAddress" type="xs:string"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="landRegistryNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="pageNo" type="xs:string"/>
+<xs:element minOccurs="0" name="parcel" type="xs:string"/>
+<xs:element minOccurs="0" name="plot" type="xs:string"/>
+<xs:element minOccurs="0" name="quarterName" type="xs:string"/>
+<xs:element minOccurs="0" name="streetCode" type="xs:long"/>
+<xs:element minOccurs="0" name="streetName" type="xs:string"/>
+<xs:element minOccurs="0" name="uavtAddressCode" type="xs:string"/>
+<xs:element minOccurs="0" name="villageCode" type="xs:long"/>
+<xs:element minOccurs="0" name="villageName" type="xs:string"/>
+<xs:element minOccurs="0" name="zipCode" type="xs:string"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosPolicyAddressInfoForAgencyANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="city" type="xs:string"/>
+<xs:element minOccurs="0" name="county" type="xs:string"/>
+<xs:element minOccurs="0" name="flatNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="quarter" type="xs:string"/>
+<xs:element minOccurs="0" name="village" type="xs:string"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosPolicyAddressStatusANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="addressStatusCode" type="xs:string"/>
+<xs:element minOccurs="0" name="addressStatusExplanation" type="xs:string"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosPolicyKeyANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="endorsementNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="packageName" type="xs:string"/>
+<xs:element minOccurs="0" name="policyNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="proposalNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="proposalValidDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="renewalNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="revisionNumber" type="xs:string"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosPolicyLobANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="policyLobAssetIVOsList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="policyLobAssetIVOs" type="AsosPolicyLobAssetANDLIVO"/>
+<!-- Originally element policyLobAssetIVOs type was interfaces:AsosPolicyLobAssetANDLIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosPolicyLobAssetANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="assetIVO" type="AsosAssetANDLIVO"/>
+<!-- Originally element assetIVO type was interfaces:AsosAssetANDLIVO-->
+<xs:element minOccurs="0" name="campaignInfo" type="AsosWsCampaignInfoANDLIVO"/>
+<!-- Originally element campaignInfo type was interfaces:AsosWsCampaignInfoANDLIVO-->
+<xs:element minOccurs="0" name="coverIVOsList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="coverIVOs" type="AsosWsCoverANDLIVO"/>
+<!-- Originally element coverIVOs type was interfaces:AsosWsCoverANDLIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosPolicyMoneyPointANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="collectionMethodVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.reference.common.accounting.vo.TCollectionMethodVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element collectionMethodVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="moneyPaymentTransactionId" type="xs:string"/>
+<xs:element minOccurs="0" name="moneyPointAmount" type="xs:double"/>
+<xs:element minOccurs="0" name="moneyPointTransactionId" type="xs:string"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosPolicyPaymentTermANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="cashReceived" type="xs:boolean"/>
+<xs:element minOccurs="1" name="collectionMethodVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation xml:lang="en">collectionMethodVORef</xs:documentation>
+<xs:documentation>original type: class com.idit.reference.common.accounting.vo.TCollectionMethodVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element collectionMethodVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="installmentPremiumInfoVO" type="AsosInstallmentPremiumInfoANDLIVO"/>
+<!-- Originally element installmentPremiumInfoVO type was interfaces:AsosInstallmentPremiumInfoANDLIVO-->
+<xs:element minOccurs="1" name="numOfInstallment" type="xs:int">
+<xs:annotation>
+<xs:documentation xml:lang="en">numOfInstallment</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="1" name="paymentsTermsVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation xml:lang="en">paymentsTermsVORef</xs:documentation>
+<xs:documentation>original type: class com.idit.accounting.common.reference.vo.TPaymentTermsVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element paymentsTermsVORef type was interfaces:TInterfacesMessageTypeVORef-->
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosPolicySummaryANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="addressStatus" type="AsosPolicyAddressStatusANDLIVO"/>
+<!-- Originally element addressStatus type was interfaces:AsosPolicyAddressStatusANDLIVO-->
+<xs:element minOccurs="0" name="agencyCode" type="xs:string"/>
+<xs:element minOccurs="0" name="campaignDetailList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="campaignDetail" type="AsosWsCampaignDetailANDLIVO"/>
+<!-- Originally element campaignDetail type was interfaces:AsosWsCampaignDetailANDLIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="crossSaleMessage" type="xs:string"/>
+<xs:element minOccurs="0" name="debtWarningMessage" type="xs:string"/>
+<xs:element minOccurs="0" name="ecoPolicyTypeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.business.vo.TEcoPolicyTypeANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element ecoPolicyTypeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="endorsementTypeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TEndorsementTypeANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element endorsementTypeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="isOnlyAsAgent" type="xs:boolean"/>
+<xs:element minOccurs="0" name="kkbDiscountApplied" type="xs:boolean"/>
+<xs:element minOccurs="0" name="mailOrderInstruction" type="xs:boolean"/>
+<xs:element minOccurs="0" name="policyEndDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="policyHeaderRemarkList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="policyHeaderRemark" type="PolicyHeaderRemarkIVO"/>
+<!-- Originally element policyHeaderRemark type was interfaces:PolicyHeaderRemarkIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="policyStartDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="premiumInfo" type="AsosPremiumInfoANDLIVO"/>
+<!-- Originally element premiumInfo type was interfaces:AsosPremiumInfoANDLIVO-->
+<xs:element minOccurs="0" name="productAdditionalInfo" type="AsosProductAdditionalInfo"/>
+<!-- Originally element productAdditionalInfo type was interfaces:AsosProductAdditionalInfo-->
+<xs:element minOccurs="0" name="proposalDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="proposalStatusVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.policy.common.reference.vo.TStatusCodeVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element proposalStatusVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="responseWarning" type="xs:boolean"/>
+<xs:element minOccurs="0" name="responseWarningMessage" type="xs:string"/>
+<xs:element minOccurs="0" name="riskAddressInfoForAgency" type="AsosPolicyAddressInfoForAgencyANDLIVO"/>
+<!-- Originally element riskAddressInfoForAgency type was interfaces:AsosPolicyAddressInfoForAgencyANDLIVO-->
+<xs:element minOccurs="0" name="subAgencyCode" type="xs:string"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosPolicyTaxesANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="taxAmount" type="xs:double"/>
+<xs:element minOccurs="0" name="taxAmountTl" type="xs:double"/>
+<xs:element minOccurs="0" name="taxName" type="xs:string"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosPremiumInfoANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="buildingConstYearDiscount" type="xs:double"/>
+<xs:element minOccurs="0" name="collectionPointInfo" type="AsosCollectionPointInfoANDLIVO"/>
+<!-- Originally element collectionPointInfo type was interfaces:AsosCollectionPointInfoANDLIVO-->
+<xs:element minOccurs="0" name="commissionFee" type="xs:double"/>
+<xs:element minOccurs="0" name="commissionFeeTl" type="xs:double"/>
+<xs:element minOccurs="0" name="currencyVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.reference.common.vo.TCurrencyVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element currencyVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="grossPremium" type="xs:double"/>
+<xs:element minOccurs="0" name="grossPremiumTl" type="xs:double"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="insuranceAmount" type="xs:double"/>
+<xs:element minOccurs="0" name="insuranceAmounTl" type="xs:double"/>
+<xs:element minOccurs="0" name="loadingPremium" type="xs:double"/>
+<xs:element minOccurs="0" name="loadingPremiumTl" type="xs:double"/>
+<xs:element minOccurs="0" name="netPremium" type="xs:double"/>
+<xs:element minOccurs="0" name="netPremiumTl" type="xs:double"/>
+<xs:element minOccurs="0" name="paymentTermInfo" type="AsosPolicyPaymentTermANDLIVO"/>
+<!-- Originally element paymentTermInfo type was interfaces:AsosPolicyPaymentTermANDLIVO-->
+<xs:element minOccurs="0" name="policyPaymentTermsList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="policyPaymentTerms" type="AsosPolicyPaymentTermANDLIVO"/>
+<!-- Originally element policyPaymentTerms type was interfaces:AsosPolicyPaymentTermANDLIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="renewalDiscount" type="xs:double"/>
+<xs:element minOccurs="0" name="taxesList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="taxes" type="AsosPolicyTaxesANDLIVO"/>
+<!-- Originally element taxes type was interfaces:AsosPolicyTaxesANDLIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosProductAdditionalInfo">
+<xs:all>
+<xs:element minOccurs="0" name="daskAdditionalInfo" type="AsosDaskAdditionalInfoANDLIVO"/>
+<!-- Originally element daskAdditionalInfo type was interfaces:AsosDaskAdditionalInfoANDLIVO-->
+<xs:element minOccurs="0" name="fireAdditionalInfo" type="AsosFireAdditionalInfoANDLIVO"/>
+<!-- Originally element fireAdditionalInfo type was interfaces:AsosFireAdditionalInfoANDLIVO-->
+<xs:element minOccurs="0" name="healthAdditionalInfoList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="healthAdditionalInfo" type="AsosHealthAdditionalInfoANDLIVO"/>
+<!-- Originally element healthAdditionalInfo type was interfaces:AsosHealthAdditionalInfoANDLIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="militaryAdditionalInfo" type="AsosMilitaryAdditionalInfoANDLIVO"/>
+<!-- Originally element militaryAdditionalInfo type was interfaces:AsosMilitaryAdditionalInfoANDLIVO-->
+<xs:element minOccurs="0" name="motorAdditionalInfo" type="AsosMotorAdditionalInfoANDLIVO"/>
+<!-- Originally element motorAdditionalInfo type was interfaces:AsosMotorAdditionalInfoANDLIVO-->
+<xs:element minOccurs="0" name="petAdditionalInfo" type="AsosPetAdditionalInfoANDLIVO"/>
+<!-- Originally element petAdditionalInfo type was interfaces:AsosPetAdditionalInfoANDLIVO-->
+<xs:element minOccurs="0" name="travelAdditionalInfo" type="AsosTravelAdditionalInfoANDLIVO"/>
+<!-- Originally element travelAdditionalInfo type was interfaces:AsosTravelAdditionalInfoANDLIVO-->
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosProductLineOptionAmountIVO">
+<xs:all>
+<xs:element minOccurs="0" name="amountIVO" type="TAmountIVO"/>
+<!-- Originally element amountIVO type was interfaces:TAmountIVO-->
+<xs:element minOccurs="0" name="externalCode" type="xs:string"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="isDefault" type="xs:boolean"/>
+<xs:element minOccurs="0" name="levelTypeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.policy.common.reference.vo.TOptionAmountLevelTypeVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element levelTypeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType abstract="true" final="restriction" name="AsosProductRelatedParamsANDLIVO">
+<xs:sequence>
+<!--fields moved to extending types-->
+</xs:sequence>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosReferencePolicyInfoANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="agencyCode" type="xs:string"/>
+<xs:element minOccurs="0" name="claimHistoryList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="claimHistory" type="AsosAssetClaimHistoryANDLIVO"/>
+<!-- Originally element claimHistory type was interfaces:AsosAssetClaimHistoryANDLIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="currentBm" type="xs:long"/>
+<xs:element minOccurs="0" name="delaySurcharge" type="xs:long"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="insuranceCompany" type="xs:string"/>
+<xs:element minOccurs="0" name="insuranceCompanyCode" type="xs:string"/>
+<xs:element minOccurs="0" name="licensePlateInfoVO" type="AsosLicencePlateInfoANDLIVO"/>
+<!-- Originally element licensePlateInfoVO type was interfaces:AsosLicencePlateInfoANDLIVO-->
+<xs:element minOccurs="0" name="percentageOfSurcharge" type="xs:long"/>
+<xs:element minOccurs="0" name="policyEndDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="policyNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="policyStartDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="policyTypeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TPolicyTypeANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element policyTypeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="previousBm" type="xs:long"/>
+<xs:element minOccurs="0" name="renewalNumber" type="xs:int"/>
+<xs:element minOccurs="0" name="subAgencyCode" type="xs:string"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosSimplePolicyModelANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="collectionInfo" type="AsosCollectionInfoANDLIVO"/>
+<!-- Originally element collectionInfo type was interfaces:AsosCollectionInfoANDLIVO-->
+<xs:element minOccurs="0" name="creditCardPaymentInfo" type="AsosWSCreditCardPaymentInfoANDLIVO"/>
+<!-- Originally element creditCardPaymentInfo type was interfaces:AsosWSCreditCardPaymentInfoANDLIVO-->
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="kkbDiscountApplied" type="xs:boolean"/>
+<xs:element maxOccurs="1" minOccurs="1" name="policyContactsList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="1" name="policyContacts" type="AsosWsPolicyContactANDLIVO">
+<xs:annotation>
+<xs:documentation xml:lang="en">policyContacts</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element policyContacts type was interfaces:AsosWsPolicyContactANDLIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="1" name="policyHeader" type="AsosWsPolicyHeaderANDLIVO">
+<xs:annotation>
+<xs:documentation xml:lang="en">policyHeader</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element policyHeader type was interfaces:AsosWsPolicyHeaderANDLIVO-->
+<xs:element minOccurs="0" name="policyLobIVOsList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="policyLobIVOs" type="AsosPolicyLobANDLIVO"/>
+<!-- Originally element policyLobIVOs type was interfaces:AsosPolicyLobANDLIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element maxOccurs="1" minOccurs="1" name="productRelatedParamsList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="1" name="productRelatedParams" type="AsosProductRelatedParamsANDLIVO"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="usingKKB" type="xs:boolean"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosSubjectToDaskInfoANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="daskConstructionTypeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TDaskConstructionTypeANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element daskConstructionTypeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="daskGrossArea" type="xs:double"/>
+<xs:element minOccurs="0" name="daskPolicyEndDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="daskPolicyNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="daskValueTL" type="xs:double"/>
+<xs:element minOccurs="0" name="daskWarningList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="daskWarning" type="AsosWarningANDLIVO"/>
+<!-- Originally element daskWarning type was interfaces:AsosWarningANDLIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="policyNumber" type="xs:string"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosThreeDSecureInfoANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="auth3DToken" type="xs:string"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="isThreeDSecure" type="xs:boolean"/>
+<xs:element minOccurs="0" name="sessionToken" type="xs:string"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosTravelAdditionalInfoANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="adjustmentRatio" type="xs:double"/>
+<xs:element minOccurs="0" name="adjustmentType" type="xs:string"/>
+<xs:element minOccurs="0" name="affinityDiscountRate" type="xs:double"/>
+<xs:element minOccurs="0" name="affinityValue" type="xs:string"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosVehicleDetailsANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="modelYear" type="xs:int"/>
+<xs:element minOccurs="0" name="motorNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="vinNumber" type="xs:string"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosVehicleRegistryDetailsANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="egmQueryRunSuccessfully" type="xs:boolean"/>
+<xs:element minOccurs="0" name="fuel" type="xs:string"/>
+<xs:element minOccurs="0" name="horsePower" type="xs:string"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="make" type="xs:string"/>
+<xs:element minOccurs="0" name="model" type="xs:string"/>
+<xs:element minOccurs="0" name="numberOfSeats" type="xs:string"/>
+<xs:element minOccurs="0" name="registrationDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="registrySerialCode" type="xs:string"/>
+<xs:element minOccurs="0" name="registrySerialNo" type="xs:string"/>
+<xs:element minOccurs="0" name="trafficEntryDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="typeofCarriageRef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TTypeOfCarriageANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element typeofCarriageRef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="vehicleName" type="xs:string"/>
+<xs:element minOccurs="0" name="vehicleRetirement" type="xs:boolean"/>
+<xs:element minOccurs="0" name="vehicleStatus" type="xs:string"/>
+<xs:element minOccurs="0" name="volume" type="xs:string"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosVehicleTechnicalDetailsANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="mainModelVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.policy.common.setup.vo.TMainModelVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element mainModelVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="mainVehicleTypeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TMainVehicleTypesANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element mainVehicleTypeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="makeCode" type="xs:string"/>
+<xs:element minOccurs="0" name="makeDesc" type="xs:string"/>
+<xs:element minOccurs="0" name="makeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.policy.common.reference.vo.TManufactureVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element makeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="modelCode" type="xs:string"/>
+<xs:element minOccurs="0" name="modelVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TModelANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element modelVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="operationalRental" type="xs:boolean"/>
+<xs:element minOccurs="0" name="ownershipDocumentDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="purposeofUsageVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TPurposeOfUsageANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element purposeofUsageVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="rental" type="xs:boolean"/>
+<xs:element minOccurs="0" name="standingPassengers" type="xs:boolean"/>
+<xs:element minOccurs="0" name="transportationDocType" type="xs:string"/>
+<xs:element minOccurs="0" name="transportationDocumentExpiryDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="transportationFlag" type="xs:boolean"/>
+<xs:element minOccurs="0" name="typeofCarriageRef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TTypeOfCarriageANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element typeofCarriageRef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="vehicleAgeLess" type="xs:long"/>
+<xs:element minOccurs="0" name="vehicleAmount" type="xs:double"/>
+<xs:element minOccurs="0" name="vehicleTypeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TVehicleTypesANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element vehicleTypeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosWSCreditCardPaymentInfoANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="panFirst8" type="xs:string"/>
+<xs:element minOccurs="0" name="panLast4" type="xs:string"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosWsCampaignDetailANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="assetDescriptor" type="xs:string"/>
+<xs:element minOccurs="0" name="campaignCode" type="xs:string"/>
+<xs:element minOccurs="0" name="campaignDiscountRate" type="xs:double"/>
+<xs:element minOccurs="0" name="campaignSaleVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.business.vo.TCampaignSaleANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element campaignSaleVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosWsCampaignInfoANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="campaignCode" type="xs:string"/>
+<xs:element minOccurs="0" name="campaignId" type="xs:long"/>
+<xs:element minOccurs="0" name="campaignSaleVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.business.vo.TCampaignSaleANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element campaignSaleVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="campaignVersion" type="xs:long"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="isAutomaticCampaign" type="xs:boolean"/>
+<xs:element minOccurs="0" name="isRobotAutoProposal" type="xs:boolean"/>
+<xs:element minOccurs="0" name="ruleGroupId" type="xs:long"/>
+<xs:element minOccurs="0" name="transactionId" type="xs:long"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosWsCoverANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="aggregatedLimitAmount" type="xs:double"/>
+<xs:element minOccurs="0" name="aggregatedLimitAmountSystem" type="xs:double"/>
+<xs:element minOccurs="0" name="annualNumber" type="xs:int"/>
+<xs:element minOccurs="0" name="childCoverVOList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="childCoverVO" type="AsosWsCoverANDLIVO"/>
+<!-- Originally element childCoverVO type was interfaces:AsosWsCoverANDLIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="cover" type="xs:string"/>
+<xs:element minOccurs="0" name="coverExtCodeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.policy.common.reference.vo.TProductLineOptionTypeVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element coverExtCodeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="coverInsuranceAmount" type="xs:double"/>
+<xs:element minOccurs="0" name="coverInsuranceAmountSystem" type="xs:double"/>
+<xs:element minOccurs="0" name="coverInsuranceAmountTl" type="xs:double"/>
+<xs:element minOccurs="0" name="coverType" type="xs:long"/>
+<xs:element minOccurs="0" name="deductibleRate" type="xs:string"/>
+<xs:element minOccurs="0" name="excessAmount" type="xs:double"/>
+<xs:element minOccurs="0" name="excessAmountSystem" type="xs:double"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="isDefault" type="xs:boolean"/>
+<xs:element minOccurs="0" name="isSelected" type="xs:boolean"/>
+<xs:element minOccurs="0" name="perClaimantAmount" type="xs:double"/>
+<xs:element minOccurs="0" name="perClaimantAmountSystem" type="xs:double"/>
+<xs:element minOccurs="0" name="productLineOptionAmountVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.policy.common.setup.vo.TProductLineOptionAmountVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element productLineOptionAmountVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="productLineOptionAmountVOsList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="productLineOptionAmountVOs" type="AsosProductLineOptionAmountIVO"/>
+<!-- Originally element productLineOptionAmountVOs type was interfaces:AsosProductLineOptionAmountIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="productLineOptionVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.policy.common.reference.vo.TProductLineOptionVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element productLineOptionVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="productLineTypeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.policy.common.reference.vo.TProductLineGroupVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element productLineTypeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="sortOrder" type="xs:string"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosWsPolicyContactANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="dateOfBirth" type="xs:string"/>
+<xs:element minOccurs="0" name="debtInfo" type="xs:boolean"/>
+<xs:element minOccurs="1" name="externalContactNumber" type="xs:string">
+<xs:annotation>
+<xs:documentation xml:lang="en">externalContactNumber</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="fatherName" type="xs:string"/>
+<xs:element minOccurs="0" name="firstName" type="xs:string"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="idTypeRef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.contact.common.vo.reference.TIdTypeVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element idTypeRef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="idValue" type="xs:string"/>
+<xs:element minOccurs="0" name="idValueBranch" type="xs:string"/>
+<xs:element minOccurs="0" name="isAboveLimit" type="xs:boolean"/>
+<xs:element minOccurs="1" name="legalTypeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation xml:lang="en">legalTypeVORef</xs:documentation>
+<xs:documentation>original type: class com.idit.contact.common.vo.reference.TEntityTypeVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element legalTypeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="name" type="xs:string"/>
+<xs:element minOccurs="1" name="policyContactRoleVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation xml:lang="en">policyContactRoleVORef</xs:documentation>
+<xs:documentation>original type: class com.idit.policy.common.reference.vo.TPolicyContactRoleVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element policyContactRoleVORef type was interfaces:TInterfacesMessageTypeVORef-->
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosWsPolicyHeaderANDLIVO">
+<xs:all>
+<xs:element minOccurs="1" name="agencyCode" type="xs:string">
+<xs:annotation>
+<xs:documentation xml:lang="en">agencyCode</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="agencyName" type="xs:string"/>
+<xs:element minOccurs="0" name="campaignInfo" type="AsosWsCampaignInfoANDLIVO"/>
+<!-- Originally element campaignInfo type was interfaces:AsosWsCampaignInfoANDLIVO-->
+<xs:element minOccurs="0" name="crossSaleFlag" type="xs:boolean"/>
+<xs:element minOccurs="0" name="crossSaleID" type="xs:string"/>
+<xs:element minOccurs="0" name="departmentCode" type="xs:long"/>
+<xs:element minOccurs="0" name="departmentName" type="xs:string"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="issueDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="policyCurrencyRate" type="xs:double"/>
+<xs:element minOccurs="1" name="policyCurrencyVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation xml:lang="en">policyCurrencyVO</xs:documentation>
+<xs:documentation>original type: class com.idit.reference.common.vo.TCurrencyVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element policyCurrencyVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="policyEndDate" type="xs:dateTime"/>
+<xs:element minOccurs="1" name="policyStartDate" type="xs:dateTime">
+<xs:annotation>
+<xs:documentation xml:lang="en">policyStartDate</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="policyStatusVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.policy.common.reference.vo.TStatusCodeVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element policyStatusVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="1" name="policyTypeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation xml:lang="en">policyTypeVORef</xs:documentation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TPolicyTypeANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element policyTypeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="printingNameANDLVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.reference.common.vo.TPrintingNameANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element printingNameANDLVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="1" name="productTypeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation xml:lang="en">productTypeVORef</xs:documentation>
+<xs:documentation>original type: class com.idit.policy.common.reference.vo.TProductVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element productTypeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="renewalPolicy" type="xs:boolean"/>
+<xs:element minOccurs="1" name="salesChannelVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation xml:lang="en">salesChannelVORef</xs:documentation>
+<xs:documentation>original type: class com.idit.reference.common.vo.TSalesChannelVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element salesChannelVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="subAgencyCode" type="xs:string"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="PGroupHealthContractANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="agencyCharge" type="xs:double"/>
+<xs:element minOccurs="0" name="agencyContactANDLIVORef" type="GenericVORef"/>
+<!-- Originally element agencyContactANDLIVORef type was interfaces:ContactIVORef-->
+<xs:element minOccurs="0" name="amountOfBarter" type="xs:double"/>
+<xs:element minOccurs="0" name="amountOfLossBudgetApproved" type="xs:double"/>
+<xs:element minOccurs="0" name="amountOfParticipationToLoss" type="xs:double"/>
+<xs:element minOccurs="0" name="amountOfParticipationToProfit" type="xs:double"/>
+<xs:element minOccurs="0" name="anadoluSigortaStartDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="asoExplanation" type="xs:string"/>
+<xs:element minOccurs="0" name="barter" type="xs:boolean"/>
+<xs:element minOccurs="0" name="barterExplanation" type="xs:string"/>
+<xs:element minOccurs="0" name="barterTypeANDLVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.business.vo.TBarterTypeANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element barterTypeANDLVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="contractName" type="xs:string"/>
+<xs:element minOccurs="0" name="explanation" type="xs:string"/>
+<xs:element minOccurs="0" name="explantionOfPart" type="xs:string"/>
+<xs:element minOccurs="0" name="fileNo" type="xs:long"/>
+<xs:element minOccurs="0" name="firstStartDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="groupHealthGlobalLimitVOList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="groupHealthGlobalLimitVO" type="PGroupHealthGlobalLimitANDLIVO"/>
+<!-- Originally element groupHealthGlobalLimitVO type was interfaces:PGroupHealthGlobalLimitANDLIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="groupHealthPlanVOList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="groupHealthPlanVO" type="PGroupHealthPlanANDLIVO"/>
+<!-- Originally element groupHealthPlanVO type was interfaces:PGroupHealthPlanANDLIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="groupHealthSubMasterVOList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="groupHealthSubMasterVO" type="PGroupHealthSubMasterPlanANDLIVO"/>
+<!-- Originally element groupHealthSubMasterVO type was interfaces:PGroupHealthSubMasterPlanANDLIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="groupPolicyStartTypeANDLVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.business.vo.TGroupPolicyStartTypeANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element groupPolicyStartTypeANDLVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="insuranceRateOfAnadoluSigorta" type="xs:double"/>
+<xs:element minOccurs="0" name="isKocPolicy" type="xs:boolean"/>
+<xs:element minOccurs="0" name="marketingResponsible" type="xs:string"/>
+<xs:element minOccurs="0" name="masterPolicyNotification" type="xs:string"/>
+<xs:element minOccurs="0" name="membership" type="xs:boolean"/>
+<xs:element minOccurs="0" name="participationToLoss" type="xs:boolean"/>
+<xs:element minOccurs="0" name="participationToProfit" type="xs:boolean"/>
+<xs:element minOccurs="0" name="premiumControlCompanyANDLVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.business.vo.TPremiumControlCompanyANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element premiumControlCompanyANDLVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="premiumControlEmplyeeANDLVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.business.vo.TPremiumControlEmplyeeANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element premiumControlEmplyeeANDLVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="previousInsuranceCompanyVORef" type="GenericVORef"/>
+<!-- Originally element previousInsuranceCompanyVORef type was interfaces:ContactIVORef-->
+<xs:element minOccurs="0" name="provisionOpenCloseANDLVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TProvisionOpenCloseANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element provisionOpenCloseANDLVORef type was interfaces:TInterfacesMessageTypeVORef-->
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="PGroupHealthGlobalLimitANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="applyToInsured" type="xs:string"/>
+<xs:element minOccurs="0" name="coverListName" type="xs:string"/>
+<xs:element minOccurs="0" name="coverVOsList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="coverVOs" type="PGroupHealthGlobalLimitCoversANDLIVO"/>
+<!-- Originally element coverVOs type was interfaces:PGroupHealthGlobalLimitCoversANDLIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="globalAmount" type="xs:double"/>
+<xs:element minOccurs="0" name="globalDeductible" type="xs:double"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="isInvoicePaid" type="xs:string"/>
+<xs:element minOccurs="0" name="limitName" type="xs:string"/>
+<xs:element minOccurs="0" name="masterPlanListName" type="xs:string"/>
+<xs:element minOccurs="0" name="masterPlanVOsList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="masterPlanVOs" type="PGroupHealthGlobalLimitMasterPlansANDLIVO"/>
+<!-- Originally element masterPlanVOs type was interfaces:PGroupHealthGlobalLimitMasterPlansANDLIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="netLimitRate" type="xs:double"/>
+<xs:element minOccurs="0" name="pGroupHealthContractANDLIVO" type="PGroupHealthContractANDLIVO"/>
+<!-- Originally element pGroupHealthContractANDLIVO type was interfaces:PGroupHealthContractANDLIVO-->
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="PGroupHealthGlobalLimitCoversANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="isRecordActive" type="xs:boolean"/>
+<xs:element minOccurs="0" name="pGroupHealthPlanId" type="xs:long"/>
+<xs:element minOccurs="0" name="productLineOptionTypeRef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.policy.common.reference.vo.TProductLineOptionTypeVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element productLineOptionTypeRef type was interfaces:TInterfacesMessageTypeVORef-->
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="PGroupHealthGlobalLimitMasterPlansANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="pGroupHealthPlanANDLIVO" type="PGroupHealthPlanANDLIVO"/>
+<!-- Originally element pGroupHealthPlanANDLIVO type was interfaces:PGroupHealthPlanANDLIVO-->
+<xs:element minOccurs="0" name="userVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.framework.security.common.vo.UserVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element userVORef type was interfaces:TInterfacesMessageTypeVORef-->
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="PGroupHealthPlanANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="barter" type="xs:boolean"/>
+<xs:element minOccurs="0" name="childPolicyIndividualInsuredContactSagmerTariffId" type="xs:long"/>
+<xs:element minOccurs="0" name="childrenInMarriedCanBeInsured" type="xs:boolean"/>
+<xs:element minOccurs="0" name="companyShare" type="xs:double"/>
+<xs:element minOccurs="0" name="coverLimitModelsANDLVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.business.vo.TCoverLimitModelsANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element coverLimitModelsANDLVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="disableDunning" type="xs:boolean"/>
+<xs:element minOccurs="0" name="ecpRuleSetNumber" type="xs:long"/>
+<xs:element minOccurs="0" name="eko" type="xs:boolean"/>
+<xs:element minOccurs="0" name="endDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="isAllowToEnterInvoice" type="xs:boolean"/>
+<xs:element minOccurs="0" name="isCanceled" type="xs:boolean"/>
+<xs:element minOccurs="0" name="isCheckUpFourteenYear" type="xs:string"/>
+<xs:element minOccurs="0" name="isHybridInPlan" type="xs:boolean"/>
+<xs:element minOccurs="0" name="masterPlanId" type="xs:long"/>
+<xs:element minOccurs="0" name="masterPlanName" type="xs:string"/>
+<xs:element minOccurs="0" name="masterPlanNameInPrintout" type="xs:string"/>
+<xs:element minOccurs="0" name="masterPlanNotification" type="xs:string"/>
+<xs:element minOccurs="0" name="maternityForFirstInsured" type="xs:boolean"/>
+<xs:element minOccurs="0" name="networkCoverDetailVOList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="networkCoverDetailVO" type="PNetworksCoverDetailANDLIVO"/>
+<!-- Originally element networkCoverDetailVO type was interfaces:PNetworksCoverDetailANDLIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="networkOptionalRef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TNetworksANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element networkOptionalRef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="networksList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="networks" type="PNetworksANDLIVO"/>
+<!-- Originally element networks type was interfaces:PNetworksANDLIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="noCardPrinted" type="xs:boolean"/>
+<xs:element minOccurs="0" name="originalPackageCode" type="xs:long"/>
+<xs:element minOccurs="0" name="planCoversList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="planCovers" type="PGroupHealthPlanCoversANDLIVO"/>
+<!-- Originally element planCovers type was interfaces:PGroupHealthPlanCoversANDLIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="renewalGuaranteeEvaluationANDLVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.business.vo.TRenewalGuaranteeEvaluationANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element renewalGuaranteeEvaluationANDLVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="sagmerTariffVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TSagmerTariffANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element sagmerTariffVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="startDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="validAbroad" type="xs:boolean"/>
+<xs:element minOccurs="0" name="willBePaidExceptEmployee" type="xs:boolean"/>
+<xs:element minOccurs="0" name="willTheInsuredBeCounted" type="xs:boolean"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="PGroupHealthPlanCoversANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="accumulatedLimit" type="xs:double"/>
+<xs:element minOccurs="0" name="annualDeductible" type="xs:double"/>
+<xs:element minOccurs="0" name="annualNumber" type="xs:long"/>
+<xs:element minOccurs="0" name="basePremium" type="xs:double"/>
+<xs:element minOccurs="0" name="coverVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.policy.common.reference.vo.TProductLineVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element coverVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="deductible" type="xs:double"/>
+<xs:element minOccurs="0" name="deductiblePerDay" type="xs:double"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="isCheckUpValid" type="xs:string"/>
+<xs:element minOccurs="0" name="limitPerDay" type="xs:double"/>
+<xs:element minOccurs="0" name="lineOptionTypeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.policy.common.reference.vo.TProductLineOptionTypeVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element lineOptionTypeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="mainCoverVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.policy.common.reference.vo.TProductLineVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element mainCoverVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="netLimitRate" type="xs:double"/>
+<xs:element minOccurs="0" name="perEventLimit" type="xs:double"/>
+<xs:element minOccurs="0" name="perEventNumberOfDays" type="xs:double"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="PGroupHealthSubMasterPlanANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="address" type="ContactAddressIVO"/>
+<!-- Originally element address type was interfaces:ContactAddressIVO-->
+<xs:element minOccurs="0" name="bankAccount" type="ContactBankAccountIVO"/>
+<!-- Originally element bankAccount type was interfaces:ContactBankAccountIVO-->
+<xs:element minOccurs="0" name="collectionMethodVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.reference.common.accounting.vo.TCollectionMethodVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element collectionMethodVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="contactExtNum" type="xs:string"/>
+<xs:element minOccurs="0" name="documentMailingAddressVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.business.vo.TDocumentMailingAddressANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element documentMailingAddressVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="faxNo" type="xs:string"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="paymentTermVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.accounting.common.reference.vo.TPaymentTermsVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element paymentTermVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="provisionOpenCloseVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TProvisionOpenCloseANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element provisionOpenCloseVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="representative" type="xs:string"/>
+<xs:element minOccurs="0" name="representativeMailAddress" type="xs:string"/>
+<xs:element minOccurs="0" name="subMasterExtNum" type="xs:string"/>
+<xs:element minOccurs="0" name="subMasterId" type="xs:long"/>
+<xs:element minOccurs="0" name="subMasterName" type="xs:string"/>
+<xs:element minOccurs="0" name="subMasterNameInPrintout" type="xs:string"/>
+<xs:element minOccurs="0" name="telephoneNo" type="xs:string"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="PNetworksANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="networksVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TNetworksANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element networksVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="networkTypeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.THealthNetworkTypeANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element networkTypeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="PNetworksCoverDetailANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="coverVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.policy.common.reference.vo.TProductLineVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element coverVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="deductible" type="xs:double"/>
+<xs:element minOccurs="0" name="deductibleAnnual" type="xs:double"/>
+<xs:element minOccurs="0" name="deductiblePerDay" type="xs:double"/>
+<xs:element minOccurs="0" name="exemptionRate" type="xs:long"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="lineOptionTypeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.policy.common.reference.vo.TProductLineOptionTypeVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element lineOptionTypeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="networkCoverLimit" type="xs:double"/>
+<xs:element minOccurs="0" name="networksVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TNetworksANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element networksVORef type was interfaces:TInterfacesMessageTypeVORef-->
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosAssetVehicleBeneficiaryANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="aggreementNo" type="xs:string"/>
+<xs:element minOccurs="0" name="beneficiarySubTypeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TBeneficiarySubTypeANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element beneficiarySubTypeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="beneficiaryTypeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TLossPayeeTypeANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element beneficiaryTypeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="emailStructure" type="AsosContactEmailStructureANDLIVO"/>
+<!-- Originally element emailStructure type was interfaces:AsosContactEmailStructureANDLIVO-->
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="idValue" type="xs:string"/>
+<xs:element minOccurs="0" name="idValueBranch" type="xs:string"/>
+<xs:element minOccurs="0" name="telephoneStructure" type="AsosContactTelephoneStructureANDLIVO"/>
+<!-- Originally element telephoneStructure type was interfaces:AsosContactTelephoneStructureANDLIVO-->
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="DirectDebitMandateIVO">
+<xs:all>
+<xs:element minOccurs="0" name="approvalDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="approvalNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="brandCompanyExtNum" type="xs:string"/>
+<xs:element minOccurs="0" name="discontinueDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="lastUsageDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="mandateStatusVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.reference.common.accounting.vo.TMandateStatusVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element mandateStatusVORef type was interfaces:TInterfacesMessageTypeVORef-->
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType abstract="true" final="restriction" name="SuperDispatchIVO">
+<xs:sequence>
+<!--fields moved to extending types-->
+</xs:sequence>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="PolicyHeaderRemarkIVO">
+<xs:all>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="remark" type="xs:string"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:simpleType name="SuperDispatchIVORestrictionList">
+<xs:restriction base="xs:string">
+<xs:enumeration value="ContactAddressIVO"/>
+<xs:enumeration value="ContactTelephoneIVO"/>
+<xs:enumeration value="ContactEmailIVO"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="ContactIVORef">
+<xs:simpleContent>
+<xs:extension base="xs:string">
+<xs:attribute name="id" type="xs:long" use="required"/>
+<xs:attribute name="extCode" type="xs:string" use="optional"/>
+</xs:extension>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType final="restriction" name="ContactBankAccountIVO">
+<xs:all>
+<xs:element minOccurs="0" name="accountCurrencyVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.reference.common.vo.TCurrencyVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element accountCurrencyVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="accountNr" type="xs:string">
+<xs:annotation>
+<xs:documentation xml:lang="en">Account Number</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="accountNrLastDigits" type="xs:string">
+<xs:annotation>
+<xs:documentation xml:lang="en">Not used for data migration</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="addingReason" type="xs:long"/>
+<xs:element minOccurs="0" name="agencyCode" type="xs:long"/>
+<xs:element minOccurs="0" name="bankAccountExternalNumber" type="xs:string">
+<xs:annotation>
+<xs:documentation xml:lang="en">contact bank account external number, unique number that should be used during policy, claim and account migration</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="bankAccountVerificationStatusVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.contact.common.vo.reference.TBankAccountVerificationStatusVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element bankAccountVerificationStatusVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="bankApprovalDate" type="xs:dateTime">
+<xs:annotation>
+<xs:documentation xml:lang="en">Bank approval date - for direct debit purposes</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="bankApprovalEndDate" type="xs:dateTime">
+<xs:annotation>
+<xs:documentation xml:lang="en">The date as of when direct debit is not allowed on this account</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="bankApprovalReference" type="xs:string">
+<xs:annotation>
+<xs:documentation xml:lang="en">Bank approval reference - for direct debit purposes</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="bankEftCode" type="xs:string"/>
+<xs:element minOccurs="0" name="bankExtNum" type="xs:string">
+<xs:annotation>
+<xs:documentation xml:lang="en">Bank contact external number</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="bankName" type="xs:string">
+<xs:annotation>
+<xs:documentation xml:lang="en">Add the Bank Name.</xs:documentation>
+<xs:documentation xml:lang="re">513794</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="bban" type="xs:string"/>
+<xs:element minOccurs="0" name="bicCode" type="xs:string">
+<xs:annotation>
+<xs:documentation xml:lang="en">BIC code</xs:documentation>
+<xs:documentation xml:lang="tr">Swift Kodu</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="branchExtNum" type="xs:string">
+<xs:annotation>
+<xs:documentation xml:lang="en">Bank branch contact external number</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="branchName" type="xs:string">
+<xs:annotation>
+<xs:documentation xml:lang="en">Bank branch name</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="cardBrand" type="xs:string"/>
+<xs:element minOccurs="0" name="cardNetwork" type="xs:string"/>
+<xs:element minOccurs="0" name="cardToken" type="xs:string"/>
+<xs:element minOccurs="0" name="cardType" type="xs:string"/>
+<xs:element minOccurs="0" name="checkDigits" type="xs:string"/>
+<xs:element minOccurs="0" name="contactBankAccountHistoryANDLList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="contactBankAccountHistoryANDL" type="ContactBankAccountHistoryANDLIVO"/>
+<!-- Originally element contactBankAccountHistoryANDL type was interfaces:ContactBankAccountHistoryANDLIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="contactOwnerExtNum" type="xs:string">
+<xs:annotation>
+<xs:documentation xml:lang="en">Credit card owner contact external number</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="countryVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation xml:lang="en">Bank Country - reference to T_COUNTRY</xs:documentation>
+<xs:documentation>original type: class com.idit.reference.common.vo.TCountryVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element countryVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="creditCardHolderName" type="xs:string"/>
+<xs:element minOccurs="0" name="cvcCode" type="xs:string"/>
+<xs:element minOccurs="0" name="directDebitMandateList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="directDebitMandate" type="DirectDebitMandateIVO"/>
+<!-- Originally element directDebitMandate type was interfaces:DirectDebitMandateIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="discontinueDate" type="xs:dateTime">
+<xs:annotation>
+<xs:documentation xml:lang="en">date of the bank account deactivation. Used in case inactive bank accounts should be migrated</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="expMonth" type="xs:string"/>
+<xs:element minOccurs="0" name="expYear" type="xs:string"/>
+<xs:element minOccurs="0" name="ibanReference" type="xs:string">
+<xs:annotation>
+<xs:documentation xml:lang="en">IBAN reference</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="isSaved" type="xs:boolean"/>
+<xs:element minOccurs="0" name="isVerified" type="xs:boolean"/>
+<xs:element minOccurs="0" name="panFirst8" type="xs:string"/>
+<xs:element minOccurs="0" name="panLast4" type="xs:string"/>
+<xs:element minOccurs="0" name="panTypeFirst8Last4" type="xs:boolean"/>
+<xs:element minOccurs="0" name="paymentChanelVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation xml:lang="en">Bank account type (Bank account/Credit Card) -  foreign key to T_PAYMENT_CHANNEL (allows to use this table to credit card information also)</xs:documentation>
+<xs:documentation>original type: class com.idit.reference.common.accounting.vo.TSuperPaymentChannelVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element paymentChanelVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="remarks" type="xs:string">
+<xs:annotation>
+<xs:documentation xml:lang="en">Remarks</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="sortCode" type="xs:string"/>
+<xs:element minOccurs="0" name="swiftCode" type="xs:string">
+<xs:annotation>
+<xs:documentation xml:lang="en">SWIFT Code</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="updateDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="updateUser" type="xs:string"/>
+<xs:element minOccurs="0" name="validDate" type="xs:dateTime">
+<xs:annotation>
+<xs:documentation xml:lang="en">Valid until date - for credit cards</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="verificationStatusRemarks" type="xs:string"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AddressIVO">
+<xs:all>
+<xs:element minOccurs="0" name="addressCode" type="xs:long"/>
+<xs:element minOccurs="0" name="addressLine1" type="xs:string"/>
+<xs:element minOccurs="0" name="addressLine4" type="xs:string"/>
+<xs:element minOccurs="0" name="apartmentName" type="xs:string"/>
+<xs:element minOccurs="0" name="apartmentNr">
+<xs:annotation>
+<xs:documentation xml:lang="en">appartment number (any character) .</xs:documentation>
+<xs:documentation xml:lang="re">513759</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="9"/>
+<xs:minLength value="0"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element minOccurs="0" name="block" type="xs:string"/>
+<xs:element minOccurs="0" name="blockNr">
+<xs:annotation>
+<xs:documentation xml:lang="en">Block Number.</xs:documentation>
+<xs:documentation xml:lang="re">513761</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="10"/>
+<xs:minLength value="0"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element minOccurs="0" name="boxNumber">
+<xs:annotation>
+<xs:documentation xml:lang="en">Box Number.</xs:documentation>
+<xs:documentation xml:lang="re">513762</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="20"/>
+<xs:minLength value="0"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element minOccurs="0" name="buildingCode" type="xs:string"/>
+<xs:element minOccurs="0" name="buildingName" type="xs:string">
+<xs:annotation>
+<xs:documentation xml:lang="en">Building Name (if exists)</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="buildingVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.contact.common.setup.vo.TBuildingANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element buildingVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="cityCode" type="xs:long"/>
+<xs:element minOccurs="0" name="cityName" type="xs:string">
+<xs:annotation>
+<xs:documentation xml:lang="en">Şehir Adı</xs:documentation>
+<xs:documentation xml:lang="tr">Şehir Adı</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="cityVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation xml:lang="en">City table - Foreign key to T_CITY</xs:documentation>
+<xs:documentation>original type: class com.idit.contact.common.vo.setup.CityVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element cityVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="communityCode" type="xs:long"/>
+<xs:element minOccurs="0" name="communityName" type="xs:string"/>
+<xs:element minOccurs="0" name="coorDepth" type="xs:string"/>
+<xs:element minOccurs="0" name="coordinateX" type="xs:double"/>
+<xs:element minOccurs="0" name="coordinateY" type="xs:double"/>
+<xs:element minOccurs="0" name="countryVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation xml:lang="en">Address country - foreign key to T_COUNTRY</xs:documentation>
+<xs:documentation>original type: class com.idit.reference.common.vo.TCountryVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element countryVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="countyCode" type="xs:long"/>
+<xs:element minOccurs="0" name="countyRef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.contact.common.vo.setup.CountyVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element countyRef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="countyVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.contact.common.vo.setup.CountyVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element countyVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="districtGeocode" type="xs:string"/>
+<xs:element minOccurs="0" name="districtName" type="xs:string">
+<xs:annotation>
+<xs:documentation xml:lang="en">Distric tName</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="districtTypeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.contact.common.vo.reference.DistrictTypeVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element districtTypeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="districtVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation xml:lang="en">district- Foreign key to T_DISTRICT</xs:documentation>
+<xs:documentation>original type: class com.idit.contact.common.vo.setup.TDistrictVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element districtVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="flatNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="floorNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="freeTextAddress" type="xs:string"/>
+<xs:element minOccurs="0" name="houseNr" type="xs:string">
+<xs:annotation>
+<xs:documentation xml:lang="en">House number</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="invalidComponent" type="xs:string"/>
+<xs:element minOccurs="0" name="isInvalid" type="xs:boolean"/>
+<xs:element minOccurs="0" name="landRegistryNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="location" type="xs:string"/>
+<xs:element minOccurs="0" name="parcel" type="xs:string"/>
+<xs:element minOccurs="0" name="plot" type="xs:string"/>
+<xs:element minOccurs="0" name="pob" type="xs:string">
+<xs:annotation>
+<xs:documentation xml:lang="en">Post office box</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="quarterCode" type="xs:long"/>
+<xs:element minOccurs="0" name="quarterName" type="xs:string"/>
+<xs:element minOccurs="0" name="regionName" type="xs:string">
+<xs:annotation>
+<xs:documentation xml:lang="en">Region Name</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="regionVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation xml:lang="en">Region - Id from T_REGION (not a foreign key to).</xs:documentation>
+<xs:documentation>original type: class com.idit.contact.common.vo.setup.RegionVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element regionVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="relatedCommunityCode" type="xs:long"/>
+<xs:element minOccurs="0" name="relatedCommunityName" type="xs:string"/>
+<xs:element minOccurs="0" name="remarks" type="xs:string">
+<xs:annotation>
+<xs:documentation xml:lang="en">Remarks - free text</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="sbmSubDistrictCode" type="xs:string"/>
+<xs:element minOccurs="0" name="siteName" type="xs:string"/>
+<xs:element minOccurs="0" name="streetCode" type="xs:long"/>
+<xs:element minOccurs="0" name="streetGeocode" type="xs:string"/>
+<xs:element minOccurs="0" name="streetName" type="xs:string">
+<xs:annotation>
+<xs:documentation xml:lang="en">Street Name</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="streetType" type="xs:string"/>
+<xs:element minOccurs="0" name="streetTypeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation xml:lang="en">Street type (street, square, boulevard, etc.) - foreign key to T_STREET_TYPE.</xs:documentation>
+<xs:documentation>original type: class com.idit.contact.common.vo.reference.TStreetTypeVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element streetTypeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="streetVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation xml:lang="en">Address street - Foreign key to T_STREET</xs:documentation>
+<xs:documentation>original type: class com.idit.contact.common.vo.setup.StreetVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element streetVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="structureGeocode" type="xs:string"/>
+<xs:element minOccurs="0" name="structureName" type="xs:string"/>
+<xs:element minOccurs="0" name="uavtAddressCode" type="xs:string"/>
+<xs:element minOccurs="0" name="vicinity" type="xs:string"/>
+<xs:element minOccurs="0" name="villageCode" type="xs:long"/>
+<xs:element minOccurs="0" name="villageName" type="xs:string"/>
+<xs:element minOccurs="0" name="zipCode" type="xs:string">
+<xs:annotation>
+<xs:documentation xml:lang="re">Posta Kodu</xs:documentation>
+<xs:documentation xml:lang="en">Posta Kodu</xs:documentation>
+<xs:documentation xml:lang="en">Zip Code</xs:documentation>
+<xs:documentation xml:lang="tr">Posta Kodu</xs:documentation>
+</xs:annotation>
+</xs:element>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosAssetCascoANDLIVO">
+<xs:complexContent>
+<xs:extension base="AsosAssetANDLIVO">
+<xs:sequence>
+<xs:element minOccurs="0" name="asbisRefNo" type="xs:string"/>
+<xs:element minOccurs="0" name="ecoPolicyTypeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.business.vo.TEcoPolicyTypeANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element ecoPolicyTypeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="licencePlateInfo" type="AsosLicencePlateInfoANDLIVO"/>
+<!-- Originally element licencePlateInfo type was interfaces:AsosLicencePlateInfoANDLIVO-->
+<xs:element minOccurs="0" name="referencePolicy" type="AsosReferencePolicyInfoANDLIVO"/>
+<!-- Originally element referencePolicy type was interfaces:AsosReferencePolicyInfoANDLIVO-->
+<xs:element minOccurs="0" name="registrySerialCode" type="xs:string"/>
+<xs:element minOccurs="0" name="registrySerialNo" type="xs:string"/>
+<xs:element minOccurs="0" name="totalLossTypeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.business.vo.TLossPolicyTypeANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element totalLossTypeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="vehicleDetails" type="AsosVehicleDetailsANDLIVO"/>
+<!-- Originally element vehicleDetails type was interfaces:AsosVehicleDetailsANDLIVO-->
+<xs:element minOccurs="0" name="vehicleRegistryDetails" type="AsosVehicleRegistryDetailsANDLIVO"/>
+<!-- Originally element vehicleRegistryDetails type was interfaces:AsosVehicleRegistryDetailsANDLIVO-->
+<xs:element minOccurs="0" name="vehicleTechnicalDetails" type="AsosVehicleTechnicalDetailsANDLIVO"/>
+<!-- Originally element vehicleTechnicalDetails type was interfaces:AsosVehicleTechnicalDetailsANDLIVO-->
+</xs:sequence>
+</xs:extension>
+<!-- Originally extension base was interfaces:AsosAssetANDLIVO-->
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosAssetDaskANDLIVO">
+<xs:complexContent>
+<xs:extension base="AsosAssetANDLIVO">
+<xs:sequence>
+<xs:element minOccurs="0" name="commAddressSameAsRiskAddress" type="xs:boolean"/>
+<xs:element minOccurs="0" name="communicationAddressInfo" type="AsosPolicyAddressInfoANDLIVO"/>
+<!-- Originally element communicationAddressInfo type was interfaces:AsosPolicyAddressInfoANDLIVO-->
+<xs:element minOccurs="0" name="daskApartmentFloorNumberANDLVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TDaskApartmentFloorNumberANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element daskApartmentFloorNumberANDLVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="daskApartmentUsageTypeANDLVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TDaskApartmentUsageTypeANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element daskApartmentUsageTypeANDLVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="daskBuildingConditionANDLVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TDaskBuildingConditionANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element daskBuildingConditionANDLVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="daskConstructionTypeANDLVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TDaskConstructionTypeANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element daskConstructionTypeANDLVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="daskConstructionYearANDLVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TDaskConstructionYearANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element daskConstructionYearANDLVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="daskPolicyHolderRoleANDLVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TDaskPolicyHolderRoleANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element daskPolicyHolderRoleANDLVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="daskTotalFloorCountANDLVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TDaskTotalFloorCountANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element daskTotalFloorCountANDLVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="documentDateNo" type="xs:string"/>
+<xs:element minOccurs="0" name="grossBuildingArea" type="xs:double"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="loanInfo" type="AsosAssetLoanInfoANDLIVO"/>
+<!-- Originally element loanInfo type was interfaces:AsosAssetLoanInfoANDLIVO-->
+<xs:element minOccurs="0" name="mortgageFlag" type="xs:long"/>
+<xs:element minOccurs="0" name="renewalPeriod" type="xs:int"/>
+<xs:element minOccurs="0" name="riskAddressInfo" type="AsosPolicyAddressInfoANDLIVO"/>
+<!-- Originally element riskAddressInfo type was interfaces:AsosPolicyAddressInfoANDLIVO-->
+<xs:element minOccurs="0" name="usePolicyHolderResidenceAddress" type="xs:boolean"/>
+<xs:element minOccurs="0" name="zasApartmentFloorNumberANDLVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TDaskApartmentFloorNumberANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element zasApartmentFloorNumberANDLVORef type was interfaces:TInterfacesMessageTypeVORef-->
+</xs:sequence>
+</xs:extension>
+<!-- Originally extension base was interfaces:AsosAssetANDLIVO-->
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosAssetFireANDLIVO">
+<xs:complexContent>
+<xs:extension base="AsosAssetANDLIVO">
+<xs:sequence>
+<xs:element minOccurs="0" name="buildingConstructionYear" type="xs:int"/>
+<xs:element minOccurs="0" name="buildingSumInsured" type="xs:double"/>
+<xs:element minOccurs="0" name="constructionModelVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TConstructionModelANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element constructionModelVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="constructionTypeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.policy.common.reference.vo.TConstructionTypeVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element constructionTypeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="ecEquipmentTypesVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TEcEquipmentTypesANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element ecEquipmentTypesVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="fireGlassBreakageLimitsANDLVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TFireGlassBreakageLimitsANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element fireGlassBreakageLimitsANDLVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="fireIsolationLimitsANDLVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TFireIsolationLimitsANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element fireIsolationLimitsANDLVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="glassFireSumInsured" type="xs:double"/>
+<xs:element minOccurs="0" name="goodSumInsured" type="xs:double"/>
+<xs:element minOccurs="0" name="grossBuildingArea" type="xs:double"/>
+<xs:element minOccurs="0" name="houseEmptyInd" type="xs:boolean"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="inBuildingLocationVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TInBuildingLocationANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element inBuildingLocationVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="isFirstHome" type="xs:boolean"/>
+<xs:element minOccurs="0" name="itemSumInsuredVOList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="itemSumInsuredVO" type="AsosItemSumInsuredANDLIVO"/>
+<!-- Originally element itemSumInsuredVO type was interfaces:AsosItemSumInsuredANDLIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="jewelryRatioVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TJewelryRatioANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element jewelryRatioVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="loanInfo" type="AsosAssetLoanInfoANDLIVO"/>
+<!-- Originally element loanInfo type was interfaces:AsosAssetLoanInfoANDLIVO-->
+<xs:element minOccurs="0" name="lobBusinessActivityTypeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.policy.common.reference.vo.TLobBusinessActivityTypeVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element lobBusinessActivityTypeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="mkEquipmentTypesANDLVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TMkEquipmentTypesANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element mkEquipmentTypesANDLVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="mortgageFlag" type="xs:long"/>
+<xs:element minOccurs="0" name="policyInsuredObjectVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TPolicyInsuredObjectANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element policyInsuredObjectVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="policyPackageVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TPolicyPackagesANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element policyPackageVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="riskAddressInfo" type="AsosPolicyAddressInfoANDLIVO"/>
+<!-- Originally element riskAddressInfo type was interfaces:AsosPolicyAddressInfoANDLIVO-->
+<xs:element minOccurs="0" name="totalFloorCountVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TDaskTotalFloorCountANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element totalFloorCountVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="uavtAddressCode" type="xs:string"/>
+<xs:element minOccurs="0" name="valuableContentsRatioVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TValuableContentsRatioANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element valuableContentsRatioVORef type was interfaces:TInterfacesMessageTypeVORef-->
+</xs:sequence>
+</xs:extension>
+<!-- Originally extension base was interfaces:AsosAssetANDLIVO-->
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosAssetFlightANDLIVO">
+<xs:complexContent>
+<xs:extension base="AsosAssetANDLIVO">
+<xs:sequence>
+<xs:element minOccurs="0" name="flightFromDestinationVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TFlightAirlinesANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element flightFromDestinationVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="flightTicketDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="flightTicketNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="flightToDestinationVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TFlightAirlinesANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element flightToDestinationVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+</xs:sequence>
+</xs:extension>
+<!-- Originally extension base was interfaces:AsosAssetANDLIVO-->
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosAssetGroupHealthChildANDLIVO">
+<xs:complexContent>
+<xs:extension base="AsosAssetANDLIVO">
+<xs:sequence>
+<xs:element minOccurs="0" name="birthDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="department" type="xs:string"/>
+<xs:element minOccurs="0" name="email" type="xs:string"/>
+<xs:element minOccurs="0" name="employeeId" type="xs:string"/>
+<xs:element minOccurs="0" name="employeeIdentifierValue" type="xs:string"/>
+<xs:element minOccurs="0" name="familyAffinityType" type="xs:long"/>
+<xs:element minOccurs="0" name="identifierType" type="xs:long"/>
+<xs:element minOccurs="0" name="identifierValue" type="xs:string"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="insuredName" type="xs:string"/>
+<xs:element minOccurs="0" name="insuredPolicyNo" type="xs:string"/>
+<xs:element minOccurs="0" name="insuredSurname" type="xs:string"/>
+<xs:element minOccurs="0" name="masterPolicyNo" type="xs:string"/>
+<xs:element minOccurs="0" name="optionalCover1" type="xs:string"/>
+<xs:element minOccurs="0" name="optionalCover2" type="xs:string"/>
+<xs:element minOccurs="0" name="phoneNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="planInfo" type="xs:string"/>
+<xs:element minOccurs="0" name="policyEndorsementStartDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="sequenceNumber" type="xs:long"/>
+<xs:element minOccurs="0" name="subMasterInfo" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+<!-- Originally extension base was interfaces:AsosAssetANDLIVO-->
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosAssetGroupHealthMainANDLIVO">
+<xs:complexContent>
+<xs:extension base="AsosAssetANDLIVO">
+<xs:sequence>
+<xs:element minOccurs="0" name="childPolicyObjectList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="childPolicyObject" type="AsosAssetGroupHealthChildANDLIVO"/>
+<!-- Originally element childPolicyObject type was interfaces:AsosAssetGroupHealthChildANDLIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="masterPolicyObject" type="AsosAssetGroupHealthMasterANDLIVO"/>
+<!-- Originally element masterPolicyObject type was interfaces:AsosAssetGroupHealthMasterANDLIVO-->
+</xs:sequence>
+</xs:extension>
+<!-- Originally extension base was interfaces:AsosAssetANDLIVO-->
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosAssetGroupHealthMasterANDLIVO">
+<xs:complexContent>
+<xs:extension base="AsosAssetANDLIVO">
+<xs:sequence>
+<xs:element minOccurs="0" name="contractDetails" type="PGroupHealthContractANDLIVO"/>
+<!-- Originally element contractDetails type was interfaces:PGroupHealthContractANDLIVO-->
+<xs:element minOccurs="0" name="endorsementEndDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="endorsementStartDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="policyEndDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="policyGlobalLimitsList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="policyGlobalLimits" type="PGroupHealthGlobalLimitANDLIVO"/>
+<!-- Originally element policyGlobalLimits type was interfaces:PGroupHealthGlobalLimitANDLIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="policyHolderContactId" type="xs:long"/>
+<xs:element minOccurs="0" name="policyHolderContactNo" type="xs:long"/>
+<xs:element minOccurs="0" name="policyPlansList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="policyPlans" type="PGroupHealthPlanANDLIVO"/>
+<!-- Originally element policyPlans type was interfaces:PGroupHealthPlanANDLIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="policyStartDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="policySubMastersList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="policySubMasters" type="PGroupHealthSubMasterPlanANDLIVO"/>
+<!-- Originally element policySubMasters type was interfaces:PGroupHealthSubMasterPlanANDLIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="policyType" type="xs:long"/>
+<xs:element minOccurs="0" name="policyTypeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TPolicyTypeANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element policyTypeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+</xs:sequence>
+</xs:extension>
+<!-- Originally extension base was interfaces:AsosAssetANDLIVO-->
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosAssetHealthANDLIVO">
+<xs:complexContent>
+<xs:extension base="AsosAssetANDLIVO">
+<xs:sequence>
+<xs:element minOccurs="0" name="annualNumberVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TPersonalHealthAnnualNumberANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element annualNumberVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="1" name="externalContactNumber" type="xs:string">
+<xs:annotation>
+<xs:documentation xml:lang="en">externalContactNumber</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="1" name="familyAffinityTypeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation xml:lang="en">familyAffinityTypeVORef</xs:documentation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TFamilyAffinityTypeANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element familyAffinityTypeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="1" name="height" type="xs:double">
+<xs:annotation>
+<xs:documentation xml:lang="en">height</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="1" name="weight" type="xs:double">
+<xs:annotation>
+<xs:documentation xml:lang="en">weight</xs:documentation>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+<!-- Originally extension base was interfaces:AsosAssetANDLIVO-->
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosAssetMarineANDLIVO">
+<xs:complexContent>
+<xs:extension base="AsosAssetANDLIVO">
+<xs:sequence>
+<xs:element minOccurs="0" name="builtYear" type="xs:long"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="maxSpeed" type="xs:string"/>
+<xs:element minOccurs="0" name="numberOfCrew" type="xs:int"/>
+<xs:element minOccurs="0" name="numberOfPassengers" type="xs:int"/>
+<xs:element minOccurs="0" name="permanentMooringPort" type="xs:string"/>
+<xs:element minOccurs="0" name="purposeOfUse" type="xs:string"/>
+<xs:element minOccurs="0" name="totalHullMachineryAmount" type="xs:double"/>
+<xs:element minOccurs="0" name="totalServiceMotorsAmount" type="xs:double"/>
+<xs:element minOccurs="0" name="totalSpecialEquipAmount" type="xs:double"/>
+<xs:element minOccurs="0" name="tradingArea" type="xs:string"/>
+<xs:element minOccurs="0" name="yachtConstructionType" type="xs:string"/>
+<xs:element minOccurs="0" name="yachtFlag" type="xs:string"/>
+<xs:element minOccurs="0" name="yachtLength" type="xs:double"/>
+<xs:element minOccurs="0" name="yachtMake" type="xs:string"/>
+<xs:element minOccurs="0" name="yachtName" type="xs:string"/>
+<xs:element minOccurs="0" name="yachtType" type="xs:string"/>
+<xs:element minOccurs="0" name="yachtWidth" type="xs:double"/>
+</xs:sequence>
+</xs:extension>
+<!-- Originally extension base was interfaces:AsosAssetANDLIVO-->
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosAssetMilitaryANDLIVO">
+<xs:complexContent>
+<xs:extension base="AsosAssetANDLIVO">
+<xs:sequence>
+<xs:element minOccurs="0" name="cityVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.contact.common.vo.setup.CityVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element cityVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="deviceId" type="xs:string"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="militaryDepartmentVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.business.vo.TMilitaryDepartmentANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element militaryDepartmentVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="nameOfBaseVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.business.vo.TNameOfBaseANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element nameOfBaseVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="tariffTypeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TTariffForPASoldierANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element tariffTypeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="titleOfPersonVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TPersonTitleForPASANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element titleOfPersonVORef type was interfaces:TInterfacesMessageTypeVORef-->
+</xs:sequence>
+</xs:extension>
+<!-- Originally extension base was interfaces:AsosAssetANDLIVO-->
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosAssetMobileDevicesANDLIVO">
+<xs:complexContent>
+<xs:extension base="AsosAssetANDLIVO">
+<xs:sequence>
+<xs:element minOccurs="0" name="deviceBrand" type="xs:string"/>
+<xs:element minOccurs="0" name="deviceCapacity" type="xs:string"/>
+<xs:element minOccurs="0" name="deviceCarrier" type="xs:string"/>
+<xs:element minOccurs="0" name="deviceGeneration" type="xs:string"/>
+<xs:element minOccurs="0" name="deviceImei" type="xs:string"/>
+<xs:element minOccurs="0" name="deviceIpAddress" type="xs:string"/>
+<xs:element minOccurs="0" name="deviceMacAddress" type="xs:string"/>
+<xs:element minOccurs="0" name="deviceManufacture" type="xs:string"/>
+<xs:element minOccurs="0" name="deviceModel" type="xs:string"/>
+<xs:element minOccurs="0" name="deviceModelYear" type="xs:long"/>
+<xs:element minOccurs="0" name="deviceName" type="xs:string"/>
+<xs:element minOccurs="0" name="deviceUID" type="xs:string"/>
+<xs:element minOccurs="0" name="deviceValue" type="xs:double"/>
+<xs:element minOccurs="0" name="deviceVersion" type="xs:string"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+</xs:sequence>
+</xs:extension>
+<!-- Originally extension base was interfaces:AsosAssetANDLIVO-->
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosAssetPersonalAccidentANDLIVO">
+<xs:complexContent>
+<xs:extension base="AsosAssetANDLIVO">
+<xs:sequence>
+<xs:element minOccurs="0" name="externalContactNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+</xs:sequence>
+</xs:extension>
+<!-- Originally extension base was interfaces:AsosAssetANDLIVO-->
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosAssetPetANDLIVO">
+<xs:complexContent>
+<xs:extension base="AsosAssetANDLIVO">
+<xs:sequence>
+<xs:element minOccurs="0" name="breed" type="xs:string"/>
+<xs:element minOccurs="0" name="chipNo" type="xs:string"/>
+<xs:element minOccurs="0" name="colour" type="xs:string"/>
+<xs:element minOccurs="0" name="dateOfBirth" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="giftPolicyFlag" type="xs:boolean"/>
+<xs:element minOccurs="0" name="hasPatiCardDiscountFlag" type="xs:boolean"/>
+<xs:element minOccurs="0" name="hasPatiCardFlag" type="xs:boolean"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="patiCardNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="petGenderVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TAnimalGenderANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element petGenderVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="petName" type="xs:string"/>
+<xs:element minOccurs="0" name="petTypeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TPetTypeANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element petTypeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+</xs:sequence>
+</xs:extension>
+<!-- Originally extension base was interfaces:AsosAssetANDLIVO-->
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosAssetQuickQuoteANDLIVO">
+<xs:complexContent>
+<xs:extension base="AsosAssetANDLIVO">
+<xs:sequence>
+<xs:element minOccurs="0" name="affinityTypeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TFamilyAffinityTypeANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element affinityTypeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="cityCode" type="xs:string"/>
+<xs:element minOccurs="0" name="dateOfBirth" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="firstName" type="xs:string"/>
+<xs:element minOccurs="0" name="genderVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.contact.common.vo.reference.TGenderVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element genderVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="idTypeRef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.contact.common.vo.reference.TIdTypeVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element idTypeRef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="idValue" type="xs:string"/>
+<xs:element minOccurs="0" name="lastName" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+<!-- Originally extension base was interfaces:AsosAssetANDLIVO-->
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosAssetTPLANDLIVO">
+<xs:complexContent>
+<xs:extension base="AsosAssetANDLIVO">
+<xs:sequence>
+<xs:element minOccurs="0" name="asbisRefNo" type="xs:string"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="licencePlateInfo" type="AsosLicencePlateInfoANDLIVO"/>
+<!-- Originally element licencePlateInfo type was interfaces:AsosLicencePlateInfoANDLIVO-->
+<xs:element minOccurs="0" name="referencePolicy" type="AsosReferencePolicyInfoANDLIVO"/>
+<!-- Originally element referencePolicy type was interfaces:AsosReferencePolicyInfoANDLIVO-->
+<xs:element minOccurs="0" name="registrySerialCode" type="xs:string"/>
+<xs:element minOccurs="0" name="registrySerialNo" type="xs:string"/>
+<xs:element minOccurs="0" name="shortTermPolicy" type="xs:boolean"/>
+<xs:element minOccurs="0" name="vehicleDetails" type="AsosVehicleDetailsANDLIVO"/>
+<!-- Originally element vehicleDetails type was interfaces:AsosVehicleDetailsANDLIVO-->
+<xs:element minOccurs="0" name="vehicleRegistryDetails" type="AsosVehicleRegistryDetailsANDLIVO"/>
+<!-- Originally element vehicleRegistryDetails type was interfaces:AsosVehicleRegistryDetailsANDLIVO-->
+<xs:element minOccurs="0" name="vehicleTechnicalDetails" type="AsosVehicleTechnicalDetailsANDLIVO"/>
+<!-- Originally element vehicleTechnicalDetails type was interfaces:AsosVehicleTechnicalDetailsANDLIVO-->
+</xs:sequence>
+</xs:extension>
+<!-- Originally extension base was interfaces:AsosAssetANDLIVO-->
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosAssetTicketANDLIVO">
+<xs:complexContent>
+<xs:extension base="AsosAssetANDLIVO">
+<xs:sequence>
+<xs:element minOccurs="0" name="externalContactNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="flightTicketInfoList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="flightTicketInfo" type="AsosAssetTicketFlightANDLIVO"/>
+<!-- Originally element flightTicketInfo type was interfaces:AsosAssetTicketFlightANDLIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="intentionTypeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TTicketIntentionTypeANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element intentionTypeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="ticketNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="ticketPrice" type="xs:double"/>
+</xs:sequence>
+</xs:extension>
+<!-- Originally extension base was interfaces:AsosAssetANDLIVO-->
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosAssetTravelANDLIVO">
+<xs:complexContent>
+<xs:extension base="AsosAssetANDLIVO">
+<xs:sequence>
+<xs:element minOccurs="0" name="externalContactNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="firstCountryToBeVisitedVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.reference.common.vo.TCountryVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element firstCountryToBeVisitedVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+</xs:sequence>
+</xs:extension>
+<!-- Originally extension base was interfaces:AsosAssetANDLIVO-->
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosPolicyDaskRelatedParamsANDLIVO">
+<xs:complexContent>
+<xs:extension base="AsosProductRelatedParamsANDLIVO">
+<xs:sequence>
+<xs:element minOccurs="0" name="amountControlMode" type="xs:boolean"/>
+<xs:element minOccurs="0" name="endorsementNum" type="xs:long"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="insuranceAmountTl" type="xs:double"/>
+<xs:element minOccurs="0" name="isOtherCompanyPolicy" type="xs:boolean"/>
+<xs:element minOccurs="0" name="netPremiumTL" type="xs:double"/>
+<xs:element minOccurs="0" name="policyEndDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="policyNum" type="xs:long"/>
+<xs:element minOccurs="0" name="policyStartDate" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="renewalNum" type="xs:long"/>
+</xs:sequence>
+</xs:extension>
+<!-- Originally extension base was interfaces:AsosProductRelatedParamsANDLIVO-->
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosPolicyFireIndRelatedParamsANDLIVO">
+<xs:complexContent>
+<xs:extension base="AsosProductRelatedParamsANDLIVO">
+<xs:sequence>
+<xs:element minOccurs="0" name="adjustmentRatio" type="xs:double"/>
+<xs:element minOccurs="0" name="adjustmentType" type="xs:string"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+</xs:sequence>
+</xs:extension>
+<!-- Originally extension base was interfaces:AsosProductRelatedParamsANDLIVO-->
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosPolicyHealthRelatedParamsANDLIVO">
+<xs:complexContent>
+<xs:extension base="AsosProductRelatedParamsANDLIVO">
+<xs:sequence>
+<xs:element minOccurs="0" name="healthDeclaration" type="xs:boolean"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="isCreateProposal" type="xs:boolean"/>
+<xs:element minOccurs="0" name="networkTypeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TNetworkTypeANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element networkTypeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="packageVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TPersonalHealthPackageANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element packageVORef type was interfaces:TInterfacesMessageTypeVORef-->
+</xs:sequence>
+</xs:extension>
+<!-- Originally extension base was interfaces:AsosProductRelatedParamsANDLIVO-->
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosPolicyMilitaryRelatedParamsANDLIVO">
+<xs:complexContent>
+<xs:extension base="AsosProductRelatedParamsANDLIVO">
+<xs:sequence>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="policySerialNumber" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+<!-- Originally extension base was interfaces:AsosProductRelatedParamsANDLIVO-->
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosPolicyMotorRelatedParamsANDLIVO">
+<xs:complexContent>
+<xs:extension base="AsosProductRelatedParamsANDLIVO">
+<xs:sequence>
+<xs:element minOccurs="0" name="additionalEquipmentInfoList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="additionalEquipmentInfo" type="AsosAssetVehicleAddEquipANDLIVO"/>
+<!-- Originally element additionalEquipmentInfo type was interfaces:AsosAssetVehicleAddEquipANDLIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="beneficiaryList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="beneficiary" type="AsosAssetVehicleBeneficiaryANDLIVO"/>
+<!-- Originally element beneficiary type was interfaces:AsosAssetVehicleBeneficiaryANDLIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="passengerInfo" type="AsosAssetVehiclePassengerInfoANDLIVO"/>
+<!-- Originally element passengerInfo type was interfaces:AsosAssetVehiclePassengerInfoANDLIVO-->
+<xs:element minOccurs="0" name="personalBelongingAmount" type="xs:double"/>
+<xs:element minOccurs="0" name="vehicleCargoInfoList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="vehicleCargoInfo" type="AsosAssetVehicleCargoInfoANDLIVO"/>
+<!-- Originally element vehicleCargoInfo type was interfaces:AsosAssetVehicleCargoInfoANDLIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+<!-- Originally extension base was interfaces:AsosProductRelatedParamsANDLIVO-->
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosPolicyPersonalAccidentRelatedParamsANDLIVO">
+<xs:complexContent>
+<xs:extension base="AsosProductRelatedParamsANDLIVO">
+<xs:sequence>
+<xs:element minOccurs="0" name="adjustmentRatio" type="xs:double"/>
+<xs:element minOccurs="0" name="adjustmentType" type="xs:string"/>
+<xs:element minOccurs="0" name="beneficiaryList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="beneficiary" type="AsosAssetPersonBeneficiaryANDLIVO"/>
+<!-- Originally element beneficiary type was interfaces:AsosAssetPersonBeneficiaryANDLIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="packageTypeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TPersonalAccidentTypeANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element packageTypeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+</xs:sequence>
+</xs:extension>
+<!-- Originally extension base was interfaces:AsosProductRelatedParamsANDLIVO-->
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosPolicyPetInsuranceRelatedParamsANDLIVO">
+<xs:complexContent>
+<xs:extension base="AsosProductRelatedParamsANDLIVO">
+<xs:sequence>
+<xs:element minOccurs="0" name="cardNo" type="xs:string"/>
+<xs:element minOccurs="0" name="giftPolicyFlag" type="xs:boolean"/>
+<xs:element minOccurs="0" name="hasPatiCardDiscountFlag" type="xs:boolean"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="petCardExists" type="xs:boolean"/>
+</xs:sequence>
+</xs:extension>
+<!-- Originally extension base was interfaces:AsosProductRelatedParamsANDLIVO-->
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosPolicyTravelRelatedParamsANDLIVO">
+<xs:complexContent>
+<xs:extension base="AsosProductRelatedParamsANDLIVO">
+<xs:sequence>
+<xs:element minOccurs="0" name="adjustmentRatio" type="xs:double"/>
+<xs:element minOccurs="0" name="adjustmentType" type="xs:string"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="oneYearPolicyOptionVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TTravelOneYearOptionANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element oneYearPolicyOptionVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="travelRegionVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.policy.common.reference.vo.TTravelRegionVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element travelRegionVORef type was interfaces:TInterfacesMessageTypeVORef-->
+</xs:sequence>
+</xs:extension>
+<!-- Originally extension base was interfaces:AsosProductRelatedParamsANDLIVO-->
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType final="restriction" name="AsosAssetPersonBeneficiaryANDLIVO">
+<xs:all>
+<xs:element minOccurs="0" name="aggreementNo" type="xs:string"/>
+<xs:element minOccurs="0" name="beneficiarySubTypeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TBeneficiarySubTypeANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element beneficiarySubTypeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="beneficiaryTypeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.policy.common.reference.vo.TLossPayeeTypeANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element beneficiaryTypeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="emailStructure" type="AsosContactEmailStructureANDLIVO"/>
+<!-- Originally element emailStructure type was interfaces:AsosContactEmailStructureANDLIVO-->
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="idValue" type="xs:string"/>
+<xs:element minOccurs="0" name="idValueBranch" type="xs:string"/>
+<xs:element minOccurs="0" name="telephoneStructure" type="AsosContactTelephoneStructureANDLIVO"/>
+<!-- Originally element telephoneStructure type was interfaces:AsosContactTelephoneStructureANDLIVO-->
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="TAmountIVO">
+<xs:all>
+<xs:element minOccurs="0" name="amount" type="xs:double"/>
+<xs:element minOccurs="0" name="amountIndexVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.reference.common.vo.TIndexVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element amountIndexVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="amountRate" type="xs:double"/>
+<xs:element minOccurs="0" name="amountSystem" type="xs:double"/>
+<xs:element minOccurs="0" name="basisAmountIndexVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.reference.common.vo.TIndexVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element basisAmountIndexVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="basisAmountSystem" type="xs:double"/>
+<xs:element minOccurs="0" name="currencyVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.reference.common.vo.TCurrencyVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element currencyVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="desc" type="xs:string"/>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="rateDate" type="xs:dateTime"/>
+</xs:all>
+<xs:attribute name="updateVersion" type="xs:long"/>
+<xs:attribute name="id" type="xs:long"/>
+<xs:attribute name="main" type="xs:boolean"/>
+<xs:attribute name="system_id" type="xs:long"/>
+</xs:complexType>
+<xs:complexType final="restriction" name="ContactAddressIVO">
+<xs:complexContent>
+<xs:extension base="SuperDispatchIVO">
+<xs:sequence>
+<xs:element minOccurs="1" name="addressIVO" type="AddressIVO">
+<xs:annotation>
+<xs:documentation xml:lang="en">Address details</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element addressIVO type was interfaces:AddressIVO-->
+<xs:element minOccurs="1" name="addressTypeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation xml:lang="en">Address type ,Reference to T_ADDRESS_TYPE .</xs:documentation>
+<xs:documentation xml:lang="re">513882</xs:documentation>
+<xs:documentation>original type: class com.idit.contact.common.vo.reference.TAddressTypeVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element addressTypeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="discontinueDate" type="xs:dateTime">
+<xs:annotation>
+<xs:documentation xml:lang="en">date of the item deactivation, Should be used in case inactive telephones should be converted</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="incorrectAddress" type="xs:boolean"/>
+<xs:element minOccurs="0" name="isCorrespondingAddress" type="xs:boolean"/>
+<xs:element minOccurs="0" name="languageVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation xml:lang="en">Address language - foreign key to T_LANGUAGE. This field allows sending output documents in multi language implementations</xs:documentation>
+<xs:documentation>original type: class com.idit.reference.common.vo.TLanguageVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element languageVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="relatedAgencyList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="relatedAgency" type="RelatedAgencyANDLIVO"/>
+<!-- Originally element relatedAgency type was interfaces:RelatedAgencyANDLIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="updateDate" type="xs:dateTime"/>
+</xs:sequence>
+</xs:extension>
+<!-- Originally extension base was interfaces:SuperDispatchIVO-->
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType final="restriction" name="ContactEmailIVO">
+<xs:complexContent>
+<xs:extension base="SuperDispatchIVO">
+<xs:sequence>
+<xs:element minOccurs="0" name="discontinueDate" type="xs:dateTime">
+<xs:annotation>
+<xs:documentation xml:lang="en">date of the item deactivation. Usedin case inactive email should be converted</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="email">
+<xs:annotation>
+<xs:documentation xml:lang="en">E-mail Address</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="50"/>
+<xs:minLength value="0"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element minOccurs="1" name="emailTypeVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation xml:lang="en">Identifier Type</xs:documentation>
+<xs:documentation>original type: class com.idit.contact.common.vo.reference.TEmailTypeVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element emailTypeVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="isVerified" type="xs:boolean"/>
+<xs:element minOccurs="0" name="relatedAgencyList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="relatedAgency" type="RelatedAgencyANDLIVO"/>
+<!-- Originally element relatedAgency type was interfaces:RelatedAgencyANDLIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="salesChannelVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.reference.common.vo.TSalesChannelVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element salesChannelVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="updateDate" type="xs:dateTime"/>
+</xs:sequence>
+</xs:extension>
+<!-- Originally extension base was interfaces:SuperDispatchIVO-->
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType final="restriction" name="ContactTelephoneIVO">
+<xs:complexContent>
+<xs:extension base="SuperDispatchIVO">
+<xs:sequence>
+<xs:element minOccurs="1" name="countryDialCodeRef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation xml:lang="en">Country code. Foreign key to t_country_dial_code</xs:documentation>
+<xs:documentation xml:lang="tr">Ülke Kodu.</xs:documentation>
+<xs:documentation>original type: class com.idit.contact.common.vo.reference.TCountryDialCodeVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element countryDialCodeRef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="discontinueDate" type="xs:dateTime">
+<xs:annotation>
+<xs:documentation xml:lang="en">date of the item deactivation. Usedin case inactive telephones be converted</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="iditMessageId" type="xs:long"/>
+<xs:element minOccurs="0" name="isVerified" type="xs:boolean"/>
+<xs:element minOccurs="0" name="relatedAgencyList">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="relatedAgency" type="RelatedAgencyANDLIVO"/>
+<!-- Originally element relatedAgency type was interfaces:RelatedAgencyANDLIVO-->
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="remarks" type="xs:string">
+<xs:annotation>
+<xs:documentation xml:lang="en">Remarks</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="0" name="salesChannelVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.reference.common.vo.TSalesChannelVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element salesChannelVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="sourceSystemVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation>original type: class com.idit.andl.contact.common.vo.reference.TPhoneApprovedSourceSystemANDLVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element sourceSystemVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="telephoneExtension">
+<xs:annotation>
+<xs:documentation xml:lang="en">Telephone extension</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="4"/>
+<xs:minLength value="0"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element minOccurs="0" name="telephoneNumber">
+<xs:annotation>
+<xs:documentation xml:lang="en">telephone number . (should be 7 chars).</xs:documentation>
+<xs:documentation xml:lang="re">513819</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="10"/>
+<xs:minLength value="0"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element minOccurs="1" name="telephonePrefix">
+<xs:annotation>
+<xs:documentation xml:lang="en">Phone number area code - foreign key to T_TELEPHONE_PREFIX. Used in the implementations with limited list of area codes.</xs:documentation>
+<xs:documentation xml:lang="re">513820</xs:documentation>
+</xs:annotation>
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:maxLength value="5"/>
+<xs:minLength value="1"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+<xs:element minOccurs="0" name="telephonePrefixVORef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation xml:lang="en">Area dial code. Foreign key to t_telephone_prefix</xs:documentation>
+<xs:documentation>original type: class com.idit.contact.common.vo.setup.TTelephonePrefixVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element telephonePrefixVORef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="1" name="telephoneTypeRef" type="GenericVORef">
+<xs:annotation>
+<xs:documentation xml:lang="en">Phone Type - reference to T_TELEPHONE_TYPE .</xs:documentation>
+<xs:documentation xml:lang="re">513822</xs:documentation>
+<xs:documentation>original type: class com.idit.contact.common.vo.reference.TTelephoneTypeVO</xs:documentation>
+</xs:annotation>
+</xs:element>
+<!-- Originally element telephoneTypeRef type was interfaces:TInterfacesMessageTypeVORef-->
+<xs:element minOccurs="0" name="updateDate" type="xs:dateTime"/>
+</xs:sequence>
+</xs:extension>
+<!-- Originally extension base was interfaces:SuperDispatchIVO-->
+</xs:complexContent>
+</xs:complexType>
+</xs:schema>

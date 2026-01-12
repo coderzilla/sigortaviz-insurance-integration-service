@@ -1,0 +1,856 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "x-ibm-name": "asosissuepolicyfromproposal-apigw",
+    "title": "AsosIssuePolicyFromProposal",
+    "version": "1.0.0",
+    "description": "Bu web servis asosCreateProposal servisi ile oluşturulan tekliflerin poliçelendirilmesi için kullanılacaktır."
+  },
+  "schemes": [
+    "https"
+  ],
+  "basePath": "/api/agency/asos",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/xml",
+    "application/json"
+  ],
+  "securityDefinitions": {
+    "asosoauth20api": {
+      "description": "",
+      "flow": "password",
+      "scopes": {
+        "asos": ""
+      },
+      "tokenUrl": "/asosoauth20api/oauth2/token",
+      "type": "oauth2",
+      "x-ibm-oauth-provider": "asosoauth20api-1-0-0-7b06-apigw",
+      "x-scopeValidate": {
+        "tls-profile": "",
+        "url": ""
+      }
+    },
+    "clientIdHeader": {
+      "in": "header",
+      "name": "X-IBM-Client-Id",
+      "type": "apiKey"
+    },
+    "clientSecretHeader": {
+      "description": "",
+      "in": "header",
+      "name": "X-IBM-Client-Secret",
+      "type": "apiKey"
+    }
+  },
+  "security": [
+    {
+      "clientIdHeader": [],
+      "clientSecretHeader": [],
+      "asosoauth20api": [
+        "asos"
+      ]
+    }
+  ],
+  "x-ibm-configuration": {
+    "testable": true,
+    "enforced": true,
+    "cors": {
+      "enabled": true
+    },
+    "phase": "realized",
+    "type": "rest",
+    "servers": [
+      {
+        "url": "https://apitest.anadolusigorta.com.tr/api/agency/asos",
+        "description": "",
+        "type": [
+          "production",
+          "development"
+        ]
+      }
+    ],
+    "oauth-servers": {
+      "asosoauth20api": {
+        "tokenUrls": [
+          "https://apitest.anadolusigorta.com.tr/api/agency/asosoauth20api/oauth2/token"
+        ],
+        "authorizationUrls": [],
+        "refreshUrls": []
+      }
+    }
+  },
+  "paths": {
+    "/issuePolicyFromProposal": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "200 OK"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "apiInput",
+          "required": true,
+          "in": "body",
+          "schema": {
+            "$ref": "#/definitions/IssuePolicyFromProposalInput"
+          },
+          "description": "Input data to call API"
+        },
+        {
+          "name": "consumercontextcode",
+          "type": "string",
+          "required": true,
+          "in": "header",
+          "description": "Consumer Context Code"
+        },
+        {
+          "name": "consumercontextuser",
+          "type": "string",
+          "required": true,
+          "in": "header",
+          "description": "Consumer Context User"
+        },
+        {
+          "name": "consumerchannelcode",
+          "type": "string",
+          "required": true,
+          "in": "header",
+          "description": "Consumer Context Channel Code"
+        },
+        {
+          "name": "ASOS_ENV",
+          "type": "string",
+          "required": false,
+          "in": "header"
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "SOAPHeader": {
+      "description": "",
+      "type": "object",
+      "properties": {
+        "consumerContext": {
+          "type": "object",
+          "properties": {
+            "lang": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "consumerCode": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "channelCode": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "userName": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "messageId": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "messageGroupId": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "customerContext": {
+              "type": "object",
+              "properties": {
+                "customer": {
+                  "type": "object",
+                  "properties": {
+                    "customerNumber": {
+                      "type": "string",
+                      "xml": {
+                        "namespace": ""
+                      }
+                    }
+                  },
+                  "xml": {
+                    "namespace": ""
+                  }
+                }
+              },
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "clientRequestTimestamp": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "organizationUnitCode": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "sessionId": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "ipAddress": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "serverInstanceId": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "type": {
+              "type": "string",
+              "xml": {
+                "attribute": true,
+                "prefix": "xsi"
+              }
+            }
+          },
+          "xml": {
+            "namespace": "http://as.com/Technical/EA/Header/Schema/V1",
+            "prefix": "as"
+          }
+        },
+        "Security": {
+          "type": "object",
+          "properties": {
+            "UsernameToken": {
+              "type": "object",
+              "properties": {
+                "Username": {
+                  "type": "string"
+                },
+                "Password": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "xml": {
+            "namespace": "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd",
+            "prefix": "wsse"
+          }
+        }
+      },
+      "xml": {
+        "namespace": ""
+      },
+      "example": "      <as:consumerContext xmlns:as=\"http://as.com/Technical/EA/Header/Schema/V1\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:type=\"as:IntWebAppContextType\">\n         <lang>tr</lang>\n         <consumerCode>acnt</consumerCode>\n         <channelCode>iWebApp</channelCode>\n         <userName>ESBACN340017</userName>\n         <messageId>f3e43a7d-6fbe-41e8-bac1-be674aaf20ca</messageId>\n         <messageGroupId>c349e8bc-5252-4a00-9f29-8a10951da3d2</messageGroupId>\n         <customerContext>\n            <customer>\n               <customerNumber>100</customerNumber>\n            </customer>\n         </customerContext>\n         <clientRequestTimestamp>2018-03-26 12:08:07.442</clientRequestTimestamp>\n         <organizationUnitCode>999999</organizationUnitCode>\n         <sessionId>65f27e82-a3bb-4792-8ab1-33a1d3846ace</sessionId>\n         <ipAddress>192.168.1.2</ipAddress>\n         <serverInstanceId>app1</serverInstanceId>\n      </as:consumerContext>\n      <wsse:Security xmlns:wsse=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\">\n         <wsse:UsernameToken>\n            <wsse:Username>ESBACN340017</wsse:Username>\n            <wsse:Password>Anad1001gs</wsse:Password>  \n         </wsse:UsernameToken>\n      </wsse:Security>"
+    },
+    "IssuePolicyFromProposalInput": {
+      "description": "",
+      "type": "object",
+      "properties": {
+        "Input": {
+          "type": "object",
+          "properties": {
+            "asosIssuePolicyFromProposalRequestANDLIVOinList": {
+              "type": "object",
+              "properties": {
+                "asosIssuePolicyFromProposalRequestANDLIVO": {
+                  "type": "object",
+                  "properties": {
+                    "main": {
+                      "type": "string"
+                    },
+                    "system_id": {
+                      "type": "string"
+                    },
+                    "orderId": {
+                      "type": "string"
+                    },
+                    "updateVersion": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "transactionId": {
+                      "type": "string"
+                    },
+                    "threeDSecure": {
+                      "type": "boolean"
+                    },
+                    "iditMessageId": {
+                      "type": "string"
+                    },
+                    "policyHeader": {
+                      "properties": {
+                        "productTypeVORef": {
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "extCode": {
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "policyStartDate": {
+                          "type": "string"
+                        },
+                        "subAgencyCode": {
+                          "type": "string"
+                        },
+                        "salesChannelVORef": {
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "extCode": {
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "agencyCode": {
+                          "type": "string"
+                        },
+                        "crossSaleID": {
+                          "type": "string"
+                        },
+                        "policyTypeVORef": {
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "extCode": {
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "iditMessageId": {
+                          "type": "string"
+                        },
+                        "policyCurrencyVORef": {
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "extCode": {
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "renewalPolicy": {
+                          "type": "boolean"
+                        },
+                        "policyEndDate": {
+                          "type": "string"
+                        },
+                        "updateVersion": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "main": {
+                          "type": "string"
+                        },
+                        "system_id": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "collectionInfo": {
+                      "type": "object",
+                      "properties": {
+                        "iditMessageId": {
+                          "type": "string"
+                        },
+                        "paymentInfo": {
+                          "type": "object",
+                          "properties": {
+                            "cardNumber": {
+                              "type": "string"
+                            },
+                            "cardType": {
+                              "type": "string"
+                            },
+                            "creditCardHolderName": {
+                              "type": "string"
+                            },
+                            "cvcCode": {
+                              "type": "string"
+                            },
+                            "expMonth": {
+                              "type": "string"
+                            },
+                            "expYear": {
+                              "type": "string"
+                            },
+                            "iditMessageId": {
+                              "type": "string"
+                            },
+                            "updateVersion": {
+                              "type": "string"
+                            },
+                            "id": {
+                              "type": "string"
+                            },
+                            "main": {
+                              "type": "boolean"
+                            },
+                            "system_id": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "paymentTerm": {
+                          "type": "object",
+                          "properties": {
+                            "collectionMethodVORef": {
+                              "type": "object",
+                              "properties": {
+                                "extCode": {
+                                  "type": "string"
+                                },
+                                "id": {
+                                  "type": "string"
+                                },
+                                "text": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "paymentsTermsVORef": {
+                              "type": "object",
+                              "properties": {
+                                "extCode": {
+                                  "type": "string"
+                                },
+                                "id": {
+                                  "type": "string"
+                                },
+                                "text": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "iditMessageId": {
+                              "type": "string"
+                            },
+                            "numOfInstallment": {
+                              "type": "string"
+                            },
+                            "cashReceived": {
+                              "type": "boolean"
+                            },
+                            "updateVersion": {
+                              "type": "string"
+                            },
+                            "id": {
+                              "type": "string"
+                            },
+                            "main": {
+                              "type": "boolean"
+                            },
+                            "system_id": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "main": {
+                          "type": "boolean"
+                        },
+                        "system_id": {
+                          "type": "string"
+                        },
+                        "updateVersion": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "policyKey": {
+                      "type": "object",
+                      "properties": {
+                        "endorsementNumber": {
+                          "type": "string"
+                        },
+                        "iditMessageId": {
+                          "type": "string"
+                        },
+                        "policyNumber": {
+                          "type": "string"
+                        },
+                        "proposalNumber": {
+                          "type": "string"
+                        },
+                        "proposalValidDate": {
+                          "type": "string"
+                        },
+                        "renewalNumber": {
+                          "type": "string"
+                        },
+                        "revisionNumber": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "main": {
+                          "type": "boolean"
+                        },
+                        "system_id": {
+                          "type": "string"
+                        },
+                        "updateVersion": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "example": "{\r\n  \"Input\": {\r\n    \"asosIssuePolicyFromProposalRequestANDLIVOinList\": {\r\n      \"asosIssuePolicyFromProposalRequestANDLIVO\": {\r\n        \"main\": \"true\",\r\n        \"system_id\": \"2000000\",\r\n        \"collectionInfo\": {\r\n          \"paymentInfo\": {\r\n            \"cardNumber\": \"4508034508034509\",\r\n            \"cardType\": \"70944186\",\r\n            \"creditCardHolderName\": \"murat varolgüneş\",\r\n            \"cvcCode\": \"000\",\r\n            \"expMonth\": \"10\",\r\n            \"expYear\": \"2025\"\r\n          },\r\n          \"paymentTerm\": {\r\n            \"collectionMethodVORef\": {\r\n              \"extCode\": \"4\",\r\n              \"id\": \"4\",\r\n              \"#text\": \"Sanal POS\"\r\n            },\r\n            \"paymentsTermsVORef\": {\r\n              \"extCode\": \"2000392\",\r\n              \"id\": \"2000392\",\r\n              \"#text\": \"Sanal POS Blokeli 4 Taksit\"\r\n            },\r\n            \"numOfInstallment\": \"4\"\r\n          }\r\n        },\r\n        \"policyKey\": {\r\n          \"proposalNumber\": \"0011932501\",\r\n          \"revisionNumber\": \"00\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}"
+    },
+    "AsosFaultSOAP": {
+      "description": "",
+      "type": "object",
+      "properties": {
+        "Envelope": {
+          "type": "object",
+          "properties": {
+            "Header": {
+              "type": "object"
+            },
+            "Body": {
+              "type": "object",
+              "properties": {
+                "Fault": {
+                  "type": "object",
+                  "properties": {
+                    "faultcode": {
+                      "type": "string",
+                      "xml": {
+                        "namespace": ""
+                      }
+                    },
+                    "faultstring": {
+                      "type": "string",
+                      "xml": {
+                        "namespace": ""
+                      }
+                    },
+                    "detail": {
+                      "type": "object",
+                      "properties": {
+                        "IDIT": {
+                          "type": "string",
+                          "xml": {
+                            "namespace": "http://idit/service/fault",
+                            "prefix": "IDIT_FAULT"
+                          }
+                        }
+                      },
+                      "xml": {
+                        "namespace": ""
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "xml": {
+            "namespace": "http://schemas.xmlsoap.org/soap/envelope/",
+            "prefix": "soapenv"
+          }
+        }
+      },
+      "xml": {
+        "namespace": ""
+      },
+      "example": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n   <soapenv:Header/>\r\n   <soapenv:Body>\r\n      <soapenv:Fault>\r\n         <faultcode>soapenv:GD8269</faultcode>\r\n         <faultstring>GD8269: Teknik hata.</faultstring>\r\n         <detail>\r\n            <IDIT_FAULT:IDIT xmlns:IDIT_FAULT=\"http://idit/service/fault\">InvocationTargetException. TargetException: null</IDIT_FAULT:IDIT>\r\n         </detail>\r\n      </soapenv:Fault>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>"
+    },
+    "FaultJSON": {
+      "description": "",
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "properties": {
+              "status": {
+                "type": "string"
+              },
+              "faultType": {
+                "type": "string"
+              },
+              "faultCode": {
+                "type": "string"
+              },
+              "faultMessage": {
+                "type": "string"
+              },
+              "detail": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
+        }
+      },
+      "example": "{\r\n\r\n  \"errors\": [\r\n\r\n    {\r\n\r\n                               \"status\": \"404\",\r\n\r\n                               \"faultType\":\"Business\",\r\n\r\n                               \"faultCode\": \"not found\",\r\n\r\n                               \"faultMessage\": \"ID not found\", \r\n\r\n                               \"detail\":\"detailed message\"\r\n\r\n    }\r\n\r\n  ]\r\n\r\n}\r\n"
+    },
+    "IssuePolicyFromProposalOutput": {
+      "description": "",
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object",
+          "properties": {
+            "asosIssuePolicyFromProposalResponseANDLIVO": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "main": {
+                  "type": "string"
+                },
+                "system_id": {
+                  "type": "string"
+                },
+                "updateVersion": {
+                  "type": "string"
+                },
+                "iditMessageId": {
+                  "type": "string"
+                },
+                "policyKey": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "main": {
+                      "type": "string"
+                    },
+                    "system_id": {
+                      "type": "string"
+                    },
+                    "updateVersion": {
+                      "type": "string"
+                    },
+                    "endorsementNumber": {
+                      "type": "string"
+                    },
+                    "iditMessageId": {
+                      "type": "string"
+                    },
+                    "policyNumber": {
+                      "type": "string"
+                    },
+                    "proposalNumber": {
+                      "type": "string"
+                    },
+                    "proposalValidDate": {
+                      "type": "string"
+                    },
+                    "renewalNumber": {
+                      "type": "string"
+                    },
+                    "revisionNumber": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "policySummary": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "main": {
+                      "type": "string"
+                    },
+                    "system_id": {
+                      "type": "string"
+                    },
+                    "updateVersion": {
+                      "type": "string"
+                    },
+                    "addressStatus": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "main": {
+                          "type": "string"
+                        },
+                        "system_id": {
+                          "type": "string"
+                        },
+                        "updateVersion": {
+                          "type": "string"
+                        },
+                        "addressStatusCode": {
+                          "type": "string"
+                        },
+                        "addressStatusExplanation": {
+                          "type": "string"
+                        },
+                        "iditMessageId": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "agencyCode": {
+                      "type": "string"
+                    },
+                    "iditMessageId": {
+                      "type": "string"
+                    },
+                    "policyEndDate": {
+                      "type": "string"
+                    },
+                    "policyStartDate": {
+                      "type": "string"
+                    },
+                    "premiumInfo": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "main": {
+                          "type": "string"
+                        },
+                        "system_id": {
+                          "type": "string"
+                        },
+                        "updateVersion": {
+                          "type": "string"
+                        },
+                        "buildingConstYearDiscount": {
+                          "type": "string"
+                        },
+                        "commissionFee": {
+                          "type": "string"
+                        },
+                        "commissionFeeTl": {
+                          "type": "string"
+                        },
+                        "grossPremium": {
+                          "type": "string"
+                        },
+                        "grossPremiumTl": {
+                          "type": "string"
+                        },
+                        "iditMessageId": {
+                          "type": "string"
+                        },
+                        "insuranceAmount": {
+                          "type": "string"
+                        },
+                        "insuranceAmounTl": {
+                          "type": "string"
+                        },
+                        "netPremium": {
+                          "type": "string"
+                        },
+                        "netPremiumTl": {
+                          "type": "string"
+                        },
+                        "renewalDiscount": {
+                          "type": "string"
+                        },
+                        "taxesList": {
+                          "type": "object",
+                          "properties": {
+                            "taxes": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string"
+                                },
+                                "main": {
+                                  "type": "string"
+                                },
+                                "system_id": {
+                                  "type": "string"
+                                },
+                                "updateVersion": {
+                                  "type": "string"
+                                },
+                                "iditMessageId": {
+                                  "type": "string"
+                                },
+                                "taxAmount": {
+                                  "type": "string"
+                                },
+                                "taxAmountTl": {
+                                  "type": "string"
+                                },
+                                "taxName": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "responseWarning": {
+                      "type": "string"
+                    },
+                    "responseWarningMessage": {
+                      "type": "string"
+                    },
+                    "subAgencyCode": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "example": "{\r\n  \"data\": {\r\n    \"asosIssuePolicyFromProposalResponseANDLIVO\": {\r\n      \"id\": \"?\",\r\n      \"main\": \"?\",\r\n      \"system_id\": \"?\",\r\n      \"updateVersion\": \"?\",\r\n      \"iditMessageId\": \"?\",\r\n      \"policyKey\": {\r\n        \"id\": \"?\",\r\n        \"main\": \"?\",\r\n        \"system_id\": \"?\",\r\n        \"updateVersion\": \"?\",\r\n        \"endorsementNumber\": \"?\",\r\n        \"iditMessageId\": \"?\",\r\n        \"policyNumber\": \"?\",\r\n        \"proposalNumber\": \"?\",\r\n        \"proposalValidDate\": \"?\",\r\n        \"renewalNumber\": \"?\",\r\n        \"revisionNumber\": \"?\"\r\n      },\r\n      \"policySummary\": {\r\n        \"id\": \"?\",\r\n        \"main\": \"?\",\r\n        \"system_id\": \"?\",\r\n        \"updateVersion\": \"?\",\r\n        \"addressStatus\": {\r\n          \"id\": \"?\",\r\n          \"main\": \"?\",\r\n          \"system_id\": \"?\",\r\n          \"updateVersion\": \"?\",\r\n          \"addressStatusCode\": \"?\",\r\n          \"addressStatusExplanation\": \"?\",\r\n          \"iditMessageId\": \"?\"\r\n        },\r\n        \"agencyCode\": \"?\",\r\n        \"iditMessageId\": \"?\",\r\n        \"policyEndDate\": \"?\",\r\n        \"policyStartDate\": \"?\",\r\n        \"premiumInfo\": {\r\n          \"id\": \"?\",\r\n          \"main\": \"?\",\r\n          \"system_id\": \"?\",\r\n          \"updateVersion\": \"?\",\r\n          \"buildingConstYearDiscount\": \"?\",\r\n          \"commissionFee\": \"?\",\r\n          \"commissionFeeTl\": \"?\",\r\n          \"grossPremium\": \"?\",\r\n          \"grossPremiumTl\": \"?\",\r\n          \"iditMessageId\": \"?\",\r\n          \"insuranceAmount\": \"?\",\r\n          \"insuranceAmounTl\": \"?\",\r\n          \"netPremium\": \"?\",\r\n          \"netPremiumTl\": \"?\",\r\n          \"renewalDiscount\": \"?\",\r\n          \"taxesList\": {\r\n            \"taxes\": {\r\n              \"id\": \"?\",\r\n              \"main\": \"?\",\r\n              \"system_id\": \"?\",\r\n              \"updateVersion\": \"?\",\r\n              \"iditMessageId\": \"?\",\r\n              \"taxAmount\": \"?\",\r\n              \"taxAmountTl\": \"?\",\r\n              \"taxName\": \"?\"\r\n            }\r\n          }\r\n        },\r\n        \"responseWarning\": \"?\",\r\n        \"responseWarningMessage\": \"?\",\r\n        \"subAgencyCode\": \"?\"\r\n      }\r\n    }\r\n  }\r\n}"
+    }
+  },
+  "tags": [],
+  "host": "apitest.anadolusigorta.com.tr"
+}

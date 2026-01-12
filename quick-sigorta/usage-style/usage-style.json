@@ -1,0 +1,70 @@
+{
+    "success": true,
+    "timestamp": 1768133901,
+    "operationId": "0HNIFPU9VPP48:00000001",
+    "message": "İşlem başarılı",
+    "result": {
+        "usageStyles": [
+            {
+                "id": "1",
+                "title": "Otomobil"
+            },
+            {
+                "id": "2",
+                "title": "Taksi"
+            },
+            {
+                "id": "3",
+                "title": "Minibüs (Sürücü Dâhil 10-17 Koltuk)"
+            },
+            {
+                "id": "4",
+                "title": "Otobüs (Sürücü Dâhil 18-30 Koltuk)"
+            },
+            {
+                "id": "5",
+                "title": "Otobüs (Sürücü Dâhil 31 Ve Üstü Koltuk)"
+            },
+            {
+                "id": "6",
+                "title": "Kamyonet"
+            },
+            {
+                "id": "7",
+                "title": "Kamyon"
+            },
+            {
+                "id": "8",
+                "title": "İş Makinesi"
+            },
+            {
+                "id": "9",
+                "title": "Traktör"
+            },
+            {
+                "id": "10",
+                "title": "Römork"
+            },
+            {
+                "id": "11",
+                "title": "Motosiklet Ve Yük Motosikleti"
+            },
+            {
+                "id": "12",
+                "title": "Tanker"
+            },
+            {
+                "id": "13",
+                "title": "Çekici"
+            },
+            {
+                "id": "14",
+                "title": "Özel Amaçli Taşitlar"
+            },
+            {
+                "id": "15",
+                "title": "Tarim Makinesi"
+            }
+        ]
+    }
+}

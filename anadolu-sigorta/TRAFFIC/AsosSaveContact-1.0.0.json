@@ -1,0 +1,691 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "x-ibm-name": "asossavecontact-apigw",
+    "title": "AsosSaveContact",
+    "version": "1.0.0"
+  },
+  "schemes": [
+    "https"
+  ],
+  "basePath": "/api/agency/asossavecontact",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/xml",
+    "application/json"
+  ],
+  "securityDefinitions": {
+    "asosoauth20api": {
+      "description": "",
+      "flow": "password",
+      "scopes": {
+        "asos": ""
+      },
+      "tokenUrl": "/asosoauth20api/oauth2/token",
+      "type": "oauth2",
+      "x-ibm-oauth-provider": "asosoauth20api-1-0-0-7b06-apigw",
+      "x-scopeValidate": {
+        "tls-profile": "",
+        "url": ""
+      }
+    },
+    "clientIdHeader": {
+      "in": "header",
+      "name": "X-IBM-Client-Id",
+      "type": "apiKey"
+    },
+    "clientSecretHeader": {
+      "description": "",
+      "in": "header",
+      "name": "X-IBM-Client-Secret",
+      "type": "apiKey"
+    }
+  },
+  "security": [
+    {
+      "clientIdHeader": [],
+      "asosoauth20api": [
+        "asos"
+      ],
+      "clientSecretHeader": []
+    }
+  ],
+  "x-ibm-configuration": {
+    "testable": true,
+    "enforced": true,
+    "cors": {
+      "enabled": true
+    },
+    "phase": "realized",
+    "type": "rest",
+    "servers": [
+      {
+        "url": "https://apitest.anadolusigorta.com.tr/api/agency/asossavecontact",
+        "description": "",
+        "type": [
+          "production",
+          "development"
+        ]
+      }
+    ],
+    "oauth-servers": {
+      "asosoauth20api": {
+        "tokenUrls": [
+          "https://apitest.anadolusigorta.com.tr/api/agency/asosoauth20api/oauth2/token"
+        ],
+        "authorizationUrls": [],
+        "refreshUrls": []
+      }
+    }
+  },
+  "paths": {
+    "/asosSaveContact": {
+      "parameters": [
+        {
+          "name": "apiInput",
+          "required": true,
+          "in": "body",
+          "schema": {
+            "$ref": "#/definitions/SaveContactInput"
+          },
+          "description": "Input data to call API"
+        },
+        {
+          "name": "consumercontextcode",
+          "type": "string",
+          "required": true,
+          "in": "header",
+          "description": "Consumer Context Code"
+        },
+        {
+          "name": "ASOS_ENV",
+          "type": "string",
+          "required": false,
+          "in": "header"
+        },
+        {
+          "name": "consumercontextuser",
+          "type": "string",
+          "required": true,
+          "in": "header",
+          "description": "Consumer Context User"
+        }
+      ],
+      "post": {
+        "responses": {
+          "200": {
+            "description": "200 OK"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "SOAPHeader": {
+      "description": "",
+      "type": "object",
+      "properties": {
+        "consumerContext": {
+          "type": "object",
+          "properties": {
+            "lang": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "consumerCode": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "channelCode": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "userName": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "messageId": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "messageGroupId": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "customerContext": {
+              "type": "object",
+              "properties": {
+                "customer": {
+                  "type": "object",
+                  "properties": {
+                    "customerNumber": {
+                      "type": "string",
+                      "xml": {
+                        "namespace": ""
+                      }
+                    }
+                  },
+                  "xml": {
+                    "namespace": ""
+                  }
+                }
+              },
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "clientRequestTimestamp": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "organizationUnitCode": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "sessionId": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "ipAddress": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "serverInstanceId": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "type": {
+              "type": "string",
+              "xml": {
+                "attribute": true,
+                "prefix": "xsi"
+              }
+            }
+          },
+          "xml": {
+            "namespace": "http://as.com/Technical/EA/Header/Schema/V1",
+            "prefix": "as"
+          }
+        },
+        "Security": {
+          "type": "object",
+          "properties": {
+            "UsernameToken": {
+              "type": "object",
+              "properties": {
+                "Username": {
+                  "type": "string"
+                },
+                "Password": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "xml": {
+            "namespace": "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd",
+            "prefix": "wsse"
+          }
+        }
+      },
+      "xml": {
+        "namespace": ""
+      },
+      "example": "      <as:consumerContext xmlns:as=\"http://as.com/Technical/EA/Header/Schema/V1\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:type=\"as:IntWebAppContextType\">\n         <lang>tr</lang>\n         <consumerCode>acnt</consumerCode>\n         <channelCode>iWebApp</channelCode>\n         <userName>ESBACN340017</userName>\n         <messageId>f3e43a7d-6fbe-41e8-bac1-be674aaf20ca</messageId>\n         <messageGroupId>c349e8bc-5252-4a00-9f29-8a10951da3d2</messageGroupId>\n         <customerContext>\n            <customer>\n               <customerNumber>100</customerNumber>\n            </customer>\n         </customerContext>\n         <clientRequestTimestamp>2018-03-26 12:08:07.442</clientRequestTimestamp>\n         <organizationUnitCode>999999</organizationUnitCode>\n         <sessionId>65f27e82-a3bb-4792-8ab1-33a1d3846ace</sessionId>\n         <ipAddress>192.168.1.2</ipAddress>\n         <serverInstanceId>app1</serverInstanceId>\n      </as:consumerContext>\n      <wsse:Security xmlns:wsse=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\">\n         <wsse:UsernameToken>\n            <wsse:Username>ESBACN340017</wsse:Username>\n            <wsse:Password>Anad1001gs</wsse:Password>  \n         </wsse:UsernameToken>\n      </wsse:Security>"
+    },
+    "AsosFaultSOAP": {
+      "description": "",
+      "type": "object",
+      "properties": {
+        "Envelope": {
+          "type": "object",
+          "properties": {
+            "Header": {
+              "type": "object"
+            },
+            "Body": {
+              "type": "object",
+              "properties": {
+                "Fault": {
+                  "type": "object",
+                  "properties": {
+                    "faultcode": {
+                      "type": "string",
+                      "xml": {
+                        "namespace": ""
+                      }
+                    },
+                    "faultstring": {
+                      "type": "string",
+                      "xml": {
+                        "namespace": ""
+                      }
+                    },
+                    "detail": {
+                      "type": "object",
+                      "properties": {
+                        "IDIT": {
+                          "type": "string",
+                          "xml": {
+                            "namespace": "http://idit/service/fault",
+                            "prefix": "IDIT_FAULT"
+                          }
+                        }
+                      },
+                      "xml": {
+                        "namespace": ""
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "xml": {
+            "namespace": "http://schemas.xmlsoap.org/soap/envelope/",
+            "prefix": "soapenv"
+          }
+        }
+      },
+      "xml": {
+        "namespace": ""
+      },
+      "example": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n   <soapenv:Header/>\r\n   <soapenv:Body>\r\n      <soapenv:Fault>\r\n         <faultcode>soapenv:GD8269</faultcode>\r\n         <faultstring>GD8269: Teknik hata.</faultstring>\r\n         <detail>\r\n            <IDIT_FAULT:IDIT xmlns:IDIT_FAULT=\"http://idit/service/fault\">InvocationTargetException. TargetException: null</IDIT_FAULT:IDIT>\r\n         </detail>\r\n      </soapenv:Fault>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>"
+    },
+    "FaultJSON": {
+      "description": "",
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "properties": {
+              "status": {
+                "type": "string"
+              },
+              "faultType": {
+                "type": "string"
+              },
+              "faultCode": {
+                "type": "string"
+              },
+              "faultMessage": {
+                "type": "string"
+              },
+              "detail": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
+        }
+      },
+      "example": "{\r\n\r\n  \"errors\": [\r\n\r\n    {\r\n\r\n                               \"status\": \"404\",\r\n\r\n                               \"faultType\":\"Business\",\r\n\r\n                               \"faultCode\": \"not found\",\r\n\r\n                               \"faultMessage\": \"ID not found\", \r\n\r\n                               \"detail\":\"detailed message\"\r\n\r\n    }\r\n\r\n  ]\r\n\r\n}\r\n"
+    },
+    "SaveContactInput": {
+      "description": "",
+      "type": "object",
+      "properties": {
+        "Input": {
+          "type": "object",
+          "properties": {
+            "asosSaveContactRequestANDLIVOinList": {
+              "type": "object",
+              "properties": {
+                "asosSaveContactRequestANDLIVO": {
+                  "type": "object",
+                  "properties": {
+                    "main": {
+                      "type": "string"
+                    },
+                    "system_id": {
+                      "type": "string"
+                    },
+                    "contactBirthDate": {
+                      "type": "string"
+                    },
+                    "contactAddressList": {
+                      "type": "object",
+                      "properties": {
+                        "contactAddress": {
+                          "type": "array",
+                          "items": {
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "main": {
+                                "type": "string"
+                              },
+                              "system_id": {
+                                "type": "string"
+                              },
+                              "updateVersion": {
+                                "type": "string"
+                              },
+                              "addressCode": {
+                                "type": "string"
+                              },
+                              "addressTypeVORef": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "extCode": {
+                                    "type": "string"
+                                  },
+                                  "text": {
+                                    "type": "string"
+                                  }
+                                }
+                              },
+                              "cityCode": {
+                                "type": "string"
+                              },
+                              "countyCode": {
+                                "type": "string"
+                              },
+                              "discontinueDate": {
+                                "type": "string"
+                              },
+                              "freeAddress": {
+                                "type": "string"
+                              },
+                              "iditMessageId": {
+                                "type": "string"
+                              },
+                              "isCorrespondingAddress": {
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          }
+                        }
+                      }
+                    },
+                    "educationVORef": {
+                      "type": "object",
+                      "properties": {
+                        "extCode": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "professionVORef": {
+                      "type": "object",
+                      "properties": {
+                        "extCode": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "legalTypeVORef": {
+                      "type": "object",
+                      "properties": {
+                        "extCode": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "idValue": {
+                      "type": "string"
+                    },
+                    "legalEntity": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "main": {
+                          "type": "string"
+                        },
+                        "system_id": {
+                          "type": "string"
+                        },
+                        "updateVersion": {
+                          "type": "string"
+                        },
+                        "businessActivityVORef": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "extCode": {
+                              "type": "string"
+                            },
+                            "text": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "businessTypeVORef": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "extCode": {
+                              "type": "string"
+                            },
+                            "text": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "iditMessageId": {
+                          "type": "string"
+                        },
+                        "noOfEmployeesVORef": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "extCode": {
+                              "type": "string"
+                            },
+                            "text": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "realAssetVORef": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "extCode": {
+                              "type": "string"
+                            },
+                            "text": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "turnoverVORef": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "extCode": {
+                              "type": "string"
+                            },
+                            "text": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "emailStructureList": {
+                      "type": "object",
+                      "properties": {
+                        "emailStructure": {
+                          "type": "array",
+                          "items": {
+                            "properties": {
+                              "emailAddress": {
+                                "type": "string"
+                              },
+                              "emailTypeVORef": {
+                                "type": "object",
+                                "properties": {
+                                  "extCode": {
+                                    "type": "string"
+                                  },
+                                  "id": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            },
+                            "type": "object"
+                          }
+                        }
+                      }
+                    },
+                    "idTypeVORef": {
+                      "type": "object",
+                      "properties": {
+                        "extCode": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "telephoneStructureList": {
+                      "type": "object",
+                      "properties": {
+                        "telephoneStructure": {
+                          "type": "array",
+                          "items": {
+                            "properties": {
+                              "telephoneTypeVORef": {
+                                "type": "object",
+                                "properties": {
+                                  "extCode": {
+                                    "type": "string"
+                                  },
+                                  "id": {
+                                    "type": "string"
+                                  }
+                                }
+                              },
+                              "countryCodeVORef": {
+                                "type": "object",
+                                "properties": {
+                                  "extCode": {
+                                    "type": "string"
+                                  },
+                                  "id": {
+                                    "type": "string"
+                                  }
+                                }
+                              },
+                              "telephonePrefixCodeVORef": {
+                                "type": "object",
+                                "properties": {
+                                  "extCode": {
+                                    "type": "string"
+                                  },
+                                  "id": {
+                                    "type": "string"
+                                  }
+                                }
+                              },
+                              "telephoneNumber": {
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "example": "{\r\n    \"Input\": {\r\n        \"asosSaveContactRequestANDLIVOinList\": {\r\n            \"asosSaveContactRequestANDLIVO\": {\r\n                \"main\": \"true\",\r\n                \"system_id\": \"2000000\",\r\n                \"contactAddressList\": {\r\n                    \"contactAddress\": [{\r\n                        \"id\": \"?\",\r\n                        \"main\": \"?\",\r\n                        \"system_id\": \"?\",\r\n                        \"updateVersion\": \"?\",\r\n                        \"addressCode\": \"?\",\r\n                        \"addressTypeVORef\": {\r\n                            \"id\": \"?\",\r\n                            \"extCode\": \"?\",\r\n                            \"text\": \"?\"\r\n                        },\r\n                        \"cityCode\": \"?\",\r\n                        \"countyCode\": \"?\",\r\n                        \"discontinueDate\": \"?\",\r\n                        \"freeAddress\": \"?\",\r\n                        \"iditMessageId\": \"?\",\r\n                        \"isCorrespondingAddress\": \"?\"\r\n                    }, {\r\n                        \"id\": \"?\",\r\n                        \"main\": \"?\",\r\n                        \"system_id\": \"?\",\r\n                        \"updateVersion\": \"?\",\r\n                        \"addressCode\": \"?\",\r\n                        \"addressTypeVORef\": {\r\n                            \"id\": \"?\",\r\n                            \"extCode\": \"?\",\r\n                            \"text\": \"?\"\r\n                        },\r\n                        \"cityCode\": \"?\",\r\n                        \"countyCode\": \"?\",\r\n                        \"discontinueDate\": \"?\",\r\n                        \"freeAddress\": \"?\",\r\n                        \"iditMessageId\": \"?\",\r\n                        \"isCorrespondingAddress\": \"?\"\r\n                    }]\r\n                },\r\n                \"educationVORef\": {\r\n                    \"extCode\": \"5\",\r\n                    \"id\": \"0\"\r\n                },\r\n                \"professionVORef\": {\r\n                    \"extCode\": \"100104\",\r\n                    \"id\": \"0\"\r\n                },\r\n                \"legalTypeVORef\": {\r\n                    \"extCode\": \"OTR\",\r\n                    \"id\": \"0\"\r\n                },\r\n                \"idValue\": \"10948834490\",\r\n                \"legalEntity\": {\r\n                    \"id\": \"?\",\r\n                    \"main\": \"?\",\r\n                    \"system_id\": \"?\",\r\n                    \"updateVersion\": \"?\",\r\n                    \"businessActivityVORef\": {\r\n                        \"id\": \"?\",\r\n                        \"extCode\": \"?\",\r\n                        \"text\": \"?\"\r\n                    },\r\n                    \"businessTypeVORef\": {\r\n                        \"id\": \"?\",\r\n                        \"extCode\": \"?\",\r\n                        \"text\": \"?\"\r\n                    },\r\n                    \"iditMessageId\": \"?\",\r\n                    \"noOfEmployeesVORef\": {\r\n                        \"id\": \"?\",\r\n                        \"extCode\": \"?\",\r\n                        \"text\": \"?\"\r\n                    },\r\n                    \"realAssetVORef\": {\r\n                        \"id\": \"?\",\r\n                        \"extCode\": \"?\",\r\n                        \"text\": \"?\"\r\n                    },\r\n                    \"turnoverVORef\": {\r\n                        \"id\": \"?\",\r\n                        \"extCode\": \"?\",\r\n                        \"text\": \"?\"\r\n                    }\r\n                },\r\n                \"emailStructureList\": {\r\n                    \"emailStructure\": [{\r\n                        \"emailAddress\": \"seda20181605@anadolusigorta.test.com.tr\",\r\n                        \"emailTypeVORef\": {\r\n                            \"extCode\": \"IS\",\r\n                            \"id\": \"0\"\r\n                        }\r\n                    }, {\r\n                        \"emailAddress\": \"seda20181605@anadolusigorta.test.com.tr\",\r\n                        \"emailTypeVORef\": {\r\n                            \"extCode\": \"IS\",\r\n                            \"id\": \"0\"\r\n                        }\r\n                    }]\r\n                },\r\n                \"idTypeVORef\": {\r\n                    \"extCode\": \"TCKN\",\r\n                    \"id\": \"0\"\r\n                },\r\n                \"telephoneStructureList\": {\r\n                    \"telephoneStructure\": [{\r\n                        \"telephoneTypeVORef\": {\r\n                            \"extCode\": \"CEP\",\r\n                            \"id\": \"0\"\r\n                        },\r\n                        \"countryCodeVORef\": {\r\n                            \"extCode\": \"90\",\r\n                            \"id\": \"0\"\r\n                        },\r\n                        \"telephonePrefixCodeVORef\": {\r\n                            \"extCode\": \"538\",\r\n                            \"id\": \"0\"\r\n                        },\r\n                        \"telephoneNumber\": \"4175907\"\r\n                    }, {\r\n                        \"telephoneTypeVORef\": {\r\n                            \"extCode\": \"CEP\",\r\n                            \"id\": \"0\"\r\n                        },\r\n                        \"countryCodeVORef\": {\r\n                            \"extCode\": \"90\",\r\n                            \"id\": \"0\"\r\n                        },\r\n                        \"telephonePrefixCodeVORef\": {\r\n                            \"extCode\": \"538\",\r\n                            \"id\": \"0\"\r\n                        },\r\n                        \"telephoneNumber\": \"4175907\"\r\n                    }]\r\n                }\r\n            }\r\n        }\r\n    }\r\n}"
+    },
+    "SaveContactOutput": {
+      "description": "",
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object",
+          "properties": {
+            "asosSaveContactResponseANDLIVO": {
+              "type": "object",
+              "properties": {
+                "updateVersion": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "main": {
+                  "type": "string"
+                },
+                "system_id": {
+                  "type": "string"
+                },
+                "externalContactNumber": {
+                  "type": "string"
+                },
+                "iditMessageId": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "example": "{\r\n  \"data\": {\r\n    \"asosSaveContactResponseANDLIVO\": {\r\n      \"updateVersion\": \"?\",\r\n      \"id\": \"?\",\r\n      \"main\": \"?\",\r\n      \"system_id\": \"?\",\r\n      \"externalContactNumber\": \"?\",\r\n      \"iditMessageId\": \"?\"\r\n    }\r\n  }\r\n}"
+    }
+  },
+  "tags": [],
+  "host": "apitest.anadolusigorta.com.tr"
+}

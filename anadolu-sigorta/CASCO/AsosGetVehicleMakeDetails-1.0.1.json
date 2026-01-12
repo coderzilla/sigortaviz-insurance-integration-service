@@ -1,0 +1,905 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "x-ibm-name": "asosgetvehiclemakedetailsv1-apigw",
+    "title": "AsosGetVehicleMakeDetails",
+    "version": "1.0.1",
+    "description": "Bu servis Trafik üretim entegrasyonunda çağırılan asosGetPolicyAssetDetails servisinden dönen araç bilgileri arasında eksik olanlara ait referans bilgilerin sorgulanması için kullanılacaktır. Servis kullanılırken bilgiler iteratif şekilde request içerisinde gönderilmelidir.\nASOS tarafındaki araç bilgilerinin hiyerarşik olarak sıralaması aşağıdaki gibidir;\n•\tModel Yılı\n    o\t   Marka\n             Kullanım Tipi\n        \tKullanım Şekli\n        \tModel Grubu\n        \tModel\n        \tKullanım Amacı\nNot: Yukarıda belirtilen araç bilgileri asosGetPolicyAssetDetails servisinin responsuda yer alacak elementler olup, ASOS tarafında yapılan SBM ve EGM sorguları sonucunda bu elementlerden değeri bulunamayan yada ASOS tarafında birden fazla değer ile eşleşen bilgiler  olması durumunda ilgili alanlar asosGetPolicyAssetDetails responsu içerisinde yer almayacaktır. asosCreateProposal servisinde gönderilmesi gereken bu alanların değerleri asosGetVehicleMakeDetails servisi aracılığı ile sorgulanacaktır."
+  },
+  "schemes": [
+    "https"
+  ],
+  "basePath": "/api/agency/asosgetvehiclemakedetailsv1",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/xml",
+    "application/json"
+  ],
+  "securityDefinitions": {
+    "asosoauth20api": {
+      "description": "",
+      "flow": "password",
+      "scopes": {
+        "asos": ""
+      },
+      "tokenUrl": "/asosoauth20api/oauth2/token",
+      "type": "oauth2",
+      "x-ibm-oauth-provider": "asosoauth20api-1-0-0-7b06-apigw",
+      "x-scopeValidate": {
+        "tls-profile": "",
+        "url": ""
+      }
+    },
+    "clientIdHeader": {
+      "in": "header",
+      "name": "X-IBM-Client-Id",
+      "type": "apiKey"
+    },
+    "clientSecretHeader": {
+      "description": "",
+      "in": "header",
+      "name": "X-IBM-Client-Secret",
+      "type": "apiKey"
+    }
+  },
+  "security": [
+    {
+      "clientIdHeader": [],
+      "clientSecretHeader": [],
+      "asosoauth20api": [
+        "asos"
+      ]
+    }
+  ],
+  "x-ibm-configuration": {
+    "testable": true,
+    "enforced": true,
+    "cors": {
+      "enabled": true
+    },
+    "phase": "realized",
+    "type": "rest",
+    "servers": [
+      {
+        "url": "https://apitest.anadolusigorta.com.tr/api/agency/asosgetvehiclemakedetailsv1",
+        "description": "",
+        "type": [
+          "production",
+          "development"
+        ]
+      }
+    ],
+    "oauth-servers": {
+      "asosoauth20api": {
+        "tokenUrls": [
+          "https://apitest.anadolusigorta.com.tr/api/agency/asosoauth20api/oauth2/token"
+        ],
+        "authorizationUrls": [],
+        "refreshUrls": []
+      }
+    }
+  },
+  "paths": {
+    "/getVehicleMakeDetails": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "200 OK",
+            "schema": {
+              "$ref": "#/definitions/AsosGetVehicleMakeDetailOutput"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "apiInput",
+          "required": true,
+          "in": "body",
+          "schema": {
+            "$ref": "#/definitions/AsosGetVehicleMakeDetailInput"
+          },
+          "description": "Input data to call API"
+        },
+        {
+          "name": "consumercontextcode",
+          "type": "string",
+          "required": true,
+          "in": "header",
+          "description": "Consumer Context Code"
+        },
+        {
+          "name": "consumercontextuser",
+          "type": "string",
+          "required": true,
+          "in": "header",
+          "description": "Consumer Context User"
+        },
+        {
+          "name": "consumerchannelcode",
+          "type": "string",
+          "required": true,
+          "in": "header",
+          "description": "Consumer Context Channel Code"
+        },
+        {
+          "name": "version",
+          "type": "string",
+          "required": false,
+          "in": "header",
+          "description": "version"
+        },
+        {
+          "name": "ASOS_ENV",
+          "type": "string",
+          "required": false,
+          "in": "header"
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "AsosFaultSOAP": {
+      "description": "",
+      "example": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n   <soapenv:Header/>\r\n   <soapenv:Body>\r\n      <soapenv:Fault>\r\n         <faultcode>soapenv:GD8269</faultcode>\r\n         <faultstring>GD8269: Teknik hata.</faultstring>\r\n         <detail>\r\n            <IDIT_FAULT:IDIT xmlns:IDIT_FAULT=\"http://idit/service/fault\">InvocationTargetException. TargetException: null</IDIT_FAULT:IDIT>\r\n         </detail>\r\n      </soapenv:Fault>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>",
+      "properties": {
+        "Envelope": {
+          "properties": {
+            "Body": {
+              "properties": {
+                "Fault": {
+                  "properties": {
+                    "detail": {
+                      "properties": {
+                        "IDIT": {
+                          "type": "string",
+                          "xml": {
+                            "namespace": "http://idit/service/fault",
+                            "prefix": "IDIT_FAULT"
+                          }
+                        }
+                      },
+                      "type": "object",
+                      "xml": {
+                        "namespace": ""
+                      }
+                    },
+                    "faultcode": {
+                      "type": "string",
+                      "xml": {
+                        "namespace": ""
+                      }
+                    },
+                    "faultstring": {
+                      "type": "string",
+                      "xml": {
+                        "namespace": ""
+                      }
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            },
+            "Header": {
+              "type": "object"
+            }
+          },
+          "type": "object",
+          "xml": {
+            "namespace": "http://schemas.xmlsoap.org/soap/envelope/",
+            "prefix": "soapenv"
+          }
+        }
+      },
+      "type": "object",
+      "xml": {
+        "namespace": ""
+      }
+    },
+    "AsosGetVehicleMakeDetailInput": {
+      "description": "",
+      "example": {
+        "Input": {
+          "asosGetVehicleMakeDetailsRequestANDLIVO": {
+            "main": "true",
+            "modelYear": "2011",
+            "policyHeader": {
+              "productTypeVORef": {
+                "id": "1000031"
+              }
+            },
+            "system_id": "2000000",
+            "vehicleDetailInfo": {
+              "mainModelVORef": {
+                "extCode": "9001441",
+                "id": "9001441",
+                "text": "M SERİSİ"
+              },
+              "mainVehicleTypeVORef": {
+                "extCode": "01",
+                "id": "9000018",
+                "text": "AUTOMOBILE (9 SEATS INCLUDING DRIVER)"
+              },
+              "makeVORef": {
+                "id": "2020073"
+              },
+              "modelVORef": {
+                "extCode": "9077652",
+                "id": "9077652",
+                "text": "M 3"
+              },
+              "vehicleTypeVORef": {
+                "extCode": "1000001",
+                "id": "1000001",
+                "text": "PRIVATE AUTOMOBILE"
+              }
+            }
+          }
+        }
+      },
+      "properties": {
+        "Input": {
+          "properties": {
+            "asosGetVehicleMakeDetailsRequestANDLIVO": {
+              "properties": {
+                "main": {
+                  "type": "string"
+                },
+                "modelYear": {
+                  "type": "string"
+                },
+                "getMakesOnly": {
+                  "type": "boolean"
+                },
+                "policyHeader": {
+                  "properties": {
+                    "productTypeVORef": {
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "extCode": {
+                          "type": "string"
+                        },
+                        "text": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "policyStartDate": {
+                      "type": "string"
+                    },
+                    "subAgencyCode": {
+                      "type": "string"
+                    },
+                    "salesChannelVORef": {
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "extCode": {
+                          "type": "string"
+                        },
+                        "text": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "agencyCode": {
+                      "type": "string"
+                    },
+                    "crossSaleID": {
+                      "type": "string"
+                    },
+                    "policyTypeVORef": {
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "extCode": {
+                          "type": "string"
+                        },
+                        "text": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "iditMessageId": {
+                      "type": "string"
+                    },
+                    "policyCurrencyVORef": {
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "extCode": {
+                          "type": "string"
+                        },
+                        "text": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "renewalPolicy": {
+                      "type": "boolean"
+                    },
+                    "policyEndDate": {
+                      "type": "string"
+                    },
+                    "updateVersion": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "main": {
+                      "type": "string"
+                    },
+                    "system_id": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "system_id": {
+                  "type": "string"
+                },
+                "vehicleDetailInfo": {
+                  "properties": {
+                    "mainModelVORef": {
+                      "properties": {
+                        "extCode": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "text": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "modelCode": {
+                      "type": "string"
+                    },
+                    "transportationDocType": {
+                      "type": "string"
+                    },
+                    "ownershipDocumentDate": {
+                      "type": "string"
+                    },
+                    "purposeofUsageVORef": {
+                      "properties": {
+                        "extCode": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "text": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "typeofCarriageRef": {
+                      "properties": {
+                        "extCode": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "text": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "operationalRental": {
+                      "type": "boolean"
+                    },
+                    "rental": {
+                      "type": "boolean"
+                    },
+                    "mainVehicleTypeVORef": {
+                      "properties": {
+                        "extCode": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "text": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "makeVORef": {
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "extCode": {
+                          "type": "string"
+                        },
+                        "text": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "modelVORef": {
+                      "properties": {
+                        "extCode": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "text": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "vehicleTypeVORef": {
+                      "properties": {
+                        "extCode": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "text": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "vehicleAmount": {
+                      "type": "string"
+                    },
+                    "makeCode": {
+                      "type": "string"
+                    },
+                    "standingPassengers": {
+                      "type": "boolean"
+                    },
+                    "iditMessageId": {
+                      "type": "string"
+                    },
+                    "transportationFlag": {
+                      "type": "boolean"
+                    },
+                    "updateVersion": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "main": {
+                      "type": "string"
+                    },
+                    "system_id": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "iditMessageId": {
+                  "type": "string"
+                },
+                "updateVersion": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "FaultJSON": {
+      "description": "",
+      "example": {
+        "errors": [
+          {
+            "detail": "detailed message",
+            "faultCode": "not found",
+            "faultMessage": "ID not found",
+            "faultType": "Business",
+            "status": "404"
+          }
+        ]
+      },
+      "properties": {
+        "errors": {
+          "items": {
+            "properties": {
+              "detail": {
+                "type": "string"
+              },
+              "faultCode": {
+                "type": "string"
+              },
+              "faultMessage": {
+                "type": "string"
+              },
+              "faultType": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "SOAPHeader": {
+      "description": "",
+      "type": "object",
+      "properties": {
+        "consumerContext": {
+          "type": "object",
+          "properties": {
+            "lang": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "consumerCode": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "channelCode": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "userName": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "version": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "messageId": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "messageGroupId": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "customerContext": {
+              "type": "object",
+              "properties": {
+                "customer": {
+                  "type": "object",
+                  "properties": {
+                    "customerNumber": {
+                      "type": "string",
+                      "xml": {
+                        "namespace": ""
+                      }
+                    }
+                  },
+                  "xml": {
+                    "namespace": ""
+                  }
+                }
+              },
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "clientRequestTimestamp": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "organizationUnitCode": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "sessionId": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "ipAddress": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "serverInstanceId": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "type": {
+              "type": "string",
+              "xml": {
+                "attribute": true,
+                "prefix": "xsi"
+              }
+            }
+          },
+          "xml": {
+            "namespace": "http://as.com/Technical/EA/Header/Schema/V1",
+            "prefix": "as"
+          }
+        },
+        "Security": {
+          "type": "object",
+          "properties": {
+            "UsernameToken": {
+              "type": "object",
+              "properties": {
+                "Username": {
+                  "type": "string"
+                },
+                "Password": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "xml": {
+            "namespace": "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd",
+            "prefix": "wsse"
+          }
+        }
+      },
+      "xml": {
+        "namespace": ""
+      },
+      "example": "      <as:consumerContext xmlns:as=\"http://as.com/Technical/EA/Header/Schema/V1\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:type=\"as:IntWebAppContextType\">         <lang>tr</lang>         <consumerCode>acnt</consumerCode>         <channelCode>iWebApp</channelCode>         <userName>ESBACN340017</userName>         <version>v1</version>         <messageId>f3e43a7d-6fbe-41e8-bac1-be674aaf20ca</messageId>         <messageGroupId>c349e8bc-5252-4a00-9f29-8a10951da3d2</messageGroupId>         <customerContext>            <customer>               <customerNumber>100</customerNumber>            </customer>         </customerContext>         <clientRequestTimestamp>2018-03-26 12:08:07.442</clientRequestTimestamp>         <organizationUnitCode>999999</organizationUnitCode>         <sessionId>65f27e82-a3bb-4792-8ab1-33a1d3846ace</sessionId>         <ipAddress>192.168.1.2</ipAddress>         <serverInstanceId>app1</serverInstanceId>      </as:consumerContext>      <wsse:Security xmlns:wsse=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\">         <wsse:UsernameToken>            <wsse:Username>ESBACN340017</wsse:Username>            <wsse:Password>Anad1001gs</wsse:Password>           </wsse:UsernameToken>      </wsse:Security>"
+    },
+    "AsosGetVehicleMakeDetailOutput": {
+      "description": "",
+      "type": "object",
+      "properties": {
+        "asosGetVehicleMakeDetailsResponseANDLIVO": {
+          "type": "object",
+          "properties": {
+            "iditMessageId": {
+              "type": "string"
+            },
+            "mainModelVOList": {
+              "type": "object",
+              "properties": {
+                "mainModelVORef": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "extCode": {
+                        "type": "string"
+                      },
+                      "text": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  }
+                }
+              }
+            },
+            "mainVehicleTypeVOList": {
+              "type": "object",
+              "properties": {
+                "mainVehicleTypeVORef": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "extCode": {
+                        "type": "string"
+                      },
+                      "text": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  }
+                }
+              }
+            },
+            "makeVOList": {
+              "type": "object",
+              "properties": {
+                "makeVORef": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "extCode": {
+                        "type": "string"
+                      },
+                      "text": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  }
+                }
+              }
+            },
+            "modelVOList": {
+              "type": "object",
+              "properties": {
+                "modelVORef": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "extCode": {
+                        "type": "string"
+                      },
+                      "text": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  }
+                }
+              }
+            },
+            "modelWrapperIVOList": {
+              "type": "object",
+              "properties": {
+                "modelWrapperIVO": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "adlCode": {
+                        "type": "string"
+                      },
+                      "iditMessageId": {
+                        "type": "string"
+                      },
+                      "modelVORef": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "extCode": {
+                            "type": "string"
+                          },
+                          "text": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "updateVersion": {
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "main": {
+                        "type": "string"
+                      },
+                      "systemid": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  }
+                }
+              }
+            },
+            "purposaOfUsageVOList": {
+              "type": "object",
+              "properties": {
+                "purposaOfUsageVORef": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "extCode": {
+                        "type": "string"
+                      },
+                      "text": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  }
+                }
+              }
+            },
+            "vehicleTypeVOList": {
+              "type": "object",
+              "properties": {
+                "vehicleTypeVORef": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "extCode": {
+                        "type": "string"
+                      },
+                      "text": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  }
+                }
+              }
+            },
+            "updateVersion": {
+              "type": "string"
+            },
+            "id": {
+              "type": "string"
+            },
+            "main": {
+              "type": "string"
+            },
+            "systemid": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "example": "{\"asosGetVehicleMakeDetailsResponseANDLIVO\":{\"iditMessageId\":\"?\",\"mainModelVOList\":{\"mainModelVORef\":[{\"id\":\"?\",\"extCode\":\"?\",\"text\":\"?\"},{\"id\":\"?\",\"extCode\":\"?\",\"text\":\"?\"} ]},\"mainVehicleTypeVOList\":{\"mainVehicleTypeVORef\":[{\"id\":\"?\",\"extCode\":\"?\",\"text\":\"?\"},{\"id\":\"?\",\"extCode\":\"?\",\"text\":\"?\"} ]},\"makeVOList\":{\"makeVORef\":[{\"id\":\"?\",\"extCode\":\"?\",\"text\":\"?\"},{\"id\":\"?\",\"extCode\":\"?\",\"text\":\"?\"} ]},\"modelVOList\":{\"modelVORef\":[{\"id\":\"?\",\"extCode\":\"?\",\"text\":\"?\"},{\"id\":\"?\",\"extCode\":\"?\",\"text\":\"?\"} ]},\"modelWrapperIVOList\":{\"modelWrapperIVO\":[{\"adlCode\":\"?\",\"iditMessageId\":\"?\",\"modelVORef\":{\"id\":\"?\",\"extCode\":\"?\",\"text\":\"?\" },\"updateVersion\":\"?\",\"id\":\"?\",\"main\":\"?\",\"systemid\":\"?\"},{\"adlCode\":\"?\",\"iditMessageId\":\"?\",\"modelVORef\":{\"id\":\"?\",\"extCode\":\"?\",\"text\":\"?\" },\"updateVersion\":\"?\",\"id\":\"?\",\"main\":\"?\",\"systemid\":\"?\"} ]},\"purposaOfUsageVOList\":{\"purposaOfUsageVORef\":[{\"id\":\"?\",\"extCode\":\"?\",\"text\":\"?\"},{\"id\":\"?\",\"extCode\":\"?\",\"text\":\"?\"} ]},\"vehicleTypeVOList\":{\"vehicleTypeVORef\":[{\"id\":\"?\",\"extCode\":\"?\",\"text\":\"?\"},{\"id\":\"?\",\"extCode\":\"?\",\"text\":\"?\"} ]},\"updateVersion\":\"?\",\"id\":\"?\",\"main\":\"?\",\"systemid\":\"?\" }}"
+    }
+  },
+  "tags": [],
+  "host": "apitest.anadolusigorta.com.tr"
+}

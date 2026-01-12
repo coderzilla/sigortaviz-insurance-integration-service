@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Headers,
   Param,
   Patch,
   Post,
@@ -36,11 +37,14 @@ export class QuoteSessionsController {
     @Param('id') id: string,
     @Body() body: UpdateQuoteSessionStepDto,
     @Req() req: Request,
+    @Headers('Authorization') authHeader?: string,
+    @Headers('x-lead-token') leadTokenHeader?: string,
   ) {
-    const userPayload = this.extractUser(req);
+    const userPayload = this.extractUser(req, authHeader);
     const leadToken =
-      (req.headers['x-lead-token'] as string | undefined) ||
-      (req.headers['X-LEAD-TOKEN'] as string | undefined);
+      leadTokenHeader ||
+      this.getHeader(req, 'x-lead-token') ||
+      this.getHeader(req, 'X-LEAD-TOKEN');
     return this.quoteSessionsService.updateStep(
       id,
       body,
@@ -59,8 +63,14 @@ export class QuoteSessionsController {
     return this.assetsService.createSnapshot(id, user, body);
   }
 
-  private extractUser(req: Request): AccessTokenPayload | undefined {
-    const header = req.headers['authorization'] as string | undefined;
+  private extractUser(
+    req: Request,
+    headerOverride?: string,
+  ): AccessTokenPayload | undefined {
+    const header =
+      headerOverride ||
+      this.getHeader(req, 'authorization') ||
+      this.getHeader(req, 'Authorization');
     if (header && header.startsWith('Bearer ')) {
       const token = header.slice(7);
       try {
@@ -68,6 +78,26 @@ export class QuoteSessionsController {
       } catch {
         return undefined;
       }
+    }
+    return undefined;
+  }
+
+  private getHeader(req: Request, name: string): string | undefined {
+    const headers = req.headers || {};
+    const lower = name.toLowerCase();
+    const direct =
+      (headers as any)[name] ||
+      (headers as any)[lower] ||
+      (headers as any)[lower.toUpperCase()];
+    if (direct) return direct as string;
+    const raw = (req as any).raw?.headers;
+    if (raw) {
+      return (
+        raw[name] ||
+        raw[lower] ||
+        raw[lower.toUpperCase()] ||
+        raw[name.toLowerCase()]
+      ) as string | undefined;
     }
     return undefined;
   }

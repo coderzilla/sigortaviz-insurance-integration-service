@@ -1,0 +1,226 @@
+{
+    "success": true,
+    "timestamp": 1768133928,
+    "operationId": "0HNIFPU9VPP48:00000002",
+    "message": "İşlem başarılı",
+    "result": {
+        "brands": [
+            {
+                "brandId": "576",
+                "brand": "576 - ADRIA"
+            },
+            {
+                "brandId": "009",
+                "brand": "009 - AUDI"
+            },
+            {
+                "brandId": "027",
+                "brand": "027 - BMC"
+            },
+            {
+                "brandId": "021",
+                "brand": "021 - BMW"
+            },
+            {
+                "brandId": "721",
+                "brand": "721 - CHERY"
+            },
+            {
+                "brandId": "033",
+                "brand": "033 - CHRYSLER"
+            },
+            {
+                "brandId": "034",
+                "brand": "034 - CITROEN"
+            },
+            {
+                "brandId": "591",
+                "brand": "591 - CUPRA"
+            },
+            {
+                "brandId": "445",
+                "brand": "445 - DACIA"
+            },
+            {
+                "brandId": "806",
+                "brand": "806 - DFSK"
+            },
+            {
+                "brandId": "748",
+                "brand": "748 - DS"
+            },
+            {
+                "brandId": "812",
+                "brand": "812 - FARIZON AUTO"
+            },
+            {
+                "brandId": "052",
+                "brand": "052 - FIAT"
+            },
+            {
+                "brandId": "053",
+                "brand": "053 - FORD"
+            },
+            {
+                "brandId": "841",
+                "brand": "841 - FOTON"
+            },
+            {
+                "brandId": "825",
+                "brand": "825 - GAZ"
+            },
+            {
+                "brandId": "820",
+                "brand": "820 - GMC"
+            },
+            {
+                "brandId": "061",
+                "brand": "061 - HONDA"
+            },
+            {
+                "brandId": "754",
+                "brand": "754 - HOTOMOBIL"
+            },
+            {
+                "brandId": "177",
+                "brand": "177 - HYUNDAI"
+            },
+            {
+                "brandId": "066",
+                "brand": "066 - ISUZU"
+            },
+            {
+                "brandId": "826",
+                "brand": "826 - JAECOO"
+            },
+            {
+                "brandId": "505",
+                "brand": "505 - KGMOBILITY"
+            },
+            {
+                "brandId": "800",
+                "brand": "800 - KIA"
+            },
+            {
+                "brandId": "833",
+                "brand": "833 - LYNK-CO"
+            },
+            {
+                "brandId": "360",
+                "brand": "360 - MAN"
+            },
+            {
+                "brandId": "086",
+                "brand": "086 - MASERATI"
+            },
+            {
+                "brandId": "807",
+                "brand": "807 - MAXUS"
+            },
+            {
+                "brandId": "090",
+                "brand": "090 - MERCEDES"
+            },
+            {
+                "brandId": "094",
+                "brand": "094 - MITSUBISHI"
+            },
+            {
+                "brandId": "600",
+                "brand": "600 - MOTORSIKLET"
+            },
+            {
+                "brandId": "838",
+                "brand": "838 - MOTORSIKLET"
+            },
+            {
+                "brandId": "818",
+                "brand": "818 - NIEVE"
+            },
+            {
+                "brandId": "107",
+                "brand": "107 - NISSAN"
+            },
+            {
+                "brandId": "111",
+                "brand": "111 - OPEL"
+            },
+            {
+                "brandId": "101",
+                "brand": "101 - OTOKAR/MAGIRUS"
+            },
+            {
+                "brandId": "520",
+                "brand": "520 - OTOYOLIVECOFIAT"
+            },
+            {
+                "brandId": "520",
+                "brand": "520 - OTOYOL\\IVECO\\FIAT"
+            },
+            {
+                "brandId": "114",
+                "brand": "114 - PEUGEOT"
+            },
+            {
+                "brandId": "123",
+                "brand": "123 - RENAULT"
+            },
+            {
+                "brandId": "122",
+                "brand": "122 - RENAULT (OYAK)"
+            },
+            {
+                "brandId": "138",
+                "brand": "138 - SCANIA"
+            },
+            {
+                "brandId": "133",
+                "brand": "133 - SKODA"
+            },
+            {
+                "brandId": "130",
+                "brand": "130 - SUZUKI"
+            },
+            {
+                "brandId": "552",
+                "brand": "552 - TEMSA"
+            },
+            {
+                "brandId": "823",
+                "brand": "823 - TENAX"
+            },
+            {
+                "brandId": "100",
+                "brand": "100 - TOFAS-FIAT"
+            },
+            {
+                "brandId": "144",
+                "brand": "144 - TOYOTA"
+            },
+            {
+                "brandId": "842",
+                "brand": "842 - VICTORY"
+            },
+            {
+                "brandId": "153",
+                "brand": "153 - VOLKSWAGEN"
+            },
+            {
+                "brandId": "154",
+                "brand": "154 - VOLVO"
+            },
+            {
+                "brandId": "410",
+                "brand": "410 - VOLVO-TR"
+            },
+            {
+                "brandId": "843",
+                "brand": "843 - WEINSBERG"
+            },
+            {
+                "brandId": "400",
+                "brand": "400 - ZIRAI TRAKTOR"
+            }
+        ]
+    }
+}

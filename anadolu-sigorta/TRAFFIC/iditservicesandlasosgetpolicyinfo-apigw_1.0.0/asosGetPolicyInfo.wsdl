@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://services.idit.com" xmlns:interfaces-root="http://www.idit.co.il/schemas/all/interfaces-root" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://services.idit.com">
+  <wsdl:types>
+    <xsd:schema>
+      <xsd:import namespace="http://www.idit.co.il/schemas/all/interfaces-root" schemaLocation="asosGetPolicyInfo.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IDITServicesANDLasosGetPolicyInfoResponse">
+    <wsdl:part name="POutParam" element="interfaces-root:asosGetPolicyInfoResponseANDLIVOoutList"/>
+  </wsdl:message>
+  <wsdl:message name="IDITServicesANDLasosGetPolicyInfoRequest">
+    <wsdl:part name="PInParam" element="interfaces-root:asosGetPolicyInfoRequestANDLIVOinList"/>
+    <wsdl:part name="PInHeader" element="interfaces-root:basicSoapHeaderIVOinList"/>
+  </wsdl:message>
+  <wsdl:portType name="IDITServicesANDLasosGetPolicyInfoInterface">
+    <wsdl:operation name="IDITServicesANDLasosGetPolicyInfo">
+      <wsdl:input name="IDITServicesANDLasosGetPolicyInfoRequest" message="tns:IDITServicesANDLasosGetPolicyInfoRequest"/>
+      <wsdl:output name="IDITServicesANDLasosGetPolicyInfoResponse" message="tns:IDITServicesANDLasosGetPolicyInfoResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IDITServicesANDLasosGetPolicyInfoSOAPHTTPBinding" type="tns:IDITServicesANDLasosGetPolicyInfoInterface">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="IDITServicesANDLasosGetPolicyInfo">
+      <soap:operation soapAction="http://services.idit.com/IDITServicesANDLasosGetPolicyInfo"/>
+      <wsdl:input>
+        <soap:body use="literal" message="tns:IDITServicesANDLasosGetPolicyInfoRequest" parts="PInParam"/>
+        <soap:header use="literal" message="tns:IDITServicesANDLasosGetPolicyInfoRequest" part="PInHeader"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="IDITServicesANDLasosGetPolicyInfo">
+    <wsdl:port name="IDITServicesANDLasosGetPolicyInfoInterface" binding="tns:IDITServicesANDLasosGetPolicyInfoSOAPHTTPBinding">
+      <soap:address location="https://apitest.anadolusigorta.com.tr/api/agency/IDITServicesANDLasosGetPolicyInfo"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://services.idit.com" xmlns:interfaces-root="http://www.idit.co.il/schemas/all/interfaces-root" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://services.idit.com">
+  <wsdl:types>
+    <xsd:schema>
+      <xsd:import namespace="http://www.idit.co.il/schemas/all/interfaces-root" schemaLocation="asosGetKKBFindeksScore.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IDITServicesANDLasosGetKKBFindeksScoreResponse">
+    <wsdl:part name="POutParam" element="interfaces-root:asosGetKKBFindeksScoreResponseANDLIVOoutList"/>
+  </wsdl:message>
+  <wsdl:message name="IDITServicesANDLasosGetKKBFindeksScoreRequest">
+    <wsdl:part name="PInParam" element="interfaces-root:asosGetKKBFindeksScoreRequestANDLIVOinList"/>
+    <wsdl:part name="PInHeader" element="interfaces-root:basicSoapHeaderIVOinList"/>
+  </wsdl:message>
+  <wsdl:portType name="IDITServicesANDLasosGetKKBFindeksScoreInterface">
+    <wsdl:operation name="IDITServicesANDLasosGetKKBFindeksScore">
+      <wsdl:input name="IDITServicesANDLasosGetKKBFindeksScoreRequest" message="tns:IDITServicesANDLasosGetKKBFindeksScoreRequest"/>
+      <wsdl:output name="IDITServicesANDLasosGetKKBFindeksScoreResponse" message="tns:IDITServicesANDLasosGetKKBFindeksScoreResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IDITServicesANDLasosGetKKBFindeksScoreSOAPHTTPBinding" type="tns:IDITServicesANDLasosGetKKBFindeksScoreInterface">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="IDITServicesANDLasosGetKKBFindeksScore">
+      <soap:operation soapAction="http://services.idit.com/IDITServicesANDLasosGetKKBFindeksScore"/>
+      <wsdl:input>
+        <soap:body use="literal" message="tns:IDITServicesANDLasosGetKKBFindeksScoreRequest" parts="PInParam"/>
+        <soap:header use="literal" message="tns:IDITServicesANDLasosGetKKBFindeksScoreRequest" part="PInHeader"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="IDITServicesANDLasosGetKKBFindeksScore">
+    <wsdl:port name="IDITServicesANDLasosGetKKBFindeksScoreInterface" binding="tns:IDITServicesANDLasosGetKKBFindeksScoreSOAPHTTPBinding">
+      <soap:address location="https://apitest.anadolusigorta.com.tr/api/agency/IDITServicesANDLasosGetKKBFindeksScore"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

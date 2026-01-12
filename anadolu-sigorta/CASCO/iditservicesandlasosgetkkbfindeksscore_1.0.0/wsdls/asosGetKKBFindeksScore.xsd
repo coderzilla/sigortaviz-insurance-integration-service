@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:interfaces="http://www.idit.co.il/schemas/all/interfaces" elementFormDefault="qualified" targetNamespace="http://www.idit.co.il/schemas/all/interfaces-root">
+  <xs:import namespace="http://www.idit.co.il/schemas/all/interfaces" schemaLocation="../interfaces.xsd" />
+  <xs:element name="basicSoapHeaderIVOinList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="basicSoapHeaderIVO" type="interfaces:BasicSoapHeaderIVO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="asosGetKKBFindeksScoreRequestANDLIVOinList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" name="asosGetKKBFindeksScoreRequestANDLIVO" type="interfaces:AsosGetKKBFindeksScoreRequestANDLIVO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="asosGetKKBFindeksScoreResponseANDLIVOoutList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="interfaces:asosGetKKBFindeksScoreResponseANDLIVOList" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+

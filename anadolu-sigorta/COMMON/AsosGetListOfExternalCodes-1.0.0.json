@@ -1,0 +1,461 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "x-ibm-name": "asosgetlistofexternalcodes-apigw",
+    "title": "AsosGetListOfExternalCodes",
+    "version": "1.0.0"
+  },
+  "schemes": [
+    "https"
+  ],
+  "basePath": "/api/agency/asosgetlistofexternalcodes",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "securityDefinitions": {
+    "asosoauth20api": {
+      "description": "",
+      "flow": "password",
+      "scopes": {
+        "asos": ""
+      },
+      "tokenUrl": "/asosoauth20api/oauth2/token",
+      "type": "oauth2",
+      "x-ibm-oauth-provider": "asosoauth20api-1-0-0-7b06-apigw",
+      "x-scopeValidate": {
+        "tls-profile": "",
+        "url": ""
+      }
+    },
+    "clientIdHeader": {
+      "in": "header",
+      "name": "X-IBM-Client-Id",
+      "type": "apiKey"
+    },
+    "clientSecretHeader": {
+      "description": "",
+      "in": "header",
+      "name": "X-IBM-Client-Secret",
+      "type": "apiKey"
+    }
+  },
+  "security": [
+    {
+      "asosoauth20api": [
+        "asos"
+      ],
+      "clientSecretHeader": [],
+      "clientIdHeader": []
+    }
+  ],
+  "x-ibm-configuration": {
+    "testable": true,
+    "enforced": true,
+    "cors": {
+      "enabled": true
+    },
+    "phase": "realized",
+    "type": "rest",
+    "servers": [
+      {
+        "url": "https://apitest.anadolusigorta.com.tr/api/agency/asosgetlistofexternalcodes",
+        "description": "",
+        "type": [
+          "production",
+          "development"
+        ]
+      }
+    ],
+    "oauth-servers": {
+      "asosoauth20api": {
+        "tokenUrls": [
+          "https://apitest.anadolusigorta.com.tr/api/agency/asosoauth20api/oauth2/token"
+        ],
+        "authorizationUrls": [],
+        "refreshUrls": []
+      }
+    }
+  },
+  "paths": {
+    "/getListOfExternalCodes": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "200 OK",
+            "schema": {
+              "$ref": "#/definitions/getListOfExternalCodeJSONOutput"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "consumercontextuser",
+          "type": "string",
+          "required": true,
+          "in": "header"
+        },
+        {
+          "name": "consumercontextcode",
+          "type": "string",
+          "required": true,
+          "in": "header"
+        },
+        {
+          "name": "ASOS_ENV",
+          "type": "string",
+          "required": false,
+          "in": "header"
+        },
+        {
+          "name": "apiInput",
+          "required": true,
+          "in": "body",
+          "schema": {
+            "$ref": "#/definitions/getListOfExternalCodeJSONInput"
+          }
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "getListOfExternalCodeJSONInput": {
+      "description": "",
+      "example": {
+        "Input": {
+          "getListOfExternalCodesRequestANDLIVOinList": {
+            "getListOfExternalCodesRequestANDLIVO": {
+              "main": true,
+              "system_id": 2000000,
+              "referenceName": "countryNameVO"
+            }
+          }
+        }
+      },
+      "type": "object",
+      "properties": {
+        "Input": {
+          "type": "object",
+          "properties": {
+            "getListOfExternalCodesRequestANDLIVOinList": {
+              "type": "object",
+              "properties": {
+                "getListOfExternalCodesRequestANDLIVO": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "main": {
+                      "type": "boolean"
+                    },
+                    "system_id": {
+                      "type": "integer"
+                    },
+                    "updateVersion": {
+                      "type": "integer"
+                    },
+                    "iditMessageId": {
+                      "type": "integer"
+                    },
+                    "referenceName": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "getListOfExternalCodeJSONOutput": {
+      "description": "",
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object",
+          "properties": {
+            "getListOfExternalCodesResponseANDLIVO": {
+              "type": "array",
+              "items": {
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "main": {
+                    "type": "string"
+                  },
+                  "system_id": {
+                    "type": "string"
+                  },
+                  "updateVersion": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "discontinueDate": {
+                    "type": "string"
+                  },
+                  "externalCode": {
+                    "type": "string"
+                  },
+                  "iditMessageId": {
+                    "type": "string"
+                  },
+                  "mainDescription": {
+                    "type": "string"
+                  },
+                  "mainExternalCode": {
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        }
+      },
+      "example": "{\r\n  \"data\": {\r\n    \"getListOfExternalCodesResponseANDLIVO\": [\r\n      {\r\n        \"id\": \"?\",\r\n        \"main\": \"?\",\r\n        \"system_id\": \"?\",\r\n        \"updateVersion\": \"?\",\r\n        \"description\": \"?\",\r\n        \"discontinueDate\": \"?\",\r\n        \"externalCode\": \"?\",\r\n        \"iditMessageId\": \"?\",\r\n        \"mainDescription\": \"?\",\r\n        \"mainExternalCode\": \"?\"\r\n      },\r\n      {\r\n        \"id\": \"?\",\r\n        \"main\": \"?\",\r\n        \"system_id\": \"?\",\r\n        \"updateVersion\": \"?\",\r\n        \"description\": \"?\",\r\n        \"discontinueDate\": \"?\",\r\n        \"externalCode\": \"?\",\r\n        \"iditMessageId\": \"?\",\r\n        \"mainDescription\": \"?\",\r\n        \"mainExternalCode\": \"?\"\r\n      }\r\n    ]\r\n  }\r\n}\r\n"
+    },
+    "FaultJSON": {
+      "description": "",
+      "example": {
+        "errors": [
+          {
+            "detail": "detailed message",
+            "faultCode": "not found",
+            "faultMessage": "ID not found",
+            "faultType": "Business",
+            "status": "404"
+          }
+        ]
+      },
+      "properties": {
+        "errors": {
+          "items": {
+            "properties": {
+              "detail": {
+                "type": "string"
+              },
+              "faultCode": {
+                "type": "string"
+              },
+              "faultMessage": {
+                "type": "string"
+              },
+              "faultType": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "SOAPHeader": {
+      "description": "",
+      "type": "object",
+      "properties": {
+        "consumerContext": {
+          "type": "object",
+          "properties": {
+            "lang": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "consumerCode": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "channelCode": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "userName": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "messageId": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "messageGroupId": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "customerContext": {
+              "type": "object",
+              "properties": {
+                "customer": {
+                  "type": "object",
+                  "properties": {
+                    "customerNumber": {
+                      "type": "string",
+                      "xml": {
+                        "namespace": ""
+                      }
+                    }
+                  },
+                  "xml": {
+                    "namespace": ""
+                  }
+                }
+              },
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "clientRequestTimestamp": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "organizationUnitCode": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "sessionId": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "ipAddress": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "serverInstanceId": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "type": {
+              "type": "string",
+              "xml": {
+                "attribute": true,
+                "prefix": "xsi"
+              }
+            }
+          },
+          "xml": {
+            "namespace": "http://as.com/Technical/EA/Header/Schema/V1",
+            "prefix": "as"
+          }
+        },
+        "Security": {
+          "type": "object",
+          "properties": {
+            "UsernameToken": {
+              "type": "object",
+              "properties": {
+                "Username": {
+                  "type": "string"
+                },
+                "Password": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "xml": {
+            "namespace": "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd",
+            "prefix": "wsse"
+          }
+        }
+      },
+      "xml": {
+        "namespace": ""
+      },
+      "example": "      <as:consumerContext xmlns:as=\"http://as.com/Technical/EA/Header/Schema/V1\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:type=\"as:IntWebAppContextType\">\n         <lang>tr</lang>\n         <consumerCode>acnt</consumerCode>\n         <channelCode>iWebApp</channelCode>\n         <userName>ESBACN340017</userName>\n         <messageId>f3e43a7d-6fbe-41e8-bac1-be674aaf20ca</messageId>\n         <messageGroupId>c349e8bc-5252-4a00-9f29-8a10951da3d2</messageGroupId>\n         <customerContext>\n            <customer>\n               <customerNumber>100</customerNumber>\n            </customer>\n         </customerContext>\n         <clientRequestTimestamp>2018-03-26 12:08:07.442</clientRequestTimestamp>\n         <organizationUnitCode>999999</organizationUnitCode>\n         <sessionId>65f27e82-a3bb-4792-8ab1-33a1d3846ace</sessionId>\n         <ipAddress>192.168.1.2</ipAddress>\n         <serverInstanceId>app1</serverInstanceId>\n      </as:consumerContext>\n      <wsse:Security xmlns:wsse=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\">\n         <wsse:UsernameToken>\n            <wsse:Username>ESBACN340017</wsse:Username>\n            <wsse:Password>Anad1001gs</wsse:Password>  \n         </wsse:UsernameToken>\n      </wsse:Security>"
+    },
+    "AsosFaultSOAP": {
+      "description": "",
+      "example": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n   <soapenv:Header/>\r\n   <soapenv:Body>\r\n      <soapenv:Fault>\r\n         <faultcode>soapenv:GD8269</faultcode>\r\n         <faultstring>GD8269: Teknik hata.</faultstring>\r\n         <detail>\r\n            <IDIT_FAULT:IDIT xmlns:IDIT_FAULT=\"http://idit/service/fault\">InvocationTargetException. TargetException: null</IDIT_FAULT:IDIT>\r\n         </detail>\r\n      </soapenv:Fault>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>",
+      "properties": {
+        "Envelope": {
+          "properties": {
+            "Body": {
+              "properties": {
+                "Fault": {
+                  "properties": {
+                    "detail": {
+                      "properties": {
+                        "IDIT": {
+                          "type": "string",
+                          "xml": {
+                            "namespace": "http://idit/service/fault",
+                            "prefix": "IDIT_FAULT"
+                          }
+                        }
+                      },
+                      "type": "object",
+                      "xml": {
+                        "namespace": ""
+                      }
+                    },
+                    "faultcode": {
+                      "type": "string",
+                      "xml": {
+                        "namespace": ""
+                      }
+                    },
+                    "faultstring": {
+                      "type": "string",
+                      "xml": {
+                        "namespace": ""
+                      }
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            },
+            "Header": {
+              "type": "object"
+            }
+          },
+          "type": "object",
+          "xml": {
+            "namespace": "http://schemas.xmlsoap.org/soap/envelope/",
+            "prefix": "soapenv"
+          }
+        }
+      },
+      "type": "object",
+      "xml": {
+        "namespace": ""
+      }
+    }
+  },
+  "tags": [],
+  "host": "apitest.anadolusigorta.com.tr"
+}

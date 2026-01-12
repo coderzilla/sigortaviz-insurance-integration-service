@@ -1,0 +1,2834 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "x-ibm-name": "asoscreateproposal-apigw",
+    "title": "AsosCreateProposal",
+    "version": "1.0.0",
+    "description": "Bu servis ASOS Trafik ürünü için tasarlanmıştır."
+  },
+  "schemes": [
+    "https"
+  ],
+  "basePath": "/api/agency/asoscreateproposal",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "securityDefinitions": {
+    "asosoauth20api": {
+      "description": "",
+      "flow": "password",
+      "scopes": {
+        "asos": ""
+      },
+      "tokenUrl": "/asosoauth20api/oauth2/token",
+      "type": "oauth2",
+      "x-ibm-oauth-provider": "asosoauth20api-1-0-0-7b06-apigw",
+      "x-scopeValidate": {
+        "tls-profile": "",
+        "url": ""
+      }
+    },
+    "clientIdHeader": {
+      "in": "header",
+      "name": "X-IBM-Client-Id",
+      "type": "apiKey"
+    },
+    "clientSecretHeader": {
+      "description": "",
+      "in": "header",
+      "name": "X-IBM-Client-Secret",
+      "type": "apiKey"
+    }
+  },
+  "security": [
+    {
+      "clientIdHeader": [],
+      "clientSecretHeader": [],
+      "asosoauth20api": [
+        "asos"
+      ]
+    }
+  ],
+  "x-ibm-configuration": {
+    "testable": true,
+    "enforced": true,
+    "cors": {
+      "enabled": true
+    },
+    "phase": "realized",
+    "type": "rest",
+    "servers": [
+      {
+        "url": "https://apitest.anadolusigorta.com.tr/api/agency/asoscreateproposal",
+        "description": "",
+        "type": [
+          "production",
+          "development"
+        ]
+      }
+    ],
+    "oauth-servers": {
+      "asosoauth20api": {
+        "tokenUrls": [
+          "https://apitest.anadolusigorta.com.tr/api/agency/asosoauth20api/oauth2/token"
+        ],
+        "authorizationUrls": [],
+        "refreshUrls": []
+      }
+    }
+  },
+  "paths": {
+    "/asosCreateProposal": {
+      "parameters": [
+        {
+          "name": "apiInput",
+          "required": true,
+          "in": "body",
+          "schema": {
+            "$ref": "#/definitions/AsosCreateProposalInput"
+          },
+          "description": "Input data to call API"
+        },
+        {
+          "name": "consumercontextcode",
+          "type": "string",
+          "required": true,
+          "in": "header",
+          "description": "Consumer Context Code"
+        },
+        {
+          "name": "consumercontextuser",
+          "type": "string",
+          "required": true,
+          "in": "header",
+          "description": "Consumer Context User"
+        },
+        {
+          "name": "consumerchannelcode",
+          "type": "string",
+          "required": true,
+          "in": "header",
+          "description": "Consumer Context Channel Code"
+        },
+        {
+          "name": "ASOS_ENV",
+          "type": "string",
+          "required": false,
+          "in": "header"
+        }
+      ],
+      "post": {
+        "responses": {
+          "200": {
+            "description": "200 OK"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "AsosCreateProposalInput": {
+      "description": "",
+      "example": {
+        "Input": {
+          "asosCreateProposalRequestANDLIVOinList": {
+            "asosCreateProposalRequestANDLIVO": {
+              "main": "true",
+              "simplePolicyModel": {
+                "collectionInfo": {
+                  "paymentTerm": {
+                    "collectionMethodVORef": {
+                      "extCode": "4",
+                      "id": "0"
+                    },
+                    "numOfInstallment": "1"
+                  }
+                },
+                "policyContactsList": {
+                  "policyContacts": [
+                    {
+                      "externalContactNumber": "6304812",
+                      "legalTypeVORef": {
+                        "id": "2000001"
+                      },
+                      "policyContactRoleVORef": {
+                        "extCode": "6",
+                        "id": "0"
+                      }
+                    },
+                    {
+                      "externalContactNumber": "6304812",
+                      "legalTypeVORef": {
+                        "id": "2000001"
+                      },
+                      "policyContactRoleVORef": {
+                        "extCode": "1",
+                        "id": "0"
+                      }
+                    }
+                  ]
+                },
+                "policyHeader": {
+                  "agencyCode": "10038",
+                  "policyCurrencyVORef": {
+                    "extCode": "TRY",
+                    "id": "0"
+                  },
+                  "policyStartDate": "2018-11-30T00:00:00+03:00",
+                  "policyTypeVORef": {
+                    "id": "1000024"
+                  },
+                  "productTypeVORef": {
+                    "extCode": "1000031"
+                  },
+                  "salesChannelVORef": {
+                    "extCode": "2000002",
+                    "id": "0"
+                  },
+                  "subAgencyCode": "0"
+                },
+                "policyLobIVOsList": {
+                  "policyLobIVOs": {
+                    "policyLobAssetIVOsList": {
+                      "policyLobAssetIVOs": {
+                        "assetIVO": {
+                          "shortTermPolicy": false,
+                          "licencePlateInfo": {
+                            "plateCityCode": "05",
+                            "plateNumber": "YK"
+                          },
+                          "vehicleDetails": {
+                            "modelYear": "2018",
+                            "motorNumber": "R16A25101908",
+                            "vinNumber": "NLAFD6670AW050001"
+                          },
+                          "vehicleRegistryDetails": {
+                            "registrationDate": "2018-11-29T00:00:00+03:00",
+                            "registrySerialCode": "",
+                            "registrySerialNo": ""
+                          },
+                          "vehicleTechnicalDetails": {
+                            "mainModelVORef": {
+                              "extCode": "9000479",
+                              "id": "0"
+                            },
+                            "mainVehicleTypeVORef": {
+                              "extCode": "01",
+                              "id": "0"
+                            },
+                            "makeVORef": {
+                              "extCode": "15000000",
+                              "id": "0"
+                            },
+                            "modelVORef": {
+                              "extCode": "9079686",
+                              "id": "0"
+                            },
+                            "ownershipDocumentDate": "2018-11-29T00:00:00+03:00",
+                            "purposeofUsageVORef": {
+                              "extCode": "1000001",
+                              "id": "0"
+                            },
+                            "standingPassengers": "false",
+                            "transportationFlag": "false",
+                            "vehicleTypeVORef": {
+                              "extCode": "1000001",
+                              "id": "0"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "productRelatedParamsList": {
+                  "productRelatedParams": {
+                    "type": "AsosPolicyMotorRelatedParamsANDLIVO"
+                  }
+                }
+              },
+              "system_id": "2000000"
+            }
+          }
+        }
+      },
+      "properties": {
+        "Input": {
+          "properties": {
+            "asosCreateProposalRequestANDLIVOinList": {
+              "properties": {
+                "asosCreateProposalRequestANDLIVO": {
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "iditMessageId": {
+                      "type": "string"
+                    },
+                    "main": {
+                      "type": "string"
+                    },
+                    "simplePolicyModel": {
+                      "properties": {
+                        "collectionInfo": {
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "iditMessageId": {
+                              "type": "string"
+                            },
+                            "main": {
+                              "type": "boolean"
+                            },
+                            "paymentInfo": {
+                              "properties": {
+                                "cardNumber": {
+                                  "type": "string"
+                                },
+                                "cardType": {
+                                  "type": "string"
+                                },
+                                "creditCardHolderName": {
+                                  "type": "string"
+                                },
+                                "cvcCode": {
+                                  "type": "string"
+                                },
+                                "expMonth": {
+                                  "type": "string"
+                                },
+                                "expYear": {
+                                  "type": "string"
+                                },
+                                "id": {
+                                  "type": "string"
+                                },
+                                "iditMessageId": {
+                                  "type": "string"
+                                },
+                                "main": {
+                                  "type": "boolean"
+                                },
+                                "system_id": {
+                                  "type": "string"
+                                },
+                                "updateVersion": {
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "paymentTerm": {
+                              "properties": {
+                                "cashReceived": {
+                                  "type": "boolean"
+                                },
+                                "collectionMethodVORef": {
+                                  "properties": {
+                                    "extCode": {
+                                      "type": "string"
+                                    },
+                                    "id": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "type": "object"
+                                },
+                                "id": {
+                                  "type": "string"
+                                },
+                                "iditMessageId": {
+                                  "type": "string"
+                                },
+                                "main": {
+                                  "type": "boolean"
+                                },
+                                "numOfInstallment": {
+                                  "type": "string"
+                                },
+                                "paymentsTermsVORef": {
+                                  "properties": {
+                                    "extCode": {
+                                      "type": "string"
+                                    },
+                                    "id": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "type": "object"
+                                },
+                                "system_id": {
+                                  "type": "string"
+                                },
+                                "updateVersion": {
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "system_id": {
+                              "type": "string"
+                            },
+                            "updateVersion": {
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "iditMessageId": {
+                          "type": "string"
+                        },
+                        "main": {
+                          "type": "boolean"
+                        },
+                        "policyContactsList": {
+                          "properties": {
+                            "policyContacts": {
+                              "items": {
+                                "properties": {
+                                  "externalContactNumber": {
+                                    "type": "string"
+                                  },
+                                  "legalTypeVORef": {
+                                    "properties": {
+                                      "extCode": {
+                                        "type": "string"
+                                      },
+                                      "id": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "type": "object"
+                                  },
+                                  "policyContactRoleVORef": {
+                                    "properties": {
+                                      "extCode": {
+                                        "type": "string"
+                                      },
+                                      "id": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "type": "object"
+                                  }
+                                },
+                                "type": "object"
+                              },
+                              "type": "array"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "policyHeader": {
+                          "properties": {
+                            "agencyCode": {
+                              "type": "string"
+                            },
+                            "crossSaleID": {
+                              "type": "string"
+                            },
+                            "iditMessageId": {
+                              "type": "string"
+                            },
+                            "policyCurrencyVORef": {
+                              "properties": {
+                                "extCode": {
+                                  "type": "string"
+                                },
+                                "id": {
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "policyEndDate": {
+                              "type": "string"
+                            },
+                            "policyStartDate": {
+                              "type": "string"
+                            },
+                            "policyTypeVORef": {
+                              "properties": {
+                                "extCode": {
+                                  "type": "string"
+                                },
+                                "id": {
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "productTypeVORef": {
+                              "properties": {
+                                "extCode": {
+                                  "type": "string"
+                                },
+                                "id": {
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "renewalPolicy": {
+                              "type": "boolean"
+                            },
+                            "salesChannelVORef": {
+                              "properties": {
+                                "extCode": {
+                                  "type": "string"
+                                },
+                                "id": {
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "subAgencyCode": {
+                              "type": "string"
+                            },
+                            "updateVersion": {
+                              "type": "string"
+                            },
+                            "id": {
+                              "type": "string"
+                            },
+                            "main": {
+                              "type": "boolean"
+                            },
+                            "system_id": {
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "policyLobIVOsList": {
+                          "properties": {
+                            "policyLobIVOs": {
+                              "items": {
+                                "properties": {
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "iditMessageId": {
+                                    "type": "string"
+                                  },
+                                  "main": {
+                                    "type": "boolean"
+                                  },
+                                  "policyLobAssetIVOsList": {
+                                    "properties": {
+                                      "policyLobAssetIVOs": {
+                                        "items": {
+                                          "properties": {
+                                            "assetIVO": {
+                                              "$ref": "#/definitions/assetIVO"
+                                            },
+                                            "coverIVOsList": {
+                                              "properties": {
+                                                "coverIVOs": {
+                                                  "items": {
+                                                    "$ref": "#/definitions/coverIVO"
+                                                  },
+                                                  "type": "array"
+                                                }
+                                              },
+                                              "type": "object"
+                                            },
+                                            "id": {
+                                              "type": "string"
+                                            },
+                                            "iditMessageId": {
+                                              "type": "string"
+                                            },
+                                            "main": {
+                                              "type": "boolean"
+                                            },
+                                            "system_id": {
+                                              "type": "string"
+                                            },
+                                            "updateVersion": {
+                                              "type": "string"
+                                            }
+                                          }
+                                        },
+                                        "type": "array"
+                                      }
+                                    },
+                                    "type": "object"
+                                  },
+                                  "system_id": {
+                                    "type": "string"
+                                  },
+                                  "updateVersion": {
+                                    "type": "string"
+                                  }
+                                }
+                              },
+                              "type": "array"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "productRelatedParamsList": {
+                          "properties": {
+                            "productRelatedParams": {
+                              "items": {
+                                "properties": {
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "iditMessageId": {
+                                    "type": "string"
+                                  },
+                                  "main": {
+                                    "type": "boolean"
+                                  },
+                                  "system_id": {
+                                    "type": "string"
+                                  },
+                                  "type": {
+                                    "type": "string"
+                                  },
+                                  "updateVersion": {
+                                    "type": "string"
+                                  }
+                                }
+                              },
+                              "type": "array"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "system_id": {
+                          "type": "boolean"
+                        },
+                        "updateVersion": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "system_id": {
+                      "type": "string"
+                    },
+                    "updateVersion": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "AsosCreateProposalOutput": {
+      "description": "",
+      "example": {
+        "data": {
+          "asosCreateProposalResponseANDLIVO": {
+            "id": "?",
+            "iditMessageId": "?",
+            "main": "?",
+            "policyKey": {
+              "endorsementNumber": "?",
+              "id": "?",
+              "iditMessageId": "?",
+              "main": "?",
+              "policyNumber": "?",
+              "proposalNumber": "?",
+              "proposalValidDate": "?",
+              "renewalNumber": "?",
+              "revisionNumber": "?",
+              "system_id": "?",
+              "updateVersion": "?"
+            },
+            "policySummary": {
+              "addressStatus": {
+                "addressStatusCode": "?",
+                "addressStatusExplanation": "?",
+                "id": "?",
+                "iditMessageId": "?",
+                "main": "?",
+                "system_id": "?",
+                "updateVersion": "?"
+              },
+              "agencyCode": "?",
+              "id": "?",
+              "iditMessageId": "?",
+              "main": "?",
+              "policyEndDate": "?",
+              "policyStartDate": "?",
+              "premiumInfo": {
+                "buildingConstYearDiscount": "?",
+                "commissionFee": "?",
+                "commissionFeeTl": "?",
+                "grossPremium": "?",
+                "grossPremiumTl": "?",
+                "id": "?",
+                "iditMessageId": "?",
+                "insuranceAmounTl": "?",
+                "insuranceAmount": "?",
+                "main": "?",
+                "netPremium": "?",
+                "netPremiumTl": "?",
+                "renewalDiscount": "?",
+                "system_id": "?",
+                "taxesList": {
+                  "taxes": {
+                    "id": "?",
+                    "iditMessageId": "?",
+                    "main": "?",
+                    "system_id": "?",
+                    "taxAmount": "?",
+                    "taxAmountTl": "?",
+                    "taxName": "?",
+                    "updateVersion": "?"
+                  }
+                },
+                "updateVersion": "?"
+              },
+              "responseWarning": "?",
+              "responseWarningMessage": "?",
+              "subAgencyCode": "?",
+              "system_id": "?",
+              "updateVersion": "?"
+            },
+            "system_id": "?",
+            "updateVersion": "?"
+          }
+        }
+      },
+      "properties": {
+        "data": {
+          "properties": {
+            "asosCreateProposalResponseANDLIVO": {
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "iditMessageId": {
+                  "type": "string"
+                },
+                "main": {
+                  "type": "string"
+                },
+                "cashReceipt": {
+                  "type": "boolean"
+                },
+                "coverIVOList": {
+                  "type": "object",
+                  "properties": {
+                    "coverIVO": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/coverIVO"
+                      }
+                    }
+                  }
+                },
+                "policyKey": {
+                  "properties": {
+                    "endorsementNumber": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "iditMessageId": {
+                      "type": "string"
+                    },
+                    "main": {
+                      "type": "string"
+                    },
+                    "policyNumber": {
+                      "type": "string"
+                    },
+                    "proposalNumber": {
+                      "type": "string"
+                    },
+                    "proposalValidDate": {
+                      "type": "string"
+                    },
+                    "renewalNumber": {
+                      "type": "string"
+                    },
+                    "revisionNumber": {
+                      "type": "string"
+                    },
+                    "system_id": {
+                      "type": "string"
+                    },
+                    "updateVersion": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "policySummary": {
+                  "properties": {
+                    "addressStatus": {
+                      "properties": {
+                        "addressStatusCode": {
+                          "type": "string"
+                        },
+                        "addressStatusExplanation": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "iditMessageId": {
+                          "type": "string"
+                        },
+                        "main": {
+                          "type": "string"
+                        },
+                        "system_id": {
+                          "type": "string"
+                        },
+                        "updateVersion": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "agencyCode": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "iditMessageId": {
+                      "type": "string"
+                    },
+                    "main": {
+                      "type": "string"
+                    },
+                    "policyEndDate": {
+                      "type": "string"
+                    },
+                    "policyStartDate": {
+                      "type": "string"
+                    },
+                    "premiumInfo": {
+                      "properties": {
+                        "buildingConstYearDiscount": {
+                          "type": "string"
+                        },
+                        "commissionFee": {
+                          "type": "string"
+                        },
+                        "commissionFeeTl": {
+                          "type": "string"
+                        },
+                        "grossPremium": {
+                          "type": "string"
+                        },
+                        "grossPremiumTl": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "iditMessageId": {
+                          "type": "string"
+                        },
+                        "insuranceAmounTl": {
+                          "type": "string"
+                        },
+                        "insuranceAmount": {
+                          "type": "string"
+                        },
+                        "main": {
+                          "type": "string"
+                        },
+                        "netPremium": {
+                          "type": "string"
+                        },
+                        "netPremiumTl": {
+                          "type": "string"
+                        },
+                        "paymentTermInfo": {
+                          "type": "object",
+                          "properties": {
+                            "cashReceived": {
+                              "type": "boolean"
+                            },
+                            "collectionMethodVORef": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string"
+                                },
+                                "extCode": {
+                                  "type": "string"
+                                },
+                                "text": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "iditMessageId": {
+                              "type": "integer"
+                            },
+                            "numOfInstallment": {
+                              "type": "integer"
+                            },
+                            "paymentsTermsVORef": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string"
+                                },
+                                "extCode": {
+                                  "type": "string"
+                                },
+                                "text": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "updateVersion": {
+                              "type": "integer"
+                            },
+                            "id": {
+                              "type": "integer"
+                            },
+                            "main": {
+                              "type": "boolean"
+                            },
+                            "system_id": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "policyPaymentTermsList": {
+                          "type": "object",
+                          "properties": {
+                            "policyPaymentTerms": {
+                              "type": "array",
+                              "items": {
+                                "properties": {
+                                  "cashReceived": {
+                                    "type": "boolean"
+                                  },
+                                  "collectionMethodVORef": {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string"
+                                      },
+                                      "extCode": {
+                                        "type": "string"
+                                      },
+                                      "text": {
+                                        "type": "string"
+                                      }
+                                    }
+                                  },
+                                  "iditMessageId": {
+                                    "type": "integer"
+                                  },
+                                  "numOfInstallment": {
+                                    "type": "integer"
+                                  },
+                                  "paymentsTermsVORef": {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string"
+                                      },
+                                      "extCode": {
+                                        "type": "string"
+                                      },
+                                      "text": {
+                                        "type": "string"
+                                      }
+                                    }
+                                  },
+                                  "updateVersion": {
+                                    "type": "integer"
+                                  },
+                                  "id": {
+                                    "type": "integer"
+                                  },
+                                  "main": {
+                                    "type": "boolean"
+                                  },
+                                  "system_id": {
+                                    "type": "integer"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "renewalDiscount": {
+                          "type": "string"
+                        },
+                        "system_id": {
+                          "type": "string"
+                        },
+                        "taxesList": {
+                          "properties": {
+                            "taxes": {
+                              "items": {
+                                "properties": {
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "iditMessageId": {
+                                    "type": "string"
+                                  },
+                                  "main": {
+                                    "type": "string"
+                                  },
+                                  "system_id": {
+                                    "type": "string"
+                                  },
+                                  "taxAmount": {
+                                    "type": "string"
+                                  },
+                                  "taxAmountTl": {
+                                    "type": "string"
+                                  },
+                                  "taxName": {
+                                    "type": "string"
+                                  },
+                                  "updateVersion": {
+                                    "type": "string"
+                                  }
+                                }
+                              },
+                              "type": "array"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "updateVersion": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "productAdditionalInfo": {
+                      "type": "object",
+                      "properties": {
+                        "daskAdditionalInfo": {
+                          "type": "object",
+                          "properties": {
+                            "externalSystemInfo": {
+                              "type": "object",
+                              "properties": {
+                                "endorsementNumber": {
+                                  "type": "integer"
+                                },
+                                "iditMessageId": {
+                                  "type": "integer"
+                                },
+                                "policyNumber": {
+                                  "type": "integer"
+                                },
+                                "renewalNumber": {
+                                  "type": "integer"
+                                },
+                                "updateVersion": {
+                                  "type": "integer"
+                                },
+                                "id": {
+                                  "type": "integer"
+                                },
+                                "main": {
+                                  "type": "boolean"
+                                },
+                                "system_id": {
+                                  "type": "integer"
+                                }
+                              }
+                            },
+                            "iditMessageId": {
+                              "type": "integer"
+                            },
+                            "updateVersion": {
+                              "type": "integer"
+                            },
+                            "id": {
+                              "type": "integer"
+                            },
+                            "main": {
+                              "type": "boolean"
+                            },
+                            "system_id": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "fireAdditionalInfo": {
+                          "type": "object",
+                          "properties": {
+                            "iditMessageId": {
+                              "type": "integer"
+                            },
+                            "policyNumber": {
+                              "type": "object",
+                              "properties": {
+                                "daskConstructionTypeVORef": {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "integer"
+                                    },
+                                    "extCode": {
+                                      "type": "string"
+                                    }
+                                  }
+                                },
+                                "daskGrossArea": {
+                                  "type": "string"
+                                },
+                                "daskPolicyEndDate": {
+                                  "type": "string"
+                                },
+                                "daskPolicyNumber": {
+                                  "type": "string"
+                                },
+                                "daskValueTL": {
+                                  "type": "string"
+                                },
+                                "iditMessageId": {
+                                  "type": "integer"
+                                },
+                                "policyNumber": {
+                                  "type": "string"
+                                },
+                                "updateVersion": {
+                                  "type": "integer"
+                                },
+                                "id": {
+                                  "type": "integer"
+                                },
+                                "main": {
+                                  "type": "boolean"
+                                },
+                                "system_id": {
+                                  "type": "integer"
+                                }
+                              }
+                            },
+                            "updateVersion": {
+                              "type": "integer"
+                            },
+                            "id": {
+                              "type": "integer"
+                            },
+                            "main": {
+                              "type": "boolean"
+                            },
+                            "system_id": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "iditMessageId": {
+                          "type": "integer"
+                        },
+                        "updateVersion": {
+                          "type": "integer"
+                        },
+                        "id": {
+                          "type": "integer"
+                        },
+                        "main": {
+                          "type": "boolean"
+                        },
+                        "system_id": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "proposalDate": {
+                      "type": "string"
+                    },
+                    "proposalStatusVORef": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "extCode": {
+                          "type": "string"
+                        },
+                        "text": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "responseWarning": {
+                      "type": "string"
+                    },
+                    "responseWarningMessage": {
+                      "type": "string"
+                    },
+                    "riskAddressInfoForAgency": {
+                      "type": "object",
+                      "properties": {
+                        "city": {
+                          "type": "string"
+                        },
+                        "county": {
+                          "type": "string"
+                        },
+                        "flatNumber": {
+                          "type": "string"
+                        },
+                        "iditMessageId": {
+                          "type": "integer"
+                        },
+                        "quarter": {
+                          "type": "string"
+                        },
+                        "village": {
+                          "type": "string"
+                        },
+                        "updateVersion": {
+                          "type": "integer"
+                        },
+                        "id": {
+                          "type": "integer"
+                        },
+                        "main": {
+                          "type": "boolean"
+                        },
+                        "system_id": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "subAgencyCode": {
+                      "type": "string"
+                    },
+                    "system_id": {
+                      "type": "string"
+                    },
+                    "updateVersion": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "referencePolicy": {
+                  "type": "object",
+                  "properties": {
+                    "agencyCode": {
+                      "type": "string"
+                    },
+                    "currentBm": {
+                      "type": "integer"
+                    },
+                    "delaySurcharge": {
+                      "type": "integer"
+                    },
+                    "iditMessageId": {
+                      "type": "integer"
+                    },
+                    "insuranceCompany": {
+                      "type": "string"
+                    },
+                    "insuranceCompanyCode": {
+                      "type": "string"
+                    },
+                    "licensePlateInfoVO": {
+                      "type": "object",
+                      "properties": {
+                        "iditMessageId": {
+                          "type": "integer"
+                        },
+                        "plateCityCode": {
+                          "type": "string"
+                        },
+                        "plateNumber": {
+                          "type": "string"
+                        },
+                        "registrationNumber": {
+                          "type": "string"
+                        },
+                        "updateVersion": {
+                          "type": "integer"
+                        },
+                        "id": {
+                          "type": "integer"
+                        },
+                        "main": {
+                          "type": "boolean"
+                        },
+                        "system_id": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "percentageOfSurcharge": {
+                      "type": "integer"
+                    },
+                    "policyEndDate": {
+                      "type": "string"
+                    },
+                    "policyNumber": {
+                      "type": "string"
+                    },
+                    "policyStartDate": {
+                      "type": "string"
+                    },
+                    "policyTypeVORef": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "extCode": {
+                          "type": "string"
+                        },
+                        "text": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "previousBm": {
+                      "type": "integer"
+                    },
+                    "renewalNumber": {
+                      "type": "integer"
+                    },
+                    "subAgencyCode": {
+                      "type": "string"
+                    },
+                    "updateVersion": {
+                      "type": "integer"
+                    },
+                    "id": {
+                      "type": "integer"
+                    },
+                    "main": {
+                      "type": "boolean"
+                    },
+                    "system_id": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "system_id": {
+                  "type": "string"
+                },
+                "updateVersion": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "AsosFaultSOAP": {
+      "description": "",
+      "example": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n   <soapenv:Header/>\r\n   <soapenv:Body>\r\n      <soapenv:Fault>\r\n         <faultcode>soapenv:GD8269</faultcode>\r\n         <faultstring>GD8269: Teknik hata.</faultstring>\r\n         <detail>\r\n            <IDIT_FAULT:IDIT xmlns:IDIT_FAULT=\"http://idit/service/fault\">InvocationTargetException. TargetException: null</IDIT_FAULT:IDIT>\r\n         </detail>\r\n      </soapenv:Fault>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>",
+      "properties": {
+        "Envelope": {
+          "properties": {
+            "Body": {
+              "properties": {
+                "Fault": {
+                  "properties": {
+                    "detail": {
+                      "properties": {
+                        "IDIT": {
+                          "type": "string",
+                          "xml": {
+                            "namespace": "http://idit/service/fault",
+                            "prefix": "IDIT_FAULT"
+                          }
+                        }
+                      },
+                      "type": "object",
+                      "xml": {
+                        "namespace": ""
+                      }
+                    },
+                    "faultcode": {
+                      "type": "string",
+                      "xml": {
+                        "namespace": ""
+                      }
+                    },
+                    "faultstring": {
+                      "type": "string",
+                      "xml": {
+                        "namespace": ""
+                      }
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            },
+            "Header": {
+              "type": "object"
+            }
+          },
+          "type": "object",
+          "xml": {
+            "namespace": "http://schemas.xmlsoap.org/soap/envelope/",
+            "prefix": "soapenv"
+          }
+        }
+      },
+      "type": "object",
+      "xml": {
+        "namespace": ""
+      }
+    },
+    "FaultJSON": {
+      "description": "",
+      "example": {
+        "errors": [
+          {
+            "detail": "detailed message",
+            "faultCode": "not found",
+            "faultMessage": "ID not found",
+            "faultType": "Business",
+            "status": "404"
+          }
+        ]
+      },
+      "properties": {
+        "errors": {
+          "items": {
+            "properties": {
+              "detail": {
+                "type": "string"
+              },
+              "faultCode": {
+                "type": "string"
+              },
+              "faultMessage": {
+                "type": "string"
+              },
+              "faultType": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "SOAPHeader": {
+      "description": "",
+      "example": "      <as:consumerContext xmlns:as=\"http://as.com/Technical/EA/Header/Schema/V1\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:type=\"as:IntWebAppContextType\">\n         <lang>tr</lang>\n         <consumerCode>acnt</consumerCode>\n         <channelCode>iWebApp</channelCode>\n         <userName>ESBACN340017</userName>\n         <messageId>f3e43a7d-6fbe-41e8-bac1-be674aaf20ca</messageId>\n         <messageGroupId>c349e8bc-5252-4a00-9f29-8a10951da3d2</messageGroupId>\n         <customerContext>\n            <customer>\n               <customerNumber>100</customerNumber>\n            </customer>\n         </customerContext>\n         <clientRequestTimestamp>2018-03-26 12:08:07.442</clientRequestTimestamp>\n         <organizationUnitCode>999999</organizationUnitCode>\n         <sessionId>65f27e82-a3bb-4792-8ab1-33a1d3846ace</sessionId>\n         <ipAddress>192.168.1.2</ipAddress>\n         <serverInstanceId>app1</serverInstanceId>\n      </as:consumerContext>\n      <wsse:Security xmlns:wsse=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\">\n         <wsse:UsernameToken>\n            <wsse:Username>ESBACN340017</wsse:Username>\n            <wsse:Password>Anad1001gs</wsse:Password>  \n         </wsse:UsernameToken>\n      </wsse:Security>",
+      "properties": {
+        "Security": {
+          "properties": {
+            "UsernameToken": {
+              "properties": {
+                "Password": {
+                  "type": "string"
+                },
+                "Username": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object",
+          "xml": {
+            "namespace": "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd",
+            "prefix": "wsse"
+          }
+        },
+        "consumerContext": {
+          "properties": {
+            "channelCode": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "clientRequestTimestamp": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "consumerCode": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "customerContext": {
+              "properties": {
+                "customer": {
+                  "properties": {
+                    "customerNumber": {
+                      "type": "string",
+                      "xml": {
+                        "namespace": ""
+                      }
+                    }
+                  },
+                  "type": "object",
+                  "xml": {
+                    "namespace": ""
+                  }
+                }
+              },
+              "type": "object",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "ipAddress": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "lang": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "messageGroupId": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "messageId": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "organizationUnitCode": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "serverInstanceId": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "sessionId": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "type": {
+              "type": "string",
+              "xml": {
+                "attribute": true,
+                "prefix": "xsi"
+              }
+            },
+            "userName": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            }
+          },
+          "type": "object",
+          "xml": {
+            "namespace": "http://as.com/Technical/EA/Header/Schema/V1",
+            "prefix": "as"
+          }
+        }
+      },
+      "type": "object",
+      "xml": {
+        "namespace": ""
+      }
+    },
+    "coverIVO": {
+      "description": "",
+      "type": "object",
+      "properties": {
+        "aggregatedLimitAmount": {
+          "type": "string"
+        },
+        "aggregatedLimitAmountSystem": {
+          "type": "string"
+        },
+        "childCoverVOList": {
+          "type": "object",
+          "properties": {
+            "childCoverVO": {
+              "type": "array",
+              "items": {
+                "properties": {
+                  "aggregatedLimitAmount": {
+                    "type": "string"
+                  },
+                  "aggregatedLimitAmountSystem": {
+                    "type": "string"
+                  },
+                  "cover": {
+                    "type": "string"
+                  },
+                  "coverExtCodeVORef": {
+                    "type": "object",
+                    "properties": {
+                      "extCode": {
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "text": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "coverInsuranceAmount": {
+                    "type": "string"
+                  },
+                  "coverInsuranceAmountSystem": {
+                    "type": "string"
+                  },
+                  "coverInsuranceAmountTl": {
+                    "type": "string"
+                  },
+                  "coverType": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "iditMessageId": {
+                    "type": "string"
+                  },
+                  "main": {
+                    "type": "string"
+                  },
+                  "perClaimantAmount": {
+                    "type": "string"
+                  },
+                  "perClaimantAmountSystem": {
+                    "type": "string"
+                  },
+                  "productLineTypeVORef": {
+                    "type": "object",
+                    "properties": {
+                      "extCode": {
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "text": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "system_id": {
+                    "type": "string"
+                  },
+                  "updateVersion": {
+                    "type": "string"
+                  },
+                  "childCoverVOList": {
+                    "type": "object",
+                    "properties": {
+                      "childCoverVO": {
+                        "type": "array",
+                        "items": {
+                          "properties": {
+                            "aggregatedLimitAmount": {
+                              "type": "string"
+                            },
+                            "aggregatedLimitAmountSystem": {
+                              "type": "string"
+                            },
+                            "cover": {
+                              "type": "string"
+                            },
+                            "coverExtCodeVORef": {
+                              "type": "object",
+                              "properties": {
+                                "extCode": {
+                                  "type": "string"
+                                },
+                                "id": {
+                                  "type": "string"
+                                },
+                                "text": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "coverInsuranceAmount": {
+                              "type": "string"
+                            },
+                            "coverInsuranceAmountSystem": {
+                              "type": "string"
+                            },
+                            "coverInsuranceAmountTl": {
+                              "type": "string"
+                            },
+                            "coverType": {
+                              "type": "string"
+                            },
+                            "id": {
+                              "type": "string"
+                            },
+                            "iditMessageId": {
+                              "type": "string"
+                            },
+                            "main": {
+                              "type": "string"
+                            },
+                            "perClaimantAmount": {
+                              "type": "string"
+                            },
+                            "perClaimantAmountSystem": {
+                              "type": "string"
+                            },
+                            "productLineTypeVORef": {
+                              "type": "object",
+                              "properties": {
+                                "extCode": {
+                                  "type": "string"
+                                },
+                                "id": {
+                                  "type": "string"
+                                },
+                                "text": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "system_id": {
+                              "type": "string"
+                            },
+                            "updateVersion": {
+                              "type": "string"
+                            },
+                            "childCoverVOList": {
+                              "type": "object",
+                              "properties": {
+                                "childCoverVO": {
+                                  "type": "array",
+                                  "items": {
+                                    "properties": {
+                                      "aggregatedLimitAmount": {
+                                        "type": "string"
+                                      },
+                                      "aggregatedLimitAmountSystem": {
+                                        "type": "string"
+                                      },
+                                      "cover": {
+                                        "type": "string"
+                                      },
+                                      "coverExtCodeVORef": {
+                                        "type": "object",
+                                        "properties": {
+                                          "extCode": {
+                                            "type": "string"
+                                          },
+                                          "id": {
+                                            "type": "string"
+                                          },
+                                          "text": {
+                                            "type": "string"
+                                          }
+                                        }
+                                      },
+                                      "coverInsuranceAmount": {
+                                        "type": "string"
+                                      },
+                                      "coverInsuranceAmountSystem": {
+                                        "type": "string"
+                                      },
+                                      "coverInsuranceAmountTl": {
+                                        "type": "string"
+                                      },
+                                      "coverType": {
+                                        "type": "string"
+                                      },
+                                      "id": {
+                                        "type": "string"
+                                      },
+                                      "iditMessageId": {
+                                        "type": "string"
+                                      },
+                                      "main": {
+                                        "type": "string"
+                                      },
+                                      "perClaimantAmount": {
+                                        "type": "string"
+                                      },
+                                      "perClaimantAmountSystem": {
+                                        "type": "string"
+                                      },
+                                      "productLineTypeVORef": {
+                                        "type": "object",
+                                        "properties": {
+                                          "extCode": {
+                                            "type": "string"
+                                          },
+                                          "id": {
+                                            "type": "string"
+                                          },
+                                          "text": {
+                                            "type": "string"
+                                          }
+                                        }
+                                      },
+                                      "system_id": {
+                                        "type": "string"
+                                      },
+                                      "updateVersion": {
+                                        "type": "string"
+                                      },
+                                      "childCoverVOList": {
+                                        "type": "object",
+                                        "properties": {
+                                          "childCoverVO": {
+                                            "type": "array",
+                                            "items": {
+                                              "properties": {
+                                                "aggregatedLimitAmount": {
+                                                  "type": "string"
+                                                },
+                                                "aggregatedLimitAmountSystem": {
+                                                  "type": "string"
+                                                },
+                                                "cover": {
+                                                  "type": "string"
+                                                },
+                                                "coverExtCodeVORef": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "extCode": {
+                                                      "type": "string"
+                                                    },
+                                                    "id": {
+                                                      "type": "string"
+                                                    },
+                                                    "text": {
+                                                      "type": "string"
+                                                    }
+                                                  }
+                                                },
+                                                "coverInsuranceAmount": {
+                                                  "type": "string"
+                                                },
+                                                "coverInsuranceAmountSystem": {
+                                                  "type": "string"
+                                                },
+                                                "coverInsuranceAmountTl": {
+                                                  "type": "string"
+                                                },
+                                                "coverType": {
+                                                  "type": "string"
+                                                },
+                                                "id": {
+                                                  "type": "string"
+                                                },
+                                                "iditMessageId": {
+                                                  "type": "string"
+                                                },
+                                                "main": {
+                                                  "type": "string"
+                                                },
+                                                "perClaimantAmount": {
+                                                  "type": "string"
+                                                },
+                                                "perClaimantAmountSystem": {
+                                                  "type": "string"
+                                                },
+                                                "productLineTypeVORef": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "extCode": {
+                                                      "type": "string"
+                                                    },
+                                                    "id": {
+                                                      "type": "string"
+                                                    },
+                                                    "text": {
+                                                      "type": "string"
+                                                    }
+                                                  }
+                                                },
+                                                "system_id": {
+                                                  "type": "string"
+                                                },
+                                                "updateVersion": {
+                                                  "type": "string"
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "cover": {
+          "type": "string"
+        },
+        "coverExtCodeVORef": {
+          "type": "object",
+          "properties": {
+            "extCode": {
+              "type": "string"
+            },
+            "id": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          }
+        },
+        "isSelected": {
+          "type": "boolean"
+        },
+        "coverInsuranceAmount": {
+          "type": "string"
+        },
+        "coverInsuranceAmountSystem": {
+          "type": "string"
+        },
+        "coverInsuranceAmountTl": {
+          "type": "string"
+        },
+        "coverType": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "iditMessageId": {
+          "type": "string"
+        },
+        "main": {
+          "type": "string"
+        },
+        "perClaimantAmount": {
+          "type": "string"
+        },
+        "perClaimantAmountSystem": {
+          "type": "string"
+        },
+        "productLineTypeVORef": {
+          "type": "object",
+          "properties": {
+            "extCode": {
+              "type": "string"
+            },
+            "id": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          }
+        },
+        "system_id": {
+          "type": "string"
+        },
+        "updateVersion": {
+          "type": "string"
+        }
+      },
+      "example": "{\r\n    \"aggregatedLimitAmount\": \"?\",\r\n    \"aggregatedLimitAmountSystem\": \"?\",\r\n    \"childCoverVOList\": {\r\n        \"childCoverVO\": [{\r\n            \"aggregatedLimitAmount\": \"?\",\r\n            \"aggregatedLimitAmountSystem\": \"?\",\r\n            \"cover\": \"?\",\r\n            \"coverExtCodeVORef\": {\r\n                \"extCode\": \"?\",\r\n                \"id\": \"?\",\r\n                \"text\": \"?\"\r\n            },\r\n            \"coverInsuranceAmount\": \"?\",\r\n            \"coverInsuranceAmountSystem\": \"?\",\r\n            \"coverInsuranceAmountTl\": \"?\",\r\n            \"coverType\": \"?\",\r\n            \"id\": \"?\",\r\n            \"iditMessageId\": \"?\",\r\n            \"main\": \"?\",\r\n            \"perClaimantAmount\": \"?\",\r\n            \"perClaimantAmountSystem\": \"?\",\r\n            \"productLineTypeVORef\": {\r\n                \"extCode\": \"?\",\r\n                \"id\": \"?\",\r\n                \"text\": \"?\"\r\n            },\r\n            \"system_id\": \"?\",\r\n            \"updateVersion\": \"?\",\r\n            \"childCoverVOList\": {\r\n                \"childCoverVO\": [{\r\n                    \"aggregatedLimitAmount\": \"?\",\r\n                    \"aggregatedLimitAmountSystem\": \"?\",\r\n                    \"cover\": \"?\",\r\n                    \"coverExtCodeVORef\": {\r\n                        \"extCode\": \"?\",\r\n                        \"id\": \"?\",\r\n                        \"text\": \"?\"\r\n                    },\r\n                    \"coverInsuranceAmount\": \"?\",\r\n                    \"coverInsuranceAmountSystem\": \"?\",\r\n                    \"coverInsuranceAmountTl\": \"?\",\r\n                    \"coverType\": \"?\",\r\n                    \"id\": \"?\",\r\n                    \"iditMessageId\": \"?\",\r\n                    \"main\": \"?\",\r\n                    \"perClaimantAmount\": \"?\",\r\n                    \"perClaimantAmountSystem\": \"?\",\r\n                    \"productLineTypeVORef\": {\r\n                        \"extCode\": \"?\",\r\n                        \"id\": \"?\",\r\n                        \"text\": \"?\"\r\n                    },\r\n                    \"system_id\": \"?\",\r\n                    \"updateVersion\": \"?\",\r\n                    \"childCoverVOList\": {\r\n                        \"childCoverVO\": [{\r\n                            \"aggregatedLimitAmount\": \"?\",\r\n                            \"aggregatedLimitAmountSystem\": \"?\",\r\n                            \"cover\": \"?\",\r\n                            \"coverExtCodeVORef\": {\r\n                                \"extCode\": \"?\",\r\n                                \"id\": \"?\",\r\n                                \"text\": \"?\"\r\n                            },\r\n                            \"coverInsuranceAmount\": \"?\",\r\n                            \"coverInsuranceAmountSystem\": \"?\",\r\n                            \"coverInsuranceAmountTl\": \"?\",\r\n                            \"coverType\": \"?\",\r\n                            \"id\": \"?\",\r\n                            \"iditMessageId\": \"?\",\r\n                            \"main\": \"?\",\r\n                            \"perClaimantAmount\": \"?\",\r\n                            \"perClaimantAmountSystem\": \"?\",\r\n                            \"productLineTypeVORef\": {\r\n                                \"extCode\": \"?\",\r\n                                \"id\": \"?\",\r\n                                \"text\": \"?\"\r\n                            },\r\n                            \"system_id\": \"?\",\r\n                            \"updateVersion\": \"?\",\r\n                            \"childCoverVOList\": {\r\n                                \"childCoverVO\": [{\r\n                                    \"aggregatedLimitAmount\": \"?\",\r\n                                    \"aggregatedLimitAmountSystem\": \"?\",\r\n                                    \"cover\": \"?\",\r\n                                    \"coverExtCodeVORef\": {\r\n                                        \"extCode\": \"?\",\r\n                                        \"id\": \"?\",\r\n                                        \"text\": \"?\"\r\n                                    },\r\n                                    \"coverInsuranceAmount\": \"?\",\r\n                                    \"coverInsuranceAmountSystem\": \"?\",\r\n                                    \"coverInsuranceAmountTl\": \"?\",\r\n                                    \"coverType\": \"?\",\r\n                                    \"id\": \"?\",\r\n                                    \"iditMessageId\": \"?\",\r\n                                    \"main\": \"?\",\r\n                                    \"perClaimantAmount\": \"?\",\r\n                                    \"perClaimantAmountSystem\": \"?\",\r\n                                    \"productLineTypeVORef\": {\r\n                                        \"extCode\": \"?\",\r\n                                        \"id\": \"?\",\r\n                                        \"text\": \"?\"\r\n                                    },\r\n                                    \"system_id\": \"?\",\r\n                                    \"updateVersion\": \"?\"\r\n                                }]\r\n                            }\r\n                        }]\r\n                    }\r\n                }]\r\n            }\r\n        }]\r\n    },\r\n    \"cover\": \"?\",\r\n    \"coverExtCodeVORef\": {\r\n        \"extCode\": \"?\",\r\n        \"id\": \"?\",\r\n        \"text\": \"?\"\r\n    },\r\n    \"coverInsuranceAmount\": \"?\",\r\n    \"coverInsuranceAmountSystem\": \"?\",\r\n    \"coverInsuranceAmountTl\": \"?\",\r\n    \"coverType\": \"?\",\r\n    \"id\": \"?\",\r\n    \"iditMessageId\": \"?\",\r\n    \"main\": \"?\",\r\n    \"perClaimantAmount\": \"?\",\r\n    \"perClaimantAmountSystem\": \"?\",\r\n    \"productLineTypeVORef\": {\r\n        \"extCode\": \"?\",\r\n        \"id\": \"?\",\r\n        \"text\": \"?\"\r\n    },\r\n    \"system_id\": \"?\",\r\n    \"updateVersion\": \"?\"\r\n}"
+    },
+    "coverIVOSoap": {
+      "description": "",
+      "type": "object",
+      "properties": {
+        "coverInsuranceAmount": {
+          "type": "string"
+        },
+        "coverInsuranceAmountTl": {
+          "type": "string"
+        },
+        "aggregatedLimitAmountSystem": {
+          "type": "string"
+        },
+        "perClaimantAmount": {
+          "type": "string"
+        },
+        "cover": {
+          "type": "string"
+        },
+        "childCoverVOList": {
+          "type": "object",
+          "properties": {
+            "childCoverVO": {
+              "type": "array",
+              "items": {
+                "properties": {
+                  "coverInsuranceAmount": {
+                    "type": "string"
+                  },
+                  "coverInsuranceAmountTl": {
+                    "type": "string"
+                  },
+                  "aggregatedLimitAmountSystem": {
+                    "type": "string"
+                  },
+                  "perClaimantAmount": {
+                    "type": "string"
+                  },
+                  "cover": {
+                    "type": "string"
+                  },
+                  "childCoverVOList": {
+                    "type": "object",
+                    "properties": {
+                      "childCoverVO": {
+                        "type": "array",
+                        "items": {
+                          "properties": {
+                            "coverInsuranceAmount": {
+                              "type": "string"
+                            },
+                            "coverInsuranceAmountTl": {
+                              "type": "string"
+                            },
+                            "aggregatedLimitAmountSystem": {
+                              "type": "string"
+                            },
+                            "perClaimantAmount": {
+                              "type": "string"
+                            },
+                            "cover": {
+                              "type": "string"
+                            },
+                            "childCoverVOList": {
+                              "type": "object",
+                              "properties": {
+                                "childCoverVO": {
+                                  "type": "array",
+                                  "items": {
+                                    "properties": {
+                                      "coverInsuranceAmount": {
+                                        "type": "string"
+                                      },
+                                      "coverInsuranceAmountTl": {
+                                        "type": "string"
+                                      },
+                                      "aggregatedLimitAmountSystem": {
+                                        "type": "string"
+                                      },
+                                      "perClaimantAmount": {
+                                        "type": "string"
+                                      },
+                                      "cover": {
+                                        "type": "string"
+                                      },
+                                      "childCoverVOList": {
+                                        "type": "object",
+                                        "properties": {
+                                          "childCoverVO": {
+                                            "type": "array",
+                                            "items": {
+                                              "properties": {
+                                                "coverInsuranceAmount": {
+                                                  "type": "string"
+                                                },
+                                                "coverInsuranceAmountTl": {
+                                                  "type": "string"
+                                                },
+                                                "aggregatedLimitAmountSystem": {
+                                                  "type": "string"
+                                                },
+                                                "perClaimantAmount": {
+                                                  "type": "string"
+                                                },
+                                                "cover": {
+                                                  "type": "string"
+                                                },
+                                                "coverExtCodeVORef": {
+                                                  "type": "string",
+                                                  "properties": {
+                                                    "id": {
+                                                      "type": "string",
+                                                      "xml": {
+                                                        "attribute": true
+                                                      }
+                                                    },
+                                                    "extCode": {
+                                                      "type": "string",
+                                                      "xml": {
+                                                        "attribute": true
+                                                      }
+                                                    }
+                                                  },
+                                                  "xml": {
+                                                    "namespace": ""
+                                                  }
+                                                },
+                                                "productLineTypeVORef": {
+                                                  "type": "string",
+                                                  "properties": {
+                                                    "id": {
+                                                      "type": "string",
+                                                      "xml": {
+                                                        "attribute": true
+                                                      }
+                                                    },
+                                                    "extCode": {
+                                                      "type": "string",
+                                                      "xml": {
+                                                        "attribute": true
+                                                      }
+                                                    }
+                                                  },
+                                                  "xml": {
+                                                    "namespace": ""
+                                                  }
+                                                },
+                                                "coverInsuranceAmountSystem": {
+                                                  "type": "string"
+                                                },
+                                                "iditMessageId": {
+                                                  "type": "string"
+                                                },
+                                                "coverType": {
+                                                  "type": "string"
+                                                },
+                                                "perClaimantAmountSystem": {
+                                                  "type": "string"
+                                                },
+                                                "aggregatedLimitAmount": {
+                                                  "type": "string"
+                                                },
+                                                "id": {
+                                                  "type": "string",
+                                                  "xml": {
+                                                    "attribute": true
+                                                  }
+                                                },
+                                                "main": {
+                                                  "type": "string",
+                                                  "xml": {
+                                                    "attribute": true
+                                                  }
+                                                },
+                                                "system_id": {
+                                                  "type": "string",
+                                                  "xml": {
+                                                    "attribute": true
+                                                  }
+                                                },
+                                                "updateVersion": {
+                                                  "type": "string",
+                                                  "xml": {
+                                                    "attribute": true
+                                                  }
+                                                }
+                                              },
+                                              "type": "object",
+                                              "xml": {
+                                                "namespace": ""
+                                              }
+                                            }
+                                          }
+                                        },
+                                        "xml": {
+                                          "namespace": ""
+                                        }
+                                      },
+                                      "coverExtCodeVORef": {
+                                        "type": "string",
+                                        "properties": {
+                                          "id": {
+                                            "type": "string",
+                                            "xml": {
+                                              "attribute": true
+                                            }
+                                          },
+                                          "extCode": {
+                                            "type": "string",
+                                            "xml": {
+                                              "attribute": true
+                                            }
+                                          }
+                                        },
+                                        "xml": {
+                                          "namespace": ""
+                                        }
+                                      },
+                                      "productLineTypeVORef": {
+                                        "type": "string",
+                                        "properties": {
+                                          "id": {
+                                            "type": "string",
+                                            "xml": {
+                                              "attribute": true
+                                            }
+                                          },
+                                          "extCode": {
+                                            "type": "string",
+                                            "xml": {
+                                              "attribute": true
+                                            }
+                                          }
+                                        },
+                                        "xml": {
+                                          "namespace": ""
+                                        }
+                                      },
+                                      "coverInsuranceAmountSystem": {
+                                        "type": "string"
+                                      },
+                                      "iditMessageId": {
+                                        "type": "string"
+                                      },
+                                      "coverType": {
+                                        "type": "string"
+                                      },
+                                      "perClaimantAmountSystem": {
+                                        "type": "string"
+                                      },
+                                      "aggregatedLimitAmount": {
+                                        "type": "string"
+                                      },
+                                      "id": {
+                                        "type": "string",
+                                        "xml": {
+                                          "attribute": true
+                                        }
+                                      },
+                                      "main": {
+                                        "type": "string",
+                                        "xml": {
+                                          "attribute": true
+                                        }
+                                      },
+                                      "system_id": {
+                                        "type": "string",
+                                        "xml": {
+                                          "attribute": true
+                                        }
+                                      },
+                                      "updateVersion": {
+                                        "type": "string",
+                                        "xml": {
+                                          "attribute": true
+                                        }
+                                      }
+                                    },
+                                    "type": "object",
+                                    "xml": {
+                                      "namespace": ""
+                                    }
+                                  }
+                                }
+                              },
+                              "xml": {
+                                "namespace": ""
+                              }
+                            },
+                            "coverExtCodeVORef": {
+                              "type": "string",
+                              "properties": {
+                                "id": {
+                                  "type": "string",
+                                  "xml": {
+                                    "attribute": true
+                                  }
+                                },
+                                "extCode": {
+                                  "type": "string",
+                                  "xml": {
+                                    "attribute": true
+                                  }
+                                }
+                              },
+                              "xml": {
+                                "namespace": ""
+                              }
+                            },
+                            "productLineTypeVORef": {
+                              "type": "string",
+                              "properties": {
+                                "id": {
+                                  "type": "string",
+                                  "xml": {
+                                    "attribute": true
+                                  }
+                                },
+                                "extCode": {
+                                  "type": "string",
+                                  "xml": {
+                                    "attribute": true
+                                  }
+                                }
+                              },
+                              "xml": {
+                                "namespace": ""
+                              }
+                            },
+                            "coverInsuranceAmountSystem": {
+                              "type": "string"
+                            },
+                            "iditMessageId": {
+                              "type": "string"
+                            },
+                            "coverType": {
+                              "type": "string"
+                            },
+                            "perClaimantAmountSystem": {
+                              "type": "string"
+                            },
+                            "aggregatedLimitAmount": {
+                              "type": "string"
+                            },
+                            "id": {
+                              "type": "string",
+                              "xml": {
+                                "attribute": true
+                              }
+                            },
+                            "main": {
+                              "type": "string",
+                              "xml": {
+                                "attribute": true
+                              }
+                            },
+                            "system_id": {
+                              "type": "string",
+                              "xml": {
+                                "attribute": true
+                              }
+                            },
+                            "updateVersion": {
+                              "type": "string",
+                              "xml": {
+                                "attribute": true
+                              }
+                            }
+                          },
+                          "type": "object",
+                          "xml": {
+                            "namespace": ""
+                          }
+                        }
+                      }
+                    },
+                    "xml": {
+                      "namespace": ""
+                    }
+                  },
+                  "coverExtCodeVORef": {
+                    "type": "string",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "xml": {
+                          "attribute": true
+                        }
+                      },
+                      "extCode": {
+                        "type": "string",
+                        "xml": {
+                          "attribute": true
+                        }
+                      }
+                    },
+                    "xml": {
+                      "namespace": ""
+                    }
+                  },
+                  "productLineTypeVORef": {
+                    "type": "string",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "xml": {
+                          "attribute": true
+                        }
+                      },
+                      "extCode": {
+                        "type": "string",
+                        "xml": {
+                          "attribute": true
+                        }
+                      }
+                    },
+                    "xml": {
+                      "namespace": ""
+                    }
+                  },
+                  "coverInsuranceAmountSystem": {
+                    "type": "string"
+                  },
+                  "iditMessageId": {
+                    "type": "string"
+                  },
+                  "coverType": {
+                    "type": "string"
+                  },
+                  "perClaimantAmountSystem": {
+                    "type": "string"
+                  },
+                  "aggregatedLimitAmount": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string",
+                    "xml": {
+                      "attribute": true
+                    }
+                  },
+                  "main": {
+                    "type": "string",
+                    "xml": {
+                      "attribute": true
+                    }
+                  },
+                  "system_id": {
+                    "type": "string",
+                    "xml": {
+                      "attribute": true
+                    }
+                  },
+                  "updateVersion": {
+                    "type": "string",
+                    "xml": {
+                      "attribute": true
+                    }
+                  }
+                },
+                "type": "object",
+                "xml": {
+                  "namespace": ""
+                }
+              }
+            }
+          },
+          "xml": {
+            "namespace": ""
+          }
+        },
+        "coverExtCodeVORef": {
+          "type": "string",
+          "properties": {
+            "id": {
+              "type": "string",
+              "xml": {
+                "attribute": true
+              }
+            },
+            "extCode": {
+              "type": "string",
+              "xml": {
+                "attribute": true
+              }
+            }
+          },
+          "xml": {
+            "namespace": ""
+          }
+        },
+        "productLineTypeVORef": {
+          "type": "string",
+          "properties": {
+            "id": {
+              "type": "string",
+              "xml": {
+                "attribute": true
+              }
+            },
+            "extCode": {
+              "type": "string",
+              "xml": {
+                "attribute": true
+              }
+            }
+          },
+          "xml": {
+            "namespace": ""
+          }
+        },
+        "coverInsuranceAmountSystem": {
+          "type": "string"
+        },
+        "iditMessageId": {
+          "type": "string"
+        },
+        "coverType": {
+          "type": "string"
+        },
+        "perClaimantAmountSystem": {
+          "type": "string"
+        },
+        "aggregatedLimitAmount": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string",
+          "xml": {
+            "attribute": true
+          }
+        },
+        "main": {
+          "type": "string",
+          "xml": {
+            "attribute": true
+          }
+        },
+        "system_id": {
+          "type": "string",
+          "xml": {
+            "attribute": true
+          }
+        },
+        "updateVersion": {
+          "type": "string",
+          "xml": {
+            "attribute": true
+          }
+        }
+      },
+      "xml": {
+        "namespace": ""
+      },
+      "example": "\r\n                                 <!--You may enter the following 13 items in any order-->\r\n                                 <!--Optional:-->\r\n                                 <coverInsuranceAmount>?</coverInsuranceAmount>\r\n                                 <!--Optional:-->\r\n                                 <coverInsuranceAmountTl>?</coverInsuranceAmountTl>\r\n                                 <!--Optional:-->\r\n                                 <aggregatedLimitAmountSystem>?</aggregatedLimitAmountSystem>\r\n                                 <!--Optional:-->\r\n                                 <perClaimantAmount>?</perClaimantAmount>\r\n                                 <!--Optional:-->\r\n                                 <cover>?</cover>\r\n                                 <!--Optional:-->\r\n                                 <childCoverVOList>\r\n                                    <!--Zero or more repetitions:-->\r\n                                   \r\n\t\t\t\t\t\t\t\t\t<childCoverVO id=\"?\" main=\"?\" system_id=\"?\" updateVersion=\"?\">\r\n\r\n                                 <!--You may enter the following 13 items in any order-->\r\n                                 <!--Optional:-->\r\n                                 <coverInsuranceAmount>?</coverInsuranceAmount>\r\n                                 <!--Optional:-->\r\n                                 <coverInsuranceAmountTl>?</coverInsuranceAmountTl>\r\n                                 <!--Optional:-->\r\n                                 <aggregatedLimitAmountSystem>?</aggregatedLimitAmountSystem>\r\n                                 <!--Optional:-->\r\n                                 <perClaimantAmount>?</perClaimantAmount>\r\n                                 <!--Optional:-->\r\n                                 <cover>?</cover>\r\n                                 <!--Optional:-->\r\n                                 <childCoverVOList>\r\n                                    <!--Zero or more repetitions:-->\r\n                                   \r\n\t\t\t\t\t\t\t\t\t<childCoverVO id=\"?\" main=\"?\" system_id=\"?\" updateVersion=\"?\">\r\n                                 <!--You may enter the following 13 items in any order-->\r\n                                 <!--Optional:-->\r\n                                 <coverInsuranceAmount>?</coverInsuranceAmount>\r\n                                 <!--Optional:-->\r\n                                 <coverInsuranceAmountTl>?</coverInsuranceAmountTl>\r\n                                 <!--Optional:-->\r\n                                 <aggregatedLimitAmountSystem>?</aggregatedLimitAmountSystem>\r\n                                 <!--Optional:-->\r\n                                 <perClaimantAmount>?</perClaimantAmount>\r\n                                 <!--Optional:-->\r\n                                 <cover>?</cover>\r\n                                 <!--Optional:-->\r\n                                 <childCoverVOList>\r\n                                    <!--Zero or more repetitions:-->\r\n                                   \r\n\t\t\t\t\t\t\t\t\t<childCoverVO id=\"?\" main=\"?\" system_id=\"?\" updateVersion=\"?\">\r\n                                 <!--You may enter the following 13 items in any order-->\r\n                                 <!--Optional:-->\r\n                                 <coverInsuranceAmount>?</coverInsuranceAmount>\r\n                                 <!--Optional:-->\r\n                                 <coverInsuranceAmountTl>?</coverInsuranceAmountTl>\r\n                                 <!--Optional:-->\r\n                                 <aggregatedLimitAmountSystem>?</aggregatedLimitAmountSystem>\r\n                                 <!--Optional:-->\r\n                                 <perClaimantAmount>?</perClaimantAmount>\r\n                                 <!--Optional:-->\r\n                                 <cover>?</cover>\r\n                                 <!--Optional:-->\r\n                                 <childCoverVOList>\r\n                                    <!--Zero or more repetitions:-->\r\n                                   \r\n\t\t\t\t\t\t\t\t\t<childCoverVO id=\"?\" main=\"?\" system_id=\"?\" updateVersion=\"?\">\r\n                                 <!--You may enter the following 13 items in any order-->\r\n                                 <!--Optional:-->\r\n                                 <coverInsuranceAmount>?</coverInsuranceAmount>\r\n                                 <!--Optional:-->\r\n                                 <coverInsuranceAmountTl>?</coverInsuranceAmountTl>\r\n                                 <!--Optional:-->\r\n                                 <aggregatedLimitAmountSystem>?</aggregatedLimitAmountSystem>\r\n                                 <!--Optional:-->\r\n                                 <perClaimantAmount>?</perClaimantAmount>\r\n                                 <!--Optional:-->\r\n                                 <cover>?</cover>\r\n                                 <!--Optional:-->\r\n                                 <!--Optional:-->\r\n                                 <coverExtCodeVORef id=\"?\" extCode=\"?\">?</coverExtCodeVORef>\r\n                                 <!--Optional:-->\r\n                                 <productLineTypeVORef id=\"?\" extCode=\"?\">?</productLineTypeVORef>\r\n                                 <!--Optional:-->\r\n                                 <coverInsuranceAmountSystem>?</coverInsuranceAmountSystem>\r\n                                 <!--Optional:-->\r\n                                 <iditMessageId>?</iditMessageId>\r\n                                 <!--Optional:-->\r\n                                 <coverType>?</coverType>\r\n                                 <!--Optional:-->\r\n                                 <perClaimantAmountSystem>?</perClaimantAmountSystem>\r\n                                 <!--Optional:-->\r\n                                 <aggregatedLimitAmount>?</aggregatedLimitAmount>\r\n                              </childCoverVO>\r\n                                 </childCoverVOList>\r\n                                 <!--Optional:-->\r\n                                 <coverExtCodeVORef id=\"?\" extCode=\"?\">?</coverExtCodeVORef>\r\n                                 <!--Optional:-->\r\n                                 <productLineTypeVORef id=\"?\" extCode=\"?\">?</productLineTypeVORef>\r\n                                 <!--Optional:-->\r\n                                 <coverInsuranceAmountSystem>?</coverInsuranceAmountSystem>\r\n                                 <!--Optional:-->\r\n                                 <iditMessageId>?</iditMessageId>\r\n                                 <!--Optional:-->\r\n                                 <coverType>?</coverType>\r\n                                 <!--Optional:-->\r\n                                 <perClaimantAmountSystem>?</perClaimantAmountSystem>\r\n                                 <!--Optional:-->\r\n                                 <aggregatedLimitAmount>?</aggregatedLimitAmount>\r\n                              </childCoverVO>\r\n                                 </childCoverVOList>\r\n                                 <!--Optional:-->\r\n                                 <coverExtCodeVORef id=\"?\" extCode=\"?\">?</coverExtCodeVORef>\r\n                                 <!--Optional:-->\r\n                                 <productLineTypeVORef id=\"?\" extCode=\"?\">?</productLineTypeVORef>\r\n                                 <!--Optional:-->\r\n                                 <coverInsuranceAmountSystem>?</coverInsuranceAmountSystem>\r\n                                 <!--Optional:-->\r\n                                 <iditMessageId>?</iditMessageId>\r\n                                 <!--Optional:-->\r\n                                 <coverType>?</coverType>\r\n                                 <!--Optional:-->\r\n                                 <perClaimantAmountSystem>?</perClaimantAmountSystem>\r\n                                 <!--Optional:-->\r\n                                 <aggregatedLimitAmount>?</aggregatedLimitAmount>\r\n                              </childCoverVO>\r\n                                 </childCoverVOList>\r\n                                 <!--Optional:-->\r\n                                 <coverExtCodeVORef id=\"?\" extCode=\"?\">?</coverExtCodeVORef>\r\n                                 <!--Optional:-->\r\n                                 <productLineTypeVORef id=\"?\" extCode=\"?\">?</productLineTypeVORef>\r\n                                 <!--Optional:-->\r\n                                 <coverInsuranceAmountSystem>?</coverInsuranceAmountSystem>\r\n                                 <!--Optional:-->\r\n                                 <iditMessageId>?</iditMessageId>\r\n                                 <!--Optional:-->\r\n                                 <coverType>?</coverType>\r\n                                 <!--Optional:-->\r\n                                 <perClaimantAmountSystem>?</perClaimantAmountSystem>\r\n                                 <!--Optional:-->\r\n                                 <aggregatedLimitAmount>?</aggregatedLimitAmount>\r\n                              </childCoverVO>\r\n\t\t\t\t\t\t\t  <childCoverVO id=\"?\" main=\"?\" system_id=\"?\" updateVersion=\"?\">\r\n\r\n                                 <!--You may enter the following 13 items in any order-->\r\n                                 <!--Optional:-->\r\n                                 <coverInsuranceAmount>?</coverInsuranceAmount>\r\n                                 <!--Optional:-->\r\n                                 <coverInsuranceAmountTl>?</coverInsuranceAmountTl>\r\n                                 <!--Optional:-->\r\n                                 <aggregatedLimitAmountSystem>?</aggregatedLimitAmountSystem>\r\n                                 <!--Optional:-->\r\n                                 <perClaimantAmount>?</perClaimantAmount>\r\n                                 <!--Optional:-->\r\n                                 <cover>?</cover>\r\n                                 <!--Optional:-->\r\n                                 <childCoverVOList>\r\n                                    <!--Zero or more repetitions:-->\r\n                                   \r\n\t\t\t\t\t\t\t\t\t<childCoverVO id=\"?\" main=\"?\" system_id=\"?\" updateVersion=\"?\">\r\n                                 <!--You may enter the following 13 items in any order-->\r\n                                 <!--Optional:-->\r\n                                 <coverInsuranceAmount>?</coverInsuranceAmount>\r\n                                 <!--Optional:-->\r\n                                 <coverInsuranceAmountTl>?</coverInsuranceAmountTl>\r\n                                 <!--Optional:-->\r\n                                 <aggregatedLimitAmountSystem>?</aggregatedLimitAmountSystem>\r\n                                 <!--Optional:-->\r\n                                 <perClaimantAmount>?</perClaimantAmount>\r\n                                 <!--Optional:-->\r\n                                 <cover>?</cover>\r\n                                 <!--Optional:-->\r\n                                 <childCoverVOList>\r\n                                    <!--Zero or more repetitions:-->\r\n                                   \r\n\t\t\t\t\t\t\t\t\t<childCoverVO id=\"?\" main=\"?\" system_id=\"?\" updateVersion=\"?\">\r\n                                 <!--You may enter the following 13 items in any order-->\r\n                                 <!--Optional:-->\r\n                                 <coverInsuranceAmount>?</coverInsuranceAmount>\r\n                                 <!--Optional:-->\r\n                                 <coverInsuranceAmountTl>?</coverInsuranceAmountTl>\r\n                                 <!--Optional:-->\r\n                                 <aggregatedLimitAmountSystem>?</aggregatedLimitAmountSystem>\r\n                                 <!--Optional:-->\r\n                                 <perClaimantAmount>?</perClaimantAmount>\r\n                                 <!--Optional:-->\r\n                                 <cover>?</cover>\r\n                                 <!--Optional:-->\r\n                                 <childCoverVOList>\r\n                                    <!--Zero or more repetitions:-->\r\n                                   \r\n\t\t\t\t\t\t\t\t\t<childCoverVO id=\"?\" main=\"?\" system_id=\"?\" updateVersion=\"?\">\r\n                                 <!--You may enter the following 13 items in any order-->\r\n                                 <!--Optional:-->\r\n                                 <coverInsuranceAmount>?</coverInsuranceAmount>\r\n                                 <!--Optional:-->\r\n                                 <coverInsuranceAmountTl>?</coverInsuranceAmountTl>\r\n                                 <!--Optional:-->\r\n                                 <aggregatedLimitAmountSystem>?</aggregatedLimitAmountSystem>\r\n                                 <!--Optional:-->\r\n                                 <perClaimantAmount>?</perClaimantAmount>\r\n                                 <!--Optional:-->\r\n                                 <cover>?</cover>\r\n                                 <!--Optional:-->\r\n                                 <!--Optional:-->\r\n                                 <coverExtCodeVORef id=\"?\" extCode=\"?\">?</coverExtCodeVORef>\r\n                                 <!--Optional:-->\r\n                                 <productLineTypeVORef id=\"?\" extCode=\"?\">?</productLineTypeVORef>\r\n                                 <!--Optional:-->\r\n                                 <coverInsuranceAmountSystem>?</coverInsuranceAmountSystem>\r\n                                 <!--Optional:-->\r\n                                 <iditMessageId>?</iditMessageId>\r\n                                 <!--Optional:-->\r\n                                 <coverType>?</coverType>\r\n                                 <!--Optional:-->\r\n                                 <perClaimantAmountSystem>?</perClaimantAmountSystem>\r\n                                 <!--Optional:-->\r\n                                 <aggregatedLimitAmount>?</aggregatedLimitAmount>\r\n                              </childCoverVO>\r\n                                 </childCoverVOList>\r\n                                 <!--Optional:-->\r\n                                 <coverExtCodeVORef id=\"?\" extCode=\"?\">?</coverExtCodeVORef>\r\n                                 <!--Optional:-->\r\n                                 <productLineTypeVORef id=\"?\" extCode=\"?\">?</productLineTypeVORef>\r\n                                 <!--Optional:-->\r\n                                 <coverInsuranceAmountSystem>?</coverInsuranceAmountSystem>\r\n                                 <!--Optional:-->\r\n                                 <iditMessageId>?</iditMessageId>\r\n                                 <!--Optional:-->\r\n                                 <coverType>?</coverType>\r\n                                 <!--Optional:-->\r\n                                 <perClaimantAmountSystem>?</perClaimantAmountSystem>\r\n                                 <!--Optional:-->\r\n                                 <aggregatedLimitAmount>?</aggregatedLimitAmount>\r\n                              </childCoverVO>\r\n                                 </childCoverVOList>\r\n                                 <!--Optional:-->\r\n                                 <coverExtCodeVORef id=\"?\" extCode=\"?\">?</coverExtCodeVORef>\r\n                                 <!--Optional:-->\r\n                                 <productLineTypeVORef id=\"?\" extCode=\"?\">?</productLineTypeVORef>\r\n                                 <!--Optional:-->\r\n                                 <coverInsuranceAmountSystem>?</coverInsuranceAmountSystem>\r\n                                 <!--Optional:-->\r\n                                 <iditMessageId>?</iditMessageId>\r\n                                 <!--Optional:-->\r\n                                 <coverType>?</coverType>\r\n                                 <!--Optional:-->\r\n                                 <perClaimantAmountSystem>?</perClaimantAmountSystem>\r\n                                 <!--Optional:-->\r\n                                 <aggregatedLimitAmount>?</aggregatedLimitAmount>\r\n                              </childCoverVO>\r\n                                 </childCoverVOList>\r\n                                 <!--Optional:-->\r\n                                 <coverExtCodeVORef id=\"?\" extCode=\"?\">?</coverExtCodeVORef>\r\n                                 <!--Optional:-->\r\n                                 <productLineTypeVORef id=\"?\" extCode=\"?\">?</productLineTypeVORef>\r\n                                 <!--Optional:-->\r\n                                 <coverInsuranceAmountSystem>?</coverInsuranceAmountSystem>\r\n                                 <!--Optional:-->\r\n                                 <iditMessageId>?</iditMessageId>\r\n                                 <!--Optional:-->\r\n                                 <coverType>?</coverType>\r\n                                 <!--Optional:-->\r\n                                 <perClaimantAmountSystem>?</perClaimantAmountSystem>\r\n                                 <!--Optional:-->\r\n                                 <aggregatedLimitAmount>?</aggregatedLimitAmount>\r\n                              </childCoverVO>\r\n                                 </childCoverVOList>\r\n                                 <!--Optional:-->\r\n                                 <coverExtCodeVORef id=\"?\" extCode=\"?\">?</coverExtCodeVORef>\r\n                                 <!--Optional:-->\r\n                                 <productLineTypeVORef id=\"?\" extCode=\"?\">?</productLineTypeVORef>\r\n                                 <!--Optional:-->\r\n                                 <coverInsuranceAmountSystem>?</coverInsuranceAmountSystem>\r\n                                 <!--Optional:-->\r\n                                 <iditMessageId>?</iditMessageId>\r\n                                 <!--Optional:-->\r\n                                 <coverType>?</coverType>\r\n                                 <!--Optional:-->\r\n                                 <perClaimantAmountSystem>?</perClaimantAmountSystem>\r\n                                 <!--Optional:-->\r\n                                 <aggregatedLimitAmount>?</aggregatedLimitAmount>\r\n "
+    },
+    "assetIVO": {
+      "description": "",
+      "type": "object",
+      "properties": {
+        "shortTermPolicy": {
+          "type": "boolean"
+        },
+        "licencePlateInfo": {
+          "type": "object",
+          "properties": {
+            "plateCityCode": {
+              "type": "string"
+            },
+            "plateNumber": {
+              "type": "string"
+            },
+            "registrationNumber": {
+              "type": "string"
+            },
+            "iditMessageId": {
+              "type": "string"
+            },
+            "updateVersion": {
+              "type": "string"
+            },
+            "id": {
+              "type": "string"
+            },
+            "main": {
+              "type": "string"
+            },
+            "system_id": {
+              "type": "string"
+            }
+          }
+        },
+        "vehicleDetails": {
+          "type": "object",
+          "properties": {
+            "modelYear": {
+              "type": "string"
+            },
+            "motorNumber": {
+              "type": "string"
+            },
+            "vinNumber": {
+              "type": "string"
+            },
+            "iditMessageId": {
+              "type": "string"
+            },
+            "updateVersion": {
+              "type": "string"
+            },
+            "id": {
+              "type": "string"
+            },
+            "main": {
+              "type": "string"
+            },
+            "system_id": {
+              "type": "string"
+            }
+          }
+        },
+        "vehicleRegistryDetails": {
+          "type": "object",
+          "properties": {
+            "iditMessageId": {
+              "type": "string"
+            },
+            "updateVersion": {
+              "type": "string"
+            },
+            "id": {
+              "type": "string"
+            },
+            "main": {
+              "type": "string"
+            },
+            "system_id": {
+              "type": "string"
+            },
+            "fuel": {
+              "type": "string"
+            },
+            "horsePower": {
+              "type": "string"
+            },
+            "make": {
+              "type": "string"
+            },
+            "model": {
+              "type": "string"
+            },
+            "numberOfSeats": {
+              "type": "string"
+            },
+            "registrationDate": {
+              "type": "string"
+            },
+            "registrySerialCode": {
+              "type": "string"
+            },
+            "registrySerialNo": {
+              "type": "string"
+            },
+            "trafficEntryDate": {
+              "type": "string"
+            },
+            "typeofCarriageRef": {
+              "type": "object",
+              "properties": {
+                "extCode": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                }
+              }
+            },
+            "vehicleName": {
+              "type": "string"
+            },
+            "vehicleRetirement": {
+              "type": "boolean"
+            },
+            "vehicleStatus": {
+              "type": "string"
+            },
+            "volume": {
+              "type": "string"
+            }
+          }
+        },
+        "vehicleTechnicalDetails": {
+          "type": "object",
+          "properties": {
+            "iditMessageId": {
+              "type": "string"
+            },
+            "updateVersion": {
+              "type": "string"
+            },
+            "id": {
+              "type": "string"
+            },
+            "main": {
+              "type": "string"
+            },
+            "system_id": {
+              "type": "string"
+            },
+            "mainModelVORef": {
+              "type": "object",
+              "properties": {
+                "extCode": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                }
+              }
+            },
+            "mainVehicleTypeVORef": {
+              "type": "object",
+              "properties": {
+                "extCode": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                }
+              }
+            },
+            "makeCode": {
+              "type": "string"
+            },
+            "makeDesc": {
+              "type": "string"
+            },
+            "makeVORef": {
+              "type": "object",
+              "properties": {
+                "extCode": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                }
+              }
+            },
+            "modelCode": {
+              "type": "string"
+            },
+            "modelVORef": {
+              "type": "object",
+              "properties": {
+                "extCode": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                }
+              }
+            },
+            "operationalRental": {
+              "type": "boolean"
+            },
+            "ownershipDocumentDate": {
+              "type": "string"
+            },
+            "purposeofUsageVORef": {
+              "type": "object",
+              "properties": {
+                "extCode": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                }
+              }
+            },
+            "rental": {
+              "type": "boolean"
+            },
+            "standingPassengers": {
+              "type": "boolean"
+            },
+            "transportationDocType": {
+              "type": "string"
+            },
+            "transportationFlag": {
+              "type": "boolean"
+            },
+            "typeofCarriageRef": {
+              "type": "object",
+              "properties": {
+                "extCode": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                }
+              }
+            },
+            "vehicleAmount": {
+              "type": "string"
+            },
+            "vehicleTypeVORef": {
+              "type": "object",
+              "properties": {
+                "extCode": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "example": " {\r\n\t\"licencePlateInfo\": {\r\n\t\t\"plateCityCode\": \"59\",\r\n\t\t\"plateNumber\": \"YSM32\"\r\n\t},\r\n\t\"vehicleDetails\": {\r\n\t\t\"modelYear\": \"2018\",\r\n\t\t\"motorNumber\": \"895121\",\r\n\t\t\"vinNumber\": \"RFDYUYHBBRDTY6521\"\r\n\t},\r\n\t\"vehicleRegistryDetails\": {\r\n\t\t\"registrationDate\": \"2018-01-01T00:00:00+03:00\",\r\n\t\t\"registrySerialCode\": \"\",\r\n\t\t\"registrySerialNo\": \"\"\r\n\t},\r\n\t\"vehicleTechnicalDetails\": {\r\n\t\t\"mainModelVORef\": {\r\n\t\t\t\"extCode\": \"9000238\",\r\n\t\t\t\"id\": \"0\",\r\n\t\t\t\"text\": \"ACCENT\"\r\n\t\t},\r\n\t\t\"mainVehicleTypeVORef\": {\r\n\t\t\t\"extCode\": \"01\",\r\n\t\t\t\"id\": \"0\",\r\n\t\t\t\"text\": \"OTOMOBİL (SÜRÜCÜ DAHİL 9 KOLTUK)\"\r\n\t\t},\r\n\t\t\"makeVORef\": {\r\n\t\t\t\"extCode\": \"2020111\",\r\n\t\t\t\"id\": \"0\",\r\n\t\t\t\"text\": \"HYUNDAI\"\r\n\t\t},\r\n\t\t\"modelVORef\": {\r\n\t\t\t\"extCode\": \"9089639\",\r\n\t\t\t\"id\": \"0\",\r\n\t\t\t\"text\": \"ACCENT BLUE 1.6 CRDI MODE\"\r\n\t\t},\r\n\t\t\"ownershipDocumentDate\": \"2017-01-01T00:00:00+03:00\",\r\n\t\t\"purposeofUsageVORef\": {\r\n\t\t\t\"extCode\": \"1000001\",\r\n\t\t\t\"id\": \"0\"\r\n\t\t},\r\n\t\t\"vehicleTypeVORef\": {\r\n\t\t\t\"extCode\": \"1000001\",\r\n\t\t\t\"id\": \"0\",\r\n\t\t\t\"text\": \"HUSUSİ OTOMOBİL\"\r\n\t\t}\r\n\t}\r\n}\r\n"
+    }
+  },
+  "tags": [],
+  "host": "apitest.anadolusigorta.com.tr"
+}

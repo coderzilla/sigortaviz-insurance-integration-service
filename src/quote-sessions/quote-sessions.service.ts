@@ -32,7 +32,7 @@ export class QuoteSessionsService {
     private readonly userRepo: Repository<Customer>,
     private readonly usersService: UsersService,
     private readonly tokenService: TokenService,
-  ) {}
+  ) { }
 
   async createSession(
     dto: CreateQuoteSessionDto,
@@ -54,11 +54,11 @@ export class QuoteSessionsService {
       ) {
         const leadToken = !userPayload
           ? this.tokenService.signLeadToken({
-              sub: user.id,
-              phoneNumber: dto.phoneNumber,
-              sessionId: existing.id,
-              productCode: existing.productCode,
-            })
+            sub: user.id,
+            phoneNumber: dto.phoneNumber,
+            sessionId: existing.id,
+            productCode: existing.productCode,
+          })
           : undefined;
         return { session: existing, leadToken };
       }
@@ -93,12 +93,12 @@ export class QuoteSessionsService {
 
     const leadToken = !userPayload
       ? this.tokenService.signLeadToken({
-          sub: user.id,
-          phoneNumber: dto.phoneNumber,
-          sessionId: saved.id,
-          productCode: saved.productCode,
-          identityId: identity.id,
-        })
+        sub: user.id,
+        phoneNumber: dto.phoneNumber,
+        sessionId: saved.id,
+        productCode: saved.productCode,
+        identityId: identity.id,
+      })
       : undefined;
 
     return { session: saved, leadToken };
@@ -110,48 +110,52 @@ export class QuoteSessionsService {
     userPayload?: AccessTokenPayload,
     leadToken?: string,
   ): Promise<QuoteSession> {
-    const session = await this.quoteSessionRepo.findOne({
-      where: { id: sessionId },
-    });
-    if (!session) throw new NotFoundException('Quote session not found');
+    try {
+      const session = await this.quoteSessionRepo.findOne({
+        where: { id: sessionId },
+      });
+      if (!session) throw new NotFoundException('Quote session not found');
 
-    await this.ensureNotExpired(session);
+      await this.ensureNotExpired(session);
 
-    if (userPayload) {
-      if (session.userId !== userPayload.sub) {
-        throw new ForbiddenException('Session does not belong to user');
+      if (userPayload) {
+        if (session.userId !== userPayload.sub) {
+          throw new ForbiddenException('Session does not belong to user');
+        }
+      } else if (leadToken) {
+        const tokenPayload = this.tokenService.verifyLeadToken(leadToken);
+        if (
+          tokenPayload.sessionId !== session.id ||
+          tokenPayload.phoneNumber !== session.phoneNumber
+        ) {
+          throw new UnauthorizedException('Lead token invalid for this session');
+        }
+      } else {
+        throw new UnauthorizedException('Authentication required');
       }
-    } else if (leadToken) {
-      const tokenPayload = this.tokenService.verifyLeadToken(leadToken);
-      if (
-        tokenPayload.sessionId !== session.id ||
-        tokenPayload.phoneNumber !== session.phoneNumber
-      ) {
-        throw new UnauthorizedException('Lead token invalid for this session');
+
+      const event = this.stepEventRepo.create({
+        quoteSessionId: session.id,
+        step: dto.step,
+        payloadJson: dto.payload,
+      });
+      await this.stepEventRepo.save(event);
+
+      const merged = deepMerge(session.stepDataJson ?? {}, dto.payload);
+      session.stepDataJson = merged;
+      session.currentStep = dto.step;
+
+      if (dto.payload.birthDate || dto.payload.fullName) {
+        await this.updateIdentityFromPayload(session, dto.payload);
       }
-    } else {
-      throw new UnauthorizedException('Authentication required');
+      if (dto.payload.email) {
+        await this.updateUserEmail(session, dto.payload.email);
+      }
+
+      return this.quoteSessionRepo.save(session);
+    } catch (error) {
+      throw error;
     }
-
-    const event = this.stepEventRepo.create({
-      quoteSessionId: session.id,
-      step: dto.step,
-      payloadJson: dto.payload,
-    });
-    await this.stepEventRepo.save(event);
-
-    const merged = deepMerge(session.stepDataJson ?? {}, dto.payload);
-    session.stepDataJson = merged;
-    session.currentStep = dto.step;
-
-    if (dto.payload.birthDate || dto.payload.fullName) {
-      await this.updateIdentityFromPayload(session, dto.payload);
-    }
-    if (dto.payload.email) {
-      await this.updateUserEmail(session, dto.payload.email);
-    }
-
-    return this.quoteSessionRepo.save(session);
   }
 
   private async ensureNotExpired(session: QuoteSession) {

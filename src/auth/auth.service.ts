@@ -86,6 +86,7 @@ export class AuthService {
     console.log(
       `[OTP] challenge created for ${maskPhone(normalizedPhone)} purpose=${purpose}`,
     );
+    console.log(`[OTP] code=${code} (for testing purposes)`);
     return {
       expiresInSeconds: OTP_EXPIRES_SECONDS,
       resendAfterSeconds: OTP_RESEND_SECONDS,

@@ -14,6 +14,12 @@ export interface StepDefinition {
   title: string; // display label
   order: number; // ordering among siblings
   children?: StepDefinition[]; // nested steps
+  actions?: ActionDefinition[]; // optional actions tied to this step (UI-driven)
+}
+
+export interface StepsConfig {
+  steps: StepDefinition[];
+  defaults?: Record<string, any>;
 }
 
 // src/common/types/field-types.ts
@@ -99,8 +105,29 @@ export interface FieldConfig {
   onBlurRequest?: RequestTriggerConfig; // request to send on blur with valid value
 }
 
+export type ActionTrigger = 'onEnter' | 'onBlur' | 'onSubmit' | 'manual';
+
+export interface ActionDefinition {
+  id: string;
+  trigger: ActionTrigger;
+  type: 'http';
+  method: 'GET' | 'POST' | 'PATCH' | 'PUT' | 'DELETE';
+  url: string;
+  headers?: Record<string, string>;
+  bodyTemplate?: Record<string, any>;
+  dependsOn?: string[]; // action ids that must succeed first
+  resultMap?: Record<string, string>; // maps response fields to state paths
+  errorHandling?: { showInline?: boolean; toast?: boolean };
+  onSuccess?: Array<
+    | { type: 'storeToken'; tokenPath: string }
+    | { type: 'continueStep'; stepId: string }
+    | { type: string; [key: string]: any }
+  >;
+}
+
 export interface ProductFormConfig {
   fields: FieldConfig[];
   pageChangeRequest?: RequestTriggerConfig; // optional request to trigger between page changes
   steps?: StepDefinition[]; // hierarchical structure for grouping fields
+  stepsConfig?: StepsConfig; // full steps object including defaults
 }

@@ -28,7 +28,14 @@ async function bootstrap() {
   await app.register(fastifyCors, {
     origin: corsOrigins.length ? corsOrigins : ['http://localhost:3001'],
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'x-request-id'],
+    allowedHeaders: [
+      'Content-Type',
+      'Authorization',
+      'x-request-id',
+      'x-lead-token',
+      'X-Lead-Token',
+      'X-LEAD-TOKEN',
+    ],
     credentials: true,
   });
 

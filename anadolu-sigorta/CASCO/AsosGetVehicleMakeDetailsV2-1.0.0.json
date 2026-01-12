@@ -1,0 +1,698 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "x-ibm-name": "asosgetvehiclemakedetailsv2-apigw",
+    "title": "AsosGetVehicleMakeDetailsV2",
+    "version": "1.0.0"
+  },
+  "schemes": [
+    "https"
+  ],
+  "basePath": "/api/agency/asosgetvehiclemakedetailsv2",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "securityDefinitions": {
+    "asosoauth20api": {
+      "description": "",
+      "flow": "password",
+      "scopes": {
+        "asos": ""
+      },
+      "tokenUrl": "/asosoauth20api/oauth2/token",
+      "type": "oauth2",
+      "x-ibm-oauth-provider": "asosoauth20api-1-0-0-7b06-apigw",
+      "x-scopeValidate": {
+        "tls-profile": "",
+        "url": ""
+      }
+    },
+    "clientIdHeader": {
+      "in": "header",
+      "name": "X-IBM-Client-Id",
+      "type": "apiKey"
+    },
+    "clientSecretHeader": {
+      "description": "",
+      "in": "header",
+      "name": "X-IBM-Client-Secret",
+      "type": "apiKey"
+    }
+  },
+  "security": [
+    {
+      "clientIdHeader": [],
+      "asosoauth20api": [
+        "asos"
+      ],
+      "clientSecretHeader": []
+    }
+  ],
+  "x-ibm-configuration": {
+    "testable": true,
+    "enforced": true,
+    "cors": {
+      "enabled": true
+    },
+    "phase": "realized",
+    "type": "rest",
+    "servers": [
+      {
+        "url": "https://apitest.anadolusigorta.com.tr/api/agency/asosgetvehiclemakedetailsv2",
+        "description": "",
+        "type": [
+          "production",
+          "development"
+        ]
+      }
+    ],
+    "oauth-servers": {
+      "asosoauth20api": {
+        "tokenUrls": [
+          "https://apitest.anadolusigorta.com.tr/api/agency/asosoauth20api/oauth2/token"
+        ],
+        "authorizationUrls": [],
+        "refreshUrls": []
+      }
+    }
+  },
+  "paths": {
+    "/getVehicleMakeDetails": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "200 OK",
+            "schema": {
+              "$ref": "#/definitions/AsosGetVehicleMakeDetailV2Output"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "apiInput",
+          "required": true,
+          "in": "body",
+          "schema": {
+            "$ref": "#/definitions/AsosGetVehicleMakeDetailV2Input"
+          },
+          "description": "Input data to call API"
+        },
+        {
+          "name": "consumercontextcode",
+          "type": "string",
+          "required": true,
+          "in": "header",
+          "description": "Consumer Context Code"
+        },
+        {
+          "name": "consumercontextuser",
+          "type": "string",
+          "required": true,
+          "in": "header",
+          "description": "Consumer Context User"
+        },
+        {
+          "name": "ASOS_ENV",
+          "type": "string",
+          "required": false,
+          "in": "header"
+        }
+      ]
+    }
+  },
+  "tags": [],
+  "definitions": {
+    "AsosFaultSOAP": {
+      "description": "",
+      "example": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n   <soapenv:Header/>\r\n   <soapenv:Body>\r\n      <soapenv:Fault>\r\n         <faultcode>soapenv:GD8269</faultcode>\r\n         <faultstring>GD8269: Teknik hata.</faultstring>\r\n         <detail>\r\n            <IDIT_FAULT:IDIT xmlns:IDIT_FAULT=\"http://idit/service/fault\">InvocationTargetException. TargetException: null</IDIT_FAULT:IDIT>\r\n         </detail>\r\n      </soapenv:Fault>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>",
+      "properties": {
+        "Envelope": {
+          "properties": {
+            "Body": {
+              "properties": {
+                "Fault": {
+                  "properties": {
+                    "detail": {
+                      "properties": {
+                        "IDIT": {
+                          "type": "string",
+                          "xml": {
+                            "namespace": "http://idit/service/fault",
+                            "prefix": "IDIT_FAULT"
+                          }
+                        }
+                      },
+                      "type": "object",
+                      "xml": {
+                        "namespace": ""
+                      }
+                    },
+                    "faultcode": {
+                      "type": "string",
+                      "xml": {
+                        "namespace": ""
+                      }
+                    },
+                    "faultstring": {
+                      "type": "string",
+                      "xml": {
+                        "namespace": ""
+                      }
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            },
+            "Header": {
+              "type": "object"
+            }
+          },
+          "type": "object",
+          "xml": {
+            "namespace": "http://schemas.xmlsoap.org/soap/envelope/",
+            "prefix": "soapenv"
+          }
+        }
+      },
+      "type": "object",
+      "xml": {
+        "namespace": ""
+      }
+    },
+    "FaultJSON": {
+      "description": "",
+      "example": {
+        "errors": [
+          {
+            "detail": "detailed message",
+            "faultCode": "not found",
+            "faultMessage": "ID not found",
+            "faultType": "Business",
+            "status": "404"
+          }
+        ]
+      },
+      "properties": {
+        "errors": {
+          "items": {
+            "properties": {
+              "detail": {
+                "type": "string"
+              },
+              "faultCode": {
+                "type": "string"
+              },
+              "faultMessage": {
+                "type": "string"
+              },
+              "faultType": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "SOAPHeader": {
+      "description": "",
+      "type": "object",
+      "properties": {
+        "consumerContext": {
+          "type": "object",
+          "properties": {
+            "lang": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "consumerCode": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "channelCode": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "userName": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "version": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "messageId": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "messageGroupId": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "customerContext": {
+              "type": "object",
+              "properties": {
+                "customer": {
+                  "type": "object",
+                  "properties": {
+                    "customerNumber": {
+                      "type": "string",
+                      "xml": {
+                        "namespace": ""
+                      }
+                    }
+                  },
+                  "xml": {
+                    "namespace": ""
+                  }
+                }
+              },
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "clientRequestTimestamp": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "organizationUnitCode": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "sessionId": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "ipAddress": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "serverInstanceId": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "type": {
+              "type": "string",
+              "xml": {
+                "attribute": true,
+                "prefix": "xsi"
+              }
+            }
+          },
+          "xml": {
+            "namespace": "http://as.com/Technical/EA/Header/Schema/V1",
+            "prefix": "as"
+          }
+        },
+        "Security": {
+          "type": "object",
+          "properties": {
+            "UsernameToken": {
+              "type": "object",
+              "properties": {
+                "Username": {
+                  "type": "string"
+                },
+                "Password": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "xml": {
+            "namespace": "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd",
+            "prefix": "wsse"
+          }
+        }
+      },
+      "xml": {
+        "namespace": ""
+      },
+      "example": "      <as:consumerContext xmlns:as=\"http://as.com/Technical/EA/Header/Schema/V1\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:type=\"as:IntWebAppContextType\">         <lang>tr</lang>         <consumerCode>acnt</consumerCode>         <channelCode>iWebApp</channelCode>         <userName>ESBACN340017</userName>         <version>v1</version>         <messageId>f3e43a7d-6fbe-41e8-bac1-be674aaf20ca</messageId>         <messageGroupId>c349e8bc-5252-4a00-9f29-8a10951da3d2</messageGroupId>         <customerContext>            <customer>               <customerNumber>100</customerNumber>            </customer>         </customerContext>         <clientRequestTimestamp>2018-03-26 12:08:07.442</clientRequestTimestamp>         <organizationUnitCode>999999</organizationUnitCode>         <sessionId>65f27e82-a3bb-4792-8ab1-33a1d3846ace</sessionId>         <ipAddress>192.168.1.2</ipAddress>         <serverInstanceId>app1</serverInstanceId>      </as:consumerContext>      <wsse:Security xmlns:wsse=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\">         <wsse:UsernameToken>            <wsse:Username>ESBACN340017</wsse:Username>            <wsse:Password>Anad1001gs</wsse:Password>           </wsse:UsernameToken>      </wsse:Security>"
+    },
+    "AsosGetVehicleMakeDetailV2Input": {
+      "description": "",
+      "type": "object",
+      "properties": {
+        "Input": {
+          "type": "object",
+          "properties": {
+            "asosGetVehicleMakeDetailsV2RequestANDLIVO": {
+              "type": "object",
+              "properties": {
+                "updateVersion": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "main": {
+                  "type": "string"
+                },
+                "system_id": {
+                  "type": "string"
+                },
+                "iditMessageId": {
+                  "type": "string"
+                },
+                "makeCode": {
+                  "type": "string"
+                },
+                "makeDesc": {
+                  "type": "string"
+                },
+                "modelCode": {
+                  "type": "string"
+                },
+                "modelYear": {
+                  "type": "string"
+                },
+                "policyHeader": {
+                  "type": "object",
+                  "properties": {
+                    "updateVersion": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "main": {
+                      "type": "string"
+                    },
+                    "system_id": {
+                      "type": "string"
+                    },
+                    "agencyCode": {
+                      "type": "string"
+                    },
+                    "campaignInfo": {
+                      "type": "object",
+                      "properties": {
+                        "updateVersion": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "main": {
+                          "type": "string"
+                        },
+                        "system_id": {
+                          "type": "string"
+                        },
+                        "campaignCode": {
+                          "type": "string"
+                        },
+                        "campaignSaleId": {
+                          "type": "string"
+                        },
+                        "iditMessageId": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "crossSaleFlag": {
+                      "type": "string"
+                    },
+                    "crossSaleID": {
+                      "type": "string"
+                    },
+                    "iditMessageId": {
+                      "type": "string"
+                    },
+                    "policyCurrencyVORef": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "extCode": {
+                          "type": "string"
+                        },
+                        "text": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "policyEndDate": {
+                      "type": "string"
+                    },
+                    "policyStartDate": {
+                      "type": "string"
+                    },
+                    "policyTypeVORef": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "extCode": {
+                          "type": "string"
+                        },
+                        "text": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "productTypeVORef": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "extCode": {
+                          "type": "string"
+                        },
+                        "text": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "renewalPolicy": {
+                      "type": "string"
+                    },
+                    "salesChannelVORef": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "extCode": {
+                          "type": "string"
+                        },
+                        "text": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "subAgencyCode": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "example": {
+        "Input": {
+          "asosGetVehicleMakeDetailsV2RequestANDLIVO": {
+            "main": "true",
+            "system_id": "2000000",
+            "makeCode": 89,
+            "modelCode": "1024",
+            "modelYear": "2014",
+            "policyHeader": {
+              "agencyCode": "10011",
+              "policyCurrencyVORef": {
+                "extCode": "TRY",
+                "id": "0"
+              },
+              "policyTypeVORef": {
+                "extCode": "410",
+                "id": "410"
+              },
+              "productTypeVORef": {
+                "extCode": "1000031",
+                "id": "0"
+              },
+              "salesChannelVORef": {
+                "extCode": "2000006",
+                "id": "0"
+              }
+            }
+          }
+        }
+      }
+    },
+    "AsosGetVehicleMakeDetailV2Output": {
+      "description": "",
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object",
+          "properties": {
+            "asosGetVehicleMakeDetailsV2ResponseANDLIVO": {
+              "type": "object",
+              "properties": {
+                "updateVersion": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "main": {
+                  "type": "string"
+                },
+                "system_id": {
+                  "type": "string"
+                },
+                "iditMessageId": {
+                  "type": "string"
+                },
+                "mainModelVORef": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "extCode": {
+                      "type": "string"
+                    },
+                    "text": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "mainVehicleTypeVORef": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "extCode": {
+                      "type": "string"
+                    },
+                    "text": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "makeVORef": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "extCode": {
+                      "type": "string"
+                    },
+                    "text": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "modelVORef": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "extCode": {
+                      "type": "string"
+                    },
+                    "text": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "vehicleTypeVORef": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "extCode": {
+                      "type": "string"
+                    },
+                    "text": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "yearFrom": {
+                  "type": "string"
+                },
+                "yearTo": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "example": {
+        "data": {
+          "asosGetVehicleMakeDetailsV2ResponseANDLIVO": {
+            "yearFrom": "2014",
+            "yearTo": "2019",
+            "main": "true",
+            "system_id": "2000000",
+            "mainModelVORef": {
+              "id": "9001699",
+              "extCode": "9001699",
+              "text": "3"
+            },
+            "makeVORef": {
+              "id": "15000055",
+              "extCode": "15000055",
+              "text": "MAZDA"
+            },
+            "modelVORef": {
+              "id": "5009034",
+              "extCode": "5009034",
+              "text": "3 SEDAN SKY-G 1.5 120 POWER SENSE 6A"
+            }
+          }
+        }
+      }
+    }
+  },
+  "host": "apitest.anadolusigorta.com.tr"
+}

@@ -1,0 +1,1562 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "x-ibm-name": "asosgetpolicyasplain-apigw",
+    "title": "AsosGetPolicyAsPlain",
+    "version": "1.0.0"
+  },
+  "schemes": [
+    "https"
+  ],
+  "basePath": "/api/agency/asos",
+  "securityDefinitions": {
+    "asosoauth20api": {
+      "description": "",
+      "flow": "password",
+      "scopes": {
+        "asos": ""
+      },
+      "tokenUrl": "/asosoauth20api/oauth2/token",
+      "type": "oauth2",
+      "x-ibm-oauth-provider": "asosoauth20api-1-0-0-7b06-apigw",
+      "x-scopeValidate": {
+        "tls-profile": "",
+        "url": ""
+      }
+    },
+    "clientIdHeader": {
+      "in": "header",
+      "name": "X-IBM-Client-Id",
+      "type": "apiKey"
+    },
+    "clientSecretHeader": {
+      "description": "",
+      "in": "header",
+      "name": "X-IBM-Client-Secret",
+      "type": "apiKey"
+    }
+  },
+  "security": [
+    {
+      "clientIdHeader": [],
+      "clientSecretHeader": [],
+      "asosoauth20api": [
+        "asos"
+      ]
+    }
+  ],
+  "x-ibm-configuration": {
+    "testable": true,
+    "enforced": true,
+    "cors": {
+      "enabled": true
+    },
+    "phase": "realized",
+    "type": "rest",
+    "servers": [
+      {
+        "url": "https://apitest.anadolusigorta.com.tr/api/agency/asos",
+        "description": "",
+        "type": [
+          "production",
+          "development"
+        ]
+      }
+    ],
+    "oauth-servers": {
+      "asosoauth20api": {
+        "tokenUrls": [
+          "https://apitest.anadolusigorta.com.tr/api/agency/asosoauth20api/oauth2/token"
+        ],
+        "authorizationUrls": [],
+        "refreshUrls": []
+      }
+    }
+  },
+  "paths": {
+    "/getPolicyAsPlain": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "200 OK"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "GetPolicyAsPlainInput",
+          "required": true,
+          "in": "body",
+          "schema": {
+            "$ref": "#/definitions/GetPolicyAsPlainInput"
+          },
+          "description": "Input data to call API"
+        },
+        {
+          "name": "consumercontextcode",
+          "type": "string",
+          "required": true,
+          "in": "header",
+          "description": "Consumer Context Code"
+        },
+        {
+          "name": "ASOS_ENV",
+          "type": "string",
+          "required": false,
+          "in": "header"
+        },
+        {
+          "name": "consumercontextuser",
+          "type": "string",
+          "required": true,
+          "in": "header",
+          "description": "Consumer Context User"
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "SOAPHeader": {
+      "description": "",
+      "type": "object",
+      "properties": {
+        "consumerContext": {
+          "type": "object",
+          "properties": {
+            "lang": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "consumerCode": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "channelCode": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "userName": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "messageId": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "messageGroupId": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "customerContext": {
+              "type": "object",
+              "properties": {
+                "customer": {
+                  "type": "object",
+                  "properties": {
+                    "customerNumber": {
+                      "type": "string",
+                      "xml": {
+                        "namespace": ""
+                      }
+                    }
+                  },
+                  "xml": {
+                    "namespace": ""
+                  }
+                }
+              },
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "clientRequestTimestamp": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "organizationUnitCode": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "sessionId": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "ipAddress": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "serverInstanceId": {
+              "type": "string",
+              "xml": {
+                "namespace": ""
+              }
+            },
+            "type": {
+              "type": "string",
+              "xml": {
+                "attribute": true,
+                "prefix": "xsi"
+              }
+            }
+          },
+          "xml": {
+            "namespace": "http://as.com/Technical/EA/Header/Schema/V1",
+            "prefix": "as"
+          }
+        },
+        "Security": {
+          "type": "object",
+          "properties": {
+            "UsernameToken": {
+              "type": "object",
+              "properties": {
+                "Username": {
+                  "type": "string"
+                },
+                "Password": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "xml": {
+            "namespace": "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd",
+            "prefix": "wsse"
+          }
+        }
+      },
+      "xml": {
+        "namespace": ""
+      },
+      "example": "      <as:consumerContext xmlns:as=\"http://as.com/Technical/EA/Header/Schema/V1\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:type=\"as:IntWebAppContextType\">\n         <lang>tr</lang>\n         <consumerCode>acnt</consumerCode>\n         <channelCode>iWebApp</channelCode>\n         <userName>ESBACN340017</userName>\n         <messageId>f3e43a7d-6fbe-41e8-bac1-be674aaf20ca</messageId>\n         <messageGroupId>c349e8bc-5252-4a00-9f29-8a10951da3d2</messageGroupId>\n         <customerContext>\n            <customer>\n               <customerNumber>100</customerNumber>\n            </customer>\n         </customerContext>\n         <clientRequestTimestamp>2018-03-26 12:08:07.442</clientRequestTimestamp>\n         <organizationUnitCode>999999</organizationUnitCode>\n         <sessionId>65f27e82-a3bb-4792-8ab1-33a1d3846ace</sessionId>\n         <ipAddress>192.168.1.2</ipAddress>\n         <serverInstanceId>app1</serverInstanceId>\n      </as:consumerContext>\n      <wsse:Security xmlns:wsse=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\">\n         <wsse:UsernameToken>\n            <wsse:Username>ESBACN340017</wsse:Username>\n            <wsse:Password>Anad1001gs</wsse:Password>  \n         </wsse:UsernameToken>\n      </wsse:Security>"
+    },
+    "AsosFaultSOAP": {
+      "description": "",
+      "type": "object",
+      "properties": {
+        "Envelope": {
+          "type": "object",
+          "properties": {
+            "Header": {
+              "type": "object"
+            },
+            "Body": {
+              "type": "object",
+              "properties": {
+                "Fault": {
+                  "type": "object",
+                  "properties": {
+                    "faultcode": {
+                      "type": "string",
+                      "xml": {
+                        "namespace": ""
+                      }
+                    },
+                    "faultstring": {
+                      "type": "string",
+                      "xml": {
+                        "namespace": ""
+                      }
+                    },
+                    "detail": {
+                      "type": "object",
+                      "properties": {
+                        "IDIT": {
+                          "type": "string",
+                          "xml": {
+                            "namespace": "http://idit/service/fault",
+                            "prefix": "IDIT_FAULT"
+                          }
+                        }
+                      },
+                      "xml": {
+                        "namespace": ""
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "xml": {
+            "namespace": "http://schemas.xmlsoap.org/soap/envelope/",
+            "prefix": "soapenv"
+          }
+        }
+      },
+      "xml": {
+        "namespace": ""
+      },
+      "example": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n   <soapenv:Header/>\r\n   <soapenv:Body>\r\n      <soapenv:Fault>\r\n         <faultcode>soapenv:GD8269</faultcode>\r\n         <faultstring>GD8269: Teknik hata.</faultstring>\r\n         <detail>\r\n            <IDIT_FAULT:IDIT xmlns:IDIT_FAULT=\"http://idit/service/fault\">InvocationTargetException. TargetException: null</IDIT_FAULT:IDIT>\r\n         </detail>\r\n      </soapenv:Fault>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>"
+    },
+    "FaultJSON": {
+      "description": "",
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "properties": {
+              "status": {
+                "type": "string"
+              },
+              "faultType": {
+                "type": "string"
+              },
+              "faultCode": {
+                "type": "string"
+              },
+              "faultMessage": {
+                "type": "string"
+              },
+              "detail": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
+        }
+      },
+      "example": "{\r\n\r\n  \"errors\": [\r\n\r\n    {\r\n\r\n                               \"status\": \"404\",\r\n\r\n                               \"faultType\":\"Business\",\r\n\r\n                               \"faultCode\": \"not found\",\r\n\r\n                               \"faultMessage\": \"ID not found\", \r\n\r\n                               \"detail\":\"detailed message\"\r\n\r\n    }\r\n\r\n  ]\r\n\r\n}\r\n"
+    },
+    "GetPolicyAsPlainOutput": {
+      "description": "",
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object",
+          "properties": {
+            "getPolicyPlainResponseANDLIVO": {
+              "type": "object",
+              "properties": {
+                "headerIVO": {
+                  "type": "object",
+                  "properties": {
+                    "activePolicyId": {
+                      "type": "string"
+                    },
+                    "currencyVORef": {
+                      "type": "object",
+                      "properties": {
+                        "extCode": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "text": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "directDebitFlag": {
+                      "type": "string"
+                    },
+                    "externalHeaderNumber": {
+                      "type": "string"
+                    },
+                    "isMasterPolicy": {
+                      "type": "string"
+                    },
+                    "mainRenewalDate": {
+                      "type": "string"
+                    },
+                    "multiplePayersFlag": {
+                      "type": "string"
+                    },
+                    "paidByAgentFlag": {
+                      "type": "string"
+                    },
+                    "policyEndDate": {
+                      "type": "string"
+                    },
+                    "policyHeaderRemarksList": {
+                      "type": "object",
+                      "properties": {
+                        "policyHeaderRemarks": {
+                          "type": "object",
+                          "properties": {
+                            "remark": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "policyIVOsList": {
+                      "type": "object",
+                      "properties": {
+                        "policyIVOs": {
+                          "type": "object",
+                          "properties": {
+                            "affiinityDSCNTStepValue": {
+                              "type": "string"
+                            },
+                            "agentAccountId": {
+                              "type": "string"
+                            },
+                            "agentCommission": {
+                              "type": "string"
+                            },
+                            "agentNumber": {
+                              "type": "string"
+                            },
+                            "agentRegionCode": {
+                              "type": "string"
+                            },
+                            "asIssueDate": {
+                              "type": "string"
+                            },
+                            "barter": {
+                              "type": "string"
+                            },
+                            "billingTypeVORef": {
+                              "type": "object",
+                              "properties": {
+                                "extCode": {
+                                  "type": "string"
+                                },
+                                "id": {
+                                  "type": "string"
+                                },
+                                "text": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "campaignDSCNTStepValue": {
+                              "type": "string"
+                            },
+                            "cashReceived": {
+                              "type": "string"
+                            },
+                            "coinsuranceCollectionArrangementVORef": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string"
+                                },
+                                "text": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "collectionMethodId": {
+                              "type": "string"
+                            },
+                            "collectionMethodVORef": {
+                              "type": "object",
+                              "properties": {
+                                "extCode": {
+                                  "type": "string"
+                                },
+                                "id": {
+                                  "type": "string"
+                                },
+                                "text": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "currencyVORef": {
+                              "type": "object",
+                              "properties": {
+                                "extCode": {
+                                  "type": "string"
+                                },
+                                "id": {
+                                  "type": "string"
+                                },
+                                "text": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "currentChannelVORef": {
+                              "type": "object",
+                              "properties": {
+                                "extCode": {
+                                  "type": "string"
+                                },
+                                "id": {
+                                  "type": "string"
+                                },
+                                "text": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "customerDecisionVORef": {
+                              "type": "object",
+                              "properties": {
+                                "extCode": {
+                                  "type": "string"
+                                },
+                                "id": {
+                                  "type": "string"
+                                },
+                                "text": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "endorsEndDate": {
+                              "type": "string"
+                            },
+                            "endorsNr": {
+                              "type": "string"
+                            },
+                            "endorsStartDate": {
+                              "type": "string"
+                            },
+                            "externalPolicyNr": {
+                              "type": "string"
+                            },
+                            "grossPremium": {
+                              "type": "string"
+                            },
+                            "groupHealthDunningCondition": {
+                              "type": "string"
+                            },
+                            "installmentsIVOsList": {
+                              "type": "object",
+                              "properties": {
+                                "installmentsIVOs": {
+                                  "type": "object",
+                                  "properties": {
+                                    "collectionDate": {
+                                      "type": "string"
+                                    },
+                                    "collectionMethodVORef": {
+                                      "type": "object",
+                                      "properties": {
+                                        "extCode": {
+                                          "type": "string"
+                                        },
+                                        "id": {
+                                          "type": "string"
+                                        },
+                                        "text": {
+                                          "type": "string"
+                                        }
+                                      }
+                                    },
+                                    "combineInvoiceFlag": {
+                                      "type": "string"
+                                    },
+                                    "dueDate": {
+                                      "type": "string"
+                                    },
+                                    "firstGiroInstallmentFlag": {
+                                      "type": "string"
+                                    },
+                                    "graceDate": {
+                                      "type": "string"
+                                    },
+                                    "installmentBalance": {
+                                      "type": "string"
+                                    },
+                                    "installmentHistoryIVOList": {
+                                      "type": "object",
+                                      "properties": {
+                                        "installmentHistoryIVO": {
+                                          "type": "object",
+                                          "properties": {
+                                            "historyNumber": {
+                                              "type": "string"
+                                            },
+                                            "insertDate": {
+                                              "type": "string"
+                                            },
+                                            "insertUser": {
+                                              "type": "string"
+                                            },
+                                            "installmentStatusIVOsList": {
+                                              "type": "object",
+                                              "properties": {
+                                                "installmentStatusIVOs": {
+                                                  "type": "array",
+                                                  "items": {
+                                                    "properties": {
+                                                      "bankAccountId": {
+                                                        "type": "string"
+                                                      },
+                                                      "historyNumber": {
+                                                        "type": "string"
+                                                      },
+                                                      "installmentStatusVORef": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "extCode": {
+                                                            "type": "string"
+                                                          },
+                                                          "id": {
+                                                            "type": "string"
+                                                          },
+                                                          "text": {
+                                                            "type": "string"
+                                                          }
+                                                        }
+                                                      },
+                                                      "remarks": {
+                                                        "type": "string"
+                                                      }
+                                                    },
+                                                    "type": "object"
+                                                  }
+                                                }
+                                              }
+                                            },
+                                            "mainInstallmentHistoryId": {
+                                              "type": "string"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "installmentNumber": {
+                                      "type": "string"
+                                    },
+                                    "installmentOriginVORef": {
+                                      "type": "object",
+                                      "properties": {
+                                        "id": {
+                                          "type": "string"
+                                        },
+                                        "text": {
+                                          "type": "string"
+                                        }
+                                      }
+                                    },
+                                    "installmentStatusTypeVORef": {
+                                      "type": "object",
+                                      "properties": {
+                                        "extCode": {
+                                          "type": "string"
+                                        },
+                                        "id": {
+                                          "type": "string"
+                                        },
+                                        "text": {
+                                          "type": "string"
+                                        }
+                                      }
+                                    },
+                                    "installmentTypeVORef": {
+                                      "type": "object",
+                                      "properties": {
+                                        "id": {
+                                          "type": "string"
+                                        },
+                                        "text": {
+                                          "type": "string"
+                                        }
+                                      }
+                                    },
+                                    "invoiceNumber": {
+                                      "type": "string"
+                                    },
+                                    "isPayerInsured": {
+                                      "type": "string"
+                                    },
+                                    "masterPolicyHeaderExtNum": {
+                                      "type": "string"
+                                    },
+                                    "newNonPaymentLevelRunFlag": {
+                                      "type": "string"
+                                    },
+                                    "originalDueDate": {
+                                      "type": "string"
+                                    },
+                                    "payerExtNum": {
+                                      "type": "string"
+                                    },
+                                    "paymentTermsVORef": {
+                                      "type": "object",
+                                      "properties": {
+                                        "extCode": {
+                                          "type": "string"
+                                        },
+                                        "id": {
+                                          "type": "string"
+                                        },
+                                        "text": {
+                                          "type": "string"
+                                        }
+                                      }
+                                    },
+                                    "remarks": {
+                                      "type": "string"
+                                    },
+                                    "statusDate": {
+                                      "type": "string"
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            "isRecalcFlooringCapping": {
+                              "type": "string"
+                            },
+                            "mainRenewalDate": {
+                              "type": "string"
+                            },
+                            "migrationFlag": {
+                              "type": "string"
+                            },
+                            "multipleCreditCards": {
+                              "type": "string"
+                            },
+                            "nameOfIssuer": {
+                              "type": "string"
+                            },
+                            "netPremium": {
+                              "type": "string"
+                            },
+                            "noOfInstallments": {
+                              "type": "string"
+                            },
+                            "partialPaymentAllowed": {
+                              "type": "string"
+                            },
+                            "paymentTermId": {
+                              "type": "string"
+                            },
+                            "paymentTermsVORef": {
+                              "type": "object",
+                              "properties": {
+                                "extCode": {
+                                  "type": "string"
+                                },
+                                "id": {
+                                  "type": "string"
+                                },
+                                "text": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "personalHealthDunningCondition": {
+                              "type": "string"
+                            },
+                            "policyBankAccountExternalNumber": {
+                              "type": "string"
+                            },
+                            "policyContactIVOsList": {
+                              "type": "object",
+                              "properties": {
+                                "policyContactIVOs": {
+                                  "type": "array",
+                                  "items": {
+                                    "properties": {
+                                      "contactExtNum": {
+                                        "type": "string"
+                                      },
+                                      "contactIdentifierTypeVORef": {
+                                        "type": "object",
+                                        "properties": {
+                                          "extCode": {
+                                            "type": "string"
+                                          },
+                                          "id": {
+                                            "type": "string"
+                                          },
+                                          "text": {
+                                            "type": "string"
+                                          }
+                                        }
+                                      },
+                                      "contactIdentifierValue": {
+                                        "type": "string"
+                                      },
+                                      "contactPhoneList": {
+                                        "type": "object",
+                                        "properties": {
+                                          "contactPhone": {
+                                            "type": "array",
+                                            "items": {
+                                              "properties": {
+                                                "countryDialCodeRef": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "extCode": {
+                                                      "type": "string"
+                                                    },
+                                                    "id": {
+                                                      "type": "string"
+                                                    },
+                                                    "text": {
+                                                      "type": "string"
+                                                    }
+                                                  }
+                                                },
+                                                "telephoneNumber": {
+                                                  "type": "string"
+                                                },
+                                                "telephonePrefix": {
+                                                  "type": "string"
+                                                },
+                                                "telephonePrefixVORef": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "extCode": {
+                                                      "type": "string"
+                                                    },
+                                                    "id": {
+                                                      "type": "string"
+                                                    },
+                                                    "text": {
+                                                      "type": "string"
+                                                    }
+                                                  }
+                                                },
+                                                "telephoneTypeRef": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "extCode": {
+                                                      "type": "string"
+                                                    },
+                                                    "id": {
+                                                      "type": "string"
+                                                    },
+                                                    "text": {
+                                                      "type": "string"
+                                                    }
+                                                  }
+                                                },
+                                                "type": {
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "type": "object"
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "customerType": {
+                                        "type": "string"
+                                      },
+                                      "firstName": {
+                                        "type": "string"
+                                      },
+                                      "fullAddressInfo": {
+                                        "type": "string"
+                                      },
+                                      "isAssetContact": {
+                                        "type": "string"
+                                      },
+                                      "mobilePhoneNumber": {
+                                        "type": "string"
+                                      },
+                                      "name": {
+                                        "type": "string"
+                                      },
+                                      "policyContactRoleVORef": {
+                                        "type": "object",
+                                        "properties": {
+                                          "extCode": {
+                                            "type": "string"
+                                          },
+                                          "id": {
+                                            "type": "string"
+                                          },
+                                          "text": {
+                                            "type": "string"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "type": "object"
+                                  }
+                                }
+                              }
+                            },
+                            "policyEndDate": {
+                              "type": "string"
+                            },
+                            "policyHandlingLevelVORef": {
+                              "type": "object",
+                              "properties": {
+                                "extCode": {
+                                  "type": "string"
+                                },
+                                "id": {
+                                  "type": "string"
+                                },
+                                "text": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "policyInsuranceTypeVORef": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string"
+                                },
+                                "text": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "policyLobIVOsList": {
+                              "type": "object",
+                              "properties": {
+                                "policyLobIVOs": {
+                                  "type": "object",
+                                  "properties": {
+                                    "lobVORef": {
+                                      "type": "object",
+                                      "properties": {
+                                        "extCode": {
+                                          "type": "string"
+                                        },
+                                        "id": {
+                                          "type": "string"
+                                        },
+                                        "text": {
+                                          "type": "string"
+                                        }
+                                      }
+                                    },
+                                    "policyLobAssetIVOsList": {
+                                      "type": "object",
+                                      "properties": {
+                                        "policyLobAssetIVOs": {
+                                          "type": "object",
+                                          "properties": {
+                                            "assetIVO": {
+                                              "type": "object",
+                                              "properties": {
+                                                "assetDescription": {
+                                                  "type": "string"
+                                                },
+                                                "assetTypeVORef": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "extCode": {
+                                                      "type": "string"
+                                                    },
+                                                    "id": {
+                                                      "type": "string"
+                                                    },
+                                                    "text": {
+                                                      "type": "string"
+                                                    }
+                                                  }
+                                                },
+                                                "licensePlate": {
+                                                  "type": "string"
+                                                },
+                                                "licensePlateCityVORef": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "extCode": {
+                                                      "type": "string"
+                                                    },
+                                                    "id": {
+                                                      "type": "string"
+                                                    },
+                                                    "text": {
+                                                      "type": "string"
+                                                    }
+                                                  }
+                                                },
+                                                "licensePlateTypeANDLVORef": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "extCode": {
+                                                      "type": "string"
+                                                    },
+                                                    "id": {
+                                                      "type": "string"
+                                                    },
+                                                    "text": {
+                                                      "type": "string"
+                                                    }
+                                                  }
+                                                },
+                                                "mainModelVORef": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "extCode": {
+                                                      "type": "string"
+                                                    },
+                                                    "id": {
+                                                      "type": "string"
+                                                    },
+                                                    "text": {
+                                                      "type": "string"
+                                                    }
+                                                  }
+                                                },
+                                                "mainVehicleTypesVORef": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "extCode": {
+                                                      "type": "string"
+                                                    },
+                                                    "id": {
+                                                      "type": "string"
+                                                    },
+                                                    "text": {
+                                                      "type": "string"
+                                                    }
+                                                  }
+                                                },
+                                                "manufacture": {
+                                                  "type": "string"
+                                                },
+                                                "manufactureExternalCode": {
+                                                  "type": "string"
+                                                },
+                                                "manufactureId": {
+                                                  "type": "string"
+                                                },
+                                                "manufactureVORef": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "extCode": {
+                                                      "type": "string"
+                                                    },
+                                                    "id": {
+                                                      "type": "string"
+                                                    },
+                                                    "text": {
+                                                      "type": "string"
+                                                    }
+                                                  }
+                                                },
+                                                "model": {
+                                                  "type": "string"
+                                                },
+                                                "modelExternalCode": {
+                                                  "type": "string"
+                                                },
+                                                "modelId": {
+                                                  "type": "string"
+                                                },
+                                                "modelVORef": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "extCode": {
+                                                      "type": "string"
+                                                    },
+                                                    "id": {
+                                                      "type": "string"
+                                                    },
+                                                    "text": {
+                                                      "type": "string"
+                                                    }
+                                                  }
+                                                },
+                                                "modelYear": {
+                                                  "type": "string"
+                                                },
+                                                "motorNumber": {
+                                                  "type": "string"
+                                                },
+                                                "totalAccessoriesValue": {
+                                                  "type": "string"
+                                                },
+                                                "vehicleSubTypesVORef": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "extCode": {
+                                                      "type": "string"
+                                                    },
+                                                    "id": {
+                                                      "type": "string"
+                                                    },
+                                                    "text": {
+                                                      "type": "string"
+                                                    }
+                                                  }
+                                                },
+                                                "vinNr": {
+                                                  "type": "string"
+                                                },
+                                                "type": {
+                                                  "type": "string"
+                                                }
+                                              }
+                                            },
+                                            "coverIVOsList": {
+                                              "type": "object",
+                                              "properties": {
+                                                "coverIVOs": {
+                                                  "type": "array",
+                                                  "items": {
+                                                    "properties": {
+                                                      "aggregatedSurAmount": {
+                                                        "type": "string"
+                                                      },
+                                                      "insuranceAmount": {
+                                                        "type": "string"
+                                                      },
+                                                      "perClaimantSurAmount": {
+                                                        "type": "string"
+                                                      },
+                                                      "productLineOptionTypeVORef": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "extCode": {
+                                                            "type": "string"
+                                                          },
+                                                          "id": {
+                                                            "type": "string"
+                                                          },
+                                                          "text": {
+                                                            "type": "string"
+                                                          }
+                                                        }
+                                                      }
+                                                    },
+                                                    "type": "object"
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "productVersionLobVORef": {
+                                      "type": "object",
+                                      "properties": {
+                                        "id": {
+                                          "type": "string"
+                                        },
+                                        "text": {
+                                          "type": "string"
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            "policyPeriodInDays": {
+                              "type": "string"
+                            },
+                            "policyStartDate": {
+                              "type": "string"
+                            },
+                            "policyTypeANDLVORef": {
+                              "type": "object",
+                              "properties": {
+                                "extCode": {
+                                  "type": "string"
+                                },
+                                "id": {
+                                  "type": "string"
+                                },
+                                "text": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "policyVersionNr": {
+                              "type": "string"
+                            },
+                            "premiumInfoIVO": {
+                              "type": "object",
+                              "properties": {
+                                "commissionFee": {
+                                  "type": "string"
+                                },
+                                "commissionFeeTl": {
+                                  "type": "string"
+                                },
+                                "grossPremium": {
+                                  "type": "string"
+                                },
+                                "grossPremiumTl": {
+                                  "type": "string"
+                                },
+                                "netPremium": {
+                                  "type": "string"
+                                },
+                                "netPremiumTl": {
+                                  "type": "string"
+                                },
+                                "taxesList": {
+                                  "type": "object",
+                                  "properties": {
+                                    "taxes": {
+                                      "type": "array",
+                                      "items": {
+                                        "properties": {
+                                          "taxAmount": {
+                                            "type": "string"
+                                          },
+                                          "taxAmountTl": {
+                                            "type": "string"
+                                          },
+                                          "taxName": {
+                                            "type": "string"
+                                          }
+                                        },
+                                        "type": "object"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            "productVersionVORef": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string"
+                                },
+                                "text": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "proposalDate": {
+                              "type": "string"
+                            },
+                            "proposalValidation": {
+                              "type": "string"
+                            },
+                            "rate": {
+                              "type": "string"
+                            },
+                            "renewalNumber": {
+                              "type": "string"
+                            },
+                            "sbmEndorsmentNumber": {
+                              "type": "string"
+                            },
+                            "sbmReferenceNumber": {
+                              "type": "string"
+                            },
+                            "sbmSagmerNr": {
+                              "type": "string"
+                            },
+                            "standaloneFleet": {
+                              "type": "string"
+                            },
+                            "statusCodeVORef": {
+                              "type": "object",
+                              "properties": {
+                                "extCode": {
+                                  "type": "string"
+                                },
+                                "id": {
+                                  "type": "string"
+                                },
+                                "text": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "statusDate": {
+                              "type": "string"
+                            },
+                            "subjectToReinsurance": {
+                              "type": "string"
+                            },
+                            "surnameOfIssuer": {
+                              "type": "string"
+                            },
+                            "taxBsmv": {
+                              "type": "string"
+                            },
+                            "taxExempt": {
+                              "type": "string"
+                            },
+                            "taxYsv": {
+                              "type": "string"
+                            },
+                            "technicalCommentcementDate": {
+                              "type": "string"
+                            },
+                            "transactionDate": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "policyProposalDate": {
+                      "type": "string"
+                    },
+                    "policyStartDate": {
+                      "type": "string"
+                    },
+                    "productVersionVORef": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "text": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "productVORef": {
+                      "type": "object",
+                      "properties": {
+                        "extCode": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "text": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "statusCodeVORef": {
+                      "type": "object",
+                      "properties": {
+                        "extCode": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "text": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "statusDate": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "paymentInfoIVO": {
+                  "type": "object",
+                  "properties": {
+                    "collectionMethodVORef": {
+                      "type": "object",
+                      "properties": {
+                        "extCode": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "text": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "installmentIVOList": {
+                      "type": "object",
+                      "properties": {
+                        "installmentIVO": {
+                          "type": "object",
+                          "properties": {
+                            "collectionMethodVORef": {
+                              "type": "object",
+                              "properties": {
+                                "extCode": {
+                                  "type": "string"
+                                },
+                                "id": {
+                                  "type": "string"
+                                },
+                                "text": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "currencyVORef": {
+                              "type": "object",
+                              "properties": {
+                                "extCode": {
+                                  "type": "string"
+                                },
+                                "id": {
+                                  "type": "string"
+                                },
+                                "text": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "dueDate": {
+                              "type": "string"
+                            },
+                            "installmentAmount": {
+                              "type": "string"
+                            },
+                            "installmentBalance": {
+                              "type": "string"
+                            },
+                            "installmentNumber": {
+                              "type": "string"
+                            },
+                            "installmentOriginVORef": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string"
+                                },
+                                "text": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "installmentStatusTypeVORef": {
+                              "type": "object",
+                              "properties": {
+                                "extCode": {
+                                  "type": "string"
+                                },
+                                "id": {
+                                  "type": "string"
+                                },
+                                "text": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "isPayerInsured": {
+                              "type": "string"
+                            },
+                            "paidInstallmentAmount": {
+                              "type": "string"
+                            },
+                            "payerExtNum": {
+                              "type": "string"
+                            },
+                            "paymentTermsVORef": {
+                              "type": "object",
+                              "properties": {
+                                "extCode": {
+                                  "type": "string"
+                                },
+                                "id": {
+                                  "type": "string"
+                                },
+                                "text": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "manualChangeOfAmounts": {
+                      "type": "string"
+                    },
+                    "manualChangeOfDates": {
+                      "type": "string"
+                    },
+                    "paymentTermsVORef": {
+                      "type": "object",
+                      "properties": {
+                        "extCode": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "text": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "totalInstallmentsAmount": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "main": {
+                  "type": "string"
+                },
+                "systemid": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "example": "{\r\n   \"data\": {\r\n      \"getPolicyPlainResponseANDLIVO\": {\r\n         \"headerIVO\": {\r\n            \"activePolicyId\": \"0\",\r\n            \"currencyVORef\": {\r\n               \"extCode\": \"TRY\",\r\n               \"id\": \"152\",\r\n               \"text\": \"Türk Lirası\"\r\n            },\r\n            \"directDebitFlag\": \"false\",\r\n            \"externalHeaderNumber\": \"44641157\",\r\n            \"isMasterPolicy\": \"false\",\r\n            \"mainRenewalDate\": \"2019-10-30T12:00:59\",\r\n            \"multiplePayersFlag\": \"false\",\r\n            \"paidByAgentFlag\": \"false\",\r\n            \"policyEndDate\": \"2019-10-30T12:00:59\",\r\n            \"policyHeaderRemarksList\": {\r\n               \"policyHeaderRemarks\": {\r\n                  \"remark\": \"\"\r\n               }\r\n            },\r\n            \"policyIVOsList\": {\r\n               \"policyIVOs\": {\r\n                  \"affiinityDSCNTStepValue\": \"0\",\r\n                  \"agentAccountId\": \"1111143424\",\r\n                  \"agentCommission\": \"-54.37\",\r\n                  \"agentNumber\": \"123344\",\r\n                  \"agentRegionCode\": \"12\",\r\n                  \"asIssueDate\": \"2018-10-26T00:00:00\",\r\n                  \"barter\": \"false\",\r\n                  \"billingTypeVORef\": {\r\n                     \"extCode\": \"1\",\r\n                     \"id\": \"1\",\r\n                     \"text\": \"Direk Faturalama\"\r\n                  },\r\n                  \"campaignDSCNTStepValue\": \"0\",\r\n                  \"cashReceived\": \"false\",\r\n                  \"coinsuranceCollectionArrangementVORef\": {\r\n                     \"id\": \"10001\",\r\n                     \"text\": \"Leader Collection\"\r\n                  },\r\n                  \"collectionMethodId\": \"4\",\r\n                  \"collectionMethodVORef\": {\r\n                     \"extCode\": \"4\",\r\n                     \"id\": \"4\",\r\n                     \"text\": \"Sanal POS\"\r\n                  },\r\n                  \"currencyVORef\": {\r\n                     \"extCode\": \"TRY\",\r\n                     \"id\": \"152\",\r\n                     \"text\": \"Türk Lirası\"\r\n                  },\r\n                  \"currentChannelVORef\": {\r\n                     \"extCode\": \"101\",\r\n                     \"id\": \"101\",\r\n                     \"text\": \"B2B Channel\"\r\n                  },\r\n                  \"customerDecisionVORef\": {\r\n                     \"extCode\": \"1\",\r\n                     \"id\": \"1\",\r\n                     \"text\": \"Poliçelendir\"\r\n                  },\r\n                  \"endorsEndDate\": \"2019-10-30T12:00:59\",\r\n                  \"endorsNr\": \"0\",\r\n                  \"endorsStartDate\": \"2018-10-30T00:00:00\",\r\n                  \"externalPolicyNr\": \"4734813418/00/00\",\r\n                  \"grossPremium\": \"609\",\r\n                  \"groupHealthDunningCondition\": \"false\",\r\n                  \"installmentsIVOsList\": {\r\n                     \"installmentsIVOs\": {\r\n                        \"collectionDate\": \"2018-10-29T00:00:00\",\r\n                        \"collectionMethodVORef\": {\r\n                           \"extCode\": \"4\",\r\n                           \"id\": \"4\",\r\n                           \"text\": \"Sanal POS\"\r\n                        },\r\n                        \"combineInvoiceFlag\": \"false\",\r\n                        \"dueDate\": \"2018-10-30T00:00:00\",\r\n                        \"firstGiroInstallmentFlag\": \"false\",\r\n                        \"graceDate\": \"2018-10-30T00:00:00\",\r\n                        \"installmentBalance\": \"0E-8\",\r\n                        \"installmentHistoryIVOList\": {\r\n                           \"installmentHistoryIVO\": {\r\n                              \"historyNumber\": \"1\",\r\n                              \"insertDate\": \"2018-10-26T13:30:06\",\r\n                              \"insertUser\": \"2019245\",\r\n                              \"installmentStatusIVOsList\": {\r\n                                 \"installmentStatusIVOs\": [\r\n                                    {\r\n                                       \"bankAccountId\": \"123\",\r\n                                       \"historyNumber\": \"1\",\r\n                                       \"installmentStatusVORef\": {\r\n                                          \"extCode\": \"1\",\r\n                                          \"id\": \"1\",\r\n                                          \"text\": \"Beklemede\"\r\n                                       }\r\n                                    },\r\n                                    {\r\n                                       \"bankAccountId\": \"12\",\r\n                                       \"historyNumber\": \"2\",\r\n                                       \"installmentStatusVORef\": {\r\n                                          \"extCode\": \"6\",\r\n                                          \"id\": \"6\",\r\n                                          \"text\": \"Hazır\"\r\n                                       }\r\n                                    },\r\n                                    {\r\n                                       \"bankAccountId\": \"12\",\r\n                                       \"historyNumber\": \"3\",\r\n                                       \"installmentStatusVORef\": {\r\n                                          \"extCode\": \"3\",\r\n                                          \"id\": \"3\",\r\n                                          \"text\": \"Ödendi\"\r\n                                       },\r\n                                       \"remarks\": \"123\"\r\n                                    }\r\n                                 ]\r\n                              },\r\n                              \"mainInstallmentHistoryId\": \"123\"\r\n                           }\r\n                        },\r\n                        \"installmentNumber\": \"1\",\r\n                        \"installmentOriginVORef\": {\r\n                           \"id\": \"1\",\r\n                           \"text\": \"Prim\"\r\n                        },\r\n                        \"installmentStatusTypeVORef\": {\r\n                           \"extCode\": \"3\",\r\n                           \"id\": \"3\",\r\n                           \"text\": \"Ödendi\"\r\n                        },\r\n                        \"installmentTypeVORef\": {\r\n                           \"id\": \"1\",\r\n                           \"text\": \"Tekrar eden\"\r\n                        },\r\n                        \"invoiceNumber\": \"1234\",\r\n                        \"isPayerInsured\": \"false\",\r\n                        \"masterPolicyHeaderExtNum\": \"1234\",\r\n                        \"newNonPaymentLevelRunFlag\": \"false\",\r\n                        \"originalDueDate\": \"2018-10-30T00:00:00\",\r\n                        \"payerExtNum\": \"1234\",\r\n                        \"paymentTermsVORef\": {\r\n                           \"extCode\": \"2000085\",\r\n                           \"id\": \"2000085\",\r\n                           \"text\": \"1 Taksit\"\r\n                        },\r\n                        \"remarks\": \"1234\",\r\n                        \"statusDate\": \"2018-10-29T04:01:10\"\r\n                     }\r\n                  },\r\n                  \"isRecalcFlooringCapping\": \"false\",\r\n                  \"mainRenewalDate\": \"2019-10-30T12:00:59\",\r\n                  \"migrationFlag\": \"false\",\r\n                  \"multipleCreditCards\": \"false\",\r\n                  \"nameOfIssuer\": \"Name Of Issuer\",\r\n                  \"netPremium\": \"543.74\",\r\n                  \"noOfInstallments\": \"1\",\r\n                  \"partialPaymentAllowed\": \"false\",\r\n                  \"paymentTermId\": \"123\",\r\n                  \"paymentTermsVORef\": {\r\n                     \"extCode\": \"2000085\",\r\n                     \"id\": \"2000085\",\r\n                     \"text\": \"1 Taksit\"\r\n                  },\r\n                  \"personalHealthDunningCondition\": \"false\",\r\n                  \"policyBankAccountExternalNumber\": \"123\",\r\n                  \"policyContactIVOsList\": {\r\n                     \"policyContactIVOs\": [\r\n                        {\r\n                           \"contactExtNum\": \"123\",\r\n                           \"contactIdentifierTypeVORef\": {\r\n                              \"extCode\": \"TCKN\",\r\n                              \"id\": \"2000001\",\r\n                              \"text\": \"TC Kimlik No\"\r\n                           },\r\n                           \"contactIdentifierValue\": \"1234\",\r\n                           \"contactPhoneList\": {\r\n                              \"contactPhone\": [\r\n                                 {\r\n                                    \"countryDialCodeRef\": {\r\n                                       \"extCode\": \"90\",\r\n                                       \"id\": \"206\",\r\n                                       \"text\": \"90\"\r\n                                    },\r\n                                    \"telephoneNumber\": \"2914334\",\r\n                                    \"telephonePrefix\": \"555\",\r\n                                    \"telephonePrefixVORef\": {\r\n                                       \"extCode\": \"555\",\r\n                                       \"id\": \"2000123\",\r\n                                       \"text\": \"555\"\r\n                                    },\r\n                                    \"telephoneTypeRef\": {\r\n                                       \"extCode\": \"CEP\",\r\n                                       \"id\": \"4\",\r\n                                       \"text\": \"Cep\"\r\n                                    },\r\n                                    \"type\": \"ContactTelephoneIVO\"\r\n                                 },\r\n                                 {\r\n                                    \"countryDialCodeRef\": {\r\n                                       \"extCode\": \"90\",\r\n                                       \"id\": \"206\",\r\n                                       \"text\": \"90\"\r\n                                    },\r\n                                    \"telephoneNumber\": \"3364327\",\r\n                                    \"telephonePrefix\": \"216\",\r\n                                    \"telephonePrefixVORef\": {\r\n                                       \"extCode\": \"216\",\r\n                                       \"id\": \"2000001\",\r\n                                       \"text\": \"216\"\r\n                                    },\r\n                                    \"telephoneTypeRef\": {\r\n                                       \"extCode\": \"EV\",\r\n                                       \"id\": \"3\",\r\n                                       \"text\": \"Ev\"\r\n                                    },\r\n                                    \"type\": \"ContactTelephoneIVO\"\r\n                                 }\r\n                              ]\r\n                           },\r\n                           \"customerType\": \"1\",\r\n                           \"firstName\": \"First Name\",\r\n                           \"fullAddressInfo\": \"Full Address Info\",\r\n                           \"isAssetContact\": \"false\",\r\n                           \"mobilePhoneNumber\": \"133435\",\r\n                           \"name\": \"Name\",\r\n                           \"policyContactRoleVORef\": {\r\n                              \"extCode\": \"6\",\r\n                              \"id\": \"6\",\r\n                              \"text\": \"Sigorta Ettiren\"\r\n                           }\r\n                        },\r\n                        {\r\n                           \"contactExtNum\": \"1932864\",\r\n                           \"contactIdentifierTypeVORef\": {\r\n                              \"extCode\": \"TCKN\",\r\n                              \"id\": \"2000001\",\r\n                              \"text\": \"TC Kimlik No\"\r\n                           },\r\n                           \"contactIdentifierValue\": \"1234\",\r\n                           \"contactPhoneList\": {\r\n                              \"contactPhone\": [\r\n                                 {\r\n                                    \"countryDialCodeRef\": {\r\n                                       \"extCode\": \"90\",\r\n                                       \"id\": \"206\",\r\n                                       \"text\": \"90\"\r\n                                    },\r\n                                    \"telephoneNumber\": \"2914334\",\r\n                                    \"telephonePrefix\": \"555\",\r\n                                    \"telephonePrefixVORef\": {\r\n                                       \"extCode\": \"555\",\r\n                                       \"id\": \"2000123\",\r\n                                       \"text\": \"555\"\r\n                                    },\r\n                                    \"telephoneTypeRef\": {\r\n                                       \"extCode\": \"CEP\",\r\n                                       \"id\": \"4\",\r\n                                       \"text\": \"Cep\"\r\n                                    },\r\n                                    \"type\": \"ContactTelephoneIVO\"\r\n                                 },\r\n                                 {\r\n                                    \"countryDialCodeRef\": {\r\n                                       \"extCode\": \"90\",\r\n                                       \"id\": \"206\",\r\n                                       \"text\": \"90\"\r\n                                    },\r\n                                    \"telephoneNumber\": \"234324\",\r\n                                    \"telephonePrefix\": \"216\",\r\n                                    \"telephonePrefixVORef\": {\r\n                                       \"extCode\": \"216\",\r\n                                       \"id\": \"2000001\",\r\n                                       \"text\": \"216\"\r\n                                    },\r\n                                    \"telephoneTypeRef\": {\r\n                                       \"extCode\": \"EV\",\r\n                                       \"id\": \"3\",\r\n                                       \"text\": \"Ev\"\r\n                                    },\r\n                                    \"type\": \"ContactTelephoneIVO\"\r\n                                 }\r\n                              ]\r\n                           },\r\n                           \"customerType\": \"1\",\r\n                           \"firstName\": \"First Name\",\r\n                           \"fullAddressInfo\": \"Full Address Info\",\r\n                           \"isAssetContact\": \"false\",\r\n                           \"name\": \"Name\",\r\n                           \"policyContactRoleVORef\": {\r\n                              \"extCode\": \"1\",\r\n                              \"id\": \"1\",\r\n                              \"text\": \"Sigortalı\"\r\n                           }\r\n                        }\r\n                     ]\r\n                  },\r\n                  \"policyEndDate\": \"2019-10-30T12:00:59\",\r\n                  \"policyHandlingLevelVORef\": {\r\n                     \"extCode\": \"1\",\r\n                     \"id\": \"1\",\r\n                     \"text\": \"Pass\"\r\n                  },\r\n                  \"policyInsuranceTypeVORef\": {\r\n                     \"id\": \"10001\",\r\n                     \"text\": \"Standart\"\r\n                  },\r\n                  \"policyLobIVOsList\": {\r\n                     \"policyLobIVOs\": {\r\n                        \"lobVORef\": {\r\n                           \"extCode\": \"4\",\r\n                           \"id\": \"4\",\r\n                           \"text\": \"Araç\"\r\n                        },\r\n                        \"policyLobAssetIVOsList\": {\r\n                           \"policyLobAssetIVOs\": {\r\n                              \"assetIVO\": {\r\n                                 \"assetDescription\": \"RENAULT(OYAK) *****\",\r\n                                 \"assetTypeVORef\": {\r\n                                    \"extCode\": \"15\",\r\n                                    \"id\": \"3\",\r\n                                    \"text\": \"Motor\"\r\n                                 },\r\n                                 \"licensePlate\": \"HOK16\",\r\n                                 \"licensePlateCityVORef\": {\r\n                                    \"extCode\": \"34\",\r\n                                    \"id\": \"2000052\",\r\n                                    \"text\": \"İSTANBUL\"\r\n                                 },\r\n                                 \"licensePlateTypeANDLVORef\": {\r\n                                    \"extCode\": \"1000007\",\r\n                                    \"id\": \"1000007\",\r\n                                    \"text\": \"Yerli Plaka\"\r\n                                 },\r\n                                 \"mainModelVORef\": {\r\n                                    \"extCode\": \"9001776\",\r\n                                    \"id\": \"9001776\",\r\n                                    \"text\": \"MEGANE\"\r\n                                 },\r\n                                 \"mainVehicleTypesVORef\": {\r\n                                    \"extCode\": \"01\",\r\n                                    \"id\": \"9000018\",\r\n                                    \"text\": \"OTOMOBİL (SÜRÜCÜ DAHİL 9 KOLTUK)\"\r\n                                 },\r\n                                 \"manufacture\": \"RENAULT(OYAK)\",\r\n                                 \"manufactureExternalCode\": \"122\",\r\n                                 \"manufactureId\": \"15000081\",\r\n                                 \"manufactureVORef\": {\r\n                                    \"extCode\": \"15000081\",\r\n                                    \"id\": \"15000081\",\r\n                                    \"text\": \"RENAULT(OYAK)\"\r\n                                 },\r\n                                 \"model\": \"MEGANE HB PRIVILEGE 1.6 16V 110 OV E5\",\r\n                                 \"modelExternalCode\": \"1052\",\r\n                                 \"modelId\": \"9097328\",\r\n                                 \"modelVORef\": {\r\n                                    \"extCode\": \"9097328\",\r\n                                    \"id\": \"9097328\",\r\n                                    \"text\": \"MEGANE HB PRIVILEGE 1.6 16V 110 OV E5\"\r\n                                 },\r\n                                 \"modelYear\": \"2012\",\r\n                                 \"motorNumber\": \"K4MW8R040826\",\r\n                                 \"totalAccessoriesValue\": \"0.00\",\r\n                                 \"vehicleSubTypesVORef\": {\r\n                                    \"extCode\": \"1000001\",\r\n                                    \"id\": \"1000001\",\r\n                                    \"text\": \"HUSUSİ OTOMOBİL\"\r\n                                 },\r\n                                 \"vinNr\": \"VF1BZA10A48056028\",\r\n                                 \"type\": \"VehicleIVO\"\r\n                              },\r\n                              \"coverIVOsList\": {\r\n                                 \"coverIVOs\": [\r\n                                    {\r\n                                       \"aggregatedSurAmount\": \"0.00\",\r\n                                       \"insuranceAmount\": \"0.00\",\r\n                                       \"perClaimantSurAmount\": \"0.00\",\r\n                                       \"productLineOptionTypeVORef\": {\r\n                                          \"extCode\": \"19000002\",\r\n                                          \"id\": \"19000002\",\r\n                                          \"text\": \"Teknik Prim\"\r\n                                       }\r\n                                    },\r\n                                    {\r\n                                       \"aggregatedSurAmount\": \"0.00\",\r\n                                       \"insuranceAmount\": \"72000.00\",\r\n                                       \"perClaimantSurAmount\": \"36000.00\",\r\n                                       \"productLineOptionTypeVORef\": {\r\n                                          \"extCode\": \"1000476\",\r\n                                          \"id\": \"1000476\",\r\n                                          \"text\": \"Maddi Hasar\"\r\n                                       }\r\n                                    },\r\n                                    {\r\n                                       \"aggregatedSurAmount\": \"0.00\",\r\n                                       \"insuranceAmount\": \"1800000.00\",\r\n                                       \"perClaimantSurAmount\": \"360000.00\",\r\n                                       \"productLineOptionTypeVORef\": {\r\n                                          \"extCode\": \"1000477\",\r\n                                          \"id\": \"1000477\",\r\n                                          \"text\": \"Ölüm ve Sürekli Sakatlık\"\r\n                                       }\r\n                                    },\r\n                                    {\r\n                                       \"aggregatedSurAmount\": \"0.00\",\r\n                                       \"insuranceAmount\": \"1800000.00\",\r\n                                       \"perClaimantSurAmount\": \"360000.00\",\r\n                                       \"productLineOptionTypeVORef\": {\r\n                                          \"extCode\": \"1000478\",\r\n                                          \"id\": \"1000478\",\r\n                                          \"text\": \"Sağlık Giderleri\"\r\n                                       }\r\n                                    },\r\n                                    {\r\n                                       \"aggregatedSurAmount\": \"0.00\",\r\n                                       \"insuranceAmount\": \"0.00\",\r\n                                       \"perClaimantSurAmount\": \"0.00\",\r\n                                       \"productLineOptionTypeVORef\": {\r\n                                          \"extCode\": \"1000479\",\r\n                                          \"id\": \"1000479\",\r\n                                          \"text\": \"Zorunlu Mali Sorumluluk (Trafik Sigortası)\"\r\n                                       }\r\n                                    }\r\n                                 ]\r\n                              }\r\n                           }\r\n                        },\r\n                        \"productVersionLobVORef\": {\r\n                           \"id\": \"2000092\",\r\n                           \"text\": \"Araç\"\r\n                        }\r\n                     }\r\n                  },\r\n                  \"policyPeriodInDays\": \"365\",\r\n                  \"policyStartDate\": \"2018-10-30T00:00:00\",\r\n                  \"policyTypeANDLVORef\": {\r\n                     \"extCode\": \"410\",\r\n                     \"id\": \"1000024\",\r\n                     \"text\": \"Trafik Sigortası\"\r\n                  },\r\n                  \"policyVersionNr\": \"0\",\r\n                  \"premiumInfoIVO\": {\r\n                     \"commissionFee\": \"54.37\",\r\n                     \"commissionFeeTl\": \"54.37\",\r\n                     \"grossPremium\": \"609.00\",\r\n                     \"grossPremiumTl\": \"609.00\",\r\n                     \"netPremium\": \"543.74\",\r\n                     \"netPremiumTl\": \"543.74\",\r\n                     \"taxesList\": {\r\n                        \"taxes\": [\r\n                           {\r\n                              \"taxAmount\": \"27.19\",\r\n                              \"taxAmountTl\": \"27.19\",\r\n                              \"taxName\": \"BSMV\"\r\n                           },\r\n                           {\r\n                              \"taxAmount\": \"10.88\",\r\n                              \"taxAmountTl\": \"10.88\",\r\n                              \"taxName\": \"Güvence Hesabı Müşteri Payı\"\r\n                           },\r\n                           {\r\n                              \"taxAmount\": \"27.19\",\r\n                              \"taxAmountTl\": \"27.19\",\r\n                              \"taxName\": \"THGF\"\r\n                           }\r\n                        ]\r\n                     }\r\n                  },\r\n                  \"productVersionVORef\": {\r\n                     \"id\": \"2000083\",\r\n                     \"text\": \"2000083\"\r\n                  },\r\n                  \"proposalDate\": \"2018-10-26T13:26:11\",\r\n                  \"proposalValidation\": \"2018-10-25T13:30:05\",\r\n                  \"rate\": \"1\",\r\n                  \"renewalNumber\": \"0\",\r\n                  \"sbmEndorsmentNumber\": \"0\",\r\n                  \"sbmReferenceNumber\": \"1234\",\r\n                  \"sbmSagmerNr\": \"332960740\",\r\n                  \"standaloneFleet\": \"false\",\r\n                  \"statusCodeVORef\": {\r\n                     \"extCode\": \"20\",\r\n                     \"id\": \"20\",\r\n                     \"text\": \"Poliçe\"\r\n                  },\r\n                  \"statusDate\": \"2018-10-26T13:26:11\",\r\n                  \"subjectToReinsurance\": \"false\",\r\n                  \"surnameOfIssuer\": \"surnameOfIssuer\",\r\n                  \"taxBsmv\": \"0\",\r\n                  \"taxExempt\": \"false\",\r\n                  \"taxYsv\": \"0\",\r\n                  \"technicalCommentcementDate\": \"2018-11-01T12:00:00\",\r\n                  \"transactionDate\": \"2018-10-26T13:30:01\"\r\n               }\r\n            },\r\n            \"policyProposalDate\": \"2018-10-26T13:30:01\",\r\n            \"policyStartDate\": \"2018-10-30T12:00:00\",\r\n            \"productVersionVORef\": {\r\n               \"id\": \"2000083\",\r\n               \"text\": \"2000083\"\r\n            },\r\n            \"productVORef\": {\r\n               \"extCode\": \"1000031\",\r\n               \"id\": \"1000031\",\r\n               \"text\": \"Trafik\"\r\n            },\r\n            \"statusCodeVORef\": {\r\n               \"extCode\": \"20\",\r\n               \"id\": \"20\",\r\n               \"text\": \"Poliçe\"\r\n            },\r\n            \"statusDate\": \"2018-10-26T13:30:01\"\r\n         },\r\n         \"paymentInfoIVO\": {\r\n            \"collectionMethodVORef\": {\r\n               \"extCode\": \"4\",\r\n               \"id\": \"4\",\r\n               \"text\": \"Sanal POS\"\r\n            },\r\n            \"installmentIVOList\": {\r\n               \"installmentIVO\": {\r\n                  \"collectionMethodVORef\": {\r\n                     \"extCode\": \"4\",\r\n                     \"id\": \"4\",\r\n                     \"text\": \"Sanal POS\"\r\n                  },\r\n                  \"currencyVORef\": {\r\n                     \"extCode\": \"TRY\",\r\n                     \"id\": \"152\",\r\n                     \"text\": \"Türk Lirası\"\r\n                  },\r\n                  \"dueDate\": \"2018-10-30T00:00:00\",\r\n                  \"installmentAmount\": \"609.00000000\",\r\n                  \"installmentBalance\": \"0E-8\",\r\n                  \"installmentNumber\": \"1\",\r\n                  \"installmentOriginVORef\": {\r\n                     \"id\": \"1\",\r\n                     \"text\": \"Prim\"\r\n                  },\r\n                  \"installmentStatusTypeVORef\": {\r\n                     \"extCode\": \"3\",\r\n                     \"id\": \"3\",\r\n                     \"text\": \"Ödendi\"\r\n                  },\r\n                  \"isPayerInsured\": \"false\",\r\n                  \"paidInstallmentAmount\": \"609\",\r\n                  \"payerExtNum\": \"1932864\",\r\n                  \"paymentTermsVORef\": {\r\n                     \"extCode\": \"2000085\",\r\n                     \"id\": \"2000085\",\r\n                     \"text\": \"1 Taksit\"\r\n                  }\r\n               }\r\n            },\r\n            \"manualChangeOfAmounts\": \"false\",\r\n            \"manualChangeOfDates\": \"false\",\r\n            \"paymentTermsVORef\": {\r\n               \"extCode\": \"2000085\",\r\n               \"id\": \"2000085\",\r\n               \"text\": \"1 Taksit\"\r\n            },\r\n            \"totalInstallmentsAmount\": \"609.00000000\"\r\n         },\r\n         \"main\": \"true\",\r\n         \"systemid\": \"2000000\"\r\n      }\r\n   }\r\n}"
+    },
+    "GetPolicyAsPlainInput": {
+      "description": "",
+      "type": "object",
+      "properties": {
+        "Input": {
+          "type": "object",
+          "properties": {
+            "getPolicyPlainRequestANDLIVOinList": {
+              "type": "object",
+              "properties": {
+                "getPolicyPlainRequestANDLIVO": {
+                  "type": "object",
+                  "properties": {
+                    "main": {
+                      "type": "string"
+                    },
+                    "system_id": {
+                      "type": "string"
+                    },
+                    "endorsmentNumber": {
+                      "type": "string"
+                    },
+                    "renewalNumber": {
+                      "type": "string"
+                    },
+                    "assetId": {
+                      "type": "string"
+                    },
+                    "externalPolicyNr": {
+                      "type": "string"
+                    },
+                    "includePaymentInfo": {
+                      "type": "boolean"
+                    },
+                    "includeCoverInfo": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "example": "{\"Input\":{\"getPolicyPlainRequestANDLIVOinList\":{\"getPolicyPlainRequestANDLIVO\":{\"main\":\"true\",\"system_id\":\"2000000\",\"endorsmentNumber\":\"00\",\"renewalNumber\":\"00\",\"assetId\": \"test\",\"externalPolicyNr\":\"4734813418\",\"includePaymentInfo\":true,\"includeCoverInfo\": true}}}}"
+    }
+  },
+  "produces": [
+    "application/xml",
+    "application/json"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "host": "apitest.anadolusigorta.com.tr"
+}

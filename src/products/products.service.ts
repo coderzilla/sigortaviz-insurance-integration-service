@@ -133,10 +133,21 @@ export class ProductsService {
       return { fields: [] };
     }
 
-    const steps: StepDefinition[] | undefined =
-      effectiveFieldSet.stepsJson && effectiveFieldSet.stepsJson.length
-        ? effectiveFieldSet.stepsJson
-        : undefined;
+    let steps: StepDefinition[] = [];
+    let stepsConfig: { steps: StepDefinition[]; defaults?: Record<string, any> } | undefined;
+
+    if (Array.isArray(effectiveFieldSet.stepsJson)) {
+      steps = effectiveFieldSet.stepsJson;
+    } else if (
+      effectiveFieldSet.stepsJson &&
+      Array.isArray(effectiveFieldSet.stepsJson.steps)
+    ) {
+      steps = effectiveFieldSet.stepsJson.steps;
+      stepsConfig = {
+        steps,
+        defaults: effectiveFieldSet.stepsJson.defaults,
+      };
+    }
 
     const stepOrderLookup = new Map<string, number>();
     let stepOrderCounter = 0;
@@ -205,6 +216,7 @@ export class ProductsService {
       fields: fieldConfigs,
       pageChangeRequest: effectiveFieldSet.pageChangeRequestJson || undefined,
       steps,
+      stepsConfig,
     };
 
     return this.applyQuickGatewayBaseIfNeeded(config, carrier.code);
@@ -230,6 +242,7 @@ export class ProductsService {
     >;
     pageChangeRequests: Record<string, RequestTriggerConfig | undefined>;
     steps?: StepDefinition[];
+    stepsConfig?: { steps: StepDefinition[]; defaults?: Record<string, any> };
   }> {
     const carrierConfigs = await Promise.all(
       carriers.map(async (carrierCode) => {
@@ -245,10 +258,17 @@ export class ProductsService {
       FieldConfig & { requiredFor: string[]; optionalFor: string[] }
     >();
 
+    const stepsConfig =
+      carrierConfigs
+        .map((c) => c.config.stepsConfig)
+        .find((s) => s && s.steps?.length);
+
     const steps =
+      stepsConfig?.steps ||
       carrierConfigs
         .map((c) => c.config.steps)
-        .find((s) => s && s.length) || undefined;
+        .find((s) => s && s.length) ||
+      [];
 
     const stepOrderLookup = new Map<string, number>();
     let stepOrderCounter = 0;
@@ -299,6 +319,7 @@ export class ProductsService {
       }),
       pageChangeRequests,
       steps,
+      stepsConfig,
     };
 
     return unionConfig;

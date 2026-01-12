@@ -26,6 +26,7 @@ export class ProductsController {
     fields: FieldConfig[];
     pageChangeRequest?: ProductFormConfig['pageChangeRequest'];
     steps?: ProductFormConfig['steps'];
+    stepsConfig?: ProductFormConfig['stepsConfig'];
   }> {
     const formConfig = await this.productsService.getFieldConfig(
       query.product,
@@ -39,6 +40,7 @@ export class ProductsController {
       fields: formConfig.fields,
       pageChangeRequest: formConfig.pageChangeRequest,
       steps: formConfig.steps,
+      stepsConfig: formConfig.stepsConfig,
     };
   }
 
@@ -60,6 +62,7 @@ export class ProductsController {
     >;
     pageChangeRequests: Record<string, ProductFormConfig['pageChangeRequest']>;
     steps?: ProductFormConfig['steps'];
+    stepsConfig?: ProductFormConfig['stepsConfig'];
   }> {
     const stage = query.stage ?? 'QUOTE';
     const carriers =
@@ -81,6 +84,7 @@ export class ProductsController {
       fields: config.fields,
       pageChangeRequests: config.pageChangeRequests,
       steps: config.steps,
+      stepsConfig: config.stepsConfig,
     };
   }
 }
